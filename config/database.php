@@ -55,6 +55,7 @@ return [
             'database' => env('DB_DATABASE_TESTS', 'brica_tests'),
             'username' => env('MYSQL_USER', env('DB_USERNAME', 'forge')),
             'password' => env('MYSQL_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
