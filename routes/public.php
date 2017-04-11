@@ -23,3 +23,8 @@ Route::get('entradas/crear', [
     'uses' => 'CreateEntryController@create',
     'as' => 'entries.create'
 ]);
+
+Route::post('entradas/crear', [
+    'uses' => 'CreateEntryController@store',
+    'as' => 'entries.store'
+]);

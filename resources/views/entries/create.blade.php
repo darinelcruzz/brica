@@ -3,12 +3,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            {!! Form::open(['methhod' => 'POST', 'route' => 'entries.create']) !!}
-                {!! Field::number('quotation') !!}
-                {!! Field::number('weight') !!}
-                {!! Field::number('items') !!}
-                {!! Field::text('date') !!}
-                {!! Field::number('amount') !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'entries.store']) !!}
+                {!! Field::number('quotation', ['label' => 'Cotización']) !!}
+                {!! Field::number('weight', null, ['label' => 'Peso', 'step' => 1]) !!}
+                {!! Field::text('date', ['label' => 'Fecha']) !!}
+                {!! Field::select('provider', ['1' => 'Aceros del Grijalva', '2' => 'Aceros Rey'], ['label' => 'Proveedor']) !!}
+                {!! Field::number('amount', ['label' => 'Importe']) !!}
+                {!! Field::number('items', ['label' => 'Partidas']) !!}
+                {!! Form::submit('Agregar') !!}
             {!! Form::close() !!}
         </div>
     </div>
