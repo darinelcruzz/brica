@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        @include('menus.sidebar')
+
+        <div class="col-md-8">
             {!! Form::open(['method' => 'POST', 'route' => 'entries.store']) !!}
                 {!! Field::number('quotation', ['label' => 'Cotización']) !!}
                 {!! Field::number('weight', null, ['label' => 'Peso', 'step' => 1]) !!}

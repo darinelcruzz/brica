@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        @include('menus.sidebar')
+
+        <div class="col-md-10">
   			<h2>Historial Entradas</h2>
   			<p></p>
 			<table class="table table-striped">

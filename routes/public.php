@@ -29,7 +29,7 @@ Route::post('entradas/crear', [
     'as' => 'entries.store'
 ]);
 
-Route::get('entradas/listado', [
+Route::get('entradas', [
     'uses' => 'ListEntriesController@show',
     'as' => 'entries.show'
 ]);
