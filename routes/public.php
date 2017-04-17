@@ -28,3 +28,13 @@ Route::post('entradas/crear', [
     'uses' => 'CreateEntryController@store',
     'as' => 'entries.store'
 ]);
+
+Route::get('entradas/listado', [
+    'uses' => 'ListEntriesController@show',
+    'as' => 'entries.show'
+]);
+
+Route::get('orden/crear', [
+    'uses' => 'CreateOrderController@create',
+    'as' => 'order.create'
+]);
