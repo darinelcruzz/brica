@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     protected function registerViewComposers()
-    {
-        View::composer('menus.sidebar', SidebarComposer::class);
-    }
+   {
+       View::composer('menus.sidebar', SidebarComposer::class);
+   }
 }
