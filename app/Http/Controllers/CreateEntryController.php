@@ -25,6 +25,6 @@ class CreateEntryController extends Controller
 
     	$entry = Entry::create($request->all());
 
-    	return redirect(route('entries.create'));
+    	return redirect(route('entries.show'));
     }
 }

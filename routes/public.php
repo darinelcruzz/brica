@@ -39,7 +39,17 @@ Route::get('entradas', [
     'as' => 'entries.show'
 ]);
 
-Route::get('orden/crear', [
+Route::get('ordenes/crear', [
     'uses' => 'CreateOrderController@create',
     'as' => 'order.create'
+]);
+
+Route::post('ordenes/crear', [
+    'uses' => 'CreateOrderController@store',
+    'as' => 'order.store'
+]);
+
+Route::get('ordenes', [
+    'uses' => 'ListOrdersController@show',
+    'as' => 'order.show'
 ]);
