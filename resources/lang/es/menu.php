@@ -2,13 +2,27 @@
 
 return [
     'main' => [
-        'create' => [
-            'title' => 'Crear entrada',
-            'route' => 'entries.create',
+        'entries' => [
+            'title' => 'Entradas',
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'entries.create',
+            ],
+            'show' => [
+                'title' => 'Historial',
+                'route' => 'entries.create',
+            ],
         ],
-        'show' => [
-            'title' => 'Mostrar entradas',
-            'route' => 'entries.show',
+        'orders' => [
+            'title' => 'Órdenes',
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'orders.create',
+            ],
+            'show' => [
+                'title' => 'Historial',
+                'route' => 'orders.create',
+            ],
         ],
     ],
 ];
