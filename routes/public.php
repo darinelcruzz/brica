@@ -15,6 +15,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('admin', function ()
+{
+    return view('admin');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,12 +34,22 @@ Route::post('entradas/crear', [
     'as' => 'entries.store'
 ]);
 
-Route::get('entradas/listado', [
+Route::get('entradas', [
     'uses' => 'ListEntriesController@show',
     'as' => 'entries.show'
 ]);
 
-Route::get('orden/crear', [
+Route::get('ordenes/crear', [
     'uses' => 'CreateOrderController@create',
     'as' => 'order.create'
+]);
+
+Route::post('ordenes/crear', [
+    'uses' => 'CreateOrderController@store',
+    'as' => 'order.store'
+]);
+
+Route::get('ordenes', [
+    'uses' => 'ListOrdersController@show',
+    'as' => 'order.show'
 ]);
