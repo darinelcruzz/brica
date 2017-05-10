@@ -1,28 +1,33 @@
 <?php
 
 return [
-    'main' => [
-        'entries' => [
-            'title' => 'Entradas',
+    'entries' => [
+        'title' => 'Entradas',
+        'icon' => 'fa fa-truck',
+        'submenu' => [
             'create' => [
                 'title' => 'Crear',
-                'route' => 'entries.create',
+                'route' => 'entries.create'
             ],
-            'show' => [
+            'history' => [
                 'title' => 'Historial',
-                'route' => 'entries.create',
+                'route' => 'entries.show'
             ],
-        ],
-        'orders' => [
-            'title' => 'Órdenes',
-            'create' => [
-                'title' => 'Crear',
-                'route' => 'orders.create',
-            ],
-            'show' => [
-                'title' => 'Historial',
-                'route' => 'orders.create',
-            ],
-        ],
+        ]
     ],
+
+    'orders' => [
+        'title' => 'Órdenes',
+        'icon' => 'fa fa-sticky-note',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'order.create'
+            ],
+            'history' => [
+                'title' => 'Historial',
+                'route' => 'order.show'
+            ],
+        ]
+    ]
 ];
