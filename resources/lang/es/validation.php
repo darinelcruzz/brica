@@ -121,6 +121,7 @@ return [
         'first_name'            => 'nombre',
         'last_name'             => 'apellido',
         'password'              => 'contraseña',
+        'password2'              => 'contraseña',
         'password_confirmation' => 'confirmación de la contraseña',
         'city'                  => 'ciudad',
         'country'               => 'país',
@@ -145,6 +146,10 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
         'weight'                => 'peso',
+        'provider'              => 'proveedor',
+        'quotation'             => 'cotización',
+        'amount'                => 'importe',
+        'items'                 => 'partida',
     ],
 
 ];

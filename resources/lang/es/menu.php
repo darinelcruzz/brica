@@ -29,5 +29,50 @@ return [
                 'route' => 'order.show'
             ],
         ]
+    ],
+
+    'clients' => [
+        'title' => 'Clientes',
+        'icon' => 'fa fa-users',
+        'submenu' => [
+            'create' => [
+                'title' => 'Agregar',
+                'route' => 'client.create'
+            ],
+            'list' => [
+                'title' => 'Listado',
+                'route' => 'client.show'
+            ],
+        ]
+    ],
+
+    'Providers' => [
+        'title' => 'Proveedores',
+        'icon' => 'fa fa-handshake-o',
+        'submenu' => [
+            'create' => [
+                'title' => 'Agregar',
+                'route' => 'provider.create'
+            ],
+            'list' => [
+                'title' => 'Listado',
+                'route' => 'provider.show'
+            ],
+        ]
+    ],
+
+    'Users' => [
+        'title' => 'Usuarios',
+        'icon' => 'fa fa-key',
+        'submenu' => [
+            'create' => [
+                'title' => 'Agregar',
+                'route' => 'user.create'
+            ],
+            'list' => [
+                'title' => 'Listado',
+                'route' => 'user.show'
+            ],
+        ]
     ]
 ];

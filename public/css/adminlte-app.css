@@ -164,7 +164,7 @@ h6,
 }
 /* General Links */
 a {
-  color: #3c8dbc;
+  color: #088A85;
 }
 a:hover,
 a:active,
@@ -1253,7 +1253,7 @@ a:focus {
   border-color: #d2d6de;
 }
 .form-control:focus {
-  border-color: #3c8dbc;
+  border-color: #088A85;
   box-shadow: none;
 }
 .form-control::-moz-placeholder,
@@ -1410,7 +1410,7 @@ a:focus {
 }
 .progress-bar-light-blue,
 .progress-bar-primary {
-  background-color: #3c8dbc;
+  background-color: #088A85;
 }
 .progress-striped .progress-bar-light-blue,
 .progress-striped .progress-bar-primary {
@@ -1544,7 +1544,7 @@ a:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .box.box-primary {
-  border-top-color: #3c8dbc;
+  border-top-color: #088A85;
 }
 .box.box-info {
   border-top-color: #00c0ef;
@@ -1605,12 +1605,12 @@ a:focus {
   color: #444;
 }
 .box.box-solid.box-primary {
-  border: 1px solid #3c8dbc;
+  border: 1px solid #088A85;
 }
 .box.box-solid.box-primary > .box-header {
   color: #fff;
-  background: #3c8dbc;
-  background-color: #3c8dbc;
+  background: #088A85;
+  background-color: #088A85;
 }
 .box.box-solid.box-primary > .box-header a,
 .box.box-solid.box-primary > .box-header .btn {
@@ -1936,7 +1936,7 @@ a:focus {
   border-left-color: #00a65a;
 }
 .todo-list .primary {
-  border-left-color: #3c8dbc;
+  border-left-color: #088A85;
 }
 .todo-list .handle {
   display: inline-block;
@@ -2231,7 +2231,7 @@ a:focus {
   background-color: #e7e7e7;
 }
 .btn-primary {
-  background-color: #3c8dbc;
+  background-color: #088A85;
   border-color: #367fa9;
 }
 .btn-primary:hover,
@@ -2430,7 +2430,7 @@ a:focus {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  border-top-color: #3c8dbc;
+  border-top-color: #088A85;
 }
 .nav-pills > li.active > a {
   font-weight: 600;
@@ -2447,7 +2447,7 @@ a:focus {
   background: transparent;
   color: #444;
   border-top: 0;
-  border-left-color: #3c8dbc;
+  border-left-color: #088A85;
 }
 .nav-stacked > li.header {
   border-bottom: 1px solid #ddd;
@@ -2495,7 +2495,7 @@ a:focus {
   border-color: transparent;
 }
 .nav-tabs-custom > .nav-tabs > li.active {
-  border-top-color: #3c8dbc;
+  border-top-color: #088A85;
 }
 .nav-tabs-custom > .nav-tabs > li.active > a,
 .nav-tabs-custom > .nav-tabs > li.active:hover > a {
@@ -2552,7 +2552,7 @@ a:focus {
   color: #999;
 }
 .nav-tabs-custom.tab-primary > .nav-tabs > li.active {
-  border-top-color: #3c8dbc;
+  border-top-color: #088A85;
 }
 .nav-tabs-custom.tab-info > .nav-tabs > li.active {
   border-top-color: #00c0ef;
@@ -2858,13 +2858,13 @@ table.text-center th {
   border-left-color: #dd4b39;
 }
 .direct-chat-primary .right > .direct-chat-text {
-  background: #3c8dbc;
-  border-color: #3c8dbc;
+  background: #088A85;
+  border-color: #088A85;
   color: #fff;
 }
 .direct-chat-primary .right > .direct-chat-text:after,
 .direct-chat-primary .right > .direct-chat-text:before {
-  border-left-color: #3c8dbc;
+  border-left-color: #088A85;
 }
 .direct-chat-warning .right > .direct-chat-text {
   background: #f39c12;
@@ -4867,14 +4867,14 @@ fieldset[disabled] .btn-yahoo.active {
   height: 34px;
 }
 .select2-container--default.select2-container--open {
-  border-color: #3c8dbc;
+  border-color: #088A85;
 }
 .select2-dropdown {
   border: 1px solid #d2d6de;
   border-radius: 0;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #3c8dbc;
+  background-color: #088A85;
   color: white;
 }
 .select2-results__option {
@@ -4908,7 +4908,7 @@ fieldset[disabled] .btn-yahoo.active {
 .select2-dropdown .select2-search__field:focus,
 .select2-search--inline .select2-search__field:focus {
   outline: none;
-  border: 1px solid #3c8dbc;
+  border: 1px solid #088A85;
 }
 .select2-container--default .select2-results__option[aria-disabled=true] {
   color: #999;
@@ -4925,13 +4925,13 @@ fieldset[disabled] .btn-yahoo.active {
   border-radius: 0;
 }
 .select2-container--default .select2-selection--multiple:focus {
-  border-color: #3c8dbc;
+  border-color: #088A85;
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #d2d6de;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #3c8dbc;
+  background-color: #088A85;
   border-color: #367fa9;
   padding: 1px 10px;
   color: #fff;
@@ -5084,7 +5084,7 @@ fieldset[disabled] .btn-yahoo.active {
 .bg-light-blue,
 .label-primary,
 .modal-primary .modal-body {
-  background-color: #3c8dbc !important;
+  background-color: #088A85 !important;
 }
 .bg-green,
 .callout.callout-success,
@@ -5196,7 +5196,7 @@ fieldset[disabled] .btn-yahoo.active {
   color: #111 !important;
 }
 .text-light-blue {
-  color: #3c8dbc !important;
+  color: #088A85 !important;
 }
 .text-green {
   color: #00a65a !important;
@@ -5297,10 +5297,10 @@ fieldset[disabled] .btn-yahoo.active {
   color: #fff;
 }
 .bg-light-blue-gradient {
-  background: #3c8dbc !important;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3c8dbc), color-stop(1, #67a8ce)) !important;
-  background: -o-linear-gradient(#67a8ce, #3c8dbc) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67a8ce', endColorstr='#3c8dbc', GradientType=0) !important;
+  background: #088A85 !important;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #088A85), color-stop(1, #67a8ce)) !important;
+  background: -o-linear-gradient(#67a8ce, #088A85) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67a8ce', endColorstr='#088A85', GradientType=0) !important;
   color: #fff;
 }
 .bg-blue-gradient {

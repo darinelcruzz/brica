@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 ">
             <div class="box box-solid box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Historial de entradas</h3>

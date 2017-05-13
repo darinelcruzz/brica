@@ -57,7 +57,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return config('auth.providers.users.field','email');
+        return config('auth.providers.users.field','user');
     }
 
     /**
@@ -68,7 +68,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        if ($this->username() === 'email') return $this->attemptLoginAtAuthenticatesUsers($request);
+        if ($this->username() === 'user') return $this->attemptLoginAtAuthenticatesUsers($request);
         if ( ! $this->attemptLoginAtAuthenticatesUsers($request)) {
             return $this->attempLoginUsingUsernameAsAnEmail($request);
         }
@@ -76,7 +76,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Attempt to log the user into application using username as an email.
+     * Attempt to log the user into application using username as an user.
      *
      * @param \Illuminate\Http\Request $request
      * @return bool
@@ -84,7 +84,7 @@ class LoginController extends Controller
     protected function attempLoginUsingUsernameAsAnEmail(Request $request)
     {
         return $this->guard()->attempt(
-            ['email' => $request->input('username'), 'password' => $request->input('password')],
+            ['user' => $request->input('username'), 'password' => $request->input('password')],
             $request->has('remember'));
     }
 

@@ -24,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Entradas
 Route::get('entradas/crear', [
     'uses' => 'CreateEntryController@create',
     'as' => 'entries.create'
@@ -39,6 +40,7 @@ Route::get('entradas', [
     'as' => 'entries.show'
 ]);
 
+// Ordenes
 Route::get('ordenes/crear', [
     'uses' => 'CreateOrderController@create',
     'as' => 'order.create'
@@ -52,4 +54,52 @@ Route::post('ordenes/crear', [
 Route::get('ordenes', [
     'uses' => 'ListOrdersController@show',
     'as' => 'order.show'
+]);
+
+// Clientes
+Route::get('clientes/crear', [
+    'uses' => 'CreateClientController@create',
+    'as' => 'client.create'
+]);
+
+Route::post('clientes/crear', [
+    'uses' => 'CreateClientController@store',
+    'as' => 'client.store'
+]);
+
+Route::get('clientes', [
+    'uses' => 'ListClientsController@show',
+    'as' => 'client.show'
+]);
+
+// Proveedores
+Route::get('proveedores/crear', [
+    'uses' => 'CreateProviderController@create',
+    'as' => 'provider.create'
+]);
+
+Route::post('proveedores/crear', [
+    'uses' => 'CreateProviderController@store',
+    'as' => 'provider.store'
+]);
+
+Route::get('proveedores', [
+    'uses' => 'ListProvidersController@show',
+    'as' => 'provider.show'
+]);
+
+// Usuarios
+Route::get('usuarios/crear', [
+    'uses' => 'CreateUserController@create',
+    'as' => 'user.create'
+]);
+
+Route::post('usuarios/crear', [
+    'uses' => 'CreateUserController@store',
+    'as' => 'user.store'
+]);
+
+Route::get('usuarios', [
+    'uses' => 'ListUsersController@show',
+    'as' => 'user.show'
 ]);
