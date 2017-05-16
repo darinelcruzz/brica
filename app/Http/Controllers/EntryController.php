@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Entry;
 
-class CreateEntryController extends Controller
+class EntryController extends Controller
 {
     public function create()
     {
@@ -26,5 +26,12 @@ class CreateEntryController extends Controller
     	$entry = Entry::create($request->all());
 
     	return redirect(route('entries.show'));
+    }
+
+    public function show()
+    {
+        $entries = Entry::all();
+
+        return view('entries.show', compact('entries'));
     }
 }

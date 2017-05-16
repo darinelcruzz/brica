@@ -14,6 +14,9 @@
                     {!! Field::text('user', ['label' => 'Usuario', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::password('password', ['label' => 'Contraseña', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::password('password2', ['label' => 'Repite contraseña', 'tpl' => 'templates/oneline']) !!}
+
+                    {!! Field::select('hierarchy', ['1' => 'Principal', '2' => 'Ventas', '3' => 'Ordenes'],
+                        ['label' => 'Jerarquía', 'template' => 'templates/oneline']) !!}
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">

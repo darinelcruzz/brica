@@ -26,80 +26,80 @@ Route::get('/', function () {
 
 // Entradas
 Route::get('entradas/crear', [
-    'uses' => 'CreateEntryController@create',
+    'uses' => 'EntryController@create',
     'as' => 'entries.create'
 ]);
 
 Route::post('entradas/crear', [
-    'uses' => 'CreateEntryController@store',
+    'uses' => 'EntryController@store',
     'as' => 'entries.store'
 ]);
 
 Route::get('entradas', [
-    'uses' => 'ListEntriesController@show',
+    'uses' => 'EntryController@show',
     'as' => 'entries.show'
 ]);
 
 // Ordenes
 Route::get('ordenes/crear', [
-    'uses' => 'CreateOrderController@create',
+    'uses' => 'OrderController@create',
     'as' => 'order.create'
 ]);
 
 Route::post('ordenes/crear', [
-    'uses' => 'CreateOrderController@store',
+    'uses' => 'OrderController@store',
     'as' => 'order.store'
 ]);
 
 Route::get('ordenes', [
-    'uses' => 'ListOrdersController@show',
+    'uses' => 'OrderController@show',
     'as' => 'order.show'
 ]);
 
 // Clientes
 Route::get('clientes/crear', [
-    'uses' => 'CreateClientController@create',
+    'uses' => 'ClientController@create',
     'as' => 'client.create'
 ]);
 
 Route::post('clientes/crear', [
-    'uses' => 'CreateClientController@store',
+    'uses' => 'ClientController@store',
     'as' => 'client.store'
 ]);
 
 Route::get('clientes', [
-    'uses' => 'ListClientsController@show',
+    'uses' => 'ClientController@show',
     'as' => 'client.show'
 ]);
 
 // Proveedores
 Route::get('proveedores/crear', [
-    'uses' => 'CreateProviderController@create',
+    'uses' => 'ProviderController@create',
     'as' => 'provider.create'
 ]);
 
 Route::post('proveedores/crear', [
-    'uses' => 'CreateProviderController@store',
+    'uses' => 'ProviderController@store',
     'as' => 'provider.store'
 ]);
 
 Route::get('proveedores', [
-    'uses' => 'ListProvidersController@show',
+    'uses' => 'ProviderController@show',
     'as' => 'provider.show'
 ]);
 
 // Usuarios
 Route::get('usuarios/crear', [
-    'uses' => 'CreateUserController@create',
+    'uses' => 'UserController@create',
     'as' => 'user.create'
 ]);
 
 Route::post('usuarios/crear', [
-    'uses' => 'CreateUserController@store',
+    'uses' => 'UserController@store',
     'as' => 'user.store'
 ]);
 
 Route::get('usuarios', [
-    'uses' => 'ListUsersController@show',
+    'uses' => 'UserController@show',
     'as' => 'user.show'
 ]);

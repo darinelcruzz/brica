@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 
-class CreateOrderController extends Controller
+class OrderController extends Controller
 {
 	public function create()
 	{
@@ -16,16 +16,19 @@ class CreateOrderController extends Controller
     {
     	$this->validate($request, [
     		'team' => 'required',
-			'client' => 'required',
-    		'weight' => 'required',
-    		'date' => 'required',
-    		'provider' => 'required',
-    		'amount' => 'required',
-    		'items' => 'required',
+			'description' => 'required',
+    		'design' => 'required',
     	]);
 
     	$entry = Order::create($request->all());
 
     	return redirect(route('order.show'));
+    }
+
+    public function show()
+    {
+        $orders = Order::all();
+
+        return view('orders.show', compact('orders'));
     }
 }

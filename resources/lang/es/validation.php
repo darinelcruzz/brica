@@ -150,6 +150,8 @@ return [
         'quotation'             => 'cotización',
         'amount'                => 'importe',
         'items'                 => 'partida',
+        'team'                  => 'equipo',
+        'design'                => 'diseño'
     ],
 
 ];

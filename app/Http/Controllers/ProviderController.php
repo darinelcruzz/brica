@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Provider;
 
-class CreateProviderController extends Controller
+class ProviderController extends Controller
 {
     public function create()
 	{
@@ -24,5 +24,12 @@ class CreateProviderController extends Controller
     	$provider = Provider::create($request->all());
 
     	return redirect(route('provider.show'));
+    }
+
+    public function show()
+    {
+        $providers = Provider::all();
+
+        return view('providers.show', compact('providers'));
     }
 }

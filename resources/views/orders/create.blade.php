@@ -11,11 +11,12 @@
                 <div class="box-body">
                     {!! Field::select('team', ['1' => 'Luis y Jorge', '2' => 'Pepe y Romeo'], null,
                         ['label' => 'Equipo', 'tpl' => 'templates/withicon'], ['icon' => 'group']) !!}
-                    {!! Field::select('client', ['1' => 'Molinos de Chiapas', '2' => 'Monsanto', '3' => 'Carrocerias Aguilar'], null,
-                        ['label' => 'Cliente', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
-                    {!! Field::date('date', ['label' => 'Fecha', 'tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
-                    {!! Field::number('amount', ['label' => 'Importe', 'tpl' => 'templates/withicon'], ['icon' => 'dollar']) !!}
-                    {!! Field::number('items', ['label' => 'Partidas', 'tpl' => 'templates/withicon'], ['icon' => 'paper-plane-o']) !!}
+                    {!! Field::text('description', ['label' => 'Descripción', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
+                    {!! Field::number('order', ['label' => '# Orden','disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'dollar']) !!}
+                    {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
+                        ['label' => 'Diseño', 'tpl' => 'templates/withicon'], ['icon' => 'group']) !!}
+                    {!! Field::select('added', ['90' => 'Nuevo', 'existente' => 'Existente'], null,
+                        ['label' => 'Existente', 'disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'group']) !!}
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
@@ -24,40 +25,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>
-    {{--
-    <!--div class="row">
-        <div class="col-md-5">
-            <div class="box box-solid box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">1</h3>
-                </div>
-                {!! Form::open(['method' => 'POST', 'route' => 'order.store', 'class' => 'form-horizontal']) !!}
-                <div class="box-body">
-                    {!! Field::select('design', ['1' => 'Nuevo', '2' => 'Guardado'],['label' => 'Diseño', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::select('caliber', ['1' => '12', '2' => '14', '3' => '1/2"', '4' => '1"'],
-                            ['label' => 'Calibre', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('measure', ['label' => 'Medida', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('quantity', ['label' => 'Cantidad', 'template' => 'templates/mytemplate1']) !!}
-                </div>
-                {!! Form::close() !!}
-            </div>
-        </div>
-        <div class="col-md-5 col-md-offset-1">
-            <div class="box box-solid box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">2</h3>
-                </div>
-                {!! Form::open(['method' => 'POST', 'route' => 'order.store', 'class' => 'form-horizontal']) !!}
-                <div class="box-body">
-                    {!! Field::select('design', ['1' => 'Nuevo', '2' => 'Guardado'],['label' => 'Diseño', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::select('caliber', ['1' => '12', '2' => '14', '3' => '1/2"', '4' => '1"'],
-                            ['label' => 'Calibre', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('measure', ['label' => 'Medida', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('quantity', ['label' => 'Cantidad', 'template' => 'templates/mytemplate1']) !!}
-                </div>
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>--}}
+    </div>      
 @endsection
