@@ -3,29 +3,30 @@
 @section('main-content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="box box-info">
+            <div class="box box-primary box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Nueva orden de trabajo</h3>
                 </div>
-                {!! Form::open(['method' => 'POST', 'route' => 'order.store', 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
-                    {!! Field::select('team', ['1' => 'Luis y Jorge', '2' => 'Pepe y Romeo'],
-                        ['label' => 'Equipo', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::select('client', ['1' => 'Molinos de Chiapas', '2' => 'Monsanto', '3' => 'Carrocerias Aguilar'],
-                        ['label' => 'Cliente', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::date('date', ['label' => 'Fecha', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('amount', ['label' => 'Importe', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::number('items', ['label' => 'Partidas', 'template' => 'templates/mytemplate1']) !!}
+                    {!! Field::select('team', ['1' => 'Luis y Jorge', '2' => 'Pepe y Romeo'], null,
+                        ['label' => 'Equipo', 'tpl' => 'templates/withicon'], ['icon' => 'group']) !!}
+                    {!! Field::select('client', ['1' => 'Molinos de Chiapas', '2' => 'Monsanto', '3' => 'Carrocerias Aguilar'], null,
+                        ['label' => 'Cliente', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
+                    {!! Field::date('date', ['label' => 'Fecha', 'tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
+                    {!! Field::number('amount', ['label' => 'Importe', 'tpl' => 'templates/withicon'], ['icon' => 'dollar']) !!}
+                    {!! Field::number('items', ['label' => 'Partidas', 'tpl' => 'templates/withicon'], ['icon' => 'paper-plane-o']) !!}
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    {!! Form::submit('Siguiente     ', ['class' => 'btn btn-info btn-block']) !!}
+                    {!! Form::submit('Siguiente', ['class' => 'btn btn-primary btn-block']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
-    <div class="row">
+    {{--
+    <!--div class="row">
         <div class="col-md-5">
             <div class="box box-solid box-primary">
                 <div class="box-header with-border">
@@ -58,5 +59,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>
+    </div>--}}
 @endsection

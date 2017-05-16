@@ -10,10 +10,10 @@
                 <!-- form start -->
                 {!! Form::open(['method' => 'POST', 'route' => 'user.store', 'class' => 'form-horizontal']) !!}
                   <div class="box-body">
-                    {!! Field::text('name', ['label' => 'Nombre', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::text('user', ['label' => 'Usuario', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::password('password', ['label' => 'Contraseña', 'template' => 'templates/mytemplate1']) !!}
-                    {!! Field::password('password2', ['label' => 'Repite contraseña', 'template' => 'templates/mytemplate1']) !!}
+                    {!! Field::text('name', ['label' => 'Nombre', 'tpl' => 'templates/oneline']) !!}
+                    {!! Field::text('user', ['label' => 'Usuario', 'tpl' => 'templates/oneline']) !!}
+                    {!! Field::password('password', ['label' => 'Contraseña', 'tpl' => 'templates/oneline']) !!}
+                    {!! Field::password('password2', ['label' => 'Repite contraseña', 'tpl' => 'templates/oneline']) !!}
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">

@@ -16,24 +16,20 @@ class OrderTest extends DuskTestCase
             $browser->visitRoute('order.create')
                     ->select('team', '1')
                     ->select('client', '1')
-                    ->type('weight', 800)
                     //->type('date', $date)
                     ->keys('#date', 02)
                     ->keys('#date', 04)
                     ->keys('#date', 2017)
-                    ->select('provider', '2')
                     ->type('amount', 1500)
                     ->type('items', 4)
-                    ->press('Agregar')
+                    ->press('Siguiente')
                     ->assertPathIs('/ordenes');
         });
 
         $this->assertDatabaseHas('orders', [
             'team' => '1',
             'client' => '1',
-            'weight' => 800,
             'date' => '2017-02-04',
-            'provider' => '2',
             'amount' => 1500,
             'items' => 4,
         ]);
