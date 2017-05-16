@@ -18,26 +18,27 @@
                           </div>
                           <div class="col-md-6">
                               {!! Field::date('date', ['label' => 'Fecha', 'tpl' => 'templates/withicon'],
-                                  ['icon' => 'sticky-note']) !!}
+                                  ['icon' => 'calendar']) !!}
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="col-md-12">
-                              {!! Field::select('provider', ['1' => 'Sommer', '2' => 'Cedeño', '3' => 'Fortacero'],
-                                  ['label' => 'Proveedor', 'tpl' => 'templates/withicon'], ['icon' => 'anchor']) !!}
+                              {!! Field::select('provider', ['1' => 'Sommer', '2' => 'Cedeño', '3' => 'Fortacero'], null,
+                                  ['label' => 'Proveedor', 'tpl' => 'templates/withicon', 'empty' => 'Selecciona el proveedor'],
+                                  ['icon' => 'handshake-o']) !!}
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="col-md-6">
                               {!! Field::number('amount', ['label' => 'Importe', 'tpl' => 'templates/withicon'],
-                                  ['icon' => 'anchor']) !!}
+                                  ['icon' => 'dollar']) !!}
                           </div>
 
                           <div class="col-md-6">
                               {!! Field::number('items', ['label' => 'Partidas', 'tpl' => 'templates/withicon'],
-                                  ['icon' => 'at']) !!}
+                                  ['icon' => 'paper-plane-o']) !!}
                           </div>
                       </div>
 
