@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Client;
 
-class CreateClientController extends Controller
+class ClientController extends Controller
 {
 	public function create()
 	{
@@ -24,5 +24,12 @@ class CreateClientController extends Controller
     	$client = Client::create($request->all());
 
     	return redirect(route('client.show'));
+    }
+
+    public function show()
+    {
+        $clients = Client::all();
+
+        return view('clients.show', compact('clients'));
     }
 }

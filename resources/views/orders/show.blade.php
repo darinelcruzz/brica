@@ -13,21 +13,19 @@
                     <table class="table table-striped">
         				<thead>
         					<tr>
+                                <th>Orden</th>
         				       	<th>Equipo</th>
-        				        <th>Cliente</th>
-        				        <th>Peso</th>
-        				        <th>Fecha</th>
-        				        <th>Importe
+        				        <th>Descripción</th>
+        				        <th>Fecha Inicio</th>
         				    </tr>
         				</thead>
         				<tbody>
         					@foreach($orders as $order)
         				      <tr>
+                                <td>{{ $order->id }}</td>
         				        <td>{{ $order->team }}</td>
-        				        <td>{{ $order->client }}</td>
-        				        <td>{{ $order->weight }}</td>
-        				        <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $order->date)->format('l jS \\of F Y') }}</td>
-        				        <td>{{ $order->amount }}</td>
+        				        <td>{{ $order->description }}</td>
+        				        <td>{{ $order->created_at->format('l jS \\of F Y  H:i:s') }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>

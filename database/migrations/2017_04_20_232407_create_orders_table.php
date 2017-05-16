@@ -17,12 +17,10 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
 
             $table->string('team');
-            $table->string('client');
-            $table->integer('weight');
-            $table->string('date');
-            $table->string('provider');
-            $table->integer('amount');
-            $table->integer('items');
+            $table->string('description');
+            $table->integer('design');
+            $table->integer('added');
+            $table->integer('status');
 
             $table->timestamps();
         });

@@ -12,6 +12,8 @@
                   <div class="box-body">
                     {!! Field::text('name', ['label' => 'Nombre', 'template' => 'templates/mytemplate1']) !!}
                     {!! Field::text('user', ['label' => 'Usuario', 'template' => 'templates/mytemplate1']) !!}
+                    {!! Field::select('hierarchy', ['1' => 'Principal', '2' => 'Ventas', '3' => 'Ordenes'],
+                        ['label' => 'Jerarquía', 'template' => 'templates/mytemplate1']) !!}
                     {!! Field::password('password', ['label' => 'Contraseña', 'template' => 'templates/mytemplate1']) !!}
                     {!! Field::password('password2', ['label' => 'Repite contraseña', 'template' => 'templates/mytemplate1']) !!}
                   </div>

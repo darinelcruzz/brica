@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class CreateUserController extends Controller
+class UserController extends Controller
 {
 public function create()
 	{
@@ -25,5 +25,12 @@ public function create()
     	$user = User::create($request->all());
 
     	return redirect(route('user.show'));
+    }
+
+    public function show()
+    {
+        $users = User::all();
+
+        return view('users.show', compact('users'));
     }
 }
