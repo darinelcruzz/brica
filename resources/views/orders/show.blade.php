@@ -13,9 +13,10 @@
                     <table class="table table-striped">
         				<thead>
         					<tr>
-                                <th>Orden</th>
+                                <th>#</th>
         				       	<th>Equipo</th>
         				        <th>Descripción</th>
+                                <th>Status</th>
         				        <th>Fecha Inicio</th>
         				    </tr>
         				</thead>
@@ -25,6 +26,7 @@
                                 <td>{{ $order->id }}</td>
         				        <td>{{ $order->team }}</td>
         				        <td>{{ $order->description }}</td>
+                                <td>{{ $order->status }}</td>
         				        <td>{{ $order->created_at->format('l jS \\of F Y  H:i:s') }}</td>
         				      </tr>
         				    @endforeach

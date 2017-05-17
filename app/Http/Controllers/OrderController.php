@@ -16,8 +16,14 @@ class OrderController extends Controller
     {
     	$this->validate($request, [
     		'team' => 'required',
-			'description' => 'required',
+            'description' => 'required',
     		'design' => 'required',
+            'caliber' => 'required',
+            'measure' => 'required',
+            'pieces' => 'required',
+            'height' => 'required',
+            'long' => 'required',
+            'width' => 'required',
     	]);
 
     	$entry = Order::create($request->all());

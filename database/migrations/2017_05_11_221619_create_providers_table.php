@@ -17,12 +17,12 @@ class CreateProvidersTable extends Migration
             $table->increments('id');
             
             $table->string('name');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('contact');
-            $table->string('rfc');
-            $table->string('city');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('rfc')->nullable();
+            $table->string('city')->nullable();
 
             $table->timestamps();
         });

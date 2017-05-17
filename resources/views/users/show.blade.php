@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div class="box box-solid box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Listado Clientes</h3>
+                    <h3 class="box-title">Listado Usuarios</h3>
                 </div>
 
                 <div class="box-body">

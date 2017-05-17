@@ -16,11 +16,16 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('team');
-            $table->string('description');
-            $table->integer('design');
-            $table->integer('added');
-            $table->integer('status');
+            $table->string('team')->nullable();
+            $table->string('description')->nullable();
+            $table->string('design')->nullable();
+            $table->string('caliber')->nullable();
+            $table->string('measure')->nullable();
+            $table->integer('pieces')->nullable();
+            $table->float('height')->nullable();
+            $table->float('long')->nullable();
+            $table->float('width')->nullable();
+            $table->string('status')->nullable();
 
             $table->timestamps();
         });

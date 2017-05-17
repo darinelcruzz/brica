@@ -16,12 +16,12 @@ class CreateEntriesTable extends Migration
         Schema::create('entries', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('quotation');
-            $table->integer('weight');
-            $table->string('date');
-            $table->string('provider');
-            $table->integer('amount');
-            $table->integer('items');
+            $table->integer('quotation')->nullable();
+            $table->integer('weight')->nullable();
+            $table->string('date')->nullable();
+            $table->string('provider')->nullable();
+            $table->integer('amount')->nullable();
+            $table->integer('items')->nullable();
             
             $table->timestamps();
         });
