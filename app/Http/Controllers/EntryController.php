@@ -16,11 +16,12 @@ class EntryController extends Controller
     {
     	$this->validate($request, [
     		'quotation' => 'required',
-    		'weight' => 'required',
     		'date' => 'required',
     		'provider' => 'required',
     		'amount' => 'required',
     		'items' => 'required',
+            //'quantity' => 'required',
+            'caliber' => 'required',
     	]);
 
     	$entry = Entry::create($request->all());

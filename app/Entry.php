@@ -8,6 +8,6 @@ class Entry extends Model
 {
     protected $fillable = [
     	'quotation', 'weight', 'date', 'provider',
-    	'amount', 'items'
+    	'amount', 'items',
     ];
 }

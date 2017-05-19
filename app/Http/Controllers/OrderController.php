@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Jenssegers\Date\Date;
 
 class OrderController extends Controller
 {

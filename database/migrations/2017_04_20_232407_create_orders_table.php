@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->float('height')->nullable();
             $table->float('long')->nullable();
             $table->float('width')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default("En proceso");
 
             $table->timestamps();
         });

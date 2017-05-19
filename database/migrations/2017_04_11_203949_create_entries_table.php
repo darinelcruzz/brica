@@ -17,7 +17,7 @@ class CreateEntriesTable extends Migration
             $table->increments('id');
 
             $table->integer('quotation')->nullable();
-            $table->integer('weight')->nullable();
+            //$table->integer('totalweight')->nullable();
             $table->string('date')->nullable();
             $table->string('provider')->nullable();
             $table->integer('amount')->nullable();

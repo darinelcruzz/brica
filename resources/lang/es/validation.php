@@ -151,7 +151,10 @@ return [
         'amount'                => 'importe',
         'items'                 => 'partida',
         'team'                  => 'equipo',
-        'design'                => 'diseño'
+        'design'                => 'diseño',
+        'quantity'              => 'cantidad',
+        'caliber'               => 'calibre',
+        'specific'              => 'peso especifico',
     ],
 
 ];
