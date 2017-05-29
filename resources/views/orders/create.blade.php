@@ -12,14 +12,21 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
                     <div class="row">
+                        <div class="col-md-12">
+                            {!! Field::select('client', $clients, null,
+                            ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'], 
+                            ['icon' => 'user']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
-                            {!! Field::select('team', 
+                            {!! Field::select('team',
                                 ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3'], null,
                                 ['label' => 'Equipo', 'tpl' => 'templates/withicon'], ['icon' => 'group']
                             ) !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::text('description', 
+                            {!! Field::text('description',
                                 ['label' => 'Descripción', 'tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                         </div>
                     </div>
@@ -43,21 +50,28 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::select('caliber', 
+                                    {!! Field::select('caliber',
                                         ['16' => '16', '15' => '15', '14' => '14', '12' => '12', '10' => '10', '3/16' => '3/16"', '1/4' => '1/4"', 'ANT 12' => 'ANT 12', 'ANT 1/4' => 'ANT 1/4"'], null,
                                     ['label' => 'Calibre', 'tpl' => 'templates/withicon'], ['icon' => 'compress']) !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::text('measure', 
-                                        ['label' => 'Medida', 'tpl' => 'templates/withicon'], ['icon' => 'arrows']
+                                    {!! Field::select('measureType', ['ex' => 'Externas', 'in' => 'Internas'], null,
+                                        ['label' => 'Tipo de medida', 'tpl' => 'templates/withicon'], ['icon' => 'external-link']
                                     ) !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::number('pieces', 
+                                    {!! Field::text('measures',
+                                        ['label' => 'Medidas', 'tpl' => 'templates/withicon'], ['icon' => 'arrows']
+                                    ) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    {!! Field::number('pieces',
                                         ['label' => 'Piezas', 'tpl' => 'templates/withicon', 'step' => '1'], ['icon' => 'list']
                                     ) !!}
                                 </div>
@@ -71,22 +85,22 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            {!! Field::number('height', 
+                            {!! Field::number('height',
                                 ['label' => 'Alto', 'tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'arrows-v']
                             ) !!}
                         </div>
                         <div class="col-md-4 col-sm-4">
-                            {!! Field::number('long', 
+                            {!! Field::number('long',
                                 ['label' => 'Largo', 'tpl' => 'templates/withicon', 'step' => '0.01', 'step' => '0.01'], ['icon' => 'arrows-h']
                             ) !!}
                         </div>
                         <div class="col-md-4 col-sm-4">
-                            {!! Field::number('width', 
+                            {!! Field::number('width',
                                 ['label' => 'Ancho', 'tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'expand']
                             ) !!}
                         </div>
                     </div>
-                    
+
 
 
 
@@ -97,5 +111,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>      
+    </div>
 @endsection

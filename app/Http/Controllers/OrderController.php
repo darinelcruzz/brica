@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Client;
 use Jenssegers\Date\Date;
 
 class OrderController extends Controller
 {
 	public function create()
 	{
-		return view('orders.create');
+		$clients = Client::pluck('name', 'id')->toArray();
+
+		return view('orders.create', compact('clients'));
 	}
 
 	public function store(Request $request)
@@ -20,11 +23,7 @@ class OrderController extends Controller
             'description' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
-            'measure' => 'required',
             'pieces' => 'required',
-            'height' => 'required',
-            'long' => 'required',
-            'width' => 'required',
     	]);
 
     	$entry = Order::create($request->all());
