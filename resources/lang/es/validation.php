@@ -150,11 +150,22 @@ return [
         'quotation'             => 'cotización',
         'amount'                => 'importe',
         'items'                 => 'partida',
+        // select
         'team'                  => 'equipo',
         'design'                => 'diseño',
         'quantity'              => 'cantidad',
         'caliber'               => 'calibre',
         'specific'              => 'peso especifico',
+        'client'                => 'cliente',
+        'order'                 => 'orden',
+        'added'                 => 'existente',
+        'caliber'               => 'calibre',
+        'measureType'           => 'tipo de medidas',
+        'measures'              => 'medidas',
+        'pieces'                => 'piezas',
+        'height'                => 'alto',
+        'length'                => 'largo',
+        'width'                 => 'ancho',
     ],
 
 ];

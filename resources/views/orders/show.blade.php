@@ -1,8 +1,3 @@
-@php
-use Jenssegers\Date\Date;
-Date::setLocale('es');
-@endphp
-
 @extends('admin')
 
 @section('main-content')
@@ -12,7 +7,7 @@ Date::setLocale('es');
                 <div class="box-header with-border">
                     <h3 class="box-title">Historial de ordenes</h3>
                 </div>
-                
+
                 <div class="box-body">
                     <table class="table table-striped">
         				<thead>
@@ -31,7 +26,7 @@ Date::setLocale('es');
         				        <td>{{ $order->team }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->status }}</td>
-                                <td>{{ Date::parse($order->created_at)->format('l j \d\e F\, Y') }}</td>
+                                <td>{{ $order->created_at->format('l j F\, Y') }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>

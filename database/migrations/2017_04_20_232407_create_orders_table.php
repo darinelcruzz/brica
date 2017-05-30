@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('measure')->nullable();
             $table->integer('pieces')->nullable();
             $table->float('height')->nullable();
-            $table->float('long')->nullable();
+            $table->float('length')->nullable();
             $table->float('width')->nullable();
             $table->string('status')->default("En proceso");
 
