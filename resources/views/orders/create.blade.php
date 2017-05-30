@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             {!! Field::select('client', $clients, null,
-                            ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'],
+                            ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente', 'class' => 'select2'],
                             ['icon' => 'user']) !!}
                         </div>
                     </div>
@@ -86,17 +86,20 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
                             {!! Field::number('height',
-                                ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'arrows-v']
+                                ['tpl' => 'templates/iconatend', 'step' => '0.01', 'min' => '0'],
+                                ['icon' => 'arrows-v', 'unit' => 'cm']
                             ) !!}
                         </div>
                         <div class="col-md-4 col-sm-4">
                             {!! Field::number('length',
-                                ['tpl' => 'templates/withicon', 'step' => '0.01', 'step' => '0.01'], ['icon' => 'arrows-h']
+                                ['tpl' => 'templates/iconatend', 'step' => '0.01', 'min' => '0'],
+                                ['icon' => 'arrows-h', 'unit' => 'cm']
                             ) !!}
                         </div>
                         <div class="col-md-4 col-sm-4">
                             {!! Field::number('width',
-                                ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'expand']
+                                ['tpl' => 'templates/iconatend', 'step' => '0.01', 'min' => '0'],
+                                ['icon' => 'expand', 'unit' => 'cm']
                             ) !!}
                         </div>
                     </div>
