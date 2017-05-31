@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->float('width')->nullable();
             $table->string('status')->default("pendiente");
             $table->string('type')->nullable();
+            $table->string('estimated')->nullable();
 
             $table->timestamps();
         });

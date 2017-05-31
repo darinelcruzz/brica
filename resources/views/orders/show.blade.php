@@ -13,7 +13,7 @@
         				<thead>
         					<tr>
                                 <th>#</th>
-        				       	<th>Equipo</th>
+        				       	<th>Cliente</th>
         				        <th>Descripción</th>
                                 <th>Status</th>
         				        <th>Fecha Inicio</th>
@@ -23,7 +23,7 @@
         					@foreach($orders as $order)
         				      <tr>
                                 <td>{{ $order->id }}</td>
-        				        <td>{{ $order->team }}</td>
+        				        <td>{{ $order->client }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>{{ $order->created_at->format('l j F\, Y') }}</td>

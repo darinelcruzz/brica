@@ -11,19 +11,21 @@ class OrderController extends Controller
 {
 	public function create()
 	{
-		$clients = Client::pluck('name', 'id')->toArray();
+		$lastId = Order::all()->last()->id;
 
-		return view('orders.create', compact('clients'));
+		return view('orders.create', compact('lastId'));
 	}
 
 	public function store(Request $request)
     {
     	$this->validate($request, [
-    		'team' => 'required',
             'description' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
             'pieces' => 'required',
+            'type' => 'required',
+            'client' => 'required',
+            'team' => 'required',
     	]);
 
     	$entry = Order::create($request->all());
