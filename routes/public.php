@@ -56,6 +56,12 @@ Route::get('ordenes', [
     'as' => 'order.show'
 ]);
 
+// Pantalla de pendientes
+Route::get('ordenes/pendientes', [
+    'uses' => 'OrderController@showPending',
+    'as' => 'order.pending'
+]);
+
 // Clientes
 Route::get('clientes/crear', [
     'uses' => 'ClientController@create',

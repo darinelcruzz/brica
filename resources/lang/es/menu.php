@@ -24,6 +24,10 @@ return [
                 'title' => 'Crear',
                 'route' => 'order.create'
             ],
+            'pending' => [
+                'title' => 'Pendientes',
+                'route' => 'order.pending'
+            ],
             'history' => [
                 'title' => 'Historial',
                 'route' => 'order.show'

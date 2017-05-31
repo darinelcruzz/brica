@@ -37,4 +37,15 @@ class OrderController extends Controller
 
         return view('orders.show', compact('orders'));
     }
+
+	public function showPending()
+    {
+        $pending = Order::where('status', '=', 'pendiente')->get();
+		$authorized = Order::where('status', '=', 'autorizado')
+				->orderBy('id', 'DESC')
+				->get();
+		$terminated = Order::where('status', '=', 'finalizado')->get();
+
+        return view('orders.pending', compact('pending', 'authorized', 'terminated'));
+    }
 }
