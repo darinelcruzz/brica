@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
 
             $table->string('team')->nullable();
+            $table->string('client')->nullable();
             $table->string('description')->nullable();
             $table->string('design')->nullable();
             $table->string('caliber')->nullable();
@@ -25,7 +26,9 @@ class CreateOrdersTable extends Migration
             $table->float('height')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();
-            $table->string('status')->default("En proceso");
+            $table->string('status')->default("pendiente");
+            $table->string('type')->nullable();
+            $table->string('estimated')->nullable();
 
             $table->timestamps();
         });

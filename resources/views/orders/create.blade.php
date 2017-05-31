@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-9">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Nueva orden de trabajo</h3>
@@ -12,18 +12,20 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12">
-                            {!! Field::select('client', $clients, null,
-                            ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente', 'class' => 'select2'],
+                        <div class="col-md-5">
+                            {!! Field::text('client',
+                            ['tpl' => 'templates/withicon'],
                             ['icon' => 'user']) !!}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Field::select('team',
-                                ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3'], null,
-                                ['tpl' => 'templates/withicon'], ['icon' => 'group']
-                            ) !!}
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label>
+                                  <input type="radio" name="type" class="flat-red">Producción
+                                </label>
+                                <label>
+                                  <input type="radio" name="type" class="flat-red">Maquila
+                                </label>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             {!! Field::text('description',
@@ -32,15 +34,18 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Field::number('order', 10 ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                            {!! Field::number('order', $lastId +1 ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
                         </div>
-
+                        <div class="col-md-6">
+                            {!! Field::select('team', ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3'], null,
+                            ['tpl' => 'templates/withicon'], ['icon' => 'users']) !!}
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
                             ['tpl' => 'templates/withicon'], ['icon' => 'wrench']) !!}
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('added', ['90' => 'Nuevo', 'existente' => 'Existente'], null,
                             ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
@@ -76,6 +81,13 @@
                                     ) !!}
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    {!! Field::number('estimated',
+                                        ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'dollar']
+                                    ) !!}
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6" align="center">
                             <div class="row">
@@ -104,14 +116,23 @@
                         </div>
                     </div>
 
-
-
-
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    {!! Form::submit('Siguiente', ['class' => 'btn btn-primary btn-block']) !!}
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        {!! Form::submit('Siguiente', ['class' => 'btn btn-primary btn-block']) !!}
+                    </div>
+                    {!! Form::close() !!}
                 </div>
-                {!! Form::close() !!}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Equipos</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
