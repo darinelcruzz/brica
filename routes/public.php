@@ -62,9 +62,15 @@ Route::get('ordenes/pendientes', [
     'as' => 'order.pending'
 ]);
 
+Route::post('ordenes/pendientes', [
+    'uses' => 'OrderController@pay',
+    'as' => 'order.pay'
+]);
+
+// Pantalla de producción
 Route::get('ordenes/produccion', [
     'uses' => 'OrderController@showProduction',
-    'as' => 'order.production'
+    'as' => 'order.production',
 ]);
 
 // Clientes

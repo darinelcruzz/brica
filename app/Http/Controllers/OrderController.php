@@ -33,6 +33,20 @@ class OrderController extends Controller
     	return redirect(route('order.show'));
     }
 
+	public function pay(Request $request)
+    {
+    	$this->validate($request, [
+            'advance' => 'required',
+    	]);
+
+    	$order = Order::find($request->id);
+		$order->advance = $request->advance;
+		$order->status = 'autorizado';
+		$order->save();
+
+    	return redirect(route('order.pending'));
+    }
+
     public function show()
     {
         $orders = Order::all();
