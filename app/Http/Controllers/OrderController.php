@@ -50,4 +50,14 @@ class OrderController extends Controller
 
         return view('orders.pending', compact('pending', 'authorized', 'terminated'));
     }
+
+    public function showProduction()
+    {
+        $authorized = Order::where('status', '=', 'autorizado')
+                ->orderBy('id', 'DESC')
+                ->get();
+        $production = Order::where('status', '=', 'produccion')->get();
+
+        return view('orders.production', compact('authorized', 'production'));
+    }
 }

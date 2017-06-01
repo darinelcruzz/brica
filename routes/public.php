@@ -62,6 +62,11 @@ Route::get('ordenes/pendientes', [
     'as' => 'order.pending'
 ]);
 
+Route::get('ordenes/produccion', [
+    'uses' => 'OrderController@showProduction',
+    'as' => 'order.production'
+]);
+
 // Clientes
 Route::get('clientes/crear', [
     'uses' => 'ClientController@create',
