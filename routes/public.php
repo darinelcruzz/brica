@@ -62,6 +62,11 @@ Route::get('ordenes/pendientes', [
     'as' => 'order.pending'
 ]);
 
+Route::post('ordenes/pendientes', [
+    'uses' => 'OrderController@pay',
+    'as' => 'order.pay'
+]);
+
 // Clientes
 Route::get('clientes/crear', [
     'uses' => 'ClientController@create',

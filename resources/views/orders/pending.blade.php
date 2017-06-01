@@ -31,7 +31,13 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
-                                <td></td>
+                                <td>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'order.pay']) !!}
+                                        <input type="hidden" name="id" value="{{ $order->id }}">
+                                        {!! Field::number('advance',
+                                            ['tpl' => 'templates/inlinebutton', 'ph' => '0.0', 'min' => 0])!!}
+                                    {!! Form::close() !!}
+                                </td>
         				      </tr>
         				    @endforeach
         				</tbody>
@@ -60,6 +66,7 @@
                                 <th>Tipo</th>
                                 <th>Descripción</th>
         				        <th>Equipo</th>
+                                <th>Anticipo</th>
         				    </tr>
         				</thead>
         				<tbody>
@@ -70,6 +77,7 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
+                                <td>{{ $order->advance }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>
