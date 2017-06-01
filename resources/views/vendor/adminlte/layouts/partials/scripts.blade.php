@@ -7,6 +7,10 @@
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2.full.min.js') }}"></script>
 
+<!-- DataTables -->
+<script src="{{ asset('plugins/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/dataTables.bootstrap.min.js') }}"></script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
@@ -21,5 +25,11 @@
 $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
+
+    // Data Table With Full Features
+    $("#example1").DataTable();
+    $("#example2").DataTable();
+    $("#example3").DataTable();
+    $("#example4").DataTable();
 });
 </script>

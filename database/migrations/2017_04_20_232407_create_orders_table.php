@@ -23,13 +23,17 @@ class CreateOrdersTable extends Migration
             $table->string('caliber')->nullable();
             $table->string('measure')->nullable();
             $table->integer('pieces')->nullable();
+            $table->string('type')->nullable();
+            $table->string('estimated')->nullable();
+            $table->float('advance')->default(0.0);
             $table->float('height')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();
             $table->string('status')->default("pendiente");
-            $table->string('type')->nullable();
-            $table->string('estimated')->nullable();
-            $table->float('advance')->default(0.0);
+            $table->string('startTime')->nullable();
+            $table->string('endTime')->nullable();
+
+
 
             $table->timestamps();
         });

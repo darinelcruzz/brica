@@ -28,6 +28,10 @@ return [
                 'title' => 'Pendientes',
                 'route' => 'order.pending'
             ],
+            'production' => [
+                'title' => 'Producción',
+                'route' => 'order.production'
+            ],
             'history' => [
                 'title' => 'Historial',
                 'route' => 'order.show'

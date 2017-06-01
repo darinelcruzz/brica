@@ -20,6 +20,7 @@
                                 <th>Tipo</th>
                                 <th>Descripción</th>
         				        <th>Equipo</th>
+                                <th>A producción</th>
         				    </tr>
         				</thead>
         				<tbody>
@@ -30,6 +31,14 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
+                                <td>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'order.start']) !!}
+                                        <input type="hidden" name="id" value="{{ $order->id }}">
+                                        <button type="submit" name="button" class="btn btn-primary">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </button>
+                                    {!! Form::close() !!}
+                                </td>
         				      </tr>
         				    @endforeach
         				</tbody>
@@ -58,7 +67,8 @@
                                 <th>Tipo</th>
                                 <th>Descripción</th>
         				        <th>Equipo</th>
-                                <th>Hora</th>
+                                <th>Inicio</th>
+                                <th>¿Terminado?</th>
         				    </tr>
         				</thead>
         				<tbody>
@@ -69,7 +79,15 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
-                                <td></td>
+                                <td>{{ $order->startTime }}</td>
+                                <td>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'order.finish']) !!}
+                                        <input type="hidden" name="id" value="{{ $order->id }}">
+                                        <button type="submit" name="button" class="btn btn-success">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    {!! Form::close() !!}
+                                </td>
         				      </tr>
         				    @endforeach
         				</tbody>

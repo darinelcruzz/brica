@@ -18,6 +18,8 @@
 
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('/plugins/select2.min.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('/plugins/dataTables.bootstrap.css') }}">
 
     <script>
         window.Laravel = {!! json_encode([

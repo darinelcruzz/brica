@@ -73,6 +73,16 @@ Route::get('ordenes/produccion', [
     'as' => 'order.production',
 ]);
 
+Route::post('ordenes/produccion', [
+    'uses' => 'OrderController@start',
+    'as' => 'order.start'
+]);
+
+Route::post('ordenes/produccion2', [
+    'uses' => 'OrderController@finish',
+    'as' => 'order.finish'
+]);
+
 // Clientes
 Route::get('clientes/crear', [
     'uses' => 'ClientController@create',

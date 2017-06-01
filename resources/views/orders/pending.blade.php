@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="box-body">
-                    <table class="table table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
         				<thead>
         					<tr>
                                 <th>#</th>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="box-body">
-                    <table class="table table-striped">
+                    <table id="example2" class="table table-bordered table-striped">
         				<thead>
         					<tr>
                                 <th>#</th>
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="box-body">
-                    <table class="table table-striped">
+                    <table id="example3" class="table table-bordered table-striped">
         				<thead>
         					<tr>
                                 <th>#</th>
@@ -106,6 +106,8 @@
                                 <th>Tipo</th>
                                 <th>Descripción</th>
         				        <th>Equipo</th>
+                                <th>Inicio</th>
+                                <th>Final</th>
         				    </tr>
         				</thead>
         				<tbody>
@@ -116,6 +118,8 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
+                                <td>{{ $order->startTime }}</td>
+                                <td>{{ $order->endTime }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>

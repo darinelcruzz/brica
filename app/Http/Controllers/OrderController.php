@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Client;
-use Jenssegers\Date\Date;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -15,6 +15,13 @@ class OrderController extends Controller
 
 		return view('orders.create', compact('lastId'));
 	}
+
+	public function show()
+    {
+        $orders = Order::all();
+
+        return view('orders.show', compact('orders'));
+    }
 
 	public function store(Request $request)
     {
@@ -47,19 +54,30 @@ class OrderController extends Controller
     	return redirect(route('order.pending'));
     }
 
-    public function show()
+	public function start(Request $request)
     {
-        $orders = Order::all();
+    	$order = Order::find($request->id);
+		$order->status = 'produccion';
+		$order->startTime = Carbon::now()->format('h:i:s a');
+		$order->save();
 
-        return view('orders.show', compact('orders'));
+    	return redirect(route('order.production'));
+    }
+
+	public function finish(Request $request)
+    {
+    	$order = Order::find($request->id);
+		$order->status = 'finalizado';
+		$order->endTime = Carbon::now()->format('h:i:s a');
+		$order->save();
+
+    	return redirect(route('order.production'));
     }
 
 	public function showPending()
     {
         $pending = Order::where('status', '=', 'pendiente')->get();
-		$authorized = Order::where('status', '=', 'autorizado')
-				->orderBy('id', 'DESC')
-				->get();
+		$authorized = Order::where('status', '=', 'autorizado')->get();
 		$terminated = Order::where('status', '=', 'finalizado')->get();
 
         return view('orders.pending', compact('pending', 'authorized', 'terminated'));
@@ -67,9 +85,7 @@ class OrderController extends Controller
 
     public function showProduction()
     {
-        $authorized = Order::where('status', '=', 'autorizado')
-                ->orderBy('id', 'DESC')
-                ->get();
+        $authorized = Order::where('status', '=', 'autorizado')->get();
         $production = Order::where('status', '=', 'produccion')->get();
 
         return view('orders.production', compact('authorized', 'production'));
