@@ -20,10 +20,10 @@
                         <div class="col-md-1">
                             <div class="form-group">
                                 <label>
-                                  <input type="radio" name="type" class="flat-red">Producción
+                                  <input type="radio" name="type" class="flat-red" value="produccion">Producción
                                 </label>
                                 <label>
-                                  <input type="radio" name="type" class="flat-red">Maquila
+                                  <input type="radio" name="type" class="flat-red" value="maquila">Maquila
                                 </label>
                             </div>
                         </div>

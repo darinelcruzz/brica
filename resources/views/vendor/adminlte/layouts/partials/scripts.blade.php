@@ -27,9 +27,17 @@ $(function () {
     $(".select2").select2();
 
     // Data Table With Full Features
-    $("#example1").DataTable();
-    $("#example2").DataTable();
-    $("#example3").DataTable();
-    $("#example4").DataTable();
+    $("#example1").DataTable({
+      "order":[[ 0 , "desc"]]
+    });
+    $("#example2").DataTable({
+      "order":[[ 0 , "desc"]]
+    });
+    $("#example3").DataTable({
+      "order":[[ 0 , "desc"]]
+    });
+    $("#example4").DataTable({
+      "order":[[ 0 , "desc"]]
+    });
 });
 </script>

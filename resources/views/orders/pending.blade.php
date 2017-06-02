@@ -7,7 +7,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Órdenes pendientes</h3>
                     <div class="box-tools pull-right">
-                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                                     {!! Form::open(['method' => 'POST', 'route' => 'order.pay']) !!}
                                         <input type="hidden" name="id" value="{{ $order->id }}">
                                         {!! Field::number('advance',
-                                            ['tpl' => 'templates/inlinebutton', 'ph' => '0.0', 'min' => 0])!!}
+                                            ['tpl' => 'templates/inlinebutton', 'ph' => '$0.00', 'min' => 0])!!}
                                     {!! Form::close() !!}
                                 </td>
         				      </tr>
@@ -77,7 +77,7 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
-                                <td>{{ $order->advance }}</td>
+                                <td>{{ $order->advance == 0 && $order->type == 'maquila'  ? 'N/A': $order->advance }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>
@@ -106,6 +106,7 @@
                                 <th>Tipo</th>
                                 <th>Descripción</th>
         				        <th>Equipo</th>
+                                <th>Piezas</th>
                                 <th>Inicio</th>
                                 <th>Final</th>
         				    </tr>
@@ -118,6 +119,7 @@
                                 <td>{{ $order->type }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->team }}</td>
+                                <td>{{ $order->pieces }}</td>
                                 <td>{{ $order->startTime }}</td>
                                 <td>{{ $order->endTime }}</td>
         				      </tr>

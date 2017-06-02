@@ -38,7 +38,7 @@ $factory->define(App\Client::class, function (Faker\Generator $faker) {
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
     $status = array('finalizado', 'produccion', 'autorizado', 'pendiente');
     $teams = array('H1', 'H2', 'H3');
-    $types = array('Producción', 'Maquila');
+    $types = array('produccion', 'maquila');
 
     return [
         'team' => $teams[array_rand($teams)],

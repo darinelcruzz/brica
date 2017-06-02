@@ -35,9 +35,16 @@ class OrderController extends Controller
             'team' => 'required',
     	]);
 
-    	$entry = Order::create($request->all());
+    	Order::create($request->all());
 
-    	return redirect(route('order.show'));
+        $order = Order::all()->last();
+
+        if($order->type == 'maquila') {
+            $order->status = 'autorizado';
+            $order->save();
+        }
+
+    	return redirect(route('order.pending'));
     }
 
 	public function pay(Request $request)
