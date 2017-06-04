@@ -41,19 +41,51 @@ Route::get('entradas', [
 ]);
 
 // Ordenes
-Route::get('ordenes/crear', [
+Route::get('ordenes-de-produccion/crear', [
     'uses' => 'OrderController@create',
     'as' => 'order.create'
 ]);
 
-Route::post('ordenes/crear', [
+Route::post('ordenes-de-produccion/crear', [
     'uses' => 'OrderController@store',
     'as' => 'order.store'
 ]);
 
-Route::get('ordenes', [
+Route::get('ordenes-de-produccion', [
     'uses' => 'OrderController@show',
     'as' => 'order.show'
+]);
+
+// Solicitud
+Route::get('orden-de-ventas/crear', [
+    'uses' => 'SolicitudeController@create',
+    'as' => 'solicitude.create'
+]);
+
+Route::post('orden-de-ventas/crear', [
+    'uses' => 'SolicitudeController@store',
+    'as' => 'solicitude.store'
+]);
+
+Route::get('orden-de-ventas', [
+    'uses' => 'SolicitudeController@show',
+    'as' => 'solicitude.show'
+]);
+
+// Ventas produccion
+Route::get('ventas-producción/crear', [
+    'uses' => 'SaleProductionController@create',
+    'as' => 'saleProduction.create'
+]);
+
+Route::post('ventas-de-produccion/crear', [
+    'uses' => 'SaleProductionController@store',
+    'as' => 'saleProduction.store'
+]);
+
+Route::get('ventas-de-produccion', [
+    'uses' => 'SaleProductionController@show',
+    'as' => 'saleProduction.show'
 ]);
 
 // Pantalla de pendientes

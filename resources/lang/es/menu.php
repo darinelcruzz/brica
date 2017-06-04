@@ -20,21 +20,40 @@ return [
         'title' => 'Órdenes',
         'icon' => 'fa fa-sticky-note',
         'submenu' => [
-            'create' => [
-                'title' => 'Crear',
+            'createO' => [
+                'title' => 'Crear O. Producción',
                 'route' => 'order.create'
             ],
-            'pending' => [
-                'title' => 'Pendientes',
-                'route' => 'order.pending'
+            'createR' => [
+                'title' => 'Crear O. Venta',
+                'route' => 'solicitude.create'
             ],
-            'production' => [
-                'title' => 'Producción',
+            'status' => [
+                'title' => 'Status',
                 'route' => 'order.production'
             ],
             'history' => [
                 'title' => 'Historial',
                 'route' => 'order.show'
+            ],
+            'pending' => [
+                'title' => 'Pendientes',
+                'route' => 'order.pending'
+            ],
+        ]
+    ],
+
+'sales' => [
+        'title' => 'Ventas',
+        'icon' => 'fa fa-money',
+        'submenu' => [
+            'createP' => [
+                'title' => 'Crear V. Producción',
+                'route' => 'saleProduction.create'
+            ],
+            'pending' => [
+                'title' => 'Pendientes',
+                'route' => 'order.pending'
             ],
         ]
     ],

@@ -5,27 +5,24 @@
         <div class="col-md-9">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Nueva orden de trabajo</h3>
+                    <h3 class="box-title">Nueva orden de producción</h3>
                 </div>
 
                 <!-- form start -->
                 {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {!! Form::radios('type', ['maquila' => 'Maquila', 'produccion' => 'Producción']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             {!! Field::text('client',
                             ['tpl' => 'templates/withicon'],
                             ['icon' => 'user']) !!}
-                        </div>
-                        <div class="col-md-1">
-                            <div class="form-group">
-                                <label>
-                                  <input type="radio" name="type" class="flat-red" value="produccion">Producción
-                                </label>
-                                <label>
-                                  <input type="radio" name="type" class="flat-red" value="maquila">Maquila
-                                </label>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             {!! Field::text('description',

@@ -44,7 +44,7 @@ class OrderController extends Controller
             $order->save();
         }
 
-    	return redirect(route('order.pending'));
+    	return redirect(route('order.production'));
     }
 
 	public function pay(Request $request)

@@ -21,13 +21,13 @@
         				</thead>
         				<tbody>
         					@foreach($entries as $entry)
-        				      <tr>
-        				        <td>{{ $entry->quotation }}</td>
-        				        <td>{{ $entry->provider }}</td>
-        				        <td>{{ $entry->weight }}</td>
-        				        <td>{{ $entry->date }}</td>
-        				        <td>{{ $entry->amount }}</td>
-        				      </tr>
+            				    <tr>
+            				        <td>{{ $entry->quotation }}</td>
+            				        <td>{{ $entry->provider }}</td>
+            				        <td>{{ $entry->weight }}</td>
+            				        <td>{{ $entry->date }}</td>
+            				        <td>{{ $entry->amount }}</td>
+            				    </tr>
         				    @endforeach
         				</tbody>
         			</table>

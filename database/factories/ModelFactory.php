@@ -55,3 +55,15 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
         'status' => $status[array_rand($status)],
     ];
 });
+
+$factory->define(App\Solicitude::class, function (Faker\Generator $faker) {
+    $status = array('finalizado', 'produccion', 'autorizado', 'pendiente');
+    $teams = array('H1', 'H2', 'H3');
+    $types = array('produccion', 'maquila');
+
+    return [
+        'team' => $teams[array_rand($teams)],
+        'client' => $faker->name,
+        'description' => $faker->text(50),
+    ];
+});
