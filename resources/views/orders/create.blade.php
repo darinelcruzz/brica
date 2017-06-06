@@ -12,20 +12,24 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                  <input type="radio" name="type" class="minimal" value="produccion">&nbsp;
+                                  Producción
+                              </label><br>
+                                <label>
+                                  <input type="radio" name="type" class="minimal" value="maquila">&nbsp;
+                                  Maquila
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             {!! Field::text('client',
                             ['tpl' => 'templates/withicon'],
                             ['icon' => 'user']) !!}
-                        </div>
-                        <div class="col-md-1">
-                            <div class="form-group">
-                                <label>
-                                  <input type="radio" name="type" class="flat-red">Producción
-                                </label>
-                                <label>
-                                  <input type="radio" name="type" class="flat-red">Maquila
-                                </label>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             {!! Field::text('description',

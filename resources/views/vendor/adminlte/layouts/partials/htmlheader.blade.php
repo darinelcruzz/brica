@@ -16,6 +16,8 @@
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{{ asset('/plugins/iCheck/all.css') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('/plugins/select2.min.css') }}">
     <!-- DataTables -->
