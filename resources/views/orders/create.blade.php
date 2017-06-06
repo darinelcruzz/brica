@@ -12,7 +12,7 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::radios('type', ['maquila' => 'Maquila', 'produccion' => 'Producción']) !!}
                             </div>
