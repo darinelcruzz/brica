@@ -47,20 +47,22 @@ Route::get('/', function () {
 });
 
 // Entradas
-Route::get('entradas/crear', [
-    'uses' => 'EntryController@create',
-    'as' => 'entries.create'
-]);
+Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
+    Route::get('crear', [
+        'uses' => 'EntryController@create',
+        'as' => 'create'
+    ]);
 
-Route::post('entradas/crear', [
-    'uses' => 'EntryController@store',
-    'as' => 'entries.store'
-]);
+    Route::post('crear', [
+        'uses' => 'EntryController@store',
+        'as' => 'store'
+    ]);
 
-Route::get('entradas', [
-    'uses' => 'EntryController@show',
-    'as' => 'entries.show'
-]);
+    Route::get('/', [
+        'uses' => 'EntryController@show',
+        'as' => 'show'
+    ]);
+});
 
 // Ordenes
 Route::get('ordenes-de-produccion/crear', [

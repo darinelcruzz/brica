@@ -101,7 +101,9 @@ class OrderController extends Controller
         $authorized = Order::where('status', '=', 'autorizado')->get([
 			'id', 'client', 'type', 'description', 'team'
 		]);
-        $production = Order::where('status', '=', 'produccion')->get();
+        $production = Order::where('status', '=', 'produccion')->get([
+			'id', 'client', 'type', 'description', 'team', 'startTime'
+		]);
 
         return view('orders.production', compact('authorized', 'production'));
     }
