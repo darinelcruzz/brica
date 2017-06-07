@@ -16,13 +16,6 @@ class OrderController extends Controller
 		return view('orders.create', compact('lastId'));
 	}
 
-	public function show()
-    {
-        $orders = Order::all();
-
-        return view('orders.show', compact('orders'));
-    }
-
 	public function store(Request $request)
     {
     	$this->validate($request, [
@@ -41,6 +34,7 @@ class OrderController extends Controller
 
         if($order->type == 'maquila') {
             $order->status = 'autorizado';
+			$order->advance = 'N/A';
             $order->save();
         }
 
@@ -79,32 +73,5 @@ class OrderController extends Controller
 		$order->save();
 
     	return redirect(route('order.production'));
-    }
-
-	public function showPending()
-    {
-        $pending = Order::where('status', 'pendiente')->get([
-			'id', 'client', 'type', 'description', 'team'
-		]);
-		$authorized = Order::where('status', 'autorizado')->get([
-			'id', 'client', 'type', 'description', 'team', 'advance'
-		]);
-		$terminated = Order::where('status', 'finalizado')->get([
-			'id', 'client', 'type', 'description', 'team', 'pieces', 'startTime', 'endTime'
-		]);
-
-        return view('orders.pending', compact('pending', 'authorized', 'terminated'));
-    }
-
-    public function showProduction()
-    {
-        $authorized = Order::where('status', '=', 'autorizado')->get([
-			'id', 'client', 'type', 'description', 'team'
-		]);
-        $production = Order::where('status', '=', 'produccion')->get([
-			'id', 'client', 'type', 'description', 'team', 'startTime'
-		]);
-
-        return view('orders.production', compact('authorized', 'production'));
     }
 }

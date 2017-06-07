@@ -11,37 +11,6 @@
 |
 */
 
-use App\Events\MessagePosted;
-
-Auth::routes();
-
-Route::get('/chat', function () {
-    return view('chat');
-});
-
-Route::get('/messages', function () {
-    return App\Message::with('user')->get();
-});
-
-Route::post('/messages', function () {
-    $user = App\User::find(3);
-
-    $message = $user->messages()->create([
-        'message' => request()->get('message')
-    ]);
-
-    event(new MessagePosted($message, $user));
-
-    return ['status' => 'Ok'];
-});
-
-Route::get('/home', 'HomeController@index');
-
-Route::get('admin', function ()
-{
-    return view('admin');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -80,21 +49,23 @@ Route::get('ordenes-de-produccion', [
     'as' => 'order.show'
 ]);
 
-// Solicitud
-Route::get('orden-de-ventas/crear', [
-    'uses' => 'SolicitudeController@create',
-    'as' => 'solicitude.create'
-]);
+// Solicitudes
+Route::group(['prefix' => 'orden-de-ventas', 'as' => 'solicitude.'], function () {
+    Route::get('crear', [
+        'uses' => 'SolicitudeController@create',
+        'as' => 'create'
+    ]);
 
-Route::post('orden-de-ventas/crear', [
-    'uses' => 'SolicitudeController@store',
-    'as' => 'solicitude.store'
-]);
+    Route::post('crear', [
+        'uses' => 'SolicitudeController@store',
+        'as' => 'store'
+    ]);
 
-Route::get('orden-de-ventas', [
-    'uses' => 'SolicitudeController@show',
-    'as' => 'solicitude.show'
-]);
+    Route::get('/', [
+        'uses' => 'SolicitudeController@show',
+        'as' => 'show'
+    ]);
+});
 
 // Ventas produccion
 Route::get('ventas-producción/crear', [
@@ -114,7 +85,7 @@ Route::get('ventas-de-produccion', [
 
 // Pantalla de pendientes
 Route::get('ordenes/pendientes', [
-    'uses' => 'OrderController@showPending',
+    'uses' => 'ListOrdersController@pending',
     'as' => 'order.pending'
 ]);
 
@@ -125,64 +96,70 @@ Route::post('ordenes/pendientes', [
 
 // Pantalla de producción
 Route::get('ordenes/produccion', [
-    'uses' => 'OrderController@showProduction',
+    'uses' => 'ListOrdersController@production',
     'as' => 'order.production',
 ]);
 
-Route::post('ordenes/produccion', [
+Route::post('ordenes/produccion/iniciar', [
     'uses' => 'OrderController@start',
     'as' => 'order.start'
 ]);
 
-Route::post('ordenes/produccion2', [
+Route::post('ordenes/produccion/terminar', [
     'uses' => 'OrderController@finish',
     'as' => 'order.finish'
 ]);
 
 // Clientes
-Route::get('clientes/crear', [
-    'uses' => 'ClientController@create',
-    'as' => 'client.create'
-]);
+Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
+    Route::get('crear', [
+        'uses' => 'ClientController@create',
+        'as' => 'create'
+    ]);
 
-Route::post('clientes/crear', [
-    'uses' => 'ClientController@store',
-    'as' => 'client.store'
-]);
+    Route::post('crear', [
+        'uses' => 'ClientController@store',
+        'as' => 'store'
+    ]);
 
-Route::get('clientes', [
-    'uses' => 'ClientController@show',
-    'as' => 'client.show'
-]);
+    Route::get('/', [
+        'uses' => 'ClientController@show',
+        'as' => 'show'
+    ]);
+});
 
 // Proveedores
-Route::get('proveedores/crear', [
-    'uses' => 'ProviderController@create',
-    'as' => 'provider.create'
-]);
+Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
+    Route::get('crear', [
+        'uses' => 'ProviderController@create',
+        'as' => 'create'
+    ]);
 
-Route::post('proveedores/crear', [
-    'uses' => 'ProviderController@store',
-    'as' => 'provider.store'
-]);
+    Route::post('crear', [
+        'uses' => 'ProviderController@store',
+        'as' => 'store'
+    ]);
 
-Route::get('proveedores', [
-    'uses' => 'ProviderController@show',
-    'as' => 'provider.show'
-]);
+    Route::get('/', [
+        'uses' => 'ProviderController@show',
+        'as' => 'show'
+    ]);
+});
 
 // Usuarios
-Route::get('usuarios/crear', [
-    'uses' => 'UserController@create',
-    'as' => 'user.create'
-]);
+Route::group(['prefix' => 'usuarios', 'as' => 'user.'], function () {
+    Route::get('crear', [
+        'uses' => 'UserController@create',
+        'as' => 'create'
+    ]);
 
-Route::post('usuarios/crear', [
-    'uses' => 'UserController@store',
-    'as' => 'user.store'
-]);
+    Route::post('crear', [
+        'uses' => 'UserController@store',
+        'as' => 'store'
+    ]);
 
-Route::get('usuarios', [
-    'uses' => 'UserController@show',
-    'as' => 'user.show'
-]);
+    Route::get('/', [
+        'uses' => 'UserController@show',
+        'as' => 'show'
+    ]);
+});
