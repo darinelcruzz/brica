@@ -23,7 +23,8 @@ Vue.component('app-table', require('./components/tables/Table.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-        messages: []
+        messages: [],
+        orders: [],
     },
     methods: {
         addMessage(message) {
@@ -37,6 +38,10 @@ const app = new Vue({
     created() {
         axios.get('/messages').then(response => {
             this.messages = response.data;
+        });
+
+        axios.get('/orders').then(response => {
+            this.orders = response.data;
         });
     }
 

@@ -83,16 +83,24 @@ class OrderController extends Controller
 
 	public function showPending()
     {
-        $pending = Order::where('status', '=', 'pendiente')->get();
-		$authorized = Order::where('status', '=', 'autorizado')->get();
-		$terminated = Order::where('status', '=', 'finalizado')->get();
+        $pending = Order::where('status', 'pendiente')->get([
+			'id', 'client', 'type', 'description', 'team'
+		]);
+		$authorized = Order::where('status', 'autorizado')->get([
+			'id', 'client', 'type', 'description', 'team', 'advance'
+		]);
+		$terminated = Order::where('status', 'finalizado')->get([
+			'id', 'client', 'type', 'description', 'team', 'pieces', 'startTime', 'endTime'
+		]);
 
         return view('orders.pending', compact('pending', 'authorized', 'terminated'));
     }
 
     public function showProduction()
     {
-        $authorized = Order::where('status', '=', 'autorizado')->get();
+        $authorized = Order::where('status', '=', 'autorizado')->get([
+			'id', 'client', 'type', 'description', 'team'
+		]);
         $production = Order::where('status', '=', 'produccion')->get();
 
         return view('orders.production', compact('authorized', 'production'));

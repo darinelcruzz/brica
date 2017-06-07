@@ -23767,7 +23767,8 @@ Vue.component('app-table', __webpack_require__(74));
 var app = new Vue({
     el: '#app',
     data: {
-        messages: []
+        messages: [],
+        orders: []
     },
     methods: {
         addMessage: function addMessage(message) {
@@ -23781,6 +23782,10 @@ var app = new Vue({
 
         axios.get('/messages').then(function (response) {
             _this.messages = response.data;
+        });
+
+        axios.get('/orders').then(function (response) {
+            _this.orders = response.data;
         });
     }
 });
@@ -25360,12 +25365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            title: 'Prueba',
-            rows: [['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.', 'autorizado', 'Saturday 3 June, 2017'], ['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.', 'autorizado', 'Saturday 3 June, 2017'], ['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.', 'autorizado', 'Saturday 3 June, 2017']]
-        };
-    }
+    props: ['orders']
 });
 
 /***/ }),
@@ -25464,7 +25464,7 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transit
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 58 */
@@ -44607,20 +44607,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "box box-solid box-primary"
-  }, [_c('div', {
-    staticClass: "box-header with-border"
-  }, [_c('h3', {
-    staticClass: "box-title"
-  }, [_vm._v(_vm._s(_vm.title))])]), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "box-body"
   }, [_c('table', {
     staticClass: "table table-striped"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.rows), function(row) {
-    return _c('tr', _vm._l((row), function(value) {
-      return _c('td', [_vm._v(_vm._s(value))])
-    }))
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.orders), function(order) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(order.id))])])
   }))])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "box-header with-border"
+  }, [_c('h3', {
+    staticClass: "box-title"
+  }, [_vm._v("Tabla")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("#")]), _vm._v(" "), _c('th', [_vm._v("Cliente")]), _vm._v(" "), _c('th', [_vm._v("Descripción")]), _vm._v(" "), _c('th', [_vm._v("Status")]), _vm._v(" "), _c('th', [_vm._v("Fecha Inicio")])])])
 }]}
 module.exports.render._withStripped = true

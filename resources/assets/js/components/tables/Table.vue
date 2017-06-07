@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="box box-solid box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ title }}</h3>
+                    <h3 class="box-title">Tabla</h3>
                 </div>
 
                 <div class="box-body">
@@ -18,8 +18,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                              <tr v-for="row in rows">
-                                <td v-for="value in row">{{ value }}</td>
+                              <tr v-for="order in orders">
+                                <td>{{ order.id }}</td>
                               </tr>
                         </tbody>
                     </table>
@@ -31,19 +31,7 @@
 
 <script>
 export default {
-    data() {
-        return {
-            title: 'Prueba',
-            rows: [
-                ['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.',
-                'autorizado', 'Saturday 3 June, 2017'],
-                ['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.',
-                'autorizado', 'Saturday 3 June, 2017'],
-                ['1', 'Prof. Cooper Hauck', 'Enim maxime enim consequatur ut impedit.',
-                'autorizado', 'Saturday 3 June, 2017'],
-            ]
-        }
-    }
+    props: ['orders']
 }
 </script>
 
