@@ -37,7 +37,10 @@ class ListOrdersController extends Controller
         $production = Order::where('status', 'produccion')->get([
 			'id', 'client', 'type', 'description', 'team', 'startTime'
 		]);
+        $terminated = Order::where('status', 'finalizado')->get([
+            'id', 'client', 'type', 'description', 'team', 'pieces', 'startTime', 'endTime'
+        ]);
 
-        return view('orders.production', compact('authorized', 'production'));
+        return view('orders.production', compact('authorized', 'production', 'terminated'));
     }
 }

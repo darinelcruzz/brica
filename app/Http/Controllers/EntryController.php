@@ -20,7 +20,6 @@ class EntryController extends Controller
     		'provider' => 'required',
     		'amount' => 'required',
     		'items' => 'required',
-            //'quantity' => 'required',
             'caliber' => 'required',
     	]);
 
@@ -31,7 +30,10 @@ class EntryController extends Controller
 
     public function show()
     {
-        $entries = Entry::all();
+        $entries = Entry::get([
+            'id', 'quotation', 'provider', 'date', 'total_weight'
+        ]);
+
 
         return view('entries.show', compact('entries'));
     }

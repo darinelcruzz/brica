@@ -29,7 +29,10 @@ public function create()
 
     public function show()
     {
-        $users = User::all();
+        $users = User::get([
+            'id', 'name', 'user', 'Level'
+        ]);
+
 
         return view('users.show', compact('users'));
     }

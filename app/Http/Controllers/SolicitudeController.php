@@ -1,4 +1,4 @@
-<?php
+solicitudes<?php
 
 namespace App\Http\Controllers;
 
@@ -16,7 +16,10 @@ class SolicitudeController extends Controller
 
      public function show()
     {
-        $solicitudes = Solicitude::all();
+        $solicitudes = Solicitude::get([
+            'id', 'client', 'description', 'team', 'total'
+        ]);
+
 
         return view('solicitudes.show', compact('solicitudes'));
     }

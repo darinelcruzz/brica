@@ -28,7 +28,10 @@ class ProviderController extends Controller
 
     public function show()
     {
-        $providers = Provider::all();
+        $providers = Provider::get([
+            'id', 'name', 'rfc', 'city', 'phone', 'email', 'contact'
+        ]);
+
 
         return view('providers.show', compact('providers'));
     }

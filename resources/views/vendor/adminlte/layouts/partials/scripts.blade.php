@@ -59,5 +59,8 @@ $(function () {
     $("#example4").DataTable({
       "order":[[ 0 , "desc"]]
     });
+    $("#example5").DataTable({
+      "order":[[ 0 , "asc"]]
+    });
 });
 </script>

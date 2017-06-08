@@ -28,7 +28,9 @@ class ClientController extends Controller
 
     public function show()
     {
-        $clients = Client::all();
+        $clients = Client::get([
+            'id', 'name', 'rfc', 'city', 'phone', 'email', 'contact'
+        ]);
 
         return view('clients.show', compact('clients'));
     }

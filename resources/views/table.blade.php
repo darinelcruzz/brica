@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="box box-solid box-{{ $color }} {{ $example != '1' ? 'collapsed-box' : '' }}">
+    <div class="col-md-{{ isset($size) ? $size : '12' }}">
+        <div class="box box-solid box-{{ $color }} {{ isset($collapsed) ? 'collapsed-box' : '' }}">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $title }}</h3>
                 <div class="box-tools pull-right">
                   <button class="btn btn-box-tool" data-widget="collapse">
-                      <i class="fa fa-{{ $example == '1' ? 'minus' : 'plus' }}"></i>
+                      <i class="fa fa-{{ isset($collapsed) ? 'plus' : 'minus' }}"></i>
                   </button>
                 </div>
             </div>
@@ -29,7 +29,9 @@
                                 @endphp
                                 <td>{{ $value }}</td>
                             @endforeach
-                            @includeif($extra)
+                            @if (isset($extra))
+                                @include($extra)
+                            @endif
                           </tr>
                         @endforeach
                     </tbody>
