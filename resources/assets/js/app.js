@@ -17,7 +17,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('chat-message', require('./components/ChatMessage.vue'));
 Vue.component('chat-log', require('./components/ChatLog.vue'));
 Vue.component('chat-composer', require('./components/ChatComposer.vue'));
-Vue.component('app-table', require('./components/tables/Table.vue'));
+Vue.component('app-select', require('./components/ConditionedFields.vue'));
 
 
 const app = new Vue({
@@ -38,10 +38,6 @@ const app = new Vue({
     created() {
         axios.get('/messages').then(response => {
             this.messages = response.data;
-        });
-
-        axios.get('/orders').then(response => {
-            this.orders = response.data;
         });
     }
 

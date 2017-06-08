@@ -26,6 +26,6 @@ Route::post('/messages', function () {
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('orders', function() {
-    return App\Order::all();
+Route::get('tests', function() {
+    return view('tests');
 });
