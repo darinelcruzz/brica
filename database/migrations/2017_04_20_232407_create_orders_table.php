@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->integer('pieces')->nullable();
             $table->string('type')->nullable();
             $table->string('estimated')->nullable();
-            $table->float('advance')->default(0.00);
+            $table->string('advance')->nullable();
             $table->float('height')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();
