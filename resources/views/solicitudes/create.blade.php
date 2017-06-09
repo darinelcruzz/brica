@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-md-8">
-            <div class="box box-info box-solid">
+            <div class="box box-primary box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Nueva orden de venta</h3>
                 </div>
@@ -26,7 +26,7 @@
                             {!! Field::number('order', $lastId +1 ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::select('team', ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3'], null,
+                            {!! Field::select('team', ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3', 'N/A' => 'No asignar' ], null,
                             ['tpl' => 'templates/withicon'], ['icon' => 'users']) !!}
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                         {!! Field::text($i, $i,['disabled' => '', 'tpl' => 'templates/nolabel']) !!}
                                     </td>
                                     <td>
-                                        {!! Field::number('quantity' . $i,['tpl' => 'templates/nolabel']) !!}
+                                        {!! Field::number('quantity' . $i, 5,['tpl' => 'templates/nolabel']) !!}
                                     </td>
                                     <td>
                                         {!! Field::text('unit' . $i, 'kg',['disabled' => '', 'tpl' => 'templates/nolabel']) !!}
@@ -94,8 +94,28 @@
                     <h3 class="box-title">Equipos</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Equipo</th>
+                                <th>Pendientes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>H1</td>
+                                <td>3</td>                        
+                            </tr>
+                            <tr>
+                                <td>H2</td>
+                                <td>1</td>                        
+                            </tr>
+                            <tr>
+                                <td>H3</td>
+                                <td>5</td>                        
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

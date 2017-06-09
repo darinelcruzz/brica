@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\SaleProduction;
+use App\Order;
 
 class SaleProductionController extends Controller
 {
     public function create()
 	{
-		return view('salesProduction.create');
+        $terminatedProduction = Order::where('status', 'finalizado')->where('type', 'produccion')->get([
+            'id', 'client', 'description', 'advance'
+        ]);
+
+        $terminatedMaquila = Order::where('status', 'finalizado')->where('type', 'maquila')->get([
+            'id', 'client', 'description',
+        ]);
+
+        return view('salesProduction.create', compact('terminatedProduction', 'terminatedMaquila'));
 	}
 
      /*public function show()

@@ -2,8 +2,8 @@
 
 @section('main-content')
 
-    @include('table', ['rows' => $clients,
+    @include('table', ['rows' => $solicitudes,
             'header' => ['#', 'Cliente', 'Descripción', 'Equipo', 'Total'],
-            'color' => 'danger', 'title' => 'Órdenes pendientes', 'example' => '1'
+            'color' => 'danger', 'title' => 'Órdenes de venta pendientes', 'example' => '1'
             ])
 @endsection
