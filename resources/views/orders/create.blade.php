@@ -41,11 +41,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
-                            ['tpl' => 'templates/withicon'], ['icon' => 'wrench']) !!}
+                            ['tpl' => 'templates/withicon', 'v-model' => 'selected'], ['icon' => 'wrench']) !!}
                         </div>
-                        <div class="col-md-6">
+                        <div v-if="disable(selected)" class="col-md-6">
                             {!! Field::select('added', ['90' => 'Nuevo', 'existente' => 'Existente'], null,
-                            ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
+                            ['tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
                         </div>
                     </div>
                     <div class="row">

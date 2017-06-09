@@ -25,6 +25,7 @@ const app = new Vue({
     data: {
         messages: [],
         orders: [],
+        selected: ''
     },
     methods: {
         addMessage(message) {
@@ -33,6 +34,9 @@ const app = new Vue({
             axios.post('/messages', message).then(response => {
 
             });
+        },
+        disable(option) {
+            return option == 'existente';
         }
     },
     created() {

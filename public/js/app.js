@@ -23768,13 +23768,17 @@ var app = new Vue({
     el: '#app',
     data: {
         messages: [],
-        orders: []
+        orders: [],
+        selected: ''
     },
     methods: {
         addMessage: function addMessage(message) {
             this.messages.push(message);
 
             axios.post('/messages', message).then(function (response) {});
+        },
+        disable: function disable(option) {
+            return option == 'existente';
         }
     },
     created: function created() {
