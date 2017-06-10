@@ -72,6 +72,19 @@ class OrderController extends Controller
 		$order->endTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.production'));
+    	return redirect(route('order.operator'));
     }
+
+    public function operator(Request $request)
+    {
+        $actual = Order::where('status', 'produccion')->where('team', 'H1')->get([
+            'id', 'client'
+        ])->take(1);
+
+        $uno = $actual[0];
+
+        return view('orders.operator', compact('uno'));
+    }
+
+    
 }

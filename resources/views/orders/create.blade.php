@@ -47,6 +47,7 @@
                             {!! Field::select('added', ['90' => 'Nuevo', 'existente' => 'Existente'], null,
                             ['tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">

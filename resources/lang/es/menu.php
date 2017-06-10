@@ -43,13 +43,13 @@ return [
         ]
     ],
 
-'sales' => [
+    'sales' => [
         'title' => 'Ventas',
         'icon' => 'fa fa-money',
         'submenu' => [
             'createP' => [
                 'title' => 'Crear V. Producción',
-                'route' => 'saleProduction.create'
+                'route' => 'order.create'
             ],
             'pending' => [
                 'title' => 'Pendientes',
@@ -101,5 +101,17 @@ return [
                 'route' => 'user.show'
             ],
         ]
-    ]
+    ],
+
+    'Operators' => [
+        'title' => 'Operadores',
+        'icon' => 'fa fa-industry',
+        'submenu' => [
+            'operator' => [
+                'title' => 'Ver',
+                'route' => 'order.operator'
+            ],
+
+        ]
+    ],
 ];

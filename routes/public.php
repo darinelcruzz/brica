@@ -110,6 +110,11 @@ Route::post('ordenes/produccion/terminar', [
     'as' => 'order.finish'
 ]);
 
+Route::get('ordenes/produccion/operador', [
+    'uses' => 'OrderController@operator',
+    'as' => 'order.operator'
+]);
+
 // Clientes
 Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
     Route::get('crear', [

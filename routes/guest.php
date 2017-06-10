@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\MessagePosted;
+use App\User;
 
 Auth::routes();
 
@@ -29,3 +30,10 @@ Route::get('/home', 'HomeController@index');
 Route::get('tests', function() {
     return view('tests');
 });
+
+Route::get('duda', function() {
+	$user = User::first();
+    return $user->name;
+});
+
+

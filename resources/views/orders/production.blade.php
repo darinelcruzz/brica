@@ -8,9 +8,8 @@
         	'extra' => 'templates/toproduction'])
 
     @include('table', ['rows' => $production,
-        	'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Inicio', '¿Terminado?'],
-        	'color' => 'warning', 'title' => 'Órdenes en producción', 'example' => '2',
-        	'extra' => 'templates/orderfinished'])
+        	'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Inicio',],
+        	'color' => 'warning', 'title' => 'Órdenes en producción', 'example' => '2'])
 
     @include('table', ['rows' => $terminated,
         		'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Piezas', 'Inicio', 'Final'],
