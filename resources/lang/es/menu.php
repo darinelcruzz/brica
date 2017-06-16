@@ -49,7 +49,7 @@ return [
         'submenu' => [
             'createP' => [
                 'title' => 'Crear V. Producción',
-                'route' => 'order.create'
+                'route' => 'saleProduction.create'
             ],
             'pending' => [
                 'title' => 'Pendientes',
