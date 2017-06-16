@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\SaleProduction;
+use Illuminate\Http\Request;
 use App\Order;
 
 class SaleProductionController extends Controller
@@ -20,21 +21,15 @@ class SaleProductionController extends Controller
         return view('salesProduction.create', compact('terminatedProduction', 'terminatedMaquila'));
 	}
 
-     /*public function show()
+	public function prepare(Request $request)
     {
-        $saleProduction = SaleProduction::all();
+        $this->validate($request, [
+            'orders' => 'required'
+        ]);
+        
+    	$checkboxes = $request->orders;
+        $ids = $request->ids;
 
-        return view('saleProduction.show', compact('saleProduction'));
+    	return view('salesProduction.prepare', compact('checkboxes', 'ids'));
     }
-
-	public function store(Request $request)
-    {
-    	$this->validate($request, [
-
-    	]);
-
-    	$solicitude = SaleProduction::create($request->all());
-
-    	return redirect(route('saleProduction.show'));
-    }*/
 }

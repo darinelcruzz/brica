@@ -74,8 +74,8 @@ Route::get('ventas-producción/crear', [
 ]);
 
 Route::post('ventas-de-produccion/crear', [
-    'uses' => 'SaleProductionController@store',
-    'as' => 'saleProduction.store'
+    'uses' => 'SaleProductionController@prepare',
+    'as' => 'saleProduction.prepare'
 ]);
 
 Route::get('ventas-de-produccion', [

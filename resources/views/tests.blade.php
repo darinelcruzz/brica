@@ -1,7 +1,5 @@
 @extends('admin')
 
 @section('main-content')
-    <div id="app">
-        <app-select></app-select>
-    </div>
+    <h1>Hola</h1>
 @endsection
