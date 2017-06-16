@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-{{ isset($size) ? $size : '12' }}">
+    <div class="col-md-{{ $size or '12' }}">
         <div class="box box-solid box-{{ $color }} {{ isset($collapsed) ? 'collapsed-box' : '' }}">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $title }}</h3>
@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                         @foreach($header as $th)
-                            <th>{{ $th }}</th>
+                            <th>{!! $th !!}</th>
                         @endforeach
                         </tr>
                     </thead>
@@ -37,6 +37,13 @@
                     </tbody>
                 </table>
             </div>
+
+            @if (isset($button))
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-danger pull-right">{{ $button }}</button>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
