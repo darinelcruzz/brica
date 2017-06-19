@@ -173,3 +173,21 @@ Route::group(['prefix' => 'usuarios', 'as' => 'user.'], function () {
         'as' => 'show'
     ]);
 });
+
+// Cotizaciones
+Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
+    Route::get('crear', [
+        'uses' => 'QuotationController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('crear', [
+        'uses' => 'QuotationController@store',
+        'as' => 'store'
+    ]);
+
+    Route::get('/', [
+        'uses' => 'QuotationController@show',
+        'as' => 'show'
+    ]);
+});
