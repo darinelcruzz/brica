@@ -5,7 +5,7 @@
     @include('table', ['rows' => $pending,
             'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo','Fecha entrega', 'Autorizar'],
             'color' => 'danger', 'title' => 'Órdenes pendientes', 'example' => '1',
-            'extra' => 'templates/authorize'])
+            'extra' => 'templates/toauthorize'])
 
     @include('table', ['rows' => $authorized,
             'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo'],

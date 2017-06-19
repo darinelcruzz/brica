@@ -16,9 +16,9 @@ class ListOrdersController extends Controller
 
     function pending()
     {
-        $pending = Order::selectedOrders('pendiente');
+        $pending = Order::selectedOrders('pendiente', ['deliverDate']);
 
-        $authorized = Order::selectedOrders('autorizado', ['advance']);
+        $authorized = Order::selectedOrders('autorizado');
 
         $terminated = Order::selectedOrders('finalizado', [
             'pieces', 'startTime', 'endTime'

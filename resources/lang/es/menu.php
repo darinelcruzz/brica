@@ -49,7 +49,7 @@ return [
         'submenu' => [
             'createP' => [
                 'title' => 'Crear V. Producción',
-                'route' => 'saleProduction.create'
+                'route' => 'sale.create'
             ],
         ]
     ],
@@ -69,7 +69,7 @@ return [
         ]
     ],
 
-    'Providers' => [
+    'providers' => [
         'title' => 'Proveedores',
         'icon' => 'fa fa-handshake-o',
         'submenu' => [
@@ -84,7 +84,7 @@ return [
         ]
     ],
 
-    'Users' => [
+    'users' => [
         'title' => 'Usuarios',
         'icon' => 'fa fa-key',
         'submenu' => [
@@ -99,7 +99,7 @@ return [
         ]
     ],
 
-    'Operators' => [
+    'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-industry',
         'submenu' => [
