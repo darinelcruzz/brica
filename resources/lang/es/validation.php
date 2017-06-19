@@ -166,6 +166,8 @@ return [
         'height'                => 'alto',
         'length'                => 'largo',
         'width'                 => 'ancho',
+        'type'                  => 'tipo',
+        'deliverDate'           => 'fecha de entrega'
     ],
 
 ];

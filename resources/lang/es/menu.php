@@ -20,9 +20,17 @@ return [
         'title' => 'Órdenes',
         'icon' => 'fa fa-sticky-note',
         'submenu' => [
-            'createO' => [
+            'create' => [
                 'title' => 'Crear O. Producción',
                 'route' => 'order.create'
+            ],
+            'history' => [
+                'title' => 'Historial',
+                'route' => 'order.show'
+            ],
+            'pending' => [
+                'title' => 'Gerente',
+                'route' => 'order.pending'
             ],
             'createR' => [
                 'title' => 'Crear O. Venta',
@@ -31,14 +39,6 @@ return [
             'status' => [
                 'title' => 'Status',
                 'route' => 'order.production'
-            ],
-            'history' => [
-                'title' => 'Historial',
-                'route' => 'order.show'
-            ],
-            'pending' => [
-                'title' => 'Pendientes',
-                'route' => 'order.pending'
             ],
         ]
     ],
@@ -50,10 +50,6 @@ return [
             'createP' => [
                 'title' => 'Crear V. Producción',
                 'route' => 'saleProduction.create'
-            ],
-            'pending' => [
-                'title' => 'Pendientes',
-                'route' => 'order.pending'
             ],
         ]
     ],

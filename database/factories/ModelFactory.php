@@ -38,18 +38,18 @@ $factory->define(App\Client::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
     $status = array('finalizado', 'produccion', 'autorizado', 'pendiente');
-    $teams = array('H1', 'H2', 'H3');
+    $teams = array('R1', 'R2', 'R3');
     $caliber = array('16', '15', '14', '12', '10', '3/16"', '1/4"');
     $types = array('produccion', 'maquila');
+    $design = array('nuevo', 'existente');
 
     return [
+        'quotation' => $faker->regexify('[1-9]{1}'),
         'team' => $teams[array_rand($teams)],
-        'client' => $faker->name,
         'description' => $faker->text(50),
         'type' => $types[array_rand($types)],
-        'design' => $faker->word,
+        'design' => $design[array_rand($design)],
         'caliber' => $caliber[array_rand($caliber)],
-        'measure' => $faker->word,
         'pieces' => $faker->randomDigit,
         'height' => $faker->randomFloat(2, 0, 1),
         'length' => $faker->randomFloat(2, 0, 1),

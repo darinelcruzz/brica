@@ -16,20 +16,22 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('team')->nullable();
-            $table->string('client')->nullable();
-            $table->string('description')->nullable();
-            $table->string('design')->nullable();
-            $table->string('caliber')->nullable();
-            $table->string('measure')->nullable();
-            $table->integer('pieces')->nullable();
+            $table->integer('quotation')->nullable();
             $table->string('type')->nullable();
-            $table->string('estimated')->nullable();
-            $table->string('advance')->nullable();
+            $table->string('deliverDate')->nullable();
+            $table->string('description')->nullable();
+            $table->string('team')->nullable();
+            $table->string('design')->nullable();
+            $table->string('added')->nullable();
+            $table->string('caliber')->nullable();
+            $table->string('measureType')->nullable();
+            $table->integer('pieces')->nullable();
             $table->float('height')->nullable();
             $table->float('length')->nullable();
             $table->float('width')->nullable();
             $table->string('status')->default("pendiente");
+            $table->string('client')->nullable();
+            
             $table->string('startTime')->nullable();
             $table->string('endTime')->nullable();
 

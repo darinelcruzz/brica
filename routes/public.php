@@ -45,7 +45,7 @@ Route::post('ordenes-de-produccion/crear', [
 ]);
 
 Route::get('ordenes-de-produccion', [
-    'uses' => 'OrderController@show',
+    'uses' => 'ListOrdersController@show',
     'as' => 'order.show'
 ]);
 
@@ -111,8 +111,13 @@ Route::post('ordenes/produccion/terminar', [
 ]);
 
 Route::get('ordenes/produccion/operador', [
-    'uses' => 'OrderController@operator',
+    'uses' => 'ListOrdersController@operator',
     'as' => 'order.operator'
+]);
+
+Route::post('ordenes/produccion/operador', [
+    'uses' => 'OrderController@authorizes',
+    'as' => 'order.authorize'
 ]);
 
 // Clientes

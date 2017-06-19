@@ -3,9 +3,8 @@
 @section('main-content')
 
     @include('table', ['rows' => $authorized,
-        	'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'A producción'],
-        	'color' => 'danger', 'title' => 'Órdenes en cola', 'example' => '1',
-        	'extra' => 'templates/toproduction'])
+        	'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo'],
+        	'color' => 'danger', 'title' => 'Órdenes en cola', 'example' => '1'])
 
     @include('table', ['rows' => $production,
         	'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Inicio',],

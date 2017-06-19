@@ -5,7 +5,7 @@
         <div class="col-md-9">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Nueva orden de producción</h3>
+                    <h3 class="box-title">Nueva orden</h3>
                 </div>
 
                 <!-- form start -->
@@ -13,42 +13,51 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::radios('type', ['maquila' => 'Maquila', 'produccion' => 'Producción']) !!}
-                            </div>
+                            {!! Field::number('quotation',
+                                ['tpl' => 'templates/withicon', 'step' => '1', 'min' => '1'], ['icon' => 'list']
+                            ) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Field::select('type', 
+                                ['maquila' => 'Maquíla', 'produccion' => 'Producción'], null,
+                                ['tpl' => 'templates/withicon'], ['icon' => 'industry']) 
+                            !!}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Field::text('client',
-                            ['tpl' => 'templates/withicon'],
-                            ['icon' => 'user']) !!}
+                            {!! Field::number('order', $lastId +1 ,
+                                ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) 
+                            !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::text('description',
-                                ['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
+                            {!! Field::date('deliverDate',
+                                ['tpl' => 'templates/withicon'], ['icon' => 'calendar-check-o']) 
+                            !!}
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Field::number('order', $lastId +1 ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                            {!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::select('team', ['H1' => 'H1', 'H2' => 'H2', 'H3' => 'H3'], null,
+                            {!! Field::select('team', ['R1' => 'R1', 'R2' => 'R2', 'R3' => 'R3'], null,
                             ['tpl' => 'templates/withicon'], ['icon' => 'users']) !!}
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
                             ['tpl' => 'templates/withicon', 'v-model' => 'selected'], ['icon' => 'wrench']) !!}
                         </div>
                         <div v-if="disable(selected)" class="col-md-6">
-                            {!! Field::select('added', ['90' => 'Nuevo', 'existente' => 'Existente'], null,
+                            {!! Field::select('added', ['placa molino' => 'Placa molino', 'tapa' => 'Tapa'], null,
                             ['tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
                         </div>
-
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
@@ -67,22 +76,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::text('measures',
-                                        ['tpl' => 'templates/withicon'], ['icon' => 'arrows']
-                                    ) !!}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-10">
                                     {!! Field::number('pieces',
                                         ['tpl' => 'templates/withicon', 'step' => '1'], ['icon' => 'list']
-                                    ) !!}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    {!! Field::number('estimated',
-                                        ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'dollar']
                                     ) !!}
                                 </div>
                             </div>

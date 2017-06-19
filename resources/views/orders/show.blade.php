@@ -17,16 +17,18 @@
         				        <th>Descripción</th>
                                 <th>Status</th>
         				        <th>Fecha Inicio</th>
+                                <th>Fecha Entrega</th>
         				    </tr>
         				</thead>
         				<tbody>
         					@foreach($orders as $order)
         				      <tr>
                                 <td>{{ $order->id }}</td>
-        				        <td>{{ $order->client }}</td>
+        				        <td></td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>{{ $order->created_at->format('l j F\, Y') }}</td>
+                                <td>{{ $order->deliverDate }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>

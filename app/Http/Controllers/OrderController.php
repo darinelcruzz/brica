@@ -12,31 +12,25 @@ class OrderController extends Controller
 	public function create()
 	{
 		$lastId = Order::all()->last()->id;
+        $today = Carbon::now();
 
-		return view('orders.create', compact('lastId'));
+		return view('orders.create', compact('lastId', 'today'));
 	}
 
 	public function store(Request $request)
     {
     	$this->validate($request, [
+            'quotation' => 'required',
+            'type' => 'required',
+            'deliverDate' => 'required',
             'description' => 'required',
+            'team' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
-            'pieces' => 'required',
-            'type' => 'required',
-            'client' => 'required',
-            'team' => 'required',
+            'pieces' => 'required',           
     	]);
 
     	Order::create($request->all());
-
-        $order = Order::all()->last();
-
-        if($order->type == 'maquila') {
-            $order->status = 'autorizado';
-			$order->advance = 'N/A';
-            $order->save();
-        }
 
     	return redirect(route('order.production'));
     }
@@ -62,7 +56,7 @@ class OrderController extends Controller
 		$order->startTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.production'));
+    	return redirect(route('order.pending'));
     }
 
 	public function finish(Request $request)
@@ -75,16 +69,13 @@ class OrderController extends Controller
     	return redirect(route('order.operator'));
     }
 
-    public function operator(Request $request)
+    public function authorizes(Request $request)
     {
-        $actual = Order::where('status', 'produccion')->where('team', 'H1')->get([
-            'id', 'client'
-        ])->take(1);
+        $order = Order::find($request->id);
+        $order->status = 'autorizado';
+        $order->startTime = Carbon::now()->format('h:i:s a');
+        $order->save();
 
-        $uno = $actual[0];
-
-        return view('orders.operator', compact('uno'));
-    }
-
-    
+        return redirect(route('order.pending'));
+    } 
 }
