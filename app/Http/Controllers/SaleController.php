@@ -11,7 +11,7 @@ class SaleController extends Controller
     public function create()
 	{
         $terminatedProduction = Order::where('status', 'finalizado')->where('type', 'produccion')->get([
-            'id', 'client', 'description', 'advance'
+            'id', 'client', 'description',
         ]);
 
         $terminatedMaquila = Order::where('status', 'finalizado')->where('type', 'maquila')->get([

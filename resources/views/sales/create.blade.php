@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    {!! Form::open(['method' => 'POST', 'route' => 'saleProduction.prepare']) !!}
+    {!! Form::open(['method' => 'POST', 'route' => 'sale.prepare']) !!}
         @include('table', ['rows' => $terminatedProduction,
                 'header' => ['#', 'Cliente', 'Descripción', 'Anticipo', '<i class="fa fa-check" aria-hidden="true"></i>'],
                 'color' => 'danger', 'title' => 'Producción', 'example' => '7',

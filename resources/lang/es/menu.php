@@ -32,10 +32,6 @@ return [
                 'title' => 'Gerente',
                 'route' => 'order.pending'
             ],
-            'createR' => [
-                'title' => 'Crear O. Venta',
-                'route' => 'solicitude.create'
-            ],
             'status' => [
                 'title' => 'Status',
                 'route' => 'order.production'
@@ -102,12 +98,6 @@ return [
     'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-industry',
-        'submenu' => [
-            'operator' => [
-                'title' => 'Ver',
-                'route' => 'order.operator'
-            ],
-
-        ]
+        'route' => 'order.operator',
     ],
 ];

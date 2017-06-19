@@ -104,7 +104,7 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
 });
 
 // Ventas
-Route::group(['prefix' => 'cotizaciones', 'as' => 'sale.'], function () {
+Route::group(['prefix' => 'ventas', 'as' => 'sale.'], function () {
     Route::get('crear', [
         'uses' => 'SaleController@create',
         'as' => 'create'
@@ -113,11 +113,6 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'sale.'], function () {
     Route::post('crear', [
         'uses' => 'SaleController@prepare',
         'as' => 'prepare'
-    ]);
-
-    Route::get('/', [
-        'uses' => 'SaleController@show',
-        'as' => 'show'
     ]);
 });
 
