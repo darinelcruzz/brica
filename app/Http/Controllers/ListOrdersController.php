@@ -7,7 +7,7 @@ use App\Order;
 
 class ListOrdersController extends Controller
 {
-    function allorders()
+    function show()
     {
         $orders = Order::all();
 
@@ -16,29 +16,25 @@ class ListOrdersController extends Controller
 
     function pending()
     {
-        $pending = Order::where('status', 'pendiente')->get([
-			'id', 'client', 'type', 'description', 'team'
-		]);
-		$authorized = Order::where('status', 'autorizado')->get([
-			'id', 'client', 'type', 'description', 'team', 'advance'
-		]);
-		$terminated = Order::where('status', 'finalizado')->get([
-			'id', 'client', 'type', 'description', 'team', 'pieces', 'startTime', 'endTime'
-		]);
+        $pending = Order::selectedOrders('pendiente');
+
+        $authorized = Order::selectedOrders('autorizado', ['advance']);
+
+        $terminated = Order::selectedOrders('finalizado', [
+            'pieces', 'startTime', 'endTime'
+        ]);
 
         return view('orders.pending', compact('pending', 'authorized', 'terminated'));
     }
 
     function production()
     {
-        $authorized = Order::where('status', 'autorizado')->get([
-			'id', 'client', 'type', 'description', 'team'
-		]);
-        $production = Order::where('status', 'produccion')->get([
-			'id', 'client', 'type', 'description', 'team', 'startTime'
-		]);
-        $terminated = Order::where('status', 'finalizado')->get([
-            'id', 'client', 'type', 'description', 'team', 'pieces', 'startTime', 'endTime'
+        $authorized = Order::selectedOrders('autorizado');
+
+        $production = Order::selectedOrders('produccion', ['startTime']);
+
+        $terminated = Order::selectedOrders('finalizado', [
+            'pieces', 'startTime', 'endTime'
         ]);
 
         return view('orders.production', compact('authorized', 'production', 'terminated'));

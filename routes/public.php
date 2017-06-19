@@ -45,7 +45,7 @@ Route::post('ordenes-de-produccion/crear', [
 ]);
 
 Route::get('ordenes-de-produccion', [
-    'uses' => 'OrderController@show',
+    'uses' => 'ListOrdersController@show',
     'as' => 'order.show'
 ]);
 
@@ -165,6 +165,24 @@ Route::group(['prefix' => 'usuarios', 'as' => 'user.'], function () {
 
     Route::get('/', [
         'uses' => 'UserController@show',
+        'as' => 'show'
+    ]);
+});
+
+// Cotizaciones
+Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
+    Route::get('crear', [
+        'uses' => 'QuotationController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('crear', [
+        'uses' => 'QuotationController@store',
+        'as' => 'store'
+    ]);
+
+    Route::get('/', [
+        'uses' => 'QuotationController@show',
         'as' => 'show'
     ]);
 });

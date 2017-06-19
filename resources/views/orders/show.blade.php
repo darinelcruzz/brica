@@ -26,7 +26,7 @@
         				        <td>{{ $order->client }}</td>
         				        <td>{{ $order->description }}</td>
                                 <td>{{ $order->status }}</td>
-                                <td>{{ $order->created_at->format('l j F\, Y') }}</td>
+                                <td>{{ $order->creation_date }}</td>
         				      </tr>
         				    @endforeach
         				</tbody>
