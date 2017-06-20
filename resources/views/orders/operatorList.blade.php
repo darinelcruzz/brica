@@ -18,7 +18,7 @@
                 <div class="small-box bg-green">
                     <div class="inner">
                         <p>Equipo</p>
-                        <h3>R1</h3>
+                        <h3>R2</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users"></i>

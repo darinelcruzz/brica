@@ -56,7 +56,7 @@ class OrderController extends Controller
 		$order->startTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.pending'));
+    	return redirect(route('order.operator'));
     }
 
 	public function finish(Request $request)

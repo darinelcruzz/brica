@@ -73,6 +73,11 @@ Route::group(['prefix' => 'ordenes', 'as' => 'order.'], function () {
             'as' => 'operator'
         ]);
 
+        Route::get('operador/lista', [
+            'uses' => 'ListOrdersController@operator',
+            'as' => 'operatorList'
+        ]);
+
         Route::post('iniciar', [
             'uses' => 'OrderController@start',
             'as' => 'start'
@@ -81,6 +86,11 @@ Route::group(['prefix' => 'ordenes', 'as' => 'order.'], function () {
         Route::post('terminar', [
             'uses' => 'OrderController@finish',
             'as' => 'finish'
+        ]);
+
+        Route::get('caja', [
+            'uses' => 'ListOrdersController@cashier',
+            'as' => 'cashier'
         ]);
     });
 });

@@ -47,6 +47,10 @@ return [
                 'title' => 'Crear V. Producción',
                 'route' => 'sale.create'
             ],
+            'status' => [
+                'title' => 'Status',
+                'route' => 'order.cashier'
+            ],
         ]
     ],
 
