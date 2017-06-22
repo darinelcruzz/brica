@@ -36,4 +36,6 @@ Route::get('duda', function() {
     return $user->name;
 });
 
+Route::get('pdf', 'PdfController@invoice');
+
 

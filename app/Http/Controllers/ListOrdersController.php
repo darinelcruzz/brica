@@ -51,16 +51,18 @@ class ListOrdersController extends Controller
 
         if($inProduction) {
 
-            $pendientes = Order::where('status', 'produccion')->where('team', 'R2')->first();
+            $pending = Order::where('status', 'produccion')->where('team', 'R2')->first();
 
-            return view('orders.operatorList', compact('pendientes'));
+            return view('orders.operator', compact('pending'));
+            
         }
 
         $pending = Order::where('status', 'autorizado')->where('team', 'R2')->get([
-            'id', 'caliber','type', 'description', 'team', 'deliverDate'
-        ]);
-
-        return view('orders.operator', compact('pending'));
+                'id', 'caliber','type', 'description', 'team', 'deliverDate'
+            ]);
+        
+        return view('orders.operatorList', compact('pending'));
+        
     }
 
     function cashier()

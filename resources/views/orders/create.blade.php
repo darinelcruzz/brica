@@ -69,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::select('measureType', ['ex' => 'Externas', 'in' => 'Internas'], null,
+                                    {!! Field::select('measureType', ['externas' => 'Externas', 'internas' => 'Internas'], null,
                                         ['tpl' => 'templates/withicon'], ['icon' => 'external-link']
                                     ) !!}
                                 </div>
