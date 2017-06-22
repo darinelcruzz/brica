@@ -43,10 +43,6 @@ return [
         'title' => 'Ventas',
         'icon' => 'fa fa-money',
         'submenu' => [
-            'createP' => [
-                'title' => 'Cobrar',
-                'route' => 'sale.show'
-            ],
             'status' => [
                 'title' => 'Status Ordenes',
                 'route' => 'order.cashier'
