@@ -44,7 +44,22 @@ return [
         'icon' => 'fa fa-money',
         'submenu' => [
             'createP' => [
-                'title' => 'Crear V. Producción',
+                'title' => 'Cobrar',
+                'route' => 'sale.show'
+            ],
+            'status' => [
+                'title' => 'Status Ordenes',
+                'route' => 'order.cashier'
+            ],
+        ]
+    ],
+
+    'admin' => [
+        'title' => 'Administración',
+        'icon' => 'fa fa-line-chart',
+        'submenu' => [
+            'createP' => [
+                'title' => 'Diario',
                 'route' => 'sale.create'
             ],
             'status' => [
