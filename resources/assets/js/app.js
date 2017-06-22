@@ -18,30 +18,27 @@ Vue.component('chat-message', require('./components/ChatMessage.vue'));
 Vue.component('chat-log', require('./components/ChatLog.vue'));
 Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 Vue.component('app-select', require('./components/ConditionedFields.vue'));
+Vue.component('product-table', require('./components/ProductTable.vue'));
+Vue.component('product-row', require('./components/ProductRow.vue'));
 
 
 const app = new Vue({
     el: '#app',
     data: {
-        messages: [],
-        orders: [],
+        entries: 1,
+        products: [],
+        product_id: 1,
+        quantity: 0,
         selected: ''
     },
     methods: {
-        addMessage(message) {
-            this.messages.push(message);
-
-            axios.post('/messages', message).then(response => {
-
-            });
-        },
         disable(option) {
             return option == 'existente';
         }
     },
     created() {
-        axios.get('/messages').then(response => {
-            this.messages = response.data;
+        axios.get('/productos').then(response => {
+            this.products = response.data;
         });
     }
 

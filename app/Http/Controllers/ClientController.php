@@ -15,7 +15,7 @@ class ClientController extends Controller
 	public function store(Request $request)
     {
     	$this->validate($request, [
-    		'name' => 'required',
+    		'name' => 'required|unique:clients',
     		'city' => 'required',
     		'phone' => 'required',
 
@@ -23,7 +23,7 @@ class ClientController extends Controller
 
     	$client = Client::create($request->all());
 
-    	return redirect(route('client.show'));
+    	return redirect(route('quotation.create'));
     }
 
     public function show()

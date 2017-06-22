@@ -13,6 +13,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('tests', function() {
     return view('tests');
 });
+<<<<<<< HEAD
 
 Route::get('duda', function() {
 	$user = User::first();
@@ -20,3 +21,7 @@ Route::get('duda', function() {
 });
 
 Route::get('pdf', 'PdfController@invoice');
+
+
+=======
+>>>>>>> refactor
