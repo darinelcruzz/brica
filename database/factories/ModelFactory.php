@@ -42,6 +42,7 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
     $caliber = array('16', '15', '14', '12', '10', '3/16"', '1/4"');
     $types = array('produccion', 'maquila');
     $design = array('nuevo', 'existente');
+    $measure = array('internas', 'externas');
 
     return [
         'quotation' => $faker->regexify('[1-9]{1}'),
@@ -50,10 +51,22 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
         'type' => $types[array_rand($types)],
         'design' => $design[array_rand($design)],
         'caliber' => $caliber[array_rand($caliber)],
+        'measureType' => $measure[array_rand($measure)],
         'pieces' => $faker->randomDigit,
         'height' => $faker->randomFloat(2, 0, 1),
         'length' => $faker->randomFloat(2, 0, 1),
         'width' => $faker->randomFloat(2, 0, 1),
         'status' => $status[array_rand($status)],
+    ];
+});
+
+$factory->define(App\Quotation::class, function (Faker\Generator $faker) {
+    $status = array('pendiente');
+    $types = array('terminado', 'produccion');
+
+    return [
+        'type' => $types[array_rand($types)],
+        'status' => $status[array_rand($status)],
+        'amount' => $faker->numberBetween(100,30000),
     ];
 });

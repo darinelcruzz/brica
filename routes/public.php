@@ -111,6 +111,11 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'uses' => 'QuotationController@show',
         'as' => 'show'
     ]);
+
+    Route::post('/', [
+        'uses' => 'QuotationController@pay',
+        'as' => 'pay'
+    ]);
 });
 
 // Ventas

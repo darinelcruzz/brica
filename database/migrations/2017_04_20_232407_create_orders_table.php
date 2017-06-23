@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
 
             $table->integer('quotation')->nullable();
             $table->string('type')->nullable();
+            $table->string('client')->nullable();
             $table->string('deliverDate')->nullable();
             $table->string('description')->nullable();
             $table->string('team')->nullable();
@@ -30,12 +31,9 @@ class CreateOrdersTable extends Migration
             $table->float('length')->nullable();
             $table->float('width')->nullable();
             $table->string('status')->default("pendiente");
-            $table->string('client')->nullable();
             
             $table->string('startTime')->nullable();
             $table->string('endTime')->nullable();
-
-
 
             $table->timestamps();
         });

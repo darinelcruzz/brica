@@ -13749,7 +13749,7 @@ if (typeof jQuery === 'undefined') {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
- * Vue.js v2.3.3
+ * Vue.js v2.3.4
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -18178,7 +18178,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.3.3';
+Vue$3.version = '2.3.4';
 
 /*  */
 
@@ -18669,6 +18669,7 @@ function createPatchFunction (backend) {
   function initComponent (vnode, insertedVnodeQueue) {
     if (isDef(vnode.data.pendingInsert)) {
       insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert);
+      vnode.data.pendingInsert = null;
     }
     vnode.elm = vnode.componentInstance.$el;
     if (isPatchable(vnode)) {
@@ -25488,7 +25489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* global _ Vue */
 
-window._ = __webpack_require__(67);
+window._ = __webpack_require__(67
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25496,13 +25497,13 @@ window._ = __webpack_require__(67);
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = __webpack_require__(5);
+);window.$ = window.jQuery = __webpack_require__(5);
 
 __webpack_require__(9);
 
 __webpack_require__(25);
 window.toastr = __webpack_require__(69);
-__webpack_require__(66);
+__webpack_require__(66
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -25510,7 +25511,7 @@ __webpack_require__(66);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(10);
+);window.Vue = __webpack_require__(10
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -25518,15 +25519,14 @@ window.Vue = __webpack_require__(10);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(11);
+);window.axios = __webpack_require__(11);
 
 window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': window.Laravel.csrfToken,
   'X-Requested-With': 'XMLHttpRequest'
-};
 
-// Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
-Vue.prototype.trans = function (key) {
+  // Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
+};Vue.prototype.trans = function (key) {
   return _.get(window.trans, key, key);
 };
 
@@ -25534,7 +25534,7 @@ Vue.prototype.trans = function (key) {
 Vue.component('register-form', __webpack_require__(79));
 Vue.component('login-form', __webpack_require__(78));
 Vue.component('email-reset-password-form', __webpack_require__(77));
-Vue.component('reset-password-form', __webpack_require__(80));
+Vue.component('reset-password-form', __webpack_require__(80)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -25550,6 +25550,7 @@ Vue.component('reset-password-form', __webpack_require__(80));
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+);
 
 /***/ }),
 /* 55 */,
@@ -25564,21 +25565,21 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 60 */
@@ -25606,7 +25607,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 64 */

@@ -35,21 +35,8 @@ class OrderController extends Controller
     	return redirect(route('order.production'));
     }
 
-	public function pay(Request $request)
-    {
-    	$this->validate($request, [
-            'advance' => 'required',
-    	]);
 
-    	$order = Order::find($request->id);
-		$order->advance = $request->advance;
-		$order->status = 'autorizado';
-		$order->save();
-
-    	return redirect(route('order.pending'));
-    }
-
-	public function start(Request $request)
+	function start(Request $request)
     {
     	$order = Order::find($request->id);
 		$order->status = 'produccion';
@@ -59,7 +46,7 @@ class OrderController extends Controller
     	return redirect(route('order.operator'));
     }
 
-	public function finish(Request $request)
+	function finish(Request $request)
     {
     	$order = Order::find($request->id);
 		$order->status = 'finalizado';
@@ -69,7 +56,7 @@ class OrderController extends Controller
     	return redirect(route('order.operator'));
     }
 
-    public function authorizes(Request $request)
+    function authorizes(Request $request)
     {
         $order = Order::find($request->id);
         $order->status = 'autorizado';

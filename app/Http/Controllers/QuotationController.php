@@ -32,6 +32,31 @@ class QuotationController extends Controller
 
     function show()
     {
-        return view('quotations.show');
+        $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get([
+            'id', 'client', 'amount', 'payment']);
+
+        $production = Quotation::where('status', 'produccion');
+
+        $paid = Quotation::where('status', 'pagado')->get([
+            'id', 'client', 'amount','updated_at']);
+
+        return view('quotations.show', compact('terminated', 'production', 'paid'));
+    }
+
+    public function pay(Request $request)
+    {
+        $this->validate($request, [
+            'payment' => 'required',
+        ]);
+
+        $folio = Quotation::find($request->id);
+        $folio->payment = $folio->payment + $request->payment;
+        if($folio->payment >= $folio->amount)
+        {
+            $folio->status = 'pagado';
+        }
+        $folio->save();
+
+        return redirect(route('quotation.show'));
     }
 }

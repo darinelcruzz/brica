@@ -15,6 +15,14 @@ class CreateQuotationsTable extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type')->nullable();
+            $table->string('client')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('amount')->nullable();
+            $table->integer('payment')->nullable();
+            
+            $table->string('startTime')->nullable();
+            $table->string('endTime')->nullable();
 
             $table->timestamps();
         });
