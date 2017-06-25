@@ -32,7 +32,7 @@ class OrderController extends Controller
 
     	Order::create($request->all());
 
-    	return redirect(route('order.production'));
+    	return redirect(route('production.production'));
     }
 
 
@@ -43,7 +43,7 @@ class OrderController extends Controller
 		$order->startTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.operator'));
+    	return redirect(route('production.operator'));
     }
 
 	function finish(Request $request)
@@ -53,7 +53,7 @@ class OrderController extends Controller
 		$order->endTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.operator'));
+    	return redirect(route('production.operator'));
     }
 
     function authorizes(Request $request)
@@ -63,6 +63,6 @@ class OrderController extends Controller
         $order->startTime = Carbon::now()->format('h:i:s a');
         $order->save();
 
-        return redirect(route('order.pending'));
+        return redirect(route('production.pending'));
     } 
 }

@@ -17,50 +17,20 @@ return [
     ],
 
     'orders' => [
-        'title' => 'Órdenes',
-        'icon' => 'fa fa-sticky-note',
+        'title' => 'Producción',
+        'icon' => 'fa fa-industry',
         'submenu' => [
             'create' => [
                 'title' => 'Crear O. Producción',
-                'route' => 'order.create'
-            ],
-            'history' => [
-                'title' => 'Historial',
-                'route' => 'order.show'
+                'route' => 'production.create'
             ],
             'pending' => [
                 'title' => 'Gerente',
-                'route' => 'order.pending'
+                'route' => 'production.pending'
             ],
             'status' => [
-                'title' => 'Status',
-                'route' => 'order.production'
-            ],
-        ]
-    ],
-
-    'sales' => [
-        'title' => 'Ventas',
-        'icon' => 'fa fa-money',
-        'submenu' => [
-            'status' => [
-                'title' => 'Status Ordenes',
-                'route' => 'order.cashier'
-            ],
-        ]
-    ],
-
-    'admin' => [
-        'title' => 'Administración',
-        'icon' => 'fa fa-line-chart',
-        'submenu' => [
-            'createP' => [
-                'title' => 'Diario',
-                'route' => 'sale.create'
-            ],
-            'status' => [
-                'title' => 'Status',
-                'route' => 'order.cashier'
+                'title' => 'Ingeniero',
+                'route' => 'production.production'
             ],
         ]
     ],
@@ -113,6 +83,6 @@ return [
     'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-industry',
-        'route' => 'order.operator',
+        'route' => 'production.operator',
     ],
 ];

@@ -9,7 +9,7 @@
                 </div>
 
                 <!-- form start -->
-                {!! Form::open(['method' => 'POST', 'route' => 'order.store']) !!}
+                {!! Form::open(['method' => 'POST', 'route' => 'production.store']) !!}
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">

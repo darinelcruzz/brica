@@ -7,12 +7,6 @@ use App\Order;
 
 class ListOrdersController extends Controller
 {
-    function show()
-    {
-        $orders = Order::all();
-
-        return view('orders.show', compact('orders'));
-    }
 
     function pending()
     {
