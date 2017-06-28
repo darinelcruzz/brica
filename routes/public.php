@@ -52,8 +52,8 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::post('gerente', [
-        'uses' => 'OrderController@authorizes',
-        'as' => 'authorize'
+        'uses' => 'OrderController@assign',
+        'as' => 'assign'
     ]);
 
     Route::get('ingenieros', [
@@ -105,6 +105,15 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'as' => 'pay'
     ]);
 
+    Route::get('cash', [
+        'uses' => 'QuotationController@cash',
+        'as' => 'cash'
+    ]);
+
+    Route::post('cash', [
+        'uses' => 'QuotationController@cash',
+        'as' => 'cash'
+    ]);
 
 });
 

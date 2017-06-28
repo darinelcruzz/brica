@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Date\Date;
 use App\Client;
 use App\Quotation;
+use App\Expense;
 
 class QuotationController extends Controller
 {
@@ -33,30 +35,41 @@ class QuotationController extends Controller
     function show()
     {
         $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get([
-            'id', 'client', 'amount', 'payment']);
+            'id', 'client', 'amount']);
 
         $production = Quotation::where('status', 'produccion');
 
         $paid = Quotation::where('status', 'pagado')->get([
-            'id', 'client', 'amount','updated_at']);
+            'id', 'client', 'type', 'amount']);
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));
     }
 
     public function pay(Request $request)
     {
-        $this->validate($request, [
-            'payment' => 'required',
-        ]);
-
         $folio = Quotation::find($request->id);
-        $folio->payment = $folio->payment + $request->payment;
-        if($folio->payment >= $folio->amount)
-        {
-            $folio->status = 'pagado';
-        }
+        $folio->status = 'pagado';
         $folio->save();
 
         return redirect(route('quotation.show'));
+    }
+
+    function cash(Request $request)
+    {
+        $date = $request->date;
+        $paid = Quotation::where('date_payment',$date)->where('status', 'pagado')->get([
+            'id', 'client', 'type', 'amount']);
+
+        $totalP = Quotation::totalPaid($date);
+        $totalP = $paid->isEmpty() ? '0': $totalP;
+
+        $expenses = Expense::select('description', 'amount')->get();
+
+        $totalE = Expense::totalExpenses();
+        $totalE = $expenses->isEmpty() ? '0': $totalE;
+
+        $today = $date == 0 ? Date::now() : $date;
+
+        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'today'));
     }
 }

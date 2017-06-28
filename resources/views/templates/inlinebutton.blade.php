@@ -2,7 +2,9 @@
     <div class="input-group margin">
         {!! $input !!}
         <span class="input-group-btn">
-            <button type="submit" class="btn btn-success btn-flat">ok</button>
+            <button type="submit" name="button" class="btn btn-success">
+            	<i class="fa fa-check"></i>
+        	</button>
         </span>
     </div>
     @foreach ($errors as $error)

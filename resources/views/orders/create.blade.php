@@ -41,10 +41,6 @@
                         <div class="col-md-6">
                             {!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                         </div>
-                        <div class="col-md-6">
-                            {!! Field::select('team', ['R1' => 'R1', 'R2' => 'R2', 'R3' => 'R3'], null,
-                            ['tpl' => 'templates/withicon'], ['icon' => 'users']) !!}
-                        </div>
                     </div>
 
                     <div class="row">

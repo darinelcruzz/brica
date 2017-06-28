@@ -24,7 +24,6 @@ class OrderController extends Controller
             'type' => 'required',
             'deliverDate' => 'required',
             'description' => 'required',
-            'team' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
             'pieces' => 'required',           
@@ -56,13 +55,18 @@ class OrderController extends Controller
     	return redirect(route('production.operator'));
     }
 
-    function authorizes(Request $request)
+    function assign(Request $request)
     {
+        $this->validate($request, [
+            'team' => 'required',
+            ]); 
+
         $order = Order::find($request->id);
-        $order->status = 'autorizado';
+        $order->status = 'asignado';
+        $order->team = $request->team;
         $order->startTime = Carbon::now()->format('h:i:s a');
         $order->save();
 
         return redirect(route('production.pending'));
-    } 
+    }
 }

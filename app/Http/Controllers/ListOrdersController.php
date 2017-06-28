@@ -12,12 +12,12 @@ class ListOrdersController extends Controller
     {
         $pending = Order::selectedOrders('pendiente', ['deliverDate']);
 
-        $authorized = Order::selectedOrders('autorizado', ['deliverDate']);
+        $authorized = Order::selectedOrders('asignado', ['team','deliverDate']);
 
-        $production = Order::selectedOrders('produccion', ['startTime']);
+        $production = Order::selectedOrders('produccion', ['team','startTime']);
 
         $terminated = Order::selectedOrders('finalizado', [
-            'pieces', 'startTime', 'endTime'
+            'team','pieces', 'startTime', 'endTime'
         ]);
 
 
@@ -26,14 +26,17 @@ class ListOrdersController extends Controller
 
     function production()
     {
+        $this->validate($request, [
+            'team' => 'required',
+            ]);
         $pending = Order::selectedOrders('pendiente', ['deliverDate']);
 
-        $authorized = Order::selectedOrders('autorizado', ['deliverDate']);
+        $authorized = Order::selectedOrders('asignado', ['team','deliverDate']);
 
-        $production = Order::selectedOrders('produccion', ['startTime']);
+        $production = Order::selectedOrders('produccion', ['team','startTime']);
 
         $terminated = Order::selectedOrders('finalizado', [
-            'pieces', 'startTime', 'endTime'
+            'team','pieces', 'startTime', 'endTime'
         ]);
 
         return view('orders.production', compact('pending', 'authorized', 'production', 'terminated'));
@@ -51,7 +54,7 @@ class ListOrdersController extends Controller
             
         }
 
-        $pending = Order::where('status', 'autorizado')->where('team', 'R2')->get([
+        $pending = Order::where('status', 'asignado')->where('team', 'R2')->get([
                 'id', 'caliber','type', 'description', 'team', 'deliverDate'
             ]);
         

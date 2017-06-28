@@ -38,7 +38,6 @@ $factory->define(App\Client::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
     $status = array('pendiente');
-    $teams = array('R2');
     $caliber = array('16', '15', '14', '12', '10', '3/16"', '1/4"');
     $types = array('produccion', 'maquila');
     $design = array('nuevo', 'existente');
@@ -46,7 +45,6 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
 
     return [
         'quotation' => $faker->regexify('[1-9]{1}'),
-        'team' => $teams[array_rand($teams)],
         'description' => $faker->text(50),
         'type' => $types[array_rand($types)],
         'design' => $design[array_rand($design)],

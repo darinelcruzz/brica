@@ -16,12 +16,27 @@ return [
         ]
     ],
 
+    'quotations' => [
+        'title' => 'Cotizaciones',
+        'icon' => 'fa fa-calculator',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'quotation.create'
+            ],
+            'show' => [
+                'title' => 'Cajera',
+                'route' => 'quotation.show'
+            ],
+        ]
+    ],
+
     'orders' => [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
             'create' => [
-                'title' => 'Crear O. Producción',
+                'title' => 'Crear Orden',
                 'route' => 'production.create'
             ],
             'pending' => [
@@ -31,6 +46,17 @@ return [
             'status' => [
                 'title' => 'Ingeniero',
                 'route' => 'production.production'
+            ],
+        ]
+    ],
+
+    'administration' => [
+        'title' => 'Administración',
+        'icon' => 'fa fa-line-chart',
+        'submenu' => [
+            'create' => [
+                'title' => 'Caja',
+                'route' => 'quotation.cash'
             ],
         ]
     ],

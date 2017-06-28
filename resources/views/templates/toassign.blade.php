@@ -1,11 +1,8 @@
 <td>
-    {!! Form::open(['method' => 'POST', 'route' => 'production.authorize']) !!}
+    {!! Form::open(['method' => 'POST', 'route' => 'production.assign']) !!}
         <input type="hidden" name="id" value="{{ $id }}">
 
-        {!! Field::select('team', ['R1', 'R2', 'R3'], null) !!}
-
-        <button type="submit" name="button" class="btn btn-success">
-            <i class="fa fa-check"></i>
-        </button>
+        {!! Field::select('team', ['R1'=>'R1', 'R2'=>'R2', 'R3'=>'R3'], null,
+            ['tpl' => 'templates/inlinebutton']) !!}
     {!! Form::close() !!}
 </td>
