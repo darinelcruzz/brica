@@ -1,29 +1,28 @@
 <template lang="html">
-    <div class="col-md-12">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th v-for="head in header" :style="head.width">{{ head.name }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <template v-for="n in numbers[entries-1]">
-                    <product-row @subtotal="addToTotal" :products="products" :num="n"></product-row>
-                </template>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td></td><td></td><td></td><td></td>
-                    <td>
-                        <b>Total:</b>
-                    </td>
-                    <td>
-                        $ {{ total }}
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th v-for="head in header" :style="head.width">{{ head.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template v-for="n in numbers[entries-1]">
+                <product-row @subtotal="addToTotal" :products="products" :num="n"></product-row>
+            </template>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td><td></td><td></td><td></td>
+                <td>
+                    <b>Total:</b>
+                </td>
+                <td>
+                    $ {{ total }}
+                    <input type="hidden" name="total" :value="total">
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 </template>
 
 <script>
