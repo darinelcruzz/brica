@@ -31,6 +31,9 @@
                         @if (isset($extra))
                             @include($extra)
                         @endif
+                        @if (isset($extra2))
+                            @include($extra2)
+                        @endif
                       </tr>
                     @endforeach
                 </tbody>

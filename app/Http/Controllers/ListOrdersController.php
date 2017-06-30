@@ -4,56 +4,61 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Quotation;
 
 class ListOrdersController extends Controller
 {
 
     function pending()
     {
-        $pending = Order::selectedOrders('pendiente', ['deliverDate']);
+        $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
 
-        $authorized = Order::selectedOrders('asignado', ['team','deliverDate']);
+        $completed = Quotation::selectedQuotations('llenada', ['deliver_date']);
 
-        $production = Order::selectedOrders('produccion', ['team','startTime']);
+        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
 
-        $terminated = Order::selectedOrders('finalizado', [
-            'team','pieces', 'startTime', 'endTime'
+        $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
+
+        $terminated = Quotation::selectedQuotations('finalizado', [
+            'team','orders', 'startTime', 'endTime'
         ]);
 
 
-        return view('orders.pending', compact('pending', 'authorized', 'production', 'terminated'));
+        return view('orders.pending', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
     }
 
     function production()
     {
 
-        $pending = Order::selectedOrders('pendiente', ['deliverDate']);
+        $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
 
-        $authorized = Order::selectedOrders('asignado', ['team','deliverDate']);
+        $completed = Quotation::selectedQuotations('llenada', ['deliver_date']);
 
-        $production = Order::selectedOrders('produccion', ['team','startTime']);
+        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
 
-        $terminated = Order::selectedOrders('finalizado', [
-            'team','pieces', 'startTime', 'endTime'
+        $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
+
+        $terminated = Quotation::selectedQuotations('finalizado', [
+            'team','orders', 'startTime', 'endTime'
         ]);
 
-        return view('orders.production', compact('pending', 'authorized', 'production', 'terminated'));
+        return view('orders.production', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
     }
 
     function operator(Request $request)
     {
-        $inProduction = Order::where('status', 'produccion')->where('team', 'R2')->first();
+        $inProduction = Quotation::where('status', 'produccion')->where('team', 'R2')->first();
 
         if($inProduction) {
 
-            $pending = Order::where('status', 'produccion')->where('team', 'R2')->first();
+            $pending = Quotation::where('status', 'produccion')->where('team', 'R2')->first();
 
             return view('orders.operator', compact('pending'));
             
         }
 
-        $pending = Order::where('status', 'asignado')->where('team', 'R2')->get([
-                'id', 'caliber','type', 'description', 'team', 'deliverDate'
+        $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
+                'id','type', 'description', 'deliver_date'
             ]);
         
         return view('orders.operatorList', compact('pending'));
@@ -62,8 +67,8 @@ class ListOrdersController extends Controller
 
     function cashier()
     {
-        $status = Order::where('status', '!=', 'pendiente')->get([
-            'quotation', 'client', 'id', 'status', 'description', 'team', 'deliverDate'
+        $status = Quotation::where('status', '!=', 'pendiente')->get([
+            'quotation', 'client', 'id', 'status', 'description', 'team', 'deliver_date'
         ]);
 
         return view('orders.cashier', compact('status'));

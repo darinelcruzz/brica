@@ -5,7 +5,7 @@
         <div class="col-md-9">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Nueva orden</h3>
+                    <h3 class="box-title">Nueva orden: {{ $quotation }}</h3>
                 </div>
 
                 <!-- form start -->
@@ -13,31 +13,11 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Field::number('quotation',
-                                ['tpl' => 'templates/withicon', 'step' => '1', 'min' => '1'], ['icon' => 'list']
-                            ) !!}
-                        </div>
-                        <div class="col-md-6">
                             {!! Field::select('type', 
                                 ['maquila' => 'Maquíla', 'produccion' => 'Producción'], null,
                                 ['tpl' => 'templates/withicon'], ['icon' => 'industry']) 
                             !!}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Field::number('order', $lastId +1 ,
-                                ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) 
-                            !!}
-                        </div>
-                        <div class="col-md-6">
-                            {!! Field::date('deliverDate',
-                                ['tpl' => 'templates/withicon'], ['icon' => 'calendar-check-o']) 
-                            !!}
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-6">
                             {!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                         </div>

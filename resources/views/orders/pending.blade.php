@@ -3,20 +3,24 @@
 @section('main-content')
 
     @include('table', ['rows' => $pending,
-            'header' => ['#', 'Cliente', 'Tipo', 'Descripción','Fecha entrega', 'Asignar'],
-            'color' => 'danger', 'title' => 'Órdenes pendientes', 'example' => '1',
+            'header' => ['#', 'Cliente', 'Descripción', 'Ordenes', 'Fecha entrega'],
+            'color' => 'danger', 'title' => 'Cotizaciones pendientes', 'example' => '1', 'collapsed' => 'collapsed'])
+
+    @include('table', ['rows' => $completed,
+            'header' => ['#', 'Cliente', 'Descripción', 'Ordenes', 'Fecha entrega', 'Asignar'],
+            'color' => 'danger', 'title' => 'Cotizaciones no asignadas', 'example' => '2',
             'extra' => 'templates/toassign'])
 
     @include('table', ['rows' => $authorized,
-            'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Fecha entrega'],
-            'color' => 'danger', 'title' => 'Órdenes en cola', 'example' => '2', 'collapsed' => 'collapsed'])
+            'header' => ['#', 'Cliente', 'Descripción','Ordenes', 'Equipo', 'Fecha entrega'],
+            'color' => 'danger', 'title' => 'Cotizaciones en cola', 'example' => '3', 'collapsed' => 'collapsed'])
 
     @include('table', ['rows' => $production,
-            'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Inicio',],
-            'color' => 'warning', 'title' => 'Órdenes en producción', 'example' => '3'])
+            'header' => ['#', 'Cliente', 'Descripción', 'Ordenes', 'Equipo', 'Inicio',],
+            'color' => 'warning', 'title' => 'Cotizaciones en producción', 'example' => '4'])
 
     @include('table', ['rows' => $terminated,
-                'header' => ['#', 'Cliente', 'Tipo', 'Descripción', 'Equipo', 'Piezas', 'Inicio', 'Final'],
-                'color' => 'success', 'title' => 'Órdenes finalizadas', 'example' => '4', 'collapsed' => 'collapsed'])
+                'header' => ['#', 'Cliente', 'Descripción', 'Ordenes', 'Equipo', 'Inicio', 'Final'],
+                'color' => 'success', 'title' => 'Cotizaciones finalizadas', 'example' => '5', 'collapsed' => 'collapsed'])
 
 @endsection

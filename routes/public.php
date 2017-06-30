@@ -42,6 +42,11 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::post('orden', [
+        'uses' => 'OrderController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('orden', [
         'uses' => 'OrderController@store',
         'as' => 'store'
     ]);
@@ -60,6 +65,7 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'uses' => 'ListOrdersController@production',
         'as' => 'production',
     ]);
+
 
     Route::get('operador', [
         'uses' => 'ListOrdersController@operator',
@@ -162,6 +168,24 @@ Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
 
     Route::get('/', [
         'uses' => 'ProviderController@show',
+        'as' => 'show'
+    ]);
+});
+
+// Productos
+Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
+    Route::get('crear', [
+        'uses' => 'ProductController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('crear', [
+        'uses' => 'ProductController@store',
+        'as' => 'store'
+    ]);
+
+    Route::get('/', [
+        'uses' => 'ProductController@show',
         'as' => 'show'
     ]);
 });

@@ -10,4 +10,9 @@ class Client extends Model
     	'name', 'address', 'phone', 
     	'email', 'contact', 'rfc', 'city'
     ];
+
+    function quotations()
+    {
+    	return $this->hasMany(Quotation::class);
+    }
 }

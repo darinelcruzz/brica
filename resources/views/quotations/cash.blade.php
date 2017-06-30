@@ -2,7 +2,7 @@
 
 @section('main-content')
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-5">
 			<div class="box box-solid box-primary">
 		        <div class="box-header with-border">
 		            <h3 class="box-title">Buscar</h3>

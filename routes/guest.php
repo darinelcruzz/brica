@@ -12,11 +12,8 @@ Route::get('/productos', function () {
 Route::get('/home', 'HomeController@index');
 
 Route::get('tests', function() {
-    $test = Quotation::find(11);
-    $products = unserialize($test->products);
-    $quantities = $products['quantity'];
-    $materials = $products['material'];
-    return view('tests', compact('quantities', 'materials'));
+    $test = Quotation::first();
+    return view('tests', compact('test'));
 });
 
 Route::get('duda', function() {
