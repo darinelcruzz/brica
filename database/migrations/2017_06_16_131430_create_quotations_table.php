@@ -18,6 +18,7 @@ class CreateQuotationsTable extends Migration
             $table->string('type')->nullable();
             $table->string('client')->nullable();
             $table->string('status')->nullable();
+            $table->string('description')->nullable();
             $table->float('amount')->nullable();
             $table->string('date_payment')->nullable();
             

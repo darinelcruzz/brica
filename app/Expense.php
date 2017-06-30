@@ -8,8 +8,8 @@ class Expense extends Model
 {
     protected $fillable = ['description', 'amount', 'date', 'user'];
 
-    public function scopeTotalExpenses($query)
+    public function scopeTotalExpenses($query, $date)
 	{
-		return $query->sum('amount');
+		return $query->where('date', $date)->sum('amount');
 	}
 }

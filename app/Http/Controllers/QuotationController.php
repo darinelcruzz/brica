@@ -49,6 +49,7 @@ class QuotationController extends Controller
     {
         $folio = Quotation::find($request->id);
         $folio->status = 'pagado';
+        $folio->date_payment = Date::now()->format('Y-m-d');
         $folio->save();
 
         return redirect(route('quotation.show'));
@@ -57,19 +58,20 @@ class QuotationController extends Controller
     function cash(Request $request)
     {
         $date = $request->date;
+        $date = $date == 0 ? Date::now() : $date;
+
         $paid = Quotation::where('date_payment',$date)->where('status', 'pagado')->get([
             'id', 'client', 'type', 'amount']);
 
         $totalP = Quotation::totalPaid($date);
         $totalP = $paid->isEmpty() ? '0': $totalP;
 
-        $expenses = Expense::select('description', 'amount')->get();
+        $expenses = Expense::where('date',$date)->select('description', 'amount')->get();
 
-        $totalE = Expense::totalExpenses();
+        $totalE = Expense::totalExpenses($date);
         $totalE = $expenses->isEmpty() ? '0': $totalE;
 
-        $today = $date == 0 ? Date::now() : $date;
-
-        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'today'));
+        $total = $totalP-$totalE;
+        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
     }
 }

@@ -54,9 +54,13 @@ return [
         'title' => 'Administración',
         'icon' => 'fa fa-line-chart',
         'submenu' => [
-            'create' => [
+            'cash' => [
                 'title' => 'Caja',
                 'route' => 'quotation.cash'
+            ],
+            'expenses' => [
+                'title' => 'Gastos',
+                'route' => 'expense.create'
             ],
         ]
     ],

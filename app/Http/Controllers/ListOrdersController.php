@@ -26,9 +26,7 @@ class ListOrdersController extends Controller
 
     function production()
     {
-        $this->validate($request, [
-            'team' => 'required',
-            ]);
+
         $pending = Order::selectedOrders('pendiente', ['deliverDate']);
 
         $authorized = Order::selectedOrders('asignado', ['team','deliverDate']);

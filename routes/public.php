@@ -117,6 +117,18 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
 
 });
 
+//Gastos
+Route::group(['prefix' => 'gastos', 'as' => 'expense.'], function () {
+    Route::get('/', [
+        'uses' => 'ExpenseController@create',
+        'as' => 'create'
+    ]);
+        Route::post('/', [
+        'uses' => 'ExpenseController@store',
+        'as' => 'store'
+    ]);
+});
+
 
 // Clientes
 Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {

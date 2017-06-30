@@ -34,23 +34,6 @@
                       </tr>
                     @endforeach
                 </tbody>
-
-                @if (isset($total))
-                    <tfooter>
-                        <tr>
-                        @foreach($header as $th)
-                            @if($loop->last)
-                               <td>$ {{ $total }}</td>
-                            @elseif($loop->iteration == 3)
-                                <td><b>Total:</b></td>
-                            @else
-                                <td></td>
-                            @endif
-                        @endforeach
-                        </tr>
-                    </tfooter>
-                @endif
-
             </table>
         </div>
 

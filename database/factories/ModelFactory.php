@@ -65,6 +65,6 @@ $factory->define(App\Quotation::class, function (Faker\Generator $faker) {
     return [
         'type' => $types[array_rand($types)],
         'status' => $status[array_rand($status)],
-        'amount' => $faker->numberBetween(100,30000),
+        'amount' => $faker->numberBetween(100,200),
     ];
 });

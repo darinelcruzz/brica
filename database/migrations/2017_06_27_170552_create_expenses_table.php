@@ -14,6 +14,7 @@ class CreateExpensesTable extends Migration
 
     public function up()
     {
+        $date = Date::now();
         Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
 
