@@ -27,7 +27,33 @@ class QuotationController extends Controller
 
     function store(Request $request)
     {
-        Quotation::create($request->all());
+        $this->validate($request, [
+            'client' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'quantity' => 'required'
+    	]);
+
+        $quotation = Quotation::create([
+            'client' => $request->client,
+            'type' => $request->type,
+            'description' => $request->description,
+            'status' => 'pendiente',
+            'amount' => $request->total,
+        ]);
+
+        $products = [
+            'quantity' => [],
+            'material' => []
+        ];
+
+        for ($i=0; $i < count($request->quantity); $i++) {
+            array_push($products['quantity'], $request->quantity[$i]);
+            array_push($products['material'], $request->material[$i]);
+        }
+
+        $quotation->products = serialize($products);
+        $quotation->save();
 
         return redirect(route('quotation.show'));
     }

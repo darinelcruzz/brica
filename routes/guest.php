@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use App\Quotation;
 
 Auth::routes();
 
@@ -11,7 +12,11 @@ Route::get('/productos', function () {
 Route::get('/home', 'HomeController@index');
 
 Route::get('tests', function() {
-    return view('tests');
+    $test = Quotation::find(11);
+    $products = unserialize($test->products);
+    $quantities = $products['quantity'];
+    $materials = $products['material'];
+    return view('tests', compact('quantities', 'materials'));
 });
 
 Route::get('duda', function() {
