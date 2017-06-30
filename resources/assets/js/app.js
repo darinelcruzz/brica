@@ -29,7 +29,7 @@ const app = new Vue({
     el: '#app',
     data: {
         entries: 1,
-        type: '',
+        type: 'produccion',
         products: [],
         product_id: 1,
         quantity: 0,

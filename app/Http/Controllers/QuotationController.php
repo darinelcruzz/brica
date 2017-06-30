@@ -39,20 +39,23 @@ class QuotationController extends Controller
             'type' => $request->type,
             'description' => $request->description,
             'status' => 'pendiente',
-            'amount' => $request->total,
+            'amount' => $request->amount
         ]);
 
-        $products = [
-            'quantity' => [],
-            'material' => []
-        ];
+        if($request->type == 'terminado') {
+            $products = [
+                'quantity' => [],
+                'material' => []
+            ];
 
-        for ($i=0; $i < count($request->quantity); $i++) {
-            array_push($products['quantity'], $request->quantity[$i]);
-            array_push($products['material'], $request->material[$i]);
+            for ($i=0; $i < count($request->quantity); $i++) {
+                array_push($products['quantity'], $request->quantity[$i]);
+                array_push($products['material'], $request->material[$i]);
+            }
+
+            $quotation->products = serialize($products);
         }
 
-        $quotation->products = serialize($products);
         $quotation->save();
 
         return redirect(route('quotation.show'));
