@@ -23794,7 +23794,7 @@ var app = new Vue({
 /* 20 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: dyld: Library not loaded: /usr/local/opt/libpng/lib/libpng16.16.dylib\n  Referenced from: /Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/mozjpeg/vendor/cjpeg\n  Reason: image not found\n\n    at Promise.all.then.arr (/Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/execa/index.js:201:11)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:169:7)\n    at runLoaders (/Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/webpack/lib/NormalModule.js:192:19)\n    at /Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Applications/XAMPP/xamppfiles/htdocs/brica/node_modules/img-loader/index.js:45:31\n    at <anonymous>");
 
 /***/ }),
 /* 21 */
@@ -25565,28 +25565,28 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.chat-log .chat-message:nth-child(even) {\r\n    background-color: #ccc;\n}\n.empty {\r\n    padding: 1 rem;\r\n    text-align: center;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat-log .chat-message:nth-child(even) {\n    background-color: #ccc;\n}\n.empty {\n    padding: 1 rem;\n    text-align: center;\n}\n", ""]);
 
 /***/ }),
 /* 61 */
@@ -25607,14 +25607,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.chat-message {\r\n    padding: 1rem;\n}\n.chat-message > p {\r\n    margin-bottom: .5rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat-message {\n    padding: 1rem;\n}\n.chat-message > p {\n    margin-bottom: .5rem;\n}\n", ""]);
 
 /***/ }),
 /* 65 */
@@ -43874,7 +43874,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ChatComposer.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ChatComposer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatComposer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43912,7 +43912,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ChatLog.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ChatLog.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatLog.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43950,7 +43950,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ChatMessage.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ChatMessage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatMessage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43988,7 +43988,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ConditionedFields.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ConditionedFields.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ConditionedFields.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44022,7 +44022,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44060,7 +44060,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ProductRow.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ProductRow.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ProductRow.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44098,7 +44098,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\ProductTable.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/ProductTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ProductTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44136,7 +44136,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\auth\\EmailResetPasswordForm.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/auth/EmailResetPasswordForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] EmailResetPasswordForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44174,7 +44174,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\auth\\LoginForm.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/auth/LoginForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LoginForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44212,7 +44212,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\auth\\RegisterForm.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/auth/RegisterForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] RegisterForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44250,7 +44250,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\brica\\resources\\assets\\js\\components\\auth\\ResetPasswordForm.vue"
+Component.options.__file = "/Applications/XAMPP/xamppfiles/htdocs/brica/resources/assets/js/components/auth/ResetPasswordForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ResetPasswordForm.vue: functional components are not supported with templates, they should use render functions.")}
 
