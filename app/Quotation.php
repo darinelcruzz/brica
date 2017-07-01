@@ -20,7 +20,7 @@ class Quotation extends Model
 
 	public function scopeTotalPaid($query, $date)
 	{
-		return $query->where('date_payment', $date)->where('status', 'pagado')->sum('amount');
+		return $query->where('date_payment', $date)->where('status', '!=', 'pendiente')->sum('amount');
 	}
 
 	public function scopeSelectedQuotations($query, $status, $extra = [])

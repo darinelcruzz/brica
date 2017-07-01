@@ -46,7 +46,7 @@ class OrderController extends Controller
 
 	function finish(Request $request)
     {
-    	$order = Quotation::find($request->id);
+    	$order = Quotation::find($request->quotation);
 		$order->status = 'finalizado';
 		$order->endTime = Carbon::now()->format('h:i:s a');
 		$order->save();

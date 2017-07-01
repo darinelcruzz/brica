@@ -11,7 +11,7 @@ class ListOrdersController extends Controller
 
     function pending()
     {
-        $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
+        $pending = Quotation::selectedQuotations('autorizado', ['deliver_date']);
 
         $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
 
@@ -30,7 +30,7 @@ class ListOrdersController extends Controller
     function production()
     {
 
-        $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
+        $pending = Quotation::selectedQuotations('autorizado', ['deliver_date']);
 
         $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
 
@@ -51,7 +51,7 @@ class ListOrdersController extends Controller
 
         if($inProduction) {
 
-            $pending = Order::where('quotation', $inProduction->id)->get(['id', 'type', 'description']);
+            $pending = Order::where('quotation', $inProduction->id)->get(['id', 'type', 'description', 'quotation']);
 
             return view('orders.operatorListOrders', compact('pending'));
 

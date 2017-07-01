@@ -54,9 +54,4 @@
             </div>
         </div>
 
-    {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
-        <input type="hidden" name="id" value="{!! $order->id !!}">
-        {!! Form::submit('Terminado', ['class' => 'btn btn-primary btn-block']) !!}
-    {!! Form::close() !!}
-
 @endsection

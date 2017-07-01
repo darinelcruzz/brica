@@ -79,7 +79,7 @@ class QuotationController extends Controller
         $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get([
             'id', 'client', 'amount']);
 
-        $production = Quotation::where('status', 'produccion');
+        $production = Quotation::where(['type' => 'produccion', 'status' => 'pendiente'])->get();
 
         $paid = Quotation::where('status', 'pagado')->get([
             'id', 'client', 'type', 'amount', 'date_payment']);
@@ -90,7 +90,12 @@ class QuotationController extends Controller
     public function pay(Request $request)
     {
         $folio = Quotation::find($request->id);
-        $folio->status = 'pagado';
+        if($folio->type == 'terminado') {
+            $folio->status = 'pagado';
+        } else {
+            $folio->status = 'autorizado';
+        }
+
         $folio->date_payment = Date::now()->format('Y-m-d');
         $folio->save();
 
@@ -102,7 +107,7 @@ class QuotationController extends Controller
         $date = $request->date;
         $date = $date == 0 ? Date::now() : $date;
 
-        $paid = Quotation::where('date_payment',$date)->where('status', 'pagado')->get([
+        $paid = Quotation::where('date_payment',$date)->where('status', '!=', 'pendiente')->get([
             'id', 'client', 'type', 'amount']);
 
         $totalP = Quotation::totalPaid($date);

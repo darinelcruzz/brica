@@ -11,7 +11,7 @@
 					<div class="box-body">
 						<div class="row">
 				            <div class="col-md-10 col-md-offset-1">
-								{!! Field::date('date', $date,['tpl' => 'templates/withicon'], 
+								{!! Field::date('date', $date,['tpl' => 'templates/withicon'],
 								['icon' => 'calendar-check-o']) !!}
 							</div>
 						</div>
@@ -38,6 +38,7 @@
   			</div>
 		</div>
 	</div>
+	
 	<div class="row">
 		<div class="col-md-6">
 			<div class="row">
