@@ -131,6 +131,7 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->startTime }}</td>
+                  <td>{{ $row->endTime }}</td>
               </tr>
             @endforeach
         </template>
