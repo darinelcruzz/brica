@@ -33,66 +33,60 @@ Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
     ]);
 });
 
-// Ordenes
-Route::group(['prefix' => 'ordenes', 'as' => 'order.'], function () {
-    Route::get('crear', [
+// Producción
+Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
+    
+    Route::get('orden', [
         'uses' => 'OrderController@create',
         'as' => 'create'
     ]);
 
-    Route::post('crear', [
+    Route::post('orden', [
+        'uses' => 'OrderController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('orden', [
         'uses' => 'OrderController@store',
         'as' => 'store'
     ]);
 
-    Route::get('/', [
-        'uses' => 'ListOrdersController@show',
-        'as' => 'show'
+    Route::get('gerente', [
+        'uses' => 'ListOrdersController@pending',
+        'as' => 'pending'
     ]);
 
-    // Producción
-    Route::group(['prefix' => 'produccion'], function () {
+    Route::post('gerente', [
+        'uses' => 'OrderController@assign',
+        'as' => 'assign'
+    ]);
 
-        Route::get('gerente', [
-            'uses' => 'ListOrdersController@pending',
-            'as' => 'pending'
-        ]);
+    Route::get('ingenieros', [
+        'uses' => 'ListOrdersController@production',
+        'as' => 'production',
+    ]);
 
-        Route::post('gerente', [
-            'uses' => 'OrderController@authorizes',
-            'as' => 'authorize'
-        ]);
 
-        Route::get('ingenieros', [
-            'uses' => 'ListOrdersController@production',
-            'as' => 'production',
-        ]);
+    Route::get('operador', [
+        'uses' => 'ListOrdersController@operator',
+        'as' => 'operator'
+    ]);
 
-        Route::get('operador', [
-            'uses' => 'ListOrdersController@operator',
-            'as' => 'operator'
-        ]);
+    Route::get('operador/lista', [
+        'uses' => 'ListOrdersController@operator',
+        'as' => 'operatorList'
+    ]);
 
-        Route::get('operador/lista', [
-            'uses' => 'ListOrdersController@operator',
-            'as' => 'operatorList'
-        ]);
+    Route::post('iniciar', [
+        'uses' => 'OrderController@start',
+        'as' => 'start'
+    ]);
 
-        Route::post('iniciar', [
-            'uses' => 'OrderController@start',
-            'as' => 'start'
-        ]);
+    Route::post('terminar', [
+        'uses' => 'OrderController@finish',
+        'as' => 'finish'
+    ]);
 
-        Route::post('terminar', [
-            'uses' => 'OrderController@finish',
-            'as' => 'finish'
-        ]);
-
-        Route::get('caja', [
-            'uses' => 'ListOrdersController@cashier',
-            'as' => 'cashier'
-        ]);
-    });
 });
 
 // Cotizaciones
@@ -116,20 +110,31 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'uses' => 'QuotationController@pay',
         'as' => 'pay'
     ]);
+
+    Route::get('cash', [
+        'uses' => 'QuotationController@cash',
+        'as' => 'cash'
+    ]);
+
+    Route::post('cash', [
+        'uses' => 'QuotationController@cash',
+        'as' => 'cash'
+    ]);
+
 });
 
-// Ventas
-Route::group(['prefix' => 'ventas', 'as' => 'sale.'], function () {
-    Route::get('crear', [
-        'uses' => 'SaleController@create',
+//Gastos
+Route::group(['prefix' => 'gastos', 'as' => 'expense.'], function () {
+    Route::get('/', [
+        'uses' => 'ExpenseController@create',
         'as' => 'create'
     ]);
-
-    Route::post('crear', [
-        'uses' => 'SaleController@prepare',
-        'as' => 'prepare'
+        Route::post('/', [
+        'uses' => 'ExpenseController@store',
+        'as' => 'store'
     ]);
 });
+
 
 // Clientes
 Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
@@ -163,6 +168,24 @@ Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
 
     Route::get('/', [
         'uses' => 'ProviderController@show',
+        'as' => 'show'
+    ]);
+});
+
+// Productos
+Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
+    Route::get('crear', [
+        'uses' => 'ProductController@create',
+        'as' => 'create'
+    ]);
+
+    Route::post('crear', [
+        'uses' => 'ProductController@store',
+        'as' => 'store'
+    ]);
+
+    Route::get('/', [
+        'uses' => 'ProductController@show',
         'as' => 'show'
     ]);
 });

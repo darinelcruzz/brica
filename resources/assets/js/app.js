@@ -21,11 +21,15 @@ Vue.component('app-select', require('./components/ConditionedFields.vue'));
 Vue.component('product-table', require('./components/ProductTable.vue'));
 Vue.component('product-row', require('./components/ProductRow.vue'));
 
+Vue.component('row-woc', require('./components/lte/SingleElementRow.vue'));
+Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
+
 
 const app = new Vue({
     el: '#app',
     data: {
         entries: 1,
+        type: 'produccion',
         products: [],
         product_id: 1,
         quantity: 0,

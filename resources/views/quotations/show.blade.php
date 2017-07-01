@@ -3,9 +3,9 @@
 @section('main-content')
 
     @include('table', ['rows' => $terminated,
-        'header' => ['#', 'Cliente','Monto', 'Abonado', 'Pagar'],
+        'header' => ['#', 'Cliente','Monto', 'Pagar'],
         'color' => 'danger', 'title' => 'Producto terminado', 'example' => '1',
-        'extra' => 'templates/prepay_form'])
+        'extra' => 'templates/topay'])
 
       @include('table', ['rows' => $paid,
         'header' => ['#', 'Cliente','Monto', 'Fecha'],

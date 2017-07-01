@@ -37,8 +37,6 @@ $factory->define(App\Client::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
-    $status = array('pendiente');
-    $teams = array('R2');
     $caliber = array('16', '15', '14', '12', '10', '3/16"', '1/4"');
     $types = array('produccion', 'maquila');
     $design = array('nuevo', 'existente');
@@ -46,7 +44,6 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
 
     return [
         'quotation' => $faker->regexify('[1-9]{1}'),
-        'team' => $teams[array_rand($teams)],
         'description' => $faker->text(50),
         'type' => $types[array_rand($types)],
         'design' => $design[array_rand($design)],
@@ -56,7 +53,6 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
         'height' => $faker->randomFloat(2, 0, 1),
         'length' => $faker->randomFloat(2, 0, 1),
         'width' => $faker->randomFloat(2, 0, 1),
-        'status' => $status[array_rand($status)],
     ];
 });
 
@@ -67,6 +63,14 @@ $factory->define(App\Quotation::class, function (Faker\Generator $faker) {
     return [
         'type' => $types[array_rand($types)],
         'status' => $status[array_rand($status)],
-        'amount' => $faker->numberBetween(100,30000),
+        'amount' => $faker->numberBetween(100,200),
+    ];
+});
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    $types = array('terminado', 'produccion','hola', 'cola');
+
+    return [
+        'name' => $types[array_rand($types)],
     ];
 });

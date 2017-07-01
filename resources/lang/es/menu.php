@@ -16,51 +16,51 @@ return [
         ]
     ],
 
-    'orders' => [
-        'title' => 'Órdenes',
-        'icon' => 'fa fa-sticky-note',
+    'quotations' => [
+        'title' => 'Cotizaciones',
+        'icon' => 'fa fa-calculator',
         'submenu' => [
             'create' => [
-                'title' => 'Crear O. Producción',
-                'route' => 'order.create'
+                'title' => 'Crear',
+                'route' => 'quotation.create'
             ],
-            'history' => [
-                'title' => 'Historial',
-                'route' => 'order.show'
+            'show' => [
+                'title' => 'Cajera',
+                'route' => 'quotation.show'
+            ],
+        ]
+    ],
+
+    'orders' => [
+        'title' => 'Producción',
+        'icon' => 'fa fa-industry',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear Orden',
+                'route' => 'production.create'
             ],
             'pending' => [
                 'title' => 'Gerente',
-                'route' => 'order.pending'
+                'route' => 'production.pending'
             ],
             'status' => [
-                'title' => 'Status',
-                'route' => 'order.production'
+                'title' => 'Ingeniero',
+                'route' => 'production.production'
             ],
         ]
     ],
 
-    'sales' => [
-        'title' => 'Ventas',
-        'icon' => 'fa fa-money',
-        'submenu' => [
-            'status' => [
-                'title' => 'Status Ordenes',
-                'route' => 'order.cashier'
-            ],
-        ]
-    ],
-
-    'admin' => [
+    'administration' => [
         'title' => 'Administración',
         'icon' => 'fa fa-line-chart',
         'submenu' => [
-            'createP' => [
-                'title' => 'Diario',
-                'route' => 'sale.create'
+            'cash' => [
+                'title' => 'Caja',
+                'route' => 'quotation.cash'
             ],
-            'status' => [
-                'title' => 'Status',
-                'route' => 'order.cashier'
+            'expenses' => [
+                'title' => 'Gastos',
+                'route' => 'expense.create'
             ],
         ]
     ],
@@ -113,6 +113,6 @@ return [
     'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-industry',
-        'route' => 'order.operator',
+        'route' => 'production.operator',
     ],
 ];

@@ -5,26 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Client;
+use App\Quotation;
 use Carbon\Carbon;
 
 class OrderController extends Controller
 {
 	public function create()
 	{
-		$lastId = Order::all()->last()->id;
+        $quotation = $request->id;
         $today = Carbon::now();
 
-		return view('orders.create', compact('lastId', 'today'));
+		return view('orders.create', compact('quotation', 'today'));
 	}
 
 	public function store(Request $request)
     {
     	$this->validate($request, [
-            'quotation' => 'required',
             'type' => 'required',
-            'deliverDate' => 'required',
             'description' => 'required',
-            'team' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
             'pieces' => 'required',           
@@ -32,37 +30,48 @@ class OrderController extends Controller
 
     	Order::create($request->all());
 
-    	return redirect(route('order.production'));
+    	return redirect(route('production.production'));
     }
 
 
 	function start(Request $request)
     {
-    	$order = Order::find($request->id);
+    	$order = Quotation::find($request->id);
 		$order->status = 'produccion';
 		$order->startTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.operator'));
+    	return redirect(route('production.operator'));
     }
 
 	function finish(Request $request)
     {
-    	$order = Order::find($request->id);
+    	$order = Quotation::find($request->id);
 		$order->status = 'finalizado';
 		$order->endTime = Carbon::now()->format('h:i:s a');
 		$order->save();
 
-    	return redirect(route('order.operator'));
+    	return redirect(route('production.operator'));
     }
 
-    function authorizes(Request $request)
+    function assign(Request $request)
     {
-        $order = Order::find($request->id);
-        $order->status = 'autorizado';
+        $this->validate($request, [
+            'team' => 'required',
+            ]); 
+
+        $order = Quotation::find($request->id);
+        $order->status = 'asignado';
+        $order->team = $request->team;
         $order->startTime = Carbon::now()->format('h:i:s a');
         $order->save();
 
-        return redirect(route('order.pending'));
-    } 
+        return redirect(route('production.pending'));
+    }
+
+    function add(Request $request)
+    {
+        $quotation = $request->id;
+        return view('production.create', compact('quotation'));
+    }
 }

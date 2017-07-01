@@ -54,7 +54,7 @@
             </div> 
         </div>
 
-    {!! Form::open(['method' => 'POST', 'route' => 'order.finish']) !!}
+    {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
         <input type="hidden" name="id" value="{!! $pending->id !!}">
         {!! Form::submit('Terminado', ['class' => 'btn btn-primary btn-block']) !!}
     {!! Form::close() !!}

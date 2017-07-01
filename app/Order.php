@@ -20,7 +20,7 @@ class Order extends Model
 
     public function scopeSelectedOrders($query, $status, $extra = [])
     {
-        $select = ['id', 'client', 'type', 'description', 'team'];
+        $select = ['id', 'client', 'type', 'description'];
 
         foreach($extra as $col) {
             array_push($select, $col);

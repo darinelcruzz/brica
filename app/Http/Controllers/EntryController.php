@@ -16,7 +16,6 @@ class EntryController extends Controller
     {
     	$this->validate($request, [
     		'quotation' => 'required',
-    		'date' => 'required',
     		'provider' => 'required',
     		'amount' => 'required',
     		'items' => 'required',

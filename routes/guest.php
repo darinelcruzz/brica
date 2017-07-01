@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use App\Quotation;
 
 Auth::routes();
 
@@ -11,7 +12,8 @@ Route::get('/productos', function () {
 Route::get('/home', 'HomeController@index');
 
 Route::get('tests', function() {
-    return view('tests');
+    $test = Quotation::first();
+    return view('tests', compact('test'));
 });
 
 Route::get('duda', function() {

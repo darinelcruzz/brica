@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Date\Date;
 use App\Client;
 use App\Quotation;
+use App\Expense;
 
 class QuotationController extends Controller
 {
@@ -25,7 +27,36 @@ class QuotationController extends Controller
 
     function store(Request $request)
     {
-        Quotation::create($request->all());
+        $this->validate($request, [
+            'client' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'quantity' => 'required'
+    	]);
+
+        $quotation = Quotation::create([
+            'client' => $request->client,
+            'type' => $request->type,
+            'description' => $request->description,
+            'status' => 'pendiente',
+            'amount' => $request->amount
+        ]);
+
+        if($request->type == 'terminado') {
+            $products = [
+                'quantity' => [],
+                'material' => []
+            ];
+
+            for ($i=0; $i < count($request->quantity); $i++) {
+                array_push($products['quantity'], $request->quantity[$i]);
+                array_push($products['material'], $request->material[$i]);
+            }
+
+            $quotation->products = serialize($products);
+        }
+
+        $quotation->save();
 
         return redirect(route('quotation.show'));
     }
@@ -33,30 +64,43 @@ class QuotationController extends Controller
     function show()
     {
         $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get([
-            'id', 'client', 'amount', 'payment']);
+            'id', 'client', 'amount']);
 
         $production = Quotation::where('status', 'produccion');
 
         $paid = Quotation::where('status', 'pagado')->get([
-            'id', 'client', 'amount','updated_at']);
+            'id', 'client', 'type', 'amount']);
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));
     }
 
     public function pay(Request $request)
     {
-        $this->validate($request, [
-            'payment' => 'required',
-        ]);
-
         $folio = Quotation::find($request->id);
-        $folio->payment = $folio->payment + $request->payment;
-        if($folio->payment >= $folio->amount)
-        {
-            $folio->status = 'pagado';
-        }
+        $folio->status = 'pagado';
+        $folio->date_payment = Date::now()->format('Y-m-d');
         $folio->save();
 
         return redirect(route('quotation.show'));
+    }
+
+    function cash(Request $request)
+    {
+        $date = $request->date;
+        $date = $date == 0 ? Date::now() : $date;
+
+        $paid = Quotation::where('date_payment',$date)->where('status', 'pagado')->get([
+            'id', 'client', 'type', 'amount']);
+
+        $totalP = Quotation::totalPaid($date);
+        $totalP = $paid->isEmpty() ? '0': $totalP;
+
+        $expenses = Expense::where('date',$date)->select('description', 'amount')->get();
+
+        $totalE = Expense::totalExpenses($date);
+        $totalE = $expenses->isEmpty() ? '0': $totalE;
+
+        $total = $totalP-$totalE;
+        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
     }
 }

@@ -1,8 +1,8 @@
 <td>
-    {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
+    {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
         <input type="hidden" name="id" value="{{ $id }}">
         <button type="submit" name="button" class="btn btn-success">
-            <i class="fa fa-check"></i>
+            <i class="fa fa-dollar"></i>
         </button>
     {!! Form::close() !!}
 </td>
