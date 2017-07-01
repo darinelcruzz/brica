@@ -81,7 +81,7 @@ class QuotationController extends Controller
 
         $production = Quotation::where(['type' => 'produccion', 'status' => 'pendiente'])->get();
 
-        $paid = Quotation::where('status', 'pagado')->get([
+        $paid = Quotation::where('status', '!=', 'pendiente')->get([
             'id', 'client', 'type', 'amount', 'date_payment']);
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));

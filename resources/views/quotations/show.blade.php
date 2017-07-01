@@ -68,6 +68,7 @@
             <tr>
                 <th>Cotización</th>
                 <th>Cliente</th>
+                <th>Tipo</th>
                 <th>Monto</th>
                 <th>Fecha</th>
             </tr>
@@ -78,6 +79,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->type }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>{{ $row->date_payment }}</td>
               </tr>

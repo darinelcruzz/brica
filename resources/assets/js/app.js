@@ -25,6 +25,7 @@ Vue.component('row-woc', require('./components/lte/SingleElementRow.vue'));
 Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
 
 Vue.component('data-table', require('./components/lte/DataTable.vue'));
+Vue.component('data-table-com', require('./components/lte/SmallDataTable.vue'));
 
 
 const app = new Vue({
