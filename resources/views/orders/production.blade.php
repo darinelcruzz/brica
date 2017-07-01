@@ -1,7 +1,6 @@
 @extends('admin')
 
 @section('main-content')
-
     <data-table col="col-md-12" title="Cotizaciones pendientes" example="example1">
         <template slot="header">
             <tr>
@@ -32,12 +31,27 @@
         </template>
     </data-table>
 
-    <div class="row">
-        @include('table', ['rows' => $completed,
-        		'header' => ['#', 'Cliente', 'Descripción', 'Fecha entrega'],
-                'color' => 'danger', 'title' => 'Cotizaciones no asignadas', 'example' => '2', 'collapsed' => 'collapsed'])
+    <data-table col="col-md-12" title="Cotizaciones no asignadas" example="example2">
+        <template slot="header">
+            <tr>
+                <th>Cotización</th>
+                <th>Cliente</th>
+                <th>Descripción</th>
+                <th>Entrega</th>
+            </tr>
+        </template>
 
-    </div>
+        <template slot="body">
+            @foreach($completed as $row)
+              <tr>
+                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->description }}</td>
+                  <td>{{ $row->deliver_date }}</td>
+              </tr>
+            @endforeach
+        </template>
+    </data-table>
 
     <div class="row">
         @include('table', ['rows' => $authorized,

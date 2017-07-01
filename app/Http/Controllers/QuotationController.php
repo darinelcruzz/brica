@@ -71,7 +71,7 @@ class QuotationController extends Controller
 
         $quotation = Quotation::create($request->all());
 
-        return redirect(route('quotation.show'));
+        return redirect(route('production.production'));
     }
 
     function show()
@@ -82,7 +82,7 @@ class QuotationController extends Controller
         $production = Quotation::where('status', 'produccion');
 
         $paid = Quotation::where('status', 'pagado')->get([
-            'id', 'client', 'type', 'amount']);
+            'id', 'client', 'type', 'amount', 'date_payment']);
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));
     }

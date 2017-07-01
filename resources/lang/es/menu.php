@@ -39,10 +39,6 @@ return [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
-            'create' => [
-                'title' => 'Crear Orden',
-                'route' => 'production.create'
-            ],
             'pending' => [
                 'title' => 'Gerente',
                 'route' => 'production.pending'
