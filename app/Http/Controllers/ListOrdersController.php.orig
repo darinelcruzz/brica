@@ -53,16 +53,27 @@ class ListOrdersController extends Controller
 
             $pending = Order::where('quotation', $inProduction->id)->get(['id', 'type', 'description']);
 
+<<<<<<< HEAD
             return view('orders.operatorListOrders', compact('pending'));
+            
+=======
+            return view('orders.operator', compact('pending'));
 
+>>>>>>> urgente
         }
 
         $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
                 'id','type', 'description', 'deliver_date'
             ]);
+<<<<<<< HEAD
         
         return view('orders.operatorListQuotations', compact('pending'));
+        
+=======
 
+        return view('orders.operatorList', compact('pending'));
+
+>>>>>>> urgente
     }
 
     function cashier()

@@ -22,41 +22,54 @@ class QuotationController extends Controller
         $lastQ = Quotation::all()->last();
         $lastQ = empty($lastQ) ? 0: $lastQ->id;
 
-        return view('quotations.create', compact('products', 'clients', 'lastQ'));
+        return view('quotations.products', compact('products', 'clients', 'lastQ'));
+    }
+
+    function make()
+    {
+        $clients = Client::pluck('name', 'id')->toArray();
+
+        $lastQ = Quotation::all()->last();
+        $lastQ = empty($lastQ) ? 0: $lastQ->id;
+
+        return view('quotations.production', compact('clients', 'lastQ'));
     }
 
     function store(Request $request)
     {
-        $this->validate($request, [
-            'client' => 'required',
-            'type' => 'required',
-            'description' => 'required',
-            'quantity' => 'required'
-    	]);
+        $this->validate($request, ['client' => 'required','description' => 'required']);
 
         $quotation = Quotation::create([
-            'client' => $request->client,
             'type' => $request->type,
+            'client' => $request->client,
+            'status' => $request->status,
             'description' => $request->description,
-            'status' => 'pendiente',
-            'amount' => $request->amount
+            'amount' => $request->amount,
         ]);
 
-        if($request->type == 'terminado') {
-            $products = [
-                'quantity' => [],
-                'material' => []
-            ];
+        $products = [];
 
-            for ($i=0; $i < count($request->quantity); $i++) {
-                array_push($products['quantity'], $request->quantity[$i]);
-                array_push($products['material'], $request->material[$i]);
+        for ($i=0; $i < count($request->quantity); $i++) {
+            $product = [];
+            if($request->quantity[$i] > 0) {
+                $product['quantity'] =  $request->quantity[$i];
+                $product['material'] =  $request->material[$i];
+                array_push($products, $product);
             }
-
-            $quotation->products = serialize($products);
         }
 
+        $quotation->products = serialize($products);
+
         $quotation->save();
+
+        return redirect(route('quotation.show'));
+    }
+
+    function save(Request $request)
+    {
+        $this->validate($request, ['client' => 'required','description' => 'required']);
+
+        $quotation = Quotation::create($request->all());
 
         return redirect(route('quotation.show'));
     }

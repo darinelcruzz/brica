@@ -8,19 +8,19 @@
             </thead>
             <tbody>
                 <product-row :products="products" :num="1"
-                    @addRow="addRow" @subtotal="addToTotal">
+                    @subtotal="addToTotal">
                 </product-row>
-                <product-row v-if="articles[1]" :products="products" :num="2"
-                    @addRow="addRow" @removeRow="removeRow" @subtotal="addToTotal">
+                <product-row :products="products" :num="2"
+                    @subtotal="addToTotal">
                 </product-row>
-                <product-row v-if="articles[2]" :products="products" :num="3"
-                     @addRow="addRow" @removeRow="removeRow" @subtotal="addToTotal">
+                <product-row :products="products" :num="3"
+                     @subtotal="addToTotal">
                 </product-row>
-                <product-row v-if="articles[3]" :products="products" :num="4"
-                    @addRow="addRow" @removeRow="removeRow" @subtotal="addToTotal">
+                <product-row :products="products" :num="4"
+                    @subtotal="addToTotal">
                 </product-row>
-                <product-row v-if="articles[4]" :products="products" :num="5"
-                    @subtotal="addToTotal" @removeRow="removeRow">
+                <product-row :products="products" :num="5"
+                    @subtotal="addToTotal">
                 </product-row>
             </tbody>
             <tfoot>
@@ -51,7 +51,6 @@ export default {
                 { name:'Material', width: 'width: 30%' },
                 { name:'Precio unitario', width: 'width: 15%' },
                 { name:'Importe', width: 'width: 20%' },
-                { name: 'Acción', width: 'width: 5%'}
             ],
             articles: [
                 1, 0, 0, 0, 0
@@ -66,20 +65,9 @@ export default {
         addToTotal(total, num) {
             this.subtotals[num - 1] = total;
 
-            for (var i = 0; i < this.subtotals.length; i++) {
-                this.subtotals[i] = this.subtotals[i] * this.articles[i];
-            }
-
             this.total = this.subtotals.reduce(function (total, value) {
                 return total + value;
             }, 0);
-        },
-        removeRow(num) {
-            this.articles[num] = 0;
-            this.addToTotal(0, num);
-        },
-        addRow(num) {
-            this.articles[num] = 1;
         }
     },
 }

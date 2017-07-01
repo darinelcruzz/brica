@@ -5,7 +5,7 @@
         <div class="col-md-9">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Nueva orden: {{ $quotation }}</h3>
+                    <h3 class="box-title">Nueva orden para la cotización {{ $quotation }}</h3>
                 </div>
 
                 <!-- form start -->
@@ -13,9 +13,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Field::select('type', 
+                            {!! Field::select('type',
                                 ['maquila' => 'Maquíla', 'produccion' => 'Producción'], null,
-                                ['tpl' => 'templates/withicon'], ['icon' => 'industry']) 
+                                ['tpl' => 'templates/withicon'], ['icon' => 'industry'])
                             !!}
                         </div>
                         <div class="col-md-6">
@@ -87,20 +87,10 @@
 
                     <!-- /.box-body -->
                     <div class="box-footer">
+                        <input type="hidden" name="quotation" value="{{ $quotation }}">
                         {!! Form::submit('Siguiente', ['class' => 'btn btn-primary btn-block']) !!}
                     </div>
                     {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="box box-primary box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Equipos</h3>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                    </div>
                 </div>
             </div>
         </div>

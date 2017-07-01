@@ -11420,7 +11420,7 @@ module.exports = defaults;
 /* 9 */
 /***/ (function(module, exports) {
 
-/* */
+/* */ 
 "format global";
 "deps jquery";
 "exports $";
@@ -25668,7 +25668,18 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transit
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
+<<<<<<< HEAD
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+exports.push([module.i, "\n.chat-message {\n    padding: 1rem;\n}\n.chat-message > p {\n    margin-bottom: .5rem;\n}\n", ""]);
+=======
 exports.push([module.i, "\n.chat-message {\r\n    padding: 1rem;\n}\n.chat-message > p {\r\n    margin-bottom: .5rem;\n}\r\n", ""]);
+>>>>>>> urgente
 
 /***/ }),
 /* 66 */
