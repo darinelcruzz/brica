@@ -1,6 +1,6 @@
 <template lang="html">
     <row-woc :col="col">
-        <solid-box :title="title">
+        <solid-box :title="title" :color="color">
             <div class="table-responsive">
                 <table :id="example" class="table table-bordered table-striped">
                     <thead>
@@ -20,6 +20,6 @@
 
 <script>
 export default {
-    props: ['col', 'title', 'example'],
+    props: ['col', 'title', 'example', 'color'],
 }
 </script>

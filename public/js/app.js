@@ -25530,7 +25530,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['col', 'title', 'example']
+    props: ['col', 'title', 'example', 'color']
 });
 
 /***/ }),
@@ -25577,7 +25577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title']
+    props: ['title', 'color']
 });
 
 /***/ }),
@@ -44507,7 +44507,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('solid-box', {
     attrs: {
-      "title": _vm.title
+      "title": _vm.title,
+      "color": _vm.color
     }
   }, [_c('div', {
     staticClass: "table-responsive"
@@ -45169,7 +45170,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "box box-warning box-solid collapsed-box"
+    class: ['box box-solid', _vm.color]
   }, [_c('div', {
     staticClass: "box-header with-border"
   }, [_c('h3', {

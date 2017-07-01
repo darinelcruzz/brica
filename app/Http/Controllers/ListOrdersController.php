@@ -74,4 +74,11 @@ class ListOrdersController extends Controller
         return view('orders.cashier', compact('status'));
     }
 
+    function operatorOrder($id)
+    {
+        $order = Order::find($id);
+
+        return view('orders.operatorOrder', compact('order'));
+    }
+
 }

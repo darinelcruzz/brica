@@ -7,7 +7,7 @@
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <p>Orden</p>
-                        <h3>{!! $pending->id !!}</h3>
+                        <h3>{!! $order->id !!}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-shopping-cart"></i>
@@ -29,33 +29,33 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="row">
-                    @include('icon', ['title' => 'Tipo', 'icon' => 'industry', 'number' => $pending->type, 'color' => 'red'])
-                    @include('icon', ['title' => 'Entrega', 'icon' => 'calendar','number' => $pending->deliverDate])
+                    @include('icon', ['title' => 'Tipo', 'icon' => 'industry', 'number' => $order->type, 'color' => 'red'])
+                    @include('icon', ['title' => 'Entrega', 'icon' => 'calendar','number' => $order->deliverDate])
                 </div>
                 <div class="row">
-                    @include('icon', ['title' => 'Diseño', 'icon' => 'wrench', 'number' => $pending->design])
-                    @include('icon', ['title' => 'Descripción', 'icon' => 'edit', 'number' => $pending->description])
+                    @include('icon', ['title' => 'Diseño', 'icon' => 'wrench', 'number' => $order->design])
+                    @include('icon', ['title' => 'Descripción', 'icon' => 'edit', 'number' => $order->description])
                 </div>
                 <div class="row">
-                    @include('icon', ['title' => 'Calibre', 'icon' => 'compress', 'number' => $pending->caliber, 'color' => 'red'])
-                    @include('icon', ['title' => 'Medidas', 'icon' => 'external-link', 'number' => $pending->measureType, 'color' => 'red'])
+                    @include('icon', ['title' => 'Calibre', 'icon' => 'compress', 'number' => $order->caliber, 'color' => 'red'])
+                    @include('icon', ['title' => 'Medidas', 'icon' => 'external-link', 'number' => $order->measureType, 'color' => 'red'])
                 </div>
                 <div class="row">
-                    @include('icon', ['title' => 'Piezas', 'icon' => 'list', 'number' => $pending->pieces, 'color' => 'red'])
-                    @include('icon', ['title' => 'Alto', 'icon' => 'arrows-v', 'number' => $pending->height . ' cm'])
+                    @include('icon', ['title' => 'Piezas', 'icon' => 'list', 'number' => $order->pieces, 'color' => 'red'])
+                    @include('icon', ['title' => 'Alto', 'icon' => 'arrows-v', 'number' => $order->height . ' cm'])
                 </div>
                 <div class="row">
-                    @include('icon', ['title' => 'Largo ', 'icon' => 'arrows-h', 'number' => $pending->length . ' cm'])
-                    @include('icon', ['title' => 'Ancho', 'icon' => 'expand', 'number' => $pending->width . ' cm'])
+                    @include('icon', ['title' => 'Largo ', 'icon' => 'arrows-h', 'number' => $order->length . ' cm'])
+                    @include('icon', ['title' => 'Ancho', 'icon' => 'expand', 'number' => $order->width . ' cm'])
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <img height="100%" width="100%" src="{{ asset('/img/nuevo.png') }}">
-            </div> 
+            </div>
         </div>
 
     {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
-        <input type="hidden" name="id" value="{!! $pending->id !!}">
+        <input type="hidden" name="id" value="{!! $order->id !!}">
         {!! Form::submit('Terminado', ['class' => 'btn btn-primary btn-block']) !!}
     {!! Form::close() !!}
 

@@ -86,12 +86,12 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'as' => 'operatorListQuotations'
     ]);
 
-    Route::get('operador/listaCotizaciones', [
+    Route::get('operador/listaOrdenes', [
         'uses' => 'ListOrdersController@operator',
         'as' => 'operatorListOrders'
     ]);
 
-    Route::get('operador/listaCotizaciones', [
+    Route::get('operador/orden/{id}', [
         'uses' => 'ListOrdersController@operatorOrder',
         'as' => 'operatorOrder'
     ]);
