@@ -17,7 +17,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->amount }}</td>
+                  <td>$ {{ $row->amount }}</td>
                   <td>
                       {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
                           <input type="hidden" name="id" value="{{ $row->id }}">
@@ -46,7 +46,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->amount }}</td>
+                  <td>$ {{ $row->amount }}</td>
                   <td>{{ $row->date_payment }}</td>
               </tr>
             @endforeach
