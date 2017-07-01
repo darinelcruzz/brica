@@ -65,6 +65,21 @@ return [
         ]
     ],
 
+    'products' => [
+        'title' => 'Productos',
+        'icon' => 'fa fa-barcode',
+        'submenu' => [
+            'create' => [
+                'title' => 'Agregar',
+                'route' => 'product.create'
+            ],
+            'list' => [
+                'title' => 'Listado',
+                'route' => 'product.show'
+            ],
+        ]
+    ],
+
     'clients' => [
         'title' => 'Clientes',
         'icon' => 'fa fa-users',

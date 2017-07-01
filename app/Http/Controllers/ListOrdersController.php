@@ -51,9 +51,9 @@ class ListOrdersController extends Controller
 
         if($inProduction) {
 
-            $pending = Quotation::where('status', 'produccion')->where('team', 'R2')->first();
+            $pending = Order::where('quotation', $inProduction->id)->get(['id', 'type', 'description']);
 
-            return view('orders.operator', compact('pending'));
+            return view('orders.operatorListOrders', compact('pending'));
             
         }
 
@@ -61,7 +61,7 @@ class ListOrdersController extends Controller
                 'id','type', 'description', 'deliver_date'
             ]);
         
-        return view('orders.operatorList', compact('pending'));
+        return view('orders.operatorListQuotations', compact('pending'));
         
     }
 

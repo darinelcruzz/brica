@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('unity')->nullable();
             $table->float('price')->nullable();
             $table->string('family')->nullable();
+            $table->float('quantity')->nullable();
 
             $table->timestamps();
         });

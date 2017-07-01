@@ -5,7 +5,7 @@ use App\Quotation;
 
 Auth::routes();
 
-Route::get('/productos', function () {
+Route::get('/products', function () {
     return DB::table('products')->get();
 });
 
