@@ -20,7 +20,7 @@ class ListOrdersController extends Controller
         $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
 
         $terminated = Quotation::selectedQuotations('finalizado', [
-            'team','orders', 'startTime', 'endTime'
+            'team', 'startTime', 'endTime'
         ]);
 
 
@@ -39,7 +39,7 @@ class ListOrdersController extends Controller
         $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
 
         $terminated = Quotation::selectedQuotations('finalizado', [
-            'team','orders', 'startTime', 'endTime'
+            'team', 'startTime', 'endTime'
         ]);
 
         return view('orders.production', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
@@ -54,15 +54,15 @@ class ListOrdersController extends Controller
             $pending = Quotation::where('status', 'produccion')->where('team', 'R2')->first();
 
             return view('orders.operator', compact('pending'));
-            
+
         }
 
         $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
                 'id','type', 'description', 'deliver_date'
             ]);
-        
+
         return view('orders.operatorList', compact('pending'));
-        
+
     }
 
     function cashier()

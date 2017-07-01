@@ -35,8 +35,8 @@ Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
 
 // Producción
 Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
-    
-    Route::get('orden', [
+
+    Route::get('orden/{cot?}', [
         'uses' => 'OrderController@create',
         'as' => 'create'
     ]);
@@ -91,12 +91,22 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
 
 // Cotizaciones
 Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
-    Route::get('crear', [
+    Route::get('produccion', [
+        'uses' => 'QuotationController@make',
+        'as' => 'make'
+    ]);
+
+    Route::post('produccion', [
+        'uses' => 'QuotationController@save',
+        'as' => 'save'
+    ]);
+
+    Route::get('terminado', [
         'uses' => 'QuotationController@create',
         'as' => 'create'
     ]);
 
-    Route::post('crear', [
+    Route::post('terminado', [
         'uses' => 'QuotationController@store',
         'as' => 'store'
     ]);

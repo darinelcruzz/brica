@@ -21,8 +21,12 @@ return [
         'icon' => 'fa fa-calculator',
         'submenu' => [
             'create' => [
-                'title' => 'Crear',
+                'title' => 'Terminado',
                 'route' => 'quotation.create'
+            ],
+            'make' => [
+                'title' => 'Producción',
+                'route' => 'quotation.make'
             ],
             'show' => [
                 'title' => 'Cajera',

@@ -10,9 +10,9 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
-	public function create()
+	public function create($cot)
 	{
-        $quotation = $request->id;
+        $quotation = $cot;
         $today = Carbon::now();
 
 		return view('orders.create', compact('quotation', 'today'));
@@ -25,7 +25,7 @@ class OrderController extends Controller
             'description' => 'required',
     		'design' => 'required',
             'caliber' => 'required',
-            'pieces' => 'required',           
+            'pieces' => 'required',
     	]);
 
     	Order::create($request->all());
@@ -58,7 +58,7 @@ class OrderController extends Controller
     {
         $this->validate($request, [
             'team' => 'required',
-            ]); 
+            ]);
 
         $order = Quotation::find($request->id);
         $order->status = 'asignado';

@@ -2,9 +2,9 @@
 
 @section('main-content')
     <row-woc col="col-md-10">
-        <solid-box title="Nueva Cotización">
+        <solid-box title="Nueva Cotización para producción">
             <!-- form start -->
-            {!! Form::open(['method' => 'POST', 'route' => 'quotation.store']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'quotation.save']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('client', $clients, null,
@@ -29,25 +29,13 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        {!! Field::select('type', ['produccion' => 'Producción', 'terminado' => 'Terminado'], null,
-                            ['tpl' => 'templates/withicon', 'empty' => 'Tipo de operación', 'v-model' => 'type'],
-                            ['icon' => 'user']) !!}
-                    </div>
-
-                    <div v-if="type === 'produccion'" class="col-md-6">
-                        {!! Field::number('amount', 0, ['tpl' => 'templates/withicon'], ['icon' => 'usd']) !!}
-                    </div>
-                </div>
-
-                <template v-if="type === 'terminado'">
-                    <row-woc col="col-md-12">
-                        <product-table :products="products"></product-table>
-                    </row-woc>
-                </template>
+                <row-woc col="col-md-6">
+                    {!! Field::number('amount', 0, ['tpl' => 'templates/withicon'], ['icon' => 'usd']) !!}
+                </row-woc>
 
                 <div class="box-footer">
+                    <input type="hidden" name="status" value="pendiente">
+                    <input type="hidden" name="type" value="produccion">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning btn-block']) !!}
                 </div>
                 {!! Form::close() !!}

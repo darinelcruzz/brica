@@ -10,7 +10,7 @@
         </div>
 
         <div class="box-body">
-            <table id="example{{ $example }}" class="table table-bordered table-striped table-responsive">
+            <table id="example{{ $example }}" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                     @foreach($header as $th)

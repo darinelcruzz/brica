@@ -24,6 +24,8 @@ Vue.component('product-row', require('./components/ProductRow.vue'));
 Vue.component('row-woc', require('./components/lte/SingleElementRow.vue'));
 Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
 
+Vue.component('data-table', require('./components/lte/DataTable.vue'));
+
 
 const app = new Vue({
     el: '#app',
@@ -41,7 +43,7 @@ const app = new Vue({
         }
     },
     created() {
-        axios.get('/productos').then(response => {
+        axios.get('/products').then(response => {
             this.products = response.data;
         });
     }
