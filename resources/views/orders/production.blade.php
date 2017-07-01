@@ -2,13 +2,6 @@
 
 @section('main-content')
 
-    <!--div class="row">
-        @ include('table', ['rows' => $pending,
-                'header' => ['#', 'Cliente', 'Descripción', 'Fecha entrega'],
-                'color' => 'danger', 'title' => 'Cotizaciones pendientes', 'example' => '1',
-                'extra' => 'templates/add'])
-    </div-->
-
     <data-table col="col-md-12" title="Cotizaciones pendientes" example="example1">
         <template slot="header">
             <tr>
@@ -30,6 +23,9 @@
                   <td></td>
                   <td>
                       <a href="{{ route('production.create', ['cot' => $row->id]) }}" class="btn btn-success">+</a>
+                      <a href="{{ route('production.complete', ['cot' => $row->id]) }}" class="btn btn-primary">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                      </a>
                   </td>
               </tr>
             @endforeach

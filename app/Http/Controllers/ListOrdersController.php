@@ -13,7 +13,7 @@ class ListOrdersController extends Controller
     {
         $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
 
-        $completed = Quotation::selectedQuotations('llenada', ['deliver_date']);
+        $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
 
         $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
 
@@ -32,7 +32,7 @@ class ListOrdersController extends Controller
 
         $pending = Quotation::selectedQuotations('pendiente', ['deliver_date']);
 
-        $completed = Quotation::selectedQuotations('llenada', ['deliver_date']);
+        $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
 
         $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
 
@@ -60,7 +60,7 @@ class ListOrdersController extends Controller
         $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
                 'id','type', 'description', 'deliver_date'
             ]);
-        
+
         return view('orders.operatorListQuotations', compact('pending'));
 
     }

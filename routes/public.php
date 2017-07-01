@@ -61,6 +61,15 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'as' => 'assign'
     ]);
 
+    Route::get('completado/{cot?}', function ($cot)
+    {
+        $q = App\Quotation::find($cot);
+        $q->status = 'terminado';
+        $q->save();
+
+        return redirect(route('production.production'));;
+    })->name('complete');
+
     Route::get('ingenieros', [
         'uses' => 'ListOrdersController@production',
         'as' => 'production',
