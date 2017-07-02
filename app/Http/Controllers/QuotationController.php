@@ -54,6 +54,7 @@ class QuotationController extends Controller
             if($request->quantity[$i] > 0) {
                 $product['quantity'] =  $request->quantity[$i];
                 $product['material'] =  $request->material[$i];
+                $product['total'] =  $request->total[$i];
                 array_push($products, $product);
             }
         }

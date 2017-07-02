@@ -20,6 +20,7 @@
             $ {{ products[product_id - 1].price }}
         </td>
         <td>
+            <input type="hidden" name="total[]" :value="products[product_id - 1].price * quantity">
             $ {{ products[product_id - 1].price * quantity }}
         </td>
     </tr>

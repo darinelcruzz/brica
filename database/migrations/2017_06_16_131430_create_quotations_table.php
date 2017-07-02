@@ -29,7 +29,7 @@ class CreateQuotationsTable extends Migration
             $table->string('startTime')->nullable();
             $table->string('endTime')->nullable();
 
-            $table->string('products')->nullable();
+            $table->string('products', 800)->nullable();
 
             $table->timestamps();
         });

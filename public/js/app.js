@@ -25010,6 +25010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45347,7 +45348,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": product.id
       }
     }, [_vm._v("\n                " + _vm._s(product.name) + "\n            ")])
-  }))]), _vm._v(" "), _c('td', [_vm._v("\n        $ " + _vm._s(_vm.products[_vm.product_id - 1].price) + "\n    ")]), _vm._v(" "), _c('td', [_vm._v("\n        $ " + _vm._s(_vm.products[_vm.product_id - 1].price * _vm.quantity) + "\n    ")])])
+  }))]), _vm._v(" "), _c('td', [_vm._v("\n        $ " + _vm._s(_vm.products[_vm.product_id - 1].price) + "\n    ")]), _vm._v(" "), _c('td', [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "total[]"
+    },
+    domProps: {
+      "value": _vm.products[_vm.product_id - 1].price * _vm.quantity
+    }
+  }), _vm._v("\n        $ " + _vm._s(_vm.products[_vm.product_id - 1].price * _vm.quantity) + "\n    ")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

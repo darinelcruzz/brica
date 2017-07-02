@@ -39,8 +39,8 @@
                     @foreach (unserialize($quotation->products) as $product)
                         <tr>
                             <th>{{ $product['quantity'] }}</th>
-                            <th>{{ $product['material'] }}</th>
-                            <th></th>
+                            <th>{{ App\Product::find($product['material'])->name }}</th>
+                            <th>$ {{ $product['total'] }}</th>
                         </tr>
                     @endforeach
                 </tbody>
@@ -50,7 +50,7 @@
                 <tr>
                     <th></th>
                     <th>Total</th>
-                    <th> ${{ $quotation->amount }} </th>
+                    <th>$ {{ $quotation->amount }} </th>
                 </tr>
             </tfooter>
         </table>
