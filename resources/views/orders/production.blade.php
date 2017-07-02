@@ -31,7 +31,8 @@
         </template>
     </data-table>
 
-    <data-table col="col-md-12" title="Cotizaciones no asignadas" example="example2" color="box-default">>
+    <data-table col="col-md-12" title="Cotizaciones no asignadas" example="example2"
+    color="box-default" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -53,7 +54,8 @@
         </template>
     </data-table>
 
-    <data-table col="col-md-12" title="Cotizaciones en cola" example="example3" color="box-danger">>
+    <data-table col="col-md-12" title="Cotizaciones en cola" example="example3"
+    color="box-danger" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -77,7 +79,8 @@
         </template>
     </data-table>
 
-    <data-table col="col-md-12" title="Cotizaciones en producción" example="example4" color="box-warning">>
+    <data-table col="col-md-12" title="Cotizaciones en producción" example="example4"
+    color="box-warning">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -101,7 +104,8 @@
         </template>
     </data-table>
 
-    <data-table col="col-md-12" title="Cotizaciones finalizadas" example="example5" color="box-success">>
+    <data-table col="col-md-12" title="Cotizaciones finalizadas" example="example5"
+    color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

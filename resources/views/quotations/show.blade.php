@@ -35,7 +35,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Producción"
-        example="example2" color="box-danger">
+        example="example2" color="box-danger" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -67,7 +67,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Folios pagados"
-        example="example3" color="box-success">
+        example="example3" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

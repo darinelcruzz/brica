@@ -1,31 +1,65 @@
 @extends('admin')
 
 @section('main-content')
-    <data-table col="col-md-12" title="Cotizaciones pendientes"
-        example="example1" color="box-danger">
-        <template slot="header">
-            <tr>
-                <th>Cotización</th>
-                <th>Cliente</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-            </tr>
-        </template>
 
-        <template slot="body">
-            <tr>
-              <td>{{ $quotation->id }}</td>
-              <td>{{ $quotation->clientr->name }}</td>
-              <td>{{ $quotation->description }}</td>
-              <td>{{ $quotation->deliver_date }}</td>
-            </tr>
-        </template>
-    </data-table>
+    <div align="center">
+        <h3 align >Runa Aceros</h3>
+        <p>Panamericana 1262, Chichima Guadalupe, <br>
+            Centro, CP. 30000, <br>
+            Comitán de Domínguez, Chiapas<br>
+            Tel.: 01-(963)-63-2-0405
+        </p>
+    </div>
 
-    <div class="col-xs-12">
-      <button onclick="printTicket()" class="btn btn-default">
-          <i class="fa fa-print"></i> Print
-      </button>
+    <h5>Cliente: {{ $quotation->clientr->name }}</h5>
+    <h5> Folio: {{ $quotation->id }} </h5>
+    <h5> Fecha: {{ $date }} </h5>
+
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cant.</th>
+                    <th>Des</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+
+            @if ( $quotation->pay  == 'anticipo' )
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th>Anticipo</th>
+                        <th> ${{ $quotation->amount }} </th>
+                    </tr>
+                </tbody>
+
+            @else
+                <tbody>
+                    @foreach (unserialize($quotation->products) as $product)
+                        <tr>
+                            <th>{{ $product['quantity'] }}</th>
+                            <th>{{ $product['material'] }}</th>
+                            <th></th>
+                        </tr>
+                    @endforeach
+                </tbody>
+            @endif
+
+            <tfooter>
+                <tr>
+                    <th></th>
+                    <th>Total</th>
+                    <th> ${{ $quotation->amount }} </th>
+                </tr>
+            </tfooter>
+        </table>
+    </div>
+
+    <div class="row no-print">
+        <button onclick="printTicket()" class="btn btn-default">
+            <i class="fa fa-print"></i> Imprimir
+        </button>
     </div>
 
     <script>

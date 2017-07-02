@@ -3,7 +3,7 @@
 @section('main-content')
 
     <data-table col="col-md-12" title="Cotizaciones pendientes"
-        example="example1" color="box-default">
+        example="example1" color="box-default" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -61,7 +61,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones en cola"
-        example="example3" color="box-danger">
+        example="example3" color="box-danger" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -111,7 +111,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones finalizadas"
-        example="example5" color="box-success">
+        example="example5" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

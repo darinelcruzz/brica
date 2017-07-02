@@ -61,21 +61,23 @@ class QuotationController extends Controller
         $quotation->products = serialize($products);
 
         $quotation->save();
+        $date = Date::now()->format('d-m-Y');
 
-        return view('quotations.ticket', compact('quotation'));
+        return view('quotations.ticket', compact('quotation', 'date'));
     }
 
     function save(Request $request)
     {
         $this->validate($request, [
             'client' => 'required',
-            'description' => 'required', 
+            'description' => 'required',
             'deliver' => 'required'
             ]);
 
         $quotation = Quotation::create($request->all());
+        $date = Date::now()->format('d-m-Y');
 
-        return view('quotations.ticket', compact('quotation'));
+        return view('quotations.ticket', compact('quotation', 'date'));
     }
 
     function show()
