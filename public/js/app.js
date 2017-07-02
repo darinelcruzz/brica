@@ -25531,7 +25531,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['col', 'title', 'example', 'color']
+    props: ['col', 'title', 'example', 'color', 'collapsed']
 });
 
 /***/ }),
@@ -25607,7 +25607,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'color']
+    props: ['title', 'color', 'collapsed']
 });
 
 /***/ }),
@@ -44572,7 +44572,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('solid-box', {
     attrs: {
       "title": _vm.title,
-      "color": _vm.color
+      "color": _vm.color,
+      "collapsed": _vm.collapsed
     }
   }, [_c('div', {
     staticClass: "table-responsive"
@@ -45261,7 +45262,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: ['box box-solid', _vm.color]
+    class: ['box box-solid', _vm.color, _vm.collapsed]
   }, [_c('div', {
     staticClass: "box-header with-border"
   }, [_c('h3', {
@@ -45278,7 +45279,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-widget": "collapse"
     }
   }, [_c('i', {
-    staticClass: "fa fa-plus"
+    staticClass: "fa fa-minus"
   })])])
 }]}
 module.exports.render._withStripped = true
@@ -45563,8 +45564,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('button', {
     staticClass: "btn btn-primary btn-block btn-flat",
     attrs: {
-      "type": "submit",
-      "disabled": _vm.form.errors.any()
+      "type": "submit"
     },
     domProps: {
       "textContent": _vm._s(_vm.trans('adminlte_lang_message.buttonsign'))
