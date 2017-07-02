@@ -67,7 +67,11 @@ class QuotationController extends Controller
 
     function save(Request $request)
     {
-        $this->validate($request, ['client' => 'required','description' => 'required']);
+        $this->validate($request, [
+            'client' => 'required',
+            'description' => 'required', 
+            'deliver' => 'required'
+            ]);
 
         $quotation = Quotation::create($request->all());
 
@@ -76,13 +80,11 @@ class QuotationController extends Controller
 
     function show()
     {
-        $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get([
-            'id', 'client', 'amount']);
+        $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get();
 
         $production = Quotation::where(['type' => 'produccion', 'status' => 'pendiente'])->get();
 
-        $paid = Quotation::where('status', '!=', 'pendiente')->get([
-            'id', 'client', 'type', 'amount', 'date_payment']);
+        $paid = Quotation::where('status', '!=', 'pendiente')->get();
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));
     }
@@ -107,8 +109,7 @@ class QuotationController extends Controller
         $date = $request->date;
         $date = $date == 0 ? Date::now() : $date;
 
-        $paid = Quotation::where('date_payment',$date)->where('status', '!=', 'pendiente')->get([
-            'id', 'client', 'type', 'amount']);
+        $paid = Quotation::where('date_payment',$date)->where('status', '!=', 'pendiente')->get();
 
         $totalP = Quotation::totalPaid($date);
         $totalP = $paid->isEmpty() ? '0': $totalP;

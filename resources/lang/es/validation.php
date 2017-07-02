@@ -167,7 +167,7 @@ return [
         'length'                => 'largo',
         'width'                 => 'ancho',
         'type'                  => 'tipo',
-        'deliverDate'           => 'fecha de entrega',
+        'deliver_date'           => 'fecha de entrega',
         'unity'                 => 'unidad',
         'price'                 => 'precio',
         'family'                => 'familia'

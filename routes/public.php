@@ -140,12 +140,12 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'as' => 'pay'
     ]);
 
-    Route::get('cash', [
+    Route::get('caja', [
         'uses' => 'QuotationController@cash',
         'as' => 'cash'
     ]);
 
-    Route::post('cash', [
+    Route::post('caja', [
         'uses' => 'QuotationController@cash',
         'as' => 'cash'
     ]);

@@ -8,6 +8,7 @@
             <tr>
                 <th>Cotización</th>
                 <th>Cliente</th>
+                <th>Descripción</th>
                 <th>Monto</th>
                 <th>Pagar</th>
             </tr>
@@ -18,6 +19,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->pay }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>
                       {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
@@ -38,6 +40,7 @@
             <tr>
                 <th>Cotización</th>
                 <th>Cliente</th>
+                <th>Descripción</th>
                 <th>Monto</th>
                 <th>Pagar</th>
             </tr>
@@ -48,6 +51,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->pay }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>
                       {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
@@ -68,6 +72,7 @@
             <tr>
                 <th>Cotización</th>
                 <th>Cliente</th>
+                <th>Descripción</th>
                 <th>Tipo</th>
                 <th>Monto</th>
                 <th>Fecha</th>
@@ -79,6 +84,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->pay }}</td>
                   <td>{{ $row->type }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>{{ $row->date_payment }}</td>

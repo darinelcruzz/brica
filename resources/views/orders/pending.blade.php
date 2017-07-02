@@ -3,7 +3,7 @@
 @section('main-content')
 
     <data-table col="col-md-12" title="Cotizaciones pendientes"
-        example="example1" color="box-danger">
+        example="example1" color="box-default">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -19,14 +19,14 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>{{ $row->deliver_date }}</td>
+                  <td>{{ $row->deliver }}</td>
               </tr>
             @endforeach
         </template>
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones no asignadas"
-        example="example2" color="box-primary">
+        example="example2" color="box-danger">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -43,12 +43,12 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>{{ $row->deliver_date }}</td>
+                  <td>{{ $row->deliver }}</td>
                   <td>
                       {!! Form::open(['method' => 'POST', 'route' => 'production.assign']) !!}
                           <input type="hidden" name="id" value="{{ $row->id }}">
                           <div class="input-group">
-                              {!! Field::select('team', ['R1'=>'R1', 'R2'=>'R2', 'R3'=>'R3'], null) !!}
+                              {!! Field::select('team', ['R1'=>'R1', 'R2'=>'R2', 'R3'=>'R3'], null, ['tpl' => 'templates/nolabel']) !!}
                               <button type="submit" name="button" class="btn btn-success">
                                   <i class="fa fa-check"></i>
                               </button>
@@ -61,7 +61,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones en cola"
-        example="example3" color="box-warning">
+        example="example3" color="box-danger">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -79,14 +79,14 @@
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
-                  <td>{{ $row->deliver_date }}</td>
+                  <td>{{ $row->deliver }}</td>
               </tr>
             @endforeach
         </template>
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones en producción"
-        example="example4" color="box-default">
+        example="example4" color="box-warning">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

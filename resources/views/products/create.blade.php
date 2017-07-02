@@ -11,8 +11,10 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'product.store', 'class' => 'form-horizontal']) !!}
                     <div class="box-body">
                         {!! Field::text('name', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('unity', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::number('price', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::select('unity', ['kg' => 'kg', 'cm' => 'cm', 'unidad' => 'unidad',
+                            'm' => 'm', 'pieza' => 'pieza'], 
+                            null,['tpl' => 'templates/oneline']) !!}
+                        {!! Field::number('price', ['tpl' => 'templates/oneline', 'step'=>0.01]) !!}
                         {!! Field::text('family', ['tpl' => 'templates/oneline']) !!}
                         {!! Field::number('quantity', ['tpl' => 'templates/oneline']) !!}
                     </div>

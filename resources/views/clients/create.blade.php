@@ -11,10 +11,11 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'client.store', 'class' => 'form-horizontal']) !!}
                   <div class="box-body">
                     {!! Field::text('name', ['label' => 'Nombre', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('address', ['label' => 'Dirección', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::text('city', ['label' => 'Ciudad', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('rfc', ['label' => 'RFC', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::text('phone', ['label' => 'Teléfono', 'tpl' => 'templates/oneline']) !!}
+                    <hr>
+                    {!! Field::text('address', ['label' => 'Dirección', 'tpl' => 'templates/oneline']) !!}
+                    {!! Field::text('rfc', ['label' => 'RFC', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::email('email', ['label' => 'Correo', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::text('contact', ['label' => 'Contacto', 'tpl' => 'templates/oneline']) !!}
                   </div>

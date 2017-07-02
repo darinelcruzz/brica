@@ -41,13 +41,14 @@
 
 	<div class="row">
 
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<data-table-com title="Ingresos"
 		        example="example2" color="box-success">
 		        <template slot="header">
 		            <tr>
 		                <th>ID</th>
 		                <th>Cliente</th>
+		                <th>Des</th>
 		                <th>Tipo</th>
 		                <th>Monto</th>
 		            </tr>
@@ -58,6 +59,7 @@
 		              <tr>
 		                  <td>{{ $row->id }}</td>
 		                  <td>{{ $row->clientr->name }}</td>
+		                  <td>{{ $row->pay }}</td>
 		                  <td>{{ $row->type }}</td>
 		                  <td>$ {{ $row->amount }}</td>
 		              </tr>
@@ -66,7 +68,7 @@
 		    </data-table-com>
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<data-table-com title="Egresos"
 		        example="example1" color="box-danger">
 		        <template slot="header">
@@ -89,7 +91,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-7">
   			<div class="small-box bg-green">
     			<div class="inner">
     				<p>Ingresos Totales</p>
@@ -101,7 +103,7 @@
   			</div>
     	</div>
 
-    	<div class="col-md-6">
+    	<div class="col-md-5">
   			<div class="small-box bg-red">
     			<div class="inner">
     				<p>Egresos Totales</p>

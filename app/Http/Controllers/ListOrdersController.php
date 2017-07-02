@@ -11,11 +11,11 @@ class ListOrdersController extends Controller
 
     function pending()
     {
-        $pending = Quotation::selectedQuotations('autorizado', ['deliver_date']);
+        $pending = Quotation::selectedQuotations('autorizado', ['deliver']);
 
-        $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
+        $completed = Quotation::selectedQuotations('terminado', ['deliver']);
 
-        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
+        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver']);
 
         $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
 
@@ -30,11 +30,11 @@ class ListOrdersController extends Controller
     function production()
     {
 
-        $pending = Quotation::selectedQuotations('autorizado', ['deliver_date']);
+        $pending = Quotation::selectedQuotations('autorizado', ['deliver']);
 
-        $completed = Quotation::selectedQuotations('terminado', ['deliver_date']);
+        $completed = Quotation::selectedQuotations('terminado', ['deliver']);
 
-        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver_date']);
+        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver']);
 
         $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
 

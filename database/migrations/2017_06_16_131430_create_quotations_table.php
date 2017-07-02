@@ -22,8 +22,9 @@ class CreateQuotationsTable extends Migration
             $table->string('description')->nullable();
             $table->float('amount')->nullable();
             $table->string('date_payment')->nullable();
-            $table->string('deliver_date')->nullable();
+            $table->string('deliver')->nullable();
             $table->string('team')->nullable();
+            $table->string('pay')->nullable();
 
             $table->string('startTime')->nullable();
             $table->string('endTime')->nullable();
