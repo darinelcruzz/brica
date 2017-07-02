@@ -7,9 +7,9 @@ use App\Client;
 
 class ClientController extends Controller
 {
-	public function create()
+	public function create($from = null)
 	{
-		return view('clients.create');
+		return view('clients.create', compact('from'));
 	}
 
 	public function store(Request $request)
@@ -23,7 +23,11 @@ class ClientController extends Controller
 
     	$client = Client::create($request->all());
 
-    	return redirect(route('quotation.create'));
+		if ($request->from === 'terminado') {
+			return redirect(route('quotation.create'));
+		}
+
+		return redirect(route('quotation.make'));
     }
 
     public function show()

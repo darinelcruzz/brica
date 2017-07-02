@@ -34,7 +34,7 @@
     </div>
    </div>
    <div class="col-xs-4">
-    <button type="submit" class="btn btn-primary btn-block btn-flat" v-text="trans('adminlte_lang_message.buttonsign')" :disabled="form.errors.any()"><i v-if="form.submitting" class="fa fa-refresh fa-spin"></i></button>
+    <button type="submit" class="btn btn-primary btn-block btn-flat" v-text="trans('adminlte_lang_message.buttonsign')"><i v-if="form.submitting" class="fa fa-refresh fa-spin"></i></button>
    </div>
   </div>
  </form>

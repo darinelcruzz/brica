@@ -3,7 +3,7 @@
 @section('main-content')
 
     <data-table col="col-md-12" title="Producto terminado"
-        example="example1" color="box-danger">
+        example="example1" color="box-danger" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

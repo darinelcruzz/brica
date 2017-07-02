@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quotation extends Model
 {
-	protected $fillable = ['type', 'client', 'status', 'description', 'amount', 'date_payment'];
+	protected $fillable = [
+		'type', 'client', 'status', 'description', 'amount', 'date_payment', 'deliver_date'
+	];
 
 	public function clientr()
     {

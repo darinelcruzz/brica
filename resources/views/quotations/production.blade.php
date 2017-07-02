@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <a href="{{ route('client.create')}}">
+                        <a href="{{ route('client.create', ['from' => 'produccion'])}}">
                             <button type="button" class="btn btn-warning">Nuevo cliente</button>
                         </a>
                     </div>
@@ -29,9 +29,16 @@
                     </div>
                 </div>
 
-                <row-woc col="col-md-6">
-                    {!! Field::number('amount', 0, ['tpl' => 'templates/withicon'], ['icon' => 'usd']) !!}
-                </row-woc>
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::number('amount', 0, ['tpl' => 'templates/withicon'], ['icon' => 'usd']) !!}
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Field::date('deliver_date',
+                            ['tpl' => 'templates/withicon'], ['icon' => 'calendar-check-o']) !!}
+                    </div>
+                </div>
 
                 <div class="box-footer">
                     <input type="hidden" name="status" value="pendiente">

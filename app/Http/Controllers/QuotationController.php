@@ -61,17 +61,21 @@ class QuotationController extends Controller
         $quotation->products = serialize($products);
 
         $quotation->save();
-
-        return redirect(route('quotation.show'));
+        
+        return view('quotations.ticket', compact('quotation'));
     }
 
     function save(Request $request)
     {
-        $this->validate($request, ['client' => 'required','description' => 'required']);
+        $this->validate($request, [
+            'client' => 'required',
+            'description' => 'required',
+            'deliver_date' => 'required'
+        ]);
 
         $quotation = Quotation::create($request->all());
 
-        return redirect(route('production.production'));
+        return view('quotations.ticket', compact('quotation'));
     }
 
     function show()

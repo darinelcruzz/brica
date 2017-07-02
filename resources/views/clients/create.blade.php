@@ -20,6 +20,7 @@
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
+                    <input type="hidden" name="from" value="{{ $from }}">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
                   </div>
                   <!-- /.box-footer -->

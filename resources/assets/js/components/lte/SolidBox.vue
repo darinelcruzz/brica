@@ -1,10 +1,10 @@
 <template lang="html">
-    <div :class="['box box-solid', color]">
+    <div :class="['box box-solid', color, collapsed]">
         <div class="box-header with-border">
             <h3 class="box-title">{{ title }}</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse">
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-minus"></i>
               </button>
             </div>
         </div>
@@ -17,6 +17,6 @@
 
 <script>
 export default {
-    props: ['title', 'color'],
+    props: ['title', 'color', 'collapsed'],
 }
 </script>

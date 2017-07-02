@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('enter', [
+    'uses' => 'LoginController@authenticate',
+    'as' => 'enter'
+]);
+
 // Entradas
 Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
     Route::get('crear', [
@@ -167,7 +172,7 @@ Route::group(['prefix' => 'gastos', 'as' => 'expense.'], function () {
 
 // Clientes
 Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
-    Route::get('crear', [
+    Route::get('crear/{from?}', [
         'uses' => 'ClientController@create',
         'as' => 'create'
     ]);
