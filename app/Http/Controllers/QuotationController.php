@@ -75,10 +75,10 @@ class QuotationController extends Controller
             'deliver' => 'required'
             ]);
 
-        $quotation = Quotation::create($request->all());
-        $date = Date::now()->format('d-m-Y');
+            $quotation = Quotation::create($request->all());
+            $date = Date::now()->format('d-m-Y');
 
-        return view('quotations.ticket', compact('quotation', 'date'));
+            return view('quotations.ticket', compact('quotation', 'date'));
     }
 
     function show()

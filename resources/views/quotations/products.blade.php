@@ -37,6 +37,7 @@
                     <input type="hidden" name="status" value="pendiente">
                     <input type="hidden" name="type" value="terminado">
                     <input type="hidden" name="pay" value="venta">
+                    <input type="hidden" name="add" value=true>
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning btn-block']) !!}
                 </div>
                 {!! Form::close() !!}
