@@ -30,14 +30,13 @@
             <div class="col-md-6 col-sm-12">
                 <div class="row">
                     @include('icon', ['title' => 'Tipo', 'icon' => 'industry', 'number' => $order->type, 'color' => 'red'])
-                    @include('icon', ['title' => 'Entrega', 'icon' => 'calendar','number' => $order->deliverDate])
-                </div>
-                <div class="row">
                     @include('icon', ['title' => 'Diseño', 'icon' => 'wrench', 'number' => $order->design])
-                    @include('icon', ['title' => 'Descripción', 'icon' => 'edit', 'number' => $order->description])
                 </div>
                 <div class="row">
+                    @include('icon', ['title' => 'Descripción', 'icon' => 'edit', 'number' => $order->description])
                     @include('icon', ['title' => 'Calibre', 'icon' => 'compress', 'number' => $order->caliber, 'color' => 'red'])
+                </div>
+                <div class="row">
                     @include('icon', ['title' => 'Medidas', 'icon' => 'external-link', 'number' => $order->measureType, 'color' => 'red'])
                 </div>
                 <div class="row">

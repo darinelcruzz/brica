@@ -58,7 +58,7 @@ class ListOrdersController extends Controller
         }
 
         $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
-                'id','type', 'description', 'deliver_date'
+                'id','type', 'description', 'deliver'
             ]);
 
         return view('orders.operatorListQuotations', compact('pending'));
