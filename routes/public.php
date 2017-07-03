@@ -75,6 +75,15 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         return redirect(route('production.production'));;
     })->name('complete');
 
+    Route::get('cambiar', function ()
+    {
+        $q = App\Quotation::where('status', 'produccion')->get()->last();
+        $q->status = 'autorizado';
+        $q->save();
+
+        return redirect(route('production.operator'));;
+    })->name('change');
+
     Route::get('ingenieros', [
         'uses' => 'ListOrdersController@production',
         'as' => 'production',

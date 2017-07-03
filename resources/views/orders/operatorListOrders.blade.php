@@ -14,27 +14,32 @@
         </template>
 
         <template slot="body">
-            @foreach($pending as $row)
-              <tr>
-                  <td>{{ $row->id }}</td>
-                  <td>{{ $row->type}}</td>
-                  <td>{{ $row->quotation }}</td>
-                  <td>
-                      <a href="{{ route('production.operatorOrder', ['id' => $row->id]) }}"
-                          class="btn btn-success">
-                              <i class="fa fa-play"></i>
-                      </a>
-                  </td>
-              </tr>
+            @forelse($pending as $row)
+                <tr>
+                    <td>{{ $row->id }}</td>
+                    <td>{{ $row->type}}</td>
+                    <td>{{ $row->quotation }}</td>
+                    <td>
+                        <a href="{{ route('production.operatorOrder', ['id' => $row->id]) }}"
+                            class="btn btn-success">
+                                <i class="fa fa-play"></i>
+                        </a>
+                    </td>
+                </tr>
             @endforeach
         </template>
 
         <template slot="footer">
-            {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
-                <input type="hidden" name="id" value="{{ $row->quotation }}">
-
-                {!! Form::submit('Terminado', ['class' => 'btn btn-primary btn-block']) !!}
-            {!! Form::close() !!}
+                @if (isset($row))
+                    {!! Form::open(['method' => 'POST', 'route' => 'production.finish']) !!}
+                        <input type="hidden" name="id" value="{{ $row->quotation }}">
+                        {!! Form::submit('Terminado', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::close() !!}
+                @else
+                    <label>No hay órdenes para esta cotización</label>
+                    <br>
+                    <a href="{{ route('production.change')}}" class="'btn btn-primary'">Cambiar estado</a>
+                @endif
         </template>
     </data-table>
 
