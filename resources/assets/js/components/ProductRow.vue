@@ -4,7 +4,7 @@
             {{ num }}
         </td>
         <td>
-            <input type="number" name="quantity[]" min="0" v-model="quantity" @change="saveTotal">
+            <input type="number" name="quantity[]" min="0" step="0.1" v-model="quantity" @change="saveTotal">
         </td>
         <td>
             {{ products[product_id - 1].unity }}
