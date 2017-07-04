@@ -21,6 +21,7 @@
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
+                      <input type="hidden" name="user" value="1">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
                   </div>
                   <!-- /.box-footer -->
