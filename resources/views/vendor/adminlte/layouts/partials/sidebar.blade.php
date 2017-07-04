@@ -15,8 +15,6 @@
             @else
                 @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/one')])
             @endif
-        @else
-            @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/one')])
         @endif
     </section>
     <!-- /.sidebar -->
