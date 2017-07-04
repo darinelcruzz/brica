@@ -222,6 +222,11 @@ Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
         'uses' => 'ProductController@edit',
         'as' => 'edit'
     ]);
+
+    Route::post('cambiar', [
+        'uses' => 'ProductController@change',
+        'as' => 'change'
+    ]);
 });
 
 // Usuarios
