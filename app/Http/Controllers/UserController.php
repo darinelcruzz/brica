@@ -28,7 +28,8 @@ class UserController extends Controller
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
 			'pass' => $request->password,
-			'level' => $request->level
+			'level' => $request->level,
+			'user' => $request->user
 		]);
 
     	return redirect(route('user.show'));
