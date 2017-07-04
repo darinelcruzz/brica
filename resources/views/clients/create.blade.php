@@ -7,24 +7,26 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Nuevo cliente</h3>
                 </div>
+
                 <!-- form start -->
                 {!! Form::open(['method' => 'POST', 'route' => 'client.store', 'class' => 'form-horizontal']) !!}
-                  <div class="box-body">
-                    {!! Field::text('name', ['label' => 'Nombre', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('city', ['label' => 'Ciudad', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('phone', ['label' => 'Teléfono', 'tpl' => 'templates/oneline']) !!}
-                    <hr>
-                    {!! Field::text('address', ['label' => 'Dirección', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('rfc', ['label' => 'RFC', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::email('email', ['label' => 'Correo', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('contact', ['label' => 'Contacto', 'tpl' => 'templates/oneline']) !!}
-                  </div>
-                  <!-- /.box-body -->
-                  <div class="box-footer">
-                    <input type="hidden" name="from" value="{{ $from }}">
-                    {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
-                  </div>
-                  <!-- /.box-footer -->
+
+                    <div class="box-body">
+                        {!! Field::text('name', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::text('city', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::text('phone', ['tpl' => 'templates/oneline']) !!}
+                        <hr>
+                        {!! Field::text('address', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::text('rfc', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::email('email', ['tpl' => 'templates/oneline']) !!}
+                        {!! Field::text('contact', ['tpl' => 'templates/oneline']) !!}
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <input type="hidden" name="from" value="{{ $from }}">
+                        {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
+                    </div>
+                    <!-- /.box-footer -->
                 {!! Form::close() !!}
             </div>
         </div>

@@ -28,11 +28,30 @@ class ProviderController extends Controller
 
     public function show()
     {
+        $ruta = 'provider.edit';
         $providers = Provider::get([
             'id', 'name', 'rfc', 'city', 'phone', 'email', 'contact'
         ]);
 
+        return view('providers.show', compact('providers', 'ruta'));
+    }
 
-        return view('providers.show', compact('providers'));
+    public function edit($id)
+    {
+        $provider = Provider::find($id);
+        return view('providers.edit', compact('provider'));
+	}
+
+    public function change(Request $request)
+    {
+        $this->validate($request, [
+    		'name' => 'required',
+    		'city' => 'required',
+    		'phone' => 'required',
+    	]);
+
+        Provider::find($request->id)->update($request->all());
+
+        return $this->show();
     }
 }

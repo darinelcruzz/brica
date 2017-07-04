@@ -195,6 +195,16 @@ Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
         'uses' => 'ClientController@show',
         'as' => 'show'
     ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ClientController@edit',
+        'as' => 'edit'
+    ]);
+
+    Route::post('actualizar', [
+        'uses' => 'ClientController@change',
+        'as' => 'change'
+    ]);
 });
 
 // Proveedores
@@ -213,6 +223,16 @@ Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
         'uses' => 'ProviderController@show',
         'as' => 'show'
     ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ProviderController@edit',
+        'as' => 'edit'
+    ]);
+
+    Route::post('actualizar', [
+        'uses' => 'ProviderController@change',
+        'as' => 'change'
+    ]);
 });
 
 // Productos
@@ -230,6 +250,16 @@ Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
     Route::get('/', [
         'uses' => 'ProductController@show',
         'as' => 'show'
+    ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ProductController@edit',
+        'as' => 'edit'
+    ]);
+
+    Route::post('actualizar', [
+        'uses' => 'ProductController@change',
+        'as' => 'change'
     ]);
 });
 

@@ -8,7 +8,7 @@ use App\Product;
 class ProductController extends Controller
 {
     public function create()
-	{
+    {
 		return view('products.create');
 	}
 
@@ -29,10 +29,32 @@ class ProductController extends Controller
 
     public function show()
     {
+        $ruta = 'product.edit';
         $products = Product::get([
             'id', 'name', 'unity', 'price', 'family', 'quantity'
         ]);
 
-        return view('products.show', compact('products'));
+        return view('products.show', compact('products', 'ruta'));
+    }
+
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        return view('products.edit', compact('product'));
+	}
+
+    public function change(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'unity' => 'required',
+            'price' => 'required',
+            'family' => 'required',
+            'quantity' => 'required',
+        ]);
+
+        Product::find($request->id)->update($request->all());
+
+        return $this->show();
     }
 }

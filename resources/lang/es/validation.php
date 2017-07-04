@@ -117,7 +117,7 @@ return [
     'attributes'           => [
         'name'                  => 'nombre',
         'username'              => 'usuario',
-        'email'                 => 'correo electrónico',
+        'email'                 => 'correo',
         'first_name'            => 'nombre',
         'last_name'             => 'apellido',
         'password'              => 'contraseña',
@@ -170,7 +170,8 @@ return [
         'deliver'           => 'fecha de entrega',
         'unity'                 => 'unidad',
         'price'                 => 'precio',
-        'family'                => 'familia'
+        'family'                => 'familia',
+        'contact'               => 'contacto'
     ],
 
 ];

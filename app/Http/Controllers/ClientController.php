@@ -32,10 +32,30 @@ class ClientController extends Controller
 
     public function show()
     {
+		$ruta = 'client.edit';
         $clients = Client::get([
             'id', 'name', 'rfc', 'city', 'phone', 'email', 'contact'
         ]);
 
-        return view('clients.show', compact('clients'));
+        return view('clients.show', compact('clients', 'ruta'));
+    }
+
+	public function edit($id)
+    {
+        $client = Client::find($id);
+        return view('clients.edit', compact('client'));
+	}
+
+    public function change(Request $request)
+    {
+        $this->validate($request, [
+			'name' => 'required',
+    		'city' => 'required',
+    		'phone' => 'required',
+        ]);
+
+        Client::find($request->id)->update($request->all());
+
+        return $this->show();
     }
 }
