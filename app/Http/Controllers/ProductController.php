@@ -29,7 +29,7 @@ class ProductController extends Controller
 
     public function show()
     {
-        $ruta = 'product.edit';
+        $ruta = 'product.change';
         $products = Product::get([
             'id', 'name', 'unity', 'price', 'family', 'quantity'
         ]);

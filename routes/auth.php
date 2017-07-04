@@ -217,6 +217,11 @@ Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
         'uses' => 'ProductController@show',
         'as' => 'show'
     ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ProductController@edit',
+        'as' => 'edit'
+    ]);
 });
 
 // Usuarios
