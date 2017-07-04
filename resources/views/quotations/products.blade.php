@@ -30,7 +30,7 @@
                 </div>
 
                 <row-woc col="col-md-12">
-                    <product-table :products="products"></product-table>
+                    <product-table :products="products" :retainer="0"></product-table>
                 </row-woc>
 
                 <div class="box-footer">

@@ -13749,7 +13749,7 @@ if (typeof jQuery === 'undefined') {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
- * Vue.js v2.3.4
+ * Vue.js v2.3.3
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -18178,7 +18178,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.3.4';
+Vue$3.version = '2.3.3';
 
 /*  */
 
@@ -18669,7 +18669,6 @@ function createPatchFunction (backend) {
   function initComponent (vnode, insertedVnodeQueue) {
     if (isDef(vnode.data.pendingInsert)) {
       insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert);
-      vnode.data.pendingInsert = null;
     }
     vnode.elm = vnode.componentInstance.$el;
     if (isPatchable(vnode)) {
@@ -25079,6 +25078,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -25090,7 +25124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['products'],
+    props: ['products', 'retainer'],
 
     methods: {
         addToTotal: function addToTotal(total, num) {
@@ -25618,7 +25652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* global _ Vue */
 
-window._ = __webpack_require__(69
+window._ = __webpack_require__(69);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25626,13 +25660,13 @@ window._ = __webpack_require__(69
  * code may be modified to fit the specific needs of your application.
  */
 
-);window.$ = window.jQuery = __webpack_require__(5);
+window.$ = window.jQuery = __webpack_require__(5);
 
 __webpack_require__(9);
 
 __webpack_require__(25);
 window.toastr = __webpack_require__(71);
-__webpack_require__(68
+__webpack_require__(68);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -25640,7 +25674,7 @@ __webpack_require__(68
  * and simple, leaving you to focus on building your next great project.
  */
 
-);window.Vue = __webpack_require__(10
+window.Vue = __webpack_require__(10);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -25648,14 +25682,15 @@ __webpack_require__(68
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-);window.axios = __webpack_require__(11);
+window.axios = __webpack_require__(11);
 
 window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': window.Laravel.csrfToken,
   'X-Requested-With': 'XMLHttpRequest'
+};
 
-  // Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
-};Vue.prototype.trans = function (key) {
+// Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
+Vue.prototype.trans = function (key) {
   return _.get(window.trans, key, key);
 };
 
@@ -25663,7 +25698,7 @@ window.axios.defaults.headers.common = {
 Vue.component('register-form', __webpack_require__(81));
 Vue.component('login-form', __webpack_require__(80));
 Vue.component('email-reset-password-form', __webpack_require__(79));
-Vue.component('reset-password-form', __webpack_require__(82)
+Vue.component('reset-password-form', __webpack_require__(82));
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -25679,7 +25714,6 @@ Vue.component('reset-password-form', __webpack_require__(82)
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
-);
 
 /***/ }),
 /* 59 */,
@@ -25694,21 +25728,21 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 64 */
@@ -25729,7 +25763,7 @@ exports.push([module.i, "\n.chat-composer {\n    display: -webkit-box;\n    disp
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\r\n    opacity: 0;\n}", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    transition: opacity 1s ease;\n}\n.fade-enter, .fade-leave-to {\n    opacity: 0;\n}", ""]);
 
 /***/ }),
 /* 67 */
@@ -45681,7 +45715,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "subtotal": _vm.addToTotal
     }
-  })], 1), _vm._v(" "), _c('tfoot', [_c('tr', [_c('td'), _c('td'), _c('td'), _c('td'), _vm._v(" "), _c('td', [_c('b', [_vm._v("Total:")])]), _vm._v(" "), _c('td', [_vm._v("\n                    $ " + _vm._s(_vm.total) + "\n                    "), _c('input', {
+  })], 1), _vm._v(" "), _c('tfoot', [(_vm.retainer) ? [_c('tr', [_c('td'), _c('td'), _c('td'), _c('td'), _vm._v(" "), _c('td', [_vm._v("\n                        Subtotal:\n                    ")]), _vm._v(" "), _c('td', [_vm._v("\n                        $ " + _vm._s(_vm.total) + "\n                    ")]), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', [_c('td'), _c('td'), _c('td'), _c('td'), _vm._v(" "), _c('td', [_vm._v("\n                        - Anticipo:\n                    ")]), _vm._v(" "), _c('td', [_vm._v("\n                        $ " + _vm._s(_vm.retainer) + "\n                    ")]), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', [_c('td'), _c('td'), _c('td'), _c('td'), _vm._v(" "), _c('td', [_c('b', [_vm._v("Total:")])]), _vm._v(" "), _c('td', [_vm._v("\n                        $ " + _vm._s(_vm.total - _vm.retainer) + "\n                        "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "amount"
+    },
+    domProps: {
+      "value": _vm.total - _vm.retainer
+    }
+  })]), _vm._v(" "), _c('td')])] : _c('tr', [_c('td'), _c('td'), _c('td'), _c('td'), _vm._v(" "), _c('td', [_c('b', [_vm._v("Total:")])]), _vm._v(" "), _c('td', [_vm._v("\n                    $ " + _vm._s(_vm.total) + "\n                    "), _c('input', {
     attrs: {
       "type": "hidden",
       "name": "amount"
@@ -45689,7 +45731,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "value": _vm.total
     }
-  })]), _vm._v(" "), _c('td')])])], 1)])
+  })]), _vm._v(" "), _c('td')])], 2)], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

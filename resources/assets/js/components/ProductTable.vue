@@ -24,17 +24,52 @@
                 </product-row>
             </tbody>
             <tfoot>
-                <tr>
+                <template v-if="retainer">
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            Subtotal:
+                        </td>
+                        <td>
+                            $ {{ total }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            - Anticipo:
+                        </td>
+                        <td>
+                            $ {{ retainer }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            <b>Total:</b>
+                        </td>
+                        <td >
+                            $ {{ total - retainer }}
+                            <input type="hidden" name="amount" :value="total - retainer">
+                        </td>
+                        <td></td>
+                    </tr>
+                </template>
+
+                <tr v-else>
                     <td></td><td></td><td></td><td></td>
                     <td>
                         <b>Total:</b>
                     </td>
-                    <td>
+                    <td >
                         $ {{ total }}
                         <input type="hidden" name="amount" :value="total">
                     </td>
                     <td></td>
                 </tr>
+
             </tfoot>
         </table>
     </div>
@@ -59,7 +94,7 @@ export default {
             total: 0,
         };
     },
-    props: ['products'],
+    props: ['products', 'retainer'],
 
     methods: {
         addToTotal(total, num) {

@@ -18,12 +18,14 @@
                         {!! Field::text('description', $quotation->decription, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                     </div>
                     <div class="col-md-6">
-                        {!! Field::number('advance', $quotation->amount ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                        {!! Field::number('advance', $quotation->amount ,
+                            ['disabled' => '', 'tpl' => 'templates/withicon'],
+                            ['icon' => 'barcode']) !!}
                     </div>
                 </div>
 
                 <row-woc col="col-md-12">
-                    <product-table :products="products"></product-table>
+                    <product-table :products="products" :retainer="{{ $quotation->amount }}"></product-table>
                 </row-woc>
 
                 <div class="box-footer">
