@@ -32,7 +32,13 @@ class QuotationController extends Controller
         $lastQ = Quotation::all()->last();
         $lastQ = empty($lastQ) ? 0: $lastQ->id;
 
-        return view('quotations.production', compact('clients', 'lastQ'));
+        return view('quotations.advance', compact('clients', 'lastQ'));
+    }
+
+    function build($id)
+    {
+        $quotation = Quotation::find($id);
+        return view('quotations.production', compact('quotation'));
     }
 
     function store(Request $request)
@@ -90,6 +96,13 @@ class QuotationController extends Controller
         $paid = Quotation::where('status', '!=', 'pendiente')->get();
 
         return view('quotations.show', compact('terminated', 'production', 'paid'));
+    }
+
+    function whatch()
+    {
+        $finish = Quotation::where('type', 'produccion')->where('status', 'finalizado')->get();
+
+        return view('quotations.whatch', compact('finish'));
     }
 
     public function pay(Request $request)

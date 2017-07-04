@@ -167,11 +167,12 @@ return [
         'length'                => 'largo',
         'width'                 => 'ancho',
         'type'                  => 'tipo',
-        'deliver'           => 'fecha de entrega',
+        'deliver'               => 'fecha de entrega',
         'unity'                 => 'unidad',
         'price'                 => 'precio',
         'family'                => 'familia',
-        'contact'               => 'contacto'
+        'contact'               => 'contacto',
+        'advance'               => 'anticipo'
     ],
 
 ];

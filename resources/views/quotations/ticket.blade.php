@@ -14,7 +14,6 @@
     <h5>Cliente: {{ $quotation->clientr->name }}</h5>
     <h5> Folio: {{ $quotation->id }} </h5>
     <h5> Fecha: {{ $date }} </h5>
-    <h5> Folio: {{ $quotation->add }} </h5>
 
     <div class="col-md-12">
         <table class="table table-striped">

@@ -25,8 +25,12 @@ return [
                 'route' => 'quotation.create'
             ],
             'make' => [
-                'title' => 'Producción',
+                'title' => 'Anticipo',
                 'route' => 'quotation.make'
+            ],
+            'whatch' => [
+                'title' => 'Producción',
+                'route' => 'quotation.whatch'
             ],
             'show' => [
                 'title' => 'Cajera',

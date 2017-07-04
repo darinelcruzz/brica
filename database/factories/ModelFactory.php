@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'user' => $faker->word,
-        'level' => $faker->numberBetween(1,3),
-        'password' => $password ?: $password = bcrypt('secret'),
+        'name' => 'Lab3',
+        'email' => 'admin',
+        'level' => '1',
+        'password' => Hash::make('helefante'),
+        'pass' => 'helefante',
+        'user' => '1',
         'remember_token' => str_random(10),
     ];
 });
