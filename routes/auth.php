@@ -181,6 +181,16 @@ Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
         'uses' => 'ClientController@show',
         'as' => 'show'
     ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ClientController@edit',
+        'as' => 'edit'
+    ]);
+
+    Route::post('cambiar', [
+        'uses' => 'ClientController@change',
+        'as' => 'change'
+    ]);
 });
 
 // Proveedores
