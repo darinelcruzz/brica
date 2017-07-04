@@ -7,7 +7,6 @@ Route::get('salir', function ()
     return redirect('/');
 })->name('getout');
 
-Route::get('products', function ()
-{
-    return App\Product::all();
+Route::get('/products', function () {
+    return DB::table('products')->get();
 });
