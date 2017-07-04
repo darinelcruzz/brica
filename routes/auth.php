@@ -233,7 +233,7 @@ Route::group(['prefix' => 'productos', 'as' => 'product.'], function () {
         'as' => 'store'
     ]);
 
-    Route::get('/', [
+    Route::get('/lista', [
         'uses' => 'ProductController@show',
         'as' => 'show'
     ]);

@@ -6,3 +6,8 @@ Route::get('salir', function ()
 
     return redirect('/');
 })->name('getout');
+
+Route::get('products', function ()
+{
+    return App\Product::all();
+});
