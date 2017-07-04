@@ -209,6 +209,16 @@ Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
         'uses' => 'ProviderController@show',
         'as' => 'show'
     ]);
+
+    Route::get('editar/{id?}', [
+        'uses' => 'ProviderController@edit',
+        'as' => 'edit'
+    ]);
+
+    Route::post('cambiar', [
+        'uses' => 'ProviderController@change',
+        'as' => 'change'
+    ]);
 });
 
 // Productos
