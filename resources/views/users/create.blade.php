@@ -11,11 +11,12 @@
                 {!! Form::open(['method' => 'POST', 'route' => 'user.store', 'class' => 'form-horizontal']) !!}
                   <div class="box-body">
                     {!! Field::text('name', ['label' => 'Nombre', 'tpl' => 'templates/oneline']) !!}
-                    {!! Field::text('user', ['label' => 'Usuario', 'tpl' => 'templates/oneline']) !!}
+                    {!! Field::text('email', ['label' => 'Usuario', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::password('password', ['label' => 'Contraseña', 'tpl' => 'templates/oneline']) !!}
                     {!! Field::password('password2', ['label' => 'Repite contraseña', 'tpl' => 'templates/oneline']) !!}
 
-                    {!! Field::select('level', ['1' => 'Principal', '2' => 'Ventas', '3' => 'Ordenes'],
+                    {!! Field::select('level',
+                        ['1' => 'Admin', '2' => 'Ventas', '3' => 'Gerente', '4' => 'Ingeniero', '5' => 'Operador'],
                         ['label' => 'Jerarquía', 'template' => 'templates/oneline']) !!}
                   </div>
                   <!-- /.box-body -->

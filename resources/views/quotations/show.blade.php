@@ -10,7 +10,7 @@
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
-                <th>Pagar</th>
+                <th>Cobrar</th>
             </tr>
         </template>
 

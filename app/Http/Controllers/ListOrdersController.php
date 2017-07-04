@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\Quotation;
 
@@ -47,7 +48,7 @@ class ListOrdersController extends Controller
 
     function operator(Request $request)
     {
-        $inProduction = Quotation::where('status', 'produccion')->where('team', 'R2')->first();
+        $inProduction = Quotation::where('status', 'produccion')->where('team', Auth::user()->email)->first();
 
         if($inProduction) {
 
@@ -57,7 +58,7 @@ class ListOrdersController extends Controller
 
         }
 
-        $pending = Quotation::where('status', 'asignado')->where('team', 'R2')->get([
+        $pending = Quotation::where('status', 'asignado')->where('team', Auth::user()->email)->get([
                 'id','type', 'description', 'deliver'
             ]);
 
