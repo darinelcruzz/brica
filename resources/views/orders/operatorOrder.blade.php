@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
-                <img height="100%" width="100%" src="{{ asset('/img/nuevo.png') }}">
+                <img height="100%" width="100%" src="{{ $order->added }}">
             </div>
         </div>
 

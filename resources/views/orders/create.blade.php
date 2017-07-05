@@ -9,7 +9,8 @@
                 </div>
 
                 <!-- form start -->
-                {!! Form::open(['method' => 'POST', 'route' => 'production.store']) !!}
+                {!! Form::open(['method' => 'POST',
+                    'route' => 'production.store', 'enctype' => 'multipart/form-data']) !!}
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -26,11 +27,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
-                            ['tpl' => 'templates/withicon', 'v-model' => 'selected'], ['icon' => 'wrench']) !!}
+                            ['empty' => false, 'tpl' => 'templates/withicon', 'v-model' => 'selected'], ['icon' => 'wrench']) !!}
                         </div>
                         <div v-if="disable(selected)" class="col-md-6">
-                            {!! Field::select('added', ['placa molino' => 'Placa molino', 'tapa' => 'Tapa'], null,
-                            ['tpl' => 'templates/withicon'], ['icon' => 'check-square-o']) !!}
+                            {!! Field::select('added', $links , null,
+                            ['v-model' => 'selectedDesign', 'tpl' => 'templates/withicon', 'empty' => false,],
+                            ['icon' => 'check-square-o']) !!}
                         </div>
                     </div>
 
@@ -58,9 +60,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6" align="center">
+                        <div v-if="disable(selected)" class="col-md-6" align="center">
                             <div class="row">
-                                <img height="80%" width="80%" src="{{ asset('/img/nuevo.png') }}">
+                                <img height="80%" width="80%" :src="selectedDesign">
+                            </div>
+                        </div>
+                        <div v-else class="col-md-6" align="center">
+                            <div class="row">
+                                <label>Agregar/tomar foto</label>
+                                <input type="file" name="new_design">
+                                <input type="text" name="new_design_name">
                             </div>
                         </div>
                     </div>

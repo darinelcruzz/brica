@@ -37,6 +37,7 @@ const app = new Vue({
         product_id: 1,
         quantity: 0,
         selected: '',
+        selectedDesign: '',
     },
     methods: {
         disable(option) {

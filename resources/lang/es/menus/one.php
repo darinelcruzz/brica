@@ -51,6 +51,10 @@ return [
                 'title' => 'Ingeniero',
                 'route' => 'production.production'
             ],
+            'designs' => [
+                'title' => 'Agregar diseño',
+                'route' => 'design.form'
+            ],
         ]
     ],
 

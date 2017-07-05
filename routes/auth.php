@@ -1,12 +1,14 @@
 <?php
 
-Route::get('archivos', function()
-{
-    return view('files');
-});
+Route::get('disenos', 'DesignsController@show');
 
-Route::post('archivos', [
-    'uses' => 'StoreDesignsController@upload',
+Route::get('subir-archivo/{type?}', [
+    'uses' => 'DesignsController@uploadForm',
+    'as' => 'design.form'
+]);
+
+Route::post('subir-archivo', [
+    'uses' => 'DesignsController@upload',
     'as' => 'design.upload'
 ]);
 
@@ -34,7 +36,7 @@ Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
 });
 
 // Producción
-Route::group(['prefix' => '|', 'as' => 'production.'], function () {
+Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
 
     Route::get('orden/{cot?}', [
         'uses' => 'OrderController@create',
