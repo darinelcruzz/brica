@@ -83,36 +83,35 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'as' => 'complete'
     ]);
 
-    Route::get('operador', [
+    /*Route::get('operador', [
         'uses' => 'ListOrdersController@operator',
+        'as' => 'operator'
+    ]);*/
+
+    Route::get('operador/cotizaciones', [
+        'uses' => 'OperatorScreenController@showQuotations',
         'as' => 'operator'
     ]);
 
-    Route::get('operador/listaCotizaciones', [
-        'uses' => 'ListOrdersController@operator',
-        'as' => 'operatorListQuotations'
+    Route::get('operador/iniciar/{id}', [
+        'uses' => 'OperatorScreenController@start',
+        'as' => 'start'
     ]);
 
-    Route::get('operador/listaOrdenes', [
-        'uses' => 'ListOrdersController@operator',
-        'as' => 'operatorListOrders'
+    Route::get('operador/cotizaciones/{id}', [
+        'uses' => 'OperatorScreenController@showOrders',
+        'as' => 'orders'
+    ]);
+
+    Route::get('operador/terminar/{id}', [
+        'uses' => 'OperatorScreenController@finish',
+        'as' => 'finish'
     ]);
 
     Route::get('operador/orden/{id}', [
         'uses' => 'OrderController@details',
         'as' => 'order.details'
     ]);
-
-    Route::post('iniciar', [
-        'uses' => 'OrderController@start',
-        'as' => 'start'
-    ]);
-
-    Route::post('terminar', [
-        'uses' => 'OrderController@finish',
-        'as' => 'finish'
-    ]);
-
 });
 
 // Cotizaciones
