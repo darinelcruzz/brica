@@ -2,6 +2,11 @@
 
 Route::get('disenos', 'DesignsController@show');
 
+Route::get('borrar-archivo/{img}', [
+    'uses' => 'DesignsController@deleteImage',
+    'as' => 'design.delete'
+]);
+
 Route::get('subir-archivo/{type?}', [
     'uses' => 'DesignsController@uploadForm',
     'as' => 'design.form'

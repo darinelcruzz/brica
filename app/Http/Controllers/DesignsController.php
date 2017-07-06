@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
@@ -16,7 +17,8 @@ class DesignsController extends Controller
     function uploadForm($type = 'designs')
     {
         $designs = Storage::files('public/designs');
-        return view('files', compact('type', 'designs'));
+        $temps = Storage::files('public/temp');
+        return view('files', compact('type', 'designs', 'temps'));
     }
 
     function upload(Request $request)
@@ -28,6 +30,17 @@ class DesignsController extends Controller
         $type = $request->type;
 
         $file->storeAs("public/$type", "$name.$ext");
+
+        return back();
+    }
+
+    function deleteImage($img)
+    {
+        Storage::delete("public/temp/$img");
+
+        $order = Order::where('added', "/storage/temp/$img")->get();
+        $order->added = '';
+        $order->save();
 
         return back();
     }

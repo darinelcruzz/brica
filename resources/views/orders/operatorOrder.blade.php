@@ -48,9 +48,11 @@
                     @include('icon', ['title' => 'Ancho', 'icon' => 'expand', 'number' => $order->width . ' cm'])
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <img height="100%" width="100%" src="{{ $order->added }}">
-            </div>
+            @if ($order->added)
+                <div class="col-md-6 col-sm-12">
+                    <img height="100%" width="100%" src="{{ $order->added }}">
+                </div>
+            @endif
         </div>
 
 @endsection
