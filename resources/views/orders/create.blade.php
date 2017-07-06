@@ -69,7 +69,6 @@
                             <div class="row">
                                 <label>Agregar/tomar foto</label>
                                 <input type="file" name="new_design" required>
-                                <input type="text" name="new_design_name" required>
                             </div>
                         </div>
                     </div>

@@ -34,7 +34,7 @@ class OrderController extends Controller
 
 		if ($order->design == 'nuevo') {
 			$file = $request->new_design;
-			$filename = $request->new_design_name;
+			$filename = str_random(40);
 			$ext = $file->extension();
 			$file->storeAs('public/temp', "$filename.$ext");
 
