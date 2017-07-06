@@ -42,7 +42,7 @@ class OrderController extends Controller
 			$order->save();
 		}
 
-    	return redirect(route('production.production'));
+    	return redirect(route('production.engineers'));
     }
 
 
@@ -82,4 +82,10 @@ class OrderController extends Controller
 
 		return $links;
 	}
+
+	function details($id)
+    {
+        $order = Order::find($id);
+        return view('orders.details', compact('order'));
+    }
 }

@@ -3,13 +3,13 @@
 @section('main-content')
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <solid-box title="Subir diseño" color="box-info">
                 {!! Form::open([
                     'method' => 'POST', 'route' => 'design.upload', 'enctype' => 'multipart/form-data']) !!}
                     {!! Field::text('name') !!}
-                    <input type="file" name="file" required>
-                    <input type="hidden" name="type" value="{{ $type }}">
+                    <input type="file" id="design" name="file" required>
+                    <input type="hidden" name="type" value="{{ $type }}"><br>
                     {!! Form::submit('Agregar', ['class' => 'btn btn-info pull-right']) !!}
                 {!! Form::close() !!}
             </solid-box>

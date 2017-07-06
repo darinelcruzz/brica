@@ -9,22 +9,6 @@ use App\Quotation;
 
 class ListOrdersController extends Controller
 {
-    function production()
-    {
-
-        $pending = Quotation::production('autorizado');
-
-        $completed = Quotation::production('terminado');
-
-        $authorized = Quotation::production('asignado');
-
-        $production = Quotation::production('produccion');
-
-        $terminated = Quotation::production('finalizado');
-
-        return view('orders.production', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
-    }
-
     function operator(Request $request)
     {
         $currentQ = Quotation::where('status', 'produccion')->where('team', Auth::user()->email)->first();
@@ -50,12 +34,4 @@ class ListOrdersController extends Controller
 
         return view('orders.cashier', compact('status'));
     }
-
-    function operatorOrder($id)
-    {
-        $order = Order::find($id);
-
-        return view('orders.operatorOrder', compact('order'));
-    }
-
 }

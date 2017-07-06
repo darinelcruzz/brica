@@ -9,7 +9,7 @@ use App\Order;
 
 class ManagerScreenController extends Controller
 {
-    function show()
+    function index()
     {
         $pending = Quotation::production('autorizado');
 
@@ -21,7 +21,7 @@ class ManagerScreenController extends Controller
 
         $terminated = Quotation::production('finalizado');
 
-        return view('orders.pending', compact('pending', 'completed',
+        return view('production.manager', compact('pending', 'completed',
             'authorized', 'production', 'terminated'));
     }
 

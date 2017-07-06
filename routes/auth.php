@@ -54,7 +54,7 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::get('gerente', [
-        'uses' => 'ManagerScreenController@show',
+        'uses' => 'ManagerScreenController@index',
         'as' => 'manager'
     ]);
 
@@ -62,15 +62,6 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'uses' => 'ManagerScreenController@assign',
         'as' => 'assign'
     ]);
-
-    Route::get('completado/{cot?}', function ($cot)
-    {
-        $q = App\Quotation::find($cot);
-        $q->status = 'terminado';
-        $q->save();
-
-        return redirect(route('production.production'));;
-    })->name('complete');
 
     Route::get('cambiar', function ()
     {
@@ -83,10 +74,14 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     })->name('change');
 
     Route::get('ingenieros', [
-        'uses' => 'ListOrdersController@production',
-        'as' => 'production',
+        'uses' => 'EngineersScreenController@index',
+        'as' => 'engineers',
     ]);
 
+    Route::get('completado/{id}', [
+        'uses' => 'EngineersScreenController@ordersReady',
+        'as' => 'complete'
+    ]);
 
     Route::get('operador', [
         'uses' => 'ListOrdersController@operator',
@@ -104,8 +99,8 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::get('operador/orden/{id}', [
-        'uses' => 'ListOrdersController@operatorOrder',
-        'as' => 'operatorOrder'
+        'uses' => 'OrderController@details',
+        'as' => 'order.details'
     ]);
 
     Route::post('iniciar', [

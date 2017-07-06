@@ -7,7 +7,7 @@
                 <th>Cotización</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
-                <th># órdenes</th>
+                <th>Órdenes</th>
                 <th>Entrega</th>
             </tr>
         </template>
@@ -18,13 +18,19 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>{{ count($row->orders) }}</td>
+                  <td>
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-danger">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                          ({{ count($row->orders) }})
+                      </a>
+                      <p v-else>{{ count($row->orders) }}</p>
+                  </td>
                   <td>{{ $row->deliver }}</td>
                   <td>
                       <a href="{{ route('production.create', ['cot' => $row->id]) }}" class="btn btn-danger">
                           <i class="fa fa-plus" aria-hidden="true"></i>
                       </a>
-                      <a href="{{ route('production.complete', ['cot' => $row->id]) }}" class="btn btn-success">
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('production.complete', ['cot' => $row->id]) }}" class="btn btn-success">
                           <i class="fa fa-check" aria-hidden="true"></i>
                       </a>
                   </td>
