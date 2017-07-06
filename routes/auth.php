@@ -59,7 +59,7 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::get('gerente', [
-        'uses' => 'ManagerScreenController@show',
+        'uses' => 'ManagerScreenController@index',
         'as' => 'manager'
     ]);
 
@@ -67,15 +67,6 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'uses' => 'ManagerScreenController@assign',
         'as' => 'assign'
     ]);
-
-    Route::get('completado/{cot?}', function ($cot)
-    {
-        $q = App\Quotation::find($cot);
-        $q->status = 'terminado';
-        $q->save();
-
-        return redirect(route('production.production'));;
-    })->name('complete');
 
     Route::get('cambiar', function ()
     {
@@ -88,41 +79,44 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     })->name('change');
 
     Route::get('ingenieros', [
-        'uses' => 'ListOrdersController@production',
-        'as' => 'production',
+        'uses' => 'EngineersScreenController@index',
+        'as' => 'engineers',
     ]);
 
+    Route::get('completado/{id}', [
+        'uses' => 'EngineersScreenController@ordersReady',
+        'as' => 'complete'
+    ]);
 
-    Route::get('operador', [
+    /*Route::get('operador', [
         'uses' => 'ListOrdersController@operator',
+        'as' => 'operator'
+    ]);*/
+
+    Route::get('operador/cotizaciones', [
+        'uses' => 'OperatorScreenController@showQuotations',
         'as' => 'operator'
     ]);
 
-    Route::get('operador/listaCotizaciones', [
-        'uses' => 'ListOrdersController@operator',
-        'as' => 'operatorListQuotations'
-    ]);
-
-    Route::get('operador/listaOrdenes', [
-        'uses' => 'ListOrdersController@operator',
-        'as' => 'operatorListOrders'
-    ]);
-
-    Route::get('operador/orden/{id}', [
-        'uses' => 'ListOrdersController@operatorOrder',
-        'as' => 'operatorOrder'
-    ]);
-
-    Route::post('iniciar', [
-        'uses' => 'OrderController@start',
+    Route::get('operador/iniciar/{id}', [
+        'uses' => 'OperatorScreenController@start',
         'as' => 'start'
     ]);
 
-    Route::post('terminar', [
-        'uses' => 'OrderController@finish',
+    Route::get('operador/cotizaciones/{id}', [
+        'uses' => 'OperatorScreenController@showOrders',
+        'as' => 'orders'
+    ]);
+
+    Route::get('operador/terminar/{id}', [
+        'uses' => 'OperatorScreenController@finish',
         'as' => 'finish'
     ]);
 
+    Route::get('operador/orden/{id}', [
+        'uses' => 'OrderController@details',
+        'as' => 'order.details'
+    ]);
 });
 
 // Cotizaciones

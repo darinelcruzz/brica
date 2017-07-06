@@ -11,9 +11,8 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
-	public function create($cot)
+	public function create($quotation)
 	{
-        $quotation = $cot;
 		$links = $this->getDesigns();
         $today = Carbon::now();
 
@@ -42,28 +41,7 @@ class OrderController extends Controller
 			$order->save();
 		}
 
-    	return redirect(route('production.production'));
-    }
-
-
-	function start(Request $request)
-    {
-    	$order = Quotation::find($request->id);
-		$order->status = 'produccion';
-		$order->startTime = Carbon::now()->format('h:i:s a');
-		$order->save();
-
-    	return redirect(route('production.operator'));
-    }
-
-	function finish(Request $request)
-    {
-    	$order = Quotation::find($request->id);
-		$order->status = 'finalizado';
-		$order->endTime = Carbon::now()->format('h:i:s a');
-		$order->save();
-
-    	return redirect(route('production.operator'));
+    	return redirect(route('production.engineers'));
     }
 
     function add(Request $request)
@@ -82,4 +60,10 @@ class OrderController extends Controller
 
 		return $links;
 	}
+
+	function details($id)
+    {
+        $order = Order::find($id);
+        return view('orders.details', compact('order'));
+    }
 }

@@ -37,7 +37,7 @@
                           <td>{{ $order->type }}</td>
                           <td>{{ $order->description }}</td>
                           <td>
-                              <a href="{{ route('production.operatorOrder', ['id' => $order->id]) }}"
+                              <a href="{{ route('production.order.details', ['id' => $order->id]) }}"
                                   class="btn btn-info">
                                   <i class="fa fa-info" aria-hidden="true"></i>nfo
                                   <i class="fa fa-forward" aria-hidden="true"></i>

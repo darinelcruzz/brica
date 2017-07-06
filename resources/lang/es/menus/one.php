@@ -45,7 +45,7 @@ return [
             ],
             'status' => [
                 'title' => 'Ingeniero',
-                'route' => 'production.production'
+                'route' => 'production.engineers'
             ],
             'designs' => [
                 'title' => 'Agregar diseño',
