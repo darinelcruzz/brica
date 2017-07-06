@@ -21,8 +21,10 @@
                   <td>{{ count($row->orders) }}</td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('production.create', ['cot' => $row->id]) }}" class="btn btn-success">+</a>
-                      <a href="{{ route('production.complete', ['cot' => $row->id]) }}" class="btn btn-primary">
+                      <a href="{{ route('production.create', ['cot' => $row->id]) }}" class="btn btn-danger">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                      </a>
+                      <a href="{{ route('production.complete', ['cot' => $row->id]) }}" class="btn btn-success">
                           <i class="fa fa-check" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -39,6 +41,7 @@
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -49,6 +52,12 @@
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-info">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>
@@ -63,6 +72,7 @@
                 <th>Descripción</th>
                 <th>Equipo</th>
                 <th>Entrega</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -74,6 +84,12 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->deliver }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-danger">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>

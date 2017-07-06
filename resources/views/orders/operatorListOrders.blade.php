@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->type}}</td>
-                    <td>{{ $row->quotation }}</td>
+                    <td>{{ $row->description }}</td>
                     <td>
                         <a href="{{ route('production.operatorOrder', ['id' => $row->id]) }}"
                             class="btn btn-success">

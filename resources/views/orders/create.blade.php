@@ -47,7 +47,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::select('measureType', ['externas' => 'Externas', 'internas' => 'Internas'], null,
+                                    {!! Field::select('measureType', ['externas' => 'Externas', 'internas' => 'Internas', 'segun muestra' => 'Según muestra'], null,
                                         ['tpl' => 'templates/withicon'], ['icon' => 'external-link']
                                     ) !!}
                                 </div>
@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     {!! Field::number('pieces',
-                                        ['tpl' => 'templates/withicon', 'step' => '1'], ['icon' => 'list']
+                                        ['tpl' => 'templates/withicon', 'step' => '1', 'min' => '1'], ['icon' => 'list']
                                     ) !!}
                                 </div>
                             </div>
@@ -68,8 +68,8 @@
                         <div v-else class="col-md-6" align="center">
                             <div class="row">
                                 <label>Agregar/tomar foto</label>
-                                <input type="file" name="new_design">
-                                <input type="text" name="new_design_name">
+                                <input type="file" name="new_design" required>
+                                <input type="text" name="new_design_name" required>
                             </div>
                         </div>
                     </div>

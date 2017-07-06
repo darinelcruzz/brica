@@ -23,15 +23,8 @@ class Quotation extends Model
 		return $query->where('date_payment', $date)->where('status', '!=', 'pendiente')->sum('amount');
 	}
 
-	public function scopeSelectedQuotations($query, $status, $extra = [])
+	public function scopeProduction($query, $status)
     {
-        $select = ['id', 'client', 'description'];
-
-        foreach($extra as $col) {
-            array_push($select, $col);
-        }
-
-        return $query->select($select)
-            ->where('type', 'produccion')->where('status', $status)->get();
+        return $query->where('type', 'produccion')->where('status', $status)->get();
     }
 }

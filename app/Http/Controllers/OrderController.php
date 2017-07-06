@@ -66,21 +66,6 @@ class OrderController extends Controller
     	return redirect(route('production.operator'));
     }
 
-    function assign(Request $request)
-    {
-        $this->validate($request, [
-            'team' => 'required',
-            ]);
-
-        $order = Quotation::find($request->id);
-        $order->status = 'asignado';
-        $order->team = $request->team;
-        $order->startTime = Carbon::now()->format('h:i:s a');
-        $order->save();
-
-        return redirect(route('production.pending'));
-    }
-
     function add(Request $request)
     {
         $quotation = $request->id;
@@ -92,7 +77,7 @@ class OrderController extends Controller
 		$files = Storage::files('public/designs');
 		$links = [];
 		foreach ($files as $file) {
-			$links[Storage::url($file)] = Storage::url($file);
+			$links[Storage::url($file)] = substr(Storage::url($file), 17);
 		}
 
 		return $links;

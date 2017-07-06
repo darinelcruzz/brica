@@ -25,12 +25,8 @@ return [
                 'route' => 'quotation.create'
             ],
             'make' => [
-                'title' => 'Anticipo',
-                'route' => 'quotation.make'
-            ],
-            'whatch' => [
                 'title' => 'Producción',
-                'route' => 'quotation.whatch'
+                'route' => 'quotation.make'
             ],
             'show' => [
                 'title' => 'Cajera',
@@ -39,13 +35,13 @@ return [
         ]
     ],
 
-    'orders' => [
+    'production' => [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
             'pending' => [
                 'title' => 'Gerente',
-                'route' => 'production.pending'
+                'route' => 'production.manager'
             ],
             'status' => [
                 'title' => 'Ingeniero',

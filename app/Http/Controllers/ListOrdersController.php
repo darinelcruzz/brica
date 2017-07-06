@@ -9,53 +9,29 @@ use App\Quotation;
 
 class ListOrdersController extends Controller
 {
-
-    function pending()
-    {
-        $pending = Quotation::selectedQuotations('autorizado', ['deliver']);
-
-        $completed = Quotation::selectedQuotations('terminado', ['deliver']);
-
-        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver']);
-
-        $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
-
-        $terminated = Quotation::selectedQuotations('finalizado', [
-            'team', 'startTime', 'endTime'
-        ]);
-
-
-        return view('orders.pending', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
-    }
-
     function production()
     {
 
-        $pending = Quotation::selectedQuotations('autorizado', ['deliver']);
+        $pending = Quotation::production('autorizado');
 
-        $completed = Quotation::selectedQuotations('terminado', ['deliver']);
+        $completed = Quotation::production('terminado');
 
-        $authorized = Quotation::selectedQuotations('asignado', ['team','deliver']);
+        $authorized = Quotation::production('asignado');
 
-        $production = Quotation::selectedQuotations('produccion', ['team','startTime']);
+        $production = Quotation::production('produccion');
 
-        $terminated = Quotation::selectedQuotations('finalizado', [
-            'team', 'startTime', 'endTime'
-        ]);
+        $terminated = Quotation::production('finalizado');
 
         return view('orders.production', compact('pending', 'completed', 'authorized', 'production', 'terminated'));
     }
 
     function operator(Request $request)
     {
-        $inProduction = Quotation::where('status', 'produccion')->where('team', Auth::user()->email)->first();
+        $currentQ = Quotation::where('status', 'produccion')->where('team', Auth::user()->email)->first();
 
-        if($inProduction) {
-
-            $pending = Order::where('quotation', $inProduction->id)->get(['id', 'type', 'description', 'quotation']);
-
+        if($currentQ) {
+            $pending = $currentQ->orders;
             return view('orders.operatorListOrders', compact('pending'));
-
         }
 
         $pending = Quotation::where('status', 'asignado')->where('team', Auth::user()->email)->get([

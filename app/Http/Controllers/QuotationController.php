@@ -138,4 +138,10 @@ class QuotationController extends Controller
         $total = $totalP-$totalE;
         return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
     }
+
+    function details($id)
+    {
+        $quotation = Quotation::find($id);
+        return view('quotations.details', compact('quotation'));
+    }
 }

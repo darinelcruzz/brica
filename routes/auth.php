@@ -54,12 +54,12 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
     ]);
 
     Route::get('gerente', [
-        'uses' => 'ListOrdersController@pending',
-        'as' => 'pending'
+        'uses' => 'ManagerScreenController@show',
+        'as' => 'manager'
     ]);
 
     Route::post('gerente', [
-        'uses' => 'OrderController@assign',
+        'uses' => 'ManagerScreenController@assign',
         'as' => 'assign'
     ]);
 
@@ -122,6 +122,11 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
 
 // Cotizaciones
 Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
+
+    Route::get('details/{id}', [
+        'uses' => 'QuotationController@details',
+        'as' => 'details'
+    ]);
 
     Route::get('anticipo', [
         'uses' => 'QuotationController@make',

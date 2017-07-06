@@ -6,7 +6,7 @@
         example="example1" color="box-default" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
@@ -29,10 +29,11 @@
         example="example2" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
+                <th>Detalles</th>
                 <th>Asignar</th>
             </tr>
         </template>
@@ -45,14 +46,27 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
                   <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-danger">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
+                  <td>
                       {!! Form::open(['method' => 'POST', 'route' => 'production.assign']) !!}
-                          <input type="hidden" name="id" value="{{ $row->id }}">
-                          <div class="input-group">
-                              {!! Field::select('team', ['R1'=>'R1', 'R2'=>'R2', 'R3'=>'R3'], null, ['tpl' => 'templates/nolabel']) !!}
-                              <button type="submit" name="button" class="btn btn-success">
+                        <div class="input-group input-group-sm">
+                            <input type="hidden" name="id" value="{{ $row->id }}">
+                            <select class="form-control" name="team">
+                                <<option selected disabled>Elige</option>
+                                <option value="R1">R1</option>
+                                <option value="R2">R2</option>
+                                <option value="R3">R3</option>
+                            </select>
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-success btn-flat">
                                   <i class="fa fa-check"></i>
                               </button>
-                          </div>
+                            </span>
+                        </div>
                       {!! Form::close() !!}
                   </td>
               </tr>
@@ -64,11 +78,12 @@
         example="example3" color="box-danger" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>
                 <th>Entrega</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -80,6 +95,12 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->deliver }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-danger">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>
@@ -89,7 +110,7 @@
         example="example4" color="box-warning">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>
@@ -114,7 +135,7 @@
         example="example5" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>

@@ -15,7 +15,8 @@ class DesignsController extends Controller
 
     function uploadForm($type = 'designs')
     {
-        return view('files', compact('type'));
+        $designs = Storage::files('public/designs');
+        return view('files', compact('type', 'designs'));
     }
 
     function upload(Request $request)
