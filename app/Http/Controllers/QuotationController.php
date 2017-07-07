@@ -35,12 +35,6 @@ class QuotationController extends Controller
         return view('quotations.advance', compact('clients', 'lastQ'));
     }
 
-    function build($id)
-    {
-        $quotation = Quotation::find($id);
-        return view('quotations.production', compact('quotation'));
-    }
-
     function store(Request $request)
     {
         $this->validate($request, ['client' => 'required','description' => 'required']);
@@ -85,28 +79,6 @@ class QuotationController extends Controller
             $date = Date::now()->format('d-m-Y');
 
             return view('quotations.ticket', compact('quotation', 'date'));
-    }
-
-    function whatch()
-    {
-        $finish = Quotation::where('type', 'produccion')->where('status', 'finalizado')->get();
-
-        return view('quotations.whatch', compact('finish'));
-    }
-
-    public function pay(Request $request)
-    {
-        $folio = Quotation::find($request->id);
-        if($folio->type == 'terminado') {
-            $folio->status = 'pagado';
-        } else {
-            $folio->status = 'autorizado';
-        }
-
-        $folio->date_payment = Date::now()->format('Y-m-d');
-        $folio->save();
-
-        return redirect(route('quotation.show'));
     }
 
     function cash(Request $request)

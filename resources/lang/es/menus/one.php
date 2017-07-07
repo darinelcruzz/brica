@@ -29,8 +29,12 @@ return [
                 'route' => 'quotation.make'
             ],
             'show' => [
-                'title' => 'Cajera',
+                'title' => 'Cobrar anticipo/terminado',
                 'route' => 'quotation.show'
+            ],
+            'charge' => [
+                'title' => 'Cobrar producción',
+                'route' => 'quotation.finished'
             ],
         ]
     ],

@@ -20,7 +20,7 @@ return [
     'operators' => [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
-        'route' => 'production.production',
+        'route' => 'production.operator',
     ],
 
     'logout' => [

@@ -2,9 +2,9 @@
 
 @section('main-content')
     <row-woc col="col-md-10">
-        <solid-box title="Nueva Cotización">
+        <solid-box title="Nueva Cotización" color="box-warning">
             <!-- form start -->
-            {!! Form::open(['method' => 'POST', 'route' => 'quotation.store']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'sale.save']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::text('client', $quotation->clientr->name, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
@@ -29,11 +29,9 @@
                 </row-woc>
 
                 <div class="box-footer">
-                    <input type="hidden" name="status" value="pendiente">
-                    <input type="hidden" name="type" value="terminado">
-                    <input type="hidden" name="pay" value="venta">
-                    <input type="hidden" name="add" value=true>
-                    {!! Form::submit('Agregar', ['class' => 'btn btn-warning btn-block']) !!}
+                    <input type="hidden" name="quotation" value="{{ $quotation->id }}">
+                    <input type="hidden" name="retainer" value="{{ $quotation->amount }}">
+                    {!! Form::submit('Completar venta', ['class' => 'btn btn-warning pull-right']) !!}
                 </div>
                 {!! Form::close() !!}
         </solid-box>

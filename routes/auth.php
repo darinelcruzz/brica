@@ -142,16 +142,6 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'as' => 'store'
     ]);
 
-    Route::get('produccion', [
-        'uses' => 'QuotationController@whatch',
-        'as' => 'whatch'
-    ]);
-
-    Route::get('produccionlistado/{id?}', [
-        'uses' => 'QuotationController@build',
-        'as' => 'build'
-    ]);
-
     Route::get('/', [
         'uses' => 'CashierScreenController@index',
         'as' => 'show'
@@ -160,6 +150,16 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
     Route::get('pagar/{id?}', [
         'uses' => 'CashierScreenController@pay',
         'as' => 'pay'
+    ]);
+
+    Route::get('produccion', [
+        'uses' => 'CashierScreenController@showFinished',
+        'as' => 'finished'
+    ]);
+
+    Route::get('produccion/{id?}', [
+        'uses' => 'CashierScreenController@calculate',
+        'as' => 'calculate'
     ]);
 
     Route::get('caja', [
@@ -173,6 +173,21 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
     ]);
 
 });
+
+Route::get('ventas', [
+    'uses' => 'SaleController@index',
+    'as' => 'sale.index'
+]);
+
+Route::post('ventas/guardar', [
+    'uses' => 'SaleController@save',
+    'as' => 'sale.save'
+]);
+
+Route::get('ventas/imprimir/{id}', [
+    'uses' => 'SaleController@printTicket',
+    'as' => 'sale.print'
+]);
 
 //Gastos
 Route::group(['prefix' => 'gastos', 'as' => 'expense.'], function () {

@@ -44,12 +44,6 @@ class OrderController extends Controller
     	return redirect(route('production.engineers'));
     }
 
-    function add(Request $request)
-    {
-        $quotation = $request->id;
-        return view('production.create', compact('quotation'));
-    }
-
 	public function getDesigns()
 	{
 		$files = Storage::files('public/designs');

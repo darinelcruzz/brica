@@ -172,7 +172,8 @@ return [
         'price'                 => 'precio',
         'family'                => 'familia',
         'contact'               => 'contacto',
-        'advance'               => 'anticipo'
+        'advance'               => 'anticipo',
+        'retainer'               => 'anticipo'
     ],
 
 ];

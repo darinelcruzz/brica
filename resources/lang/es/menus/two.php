@@ -15,16 +15,20 @@ return [
                 'route' => 'quotation.make'
             ],
             'show' => [
-                'title' => 'Cobro',
+                'title' => 'Cobrar anticipo/terminado',
                 'route' => 'quotation.show'
+            ],
+            'charge' => [
+                'title' => 'Cobrar producción',
+                'route' => 'quotation.finished'
             ],
         ]
     ],
 
     'operators' => [
-        'title' => 'Producción',
+        'title' => 'Operadores',
         'icon' => 'fa fa-industry',
-        'route' => 'production.production',
+        'route' => 'production.operator',
     ],
 
     'administration' => [

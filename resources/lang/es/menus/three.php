@@ -26,17 +26,21 @@ return [
         ]
     ],
 
-    'orders' => [
+    'production' => [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
             'pending' => [
                 'title' => 'Gerente',
-                'route' => 'production.pending'
+                'route' => 'production.manager'
             ],
             'status' => [
                 'title' => 'Ingeniero',
-                'route' => 'production.production'
+                'route' => 'production.engineers'
+            ],
+            'designs' => [
+                'title' => 'Agregar diseño',
+                'route' => 'design.form'
             ],
         ]
     ],

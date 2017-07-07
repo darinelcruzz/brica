@@ -2,28 +2,30 @@
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Producto terminado"
+    <data-table col="col-md-12" title="Producción por pagar"
         example="example1" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>Cot #</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
-                <th>Monto</th>
+                <th>Anticipo</th>
                 <th>Cobrar</th>
             </tr>
         </template>
 
         <template slot="body">
-            @foreach($finish as $row)
+            @foreach($quotations as $row)
             <tr>
                 <td>{{ $row->id }}</td>
                 <td>{{ $row->clientr->name }}</td>
-                <td>{{ $row->pay }}</td>
+                <td>{{ $row->description }}</td>
                 <td>$ {{ $row->amount }}</td>
                 <td>
-                      <input type="hidden" name="id" value="{{ $row->id }}">
-                      <a href="{{ route('quotation.build', ['id' => $row->id]) }}"><i class="fa fa-check-square-o"></i></a>
+                  <a href="{{ route('quotation.calculate', ['id' => $row->id]) }}"
+                      class="btn btn-success">
+                      <i class="fa fa-money" aria-hidden="true"></i>
+                  </a>
                 </td>
             </tr>
             @endforeach
