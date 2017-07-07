@@ -88,11 +88,6 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'as' => 'complete'
     ]);
 
-    /*Route::get('operador', [
-        'uses' => 'ListOrdersController@operator',
-        'as' => 'operator'
-    ]);*/
-
     Route::get('operador/cotizaciones', [
         'uses' => 'OperatorScreenController@showQuotations',
         'as' => 'operator'
@@ -158,12 +153,12 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
     ]);
 
     Route::get('/', [
-        'uses' => 'QuotationController@show',
+        'uses' => 'CashierScreenController@index',
         'as' => 'show'
     ]);
 
-    Route::post('/', [
-        'uses' => 'QuotationController@pay',
+    Route::get('pagar/{id?}', [
+        'uses' => 'CashierScreenController@pay',
         'as' => 'pay'
     ]);
 

@@ -20,11 +20,18 @@ class Quotation extends Model
 
 	public function scopeTotalPaid($query, $date)
 	{
-		return $query->where('date_payment', $date)->where('status', '!=', 'pendiente')->sum('amount');
+		return $query->where('date_payment', $date)
+			->where('status', '!=', 'pendiente')
+			->sum('amount');
 	}
 
 	public function scopeProduction($query, $status)
     {
         return $query->where('type', 'produccion')->where('status', $status)->get();
     }
+
+	public function scopeTerminated($query, $status)
+	{
+		return $query->where('type', 'terminado')->where('status', $status)->get();
+	}
 }

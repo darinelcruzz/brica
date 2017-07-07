@@ -22,12 +22,10 @@
                   <td>{{ $row->pay }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>
-                      {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
-                          <input type="hidden" name="id" value="{{ $row->id }}">
-                          <button type="submit" name="button" class="btn btn-success">
-                              <i class="fa fa-dollar"></i>
-                          </button>
-                      {!! Form::close() !!}
+                      <a href="{{ route('quotation.pay', ['id' => $row->id]) }}"
+                          class="btn btn-success">
+                          <i class="fa fa-dollar"></i>
+                      </a>
                   </td>
               </tr>
             @endforeach
@@ -54,12 +52,10 @@
                   <td>{{ $row->pay }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>
-                      {!! Form::open(['method' => 'POST', 'route' => 'quotation.pay']) !!}
-                          <input type="hidden" name="id" value="{{ $row->id }}">
-                          <button type="submit" name="button" class="btn btn-success">
-                              <i class="fa fa-dollar"></i>
-                          </button>
-                      {!! Form::close() !!}
+                      <a href="{{ route('quotation.pay', ['id' => $row->id]) }}"
+                          class="btn btn-success">
+                          <i class="fa fa-dollar"></i>
+                      </a>
                   </td>
               </tr>
             @endforeach

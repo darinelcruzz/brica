@@ -87,17 +87,6 @@ class QuotationController extends Controller
             return view('quotations.ticket', compact('quotation', 'date'));
     }
 
-    function show()
-    {
-        $terminated = Quotation::where('type', 'terminado')->where('status', 'pendiente')->get();
-
-        $production = Quotation::where(['type' => 'produccion', 'status' => 'pendiente'])->get();
-
-        $paid = Quotation::where('status', '!=', 'pendiente')->get();
-
-        return view('quotations.show', compact('terminated', 'production', 'paid'));
-    }
-
     function whatch()
     {
         $finish = Quotation::where('type', 'produccion')->where('status', 'finalizado')->get();
