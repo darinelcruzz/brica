@@ -14,14 +14,28 @@ return [
                 'title' => 'Producción',
                 'route' => 'quotation.make'
             ],
-
-            'show' => [
-                'title' => 'Cobrar anticipo/terminado',
-                'route' => 'quotation.show'
-            ],
             'charge' => [
                 'title' => 'Cobrar producción',
                 'route' => 'quotation.finished'
+            ],
+        ]
+    ],
+
+    'production' => [
+        'title' => 'Producción',
+        'icon' => 'fa fa-industry',
+        'submenu' => [
+            'pending' => [
+                'title' => 'Gerente',
+                'route' => 'production.manager'
+            ],
+            'status' => [
+                'title' => 'Ingeniero',
+                'route' => 'production.engineers'
+            ],
+            'designs' => [
+                'title' => 'Agregar diseño',
+                'route' => 'design.form'
             ],
         ]
     ],
