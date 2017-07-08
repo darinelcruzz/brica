@@ -29,11 +29,11 @@ return [
                 'route' => 'quotation.make'
             ],
             'show' => [
-                'title' => 'Cobrar anticipo/terminado',
+                'title' => 'Cobrar',
                 'route' => 'quotation.show'
             ],
             'charge' => [
-                'title' => 'Cobrar producción',
+                'title' => 'Ticket producción',
                 'route' => 'quotation.finished'
             ],
         ]

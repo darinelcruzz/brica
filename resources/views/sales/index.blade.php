@@ -23,7 +23,7 @@
                 @if ($sale->quotationr->type == 'terminado')
                     <td>${{ $sale->amount }}</td>
                 @else
-                    <td>${{ $sale->amount + $sale->retainer }} (anticipo ${{ $sale->retainer}})</td>
+                    <td>${{ $sale->amount }} (anticipo ${{ $sale->retainer}})</td>
                 @endif
                 <td>
                   <a href="{{ route('sale.print', ['id' => $sale->id])}}" class="btn btn-success">

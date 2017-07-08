@@ -20,12 +20,10 @@ class AdminScreenController extends Controller
 
         $expenses = Expense::where('date', $date)->get();
 
-        $totalP = 0;
-        $totalE = 0;
-
         $totals = $this->getTotals($quotations, $expenses);
 
-        return view('sales.balance', compact('quotations', 'expenses', 'date', 'totals'));
+        return view('sales.balance', compact('quotations', 'expenses',
+                        'date', 'totals', 'sales'));
     }
 
     function getTotals($quotations, $expenses)
@@ -33,7 +31,11 @@ class AdminScreenController extends Controller
         $totals = ['totalQ' => 0, 'totalE' => 0];
 
         foreach ($quotations as $quotation) {
-            $totals['totalQ'] += $quotation->amount;
+            if ($quotation->type === 'produccion' && $quotation->status === 'pagado') {
+                $totals['totalQ'] += $quotation->sale->amount;
+            } else {
+                $totals['totalQ'] += $quotation->amount;
+            }
         }
 
         foreach ($expenses as $expense) {

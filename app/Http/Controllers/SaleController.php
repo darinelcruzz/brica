@@ -16,10 +16,6 @@ class SaleController extends Controller
 
     function save(Request $request)
     {
-        $quotation = Quotation::find($request->quotation);
-        $quotation->status = 'pagado';
-        $quotation->save();
-
         Sale::create([
             'quotation' => $request->quotation,
             'retainer' => $request->retainer,

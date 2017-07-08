@@ -15,11 +15,11 @@ return [
                 'route' => 'quotation.make'
             ],
             'show' => [
-                'title' => 'Cobrar anticipo/terminado',
+                'title' => 'Cobrar',
                 'route' => 'quotation.show'
             ],
             'charge' => [
-                'title' => 'Cobrar producción',
+                'title' => 'Ticket producción',
                 'route' => 'quotation.finished'
             ],
         ]
@@ -29,10 +29,6 @@ return [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
-            'pending' => [
-                'title' => 'Gerente',
-                'route' => 'production.manager'
-            ],
             'status' => [
                 'title' => 'Ingeniero',
                 'route' => 'production.engineers'

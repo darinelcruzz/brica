@@ -13,9 +13,10 @@ class CashierScreenController extends Controller
     {
         $terminated = Quotation::terminated('pendiente');
         $production = Quotation::production('pendiente');
+        $finished = Quotation::production('finalizado');
         $paid = Quotation::where('status', '!=', 'pendiente')->get();
 
-        return view('quotations.cashier', compact('terminated', 'production', 'paid'));
+        return view('quotations.cashier', compact('terminated', 'production', 'finished', 'paid'));
     }
 
     function pay($id)
@@ -30,6 +31,15 @@ class CashierScreenController extends Controller
 
         $quotation->status = 'autorizado';
         $quotation->date_payment = Date::now()->format('Y-m-d');
+        $quotation->save();
+
+        return back();
+    }
+
+    function addRestToBalance($id)
+    {
+        $quotation = Quotation::find($id);
+        $quotation->status = 'pagado';
         $quotation->save();
 
         return back();

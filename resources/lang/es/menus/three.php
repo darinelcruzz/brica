@@ -20,7 +20,7 @@ return [
                 'route' => 'quotation.make'
             ],
             'show' => [
-                'title' => 'Cajera',
+                'title' => 'Cobrar',
                 'route' => 'quotation.show'
             ],
         ]

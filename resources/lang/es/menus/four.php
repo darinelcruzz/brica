@@ -15,7 +15,7 @@ return [
                 'route' => 'quotation.make'
             ],
             'charge' => [
-                'title' => 'Cobrar producción',
+                'title' => 'Ticket producción',
                 'route' => 'quotation.finished'
             ],
         ]

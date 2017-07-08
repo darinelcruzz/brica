@@ -48,7 +48,13 @@
 		                  <td>{{ $quotation->id }}</td>
 		                  <td>{{ $quotation->clientr->name }}</td>
 		                  <td>{{ $quotation->type }}</td>
-		                  <td>$ {{ $quotation->amount }}</td>
+						  @if ($quotation->type === 'produccion' && $quotation->status === 'pagado')
+							  <td>
+								  $ {{ $quotation->sale->amount }}
+							  </td>
+						  @else
+							  <td>$ {{ $quotation->amount }}</td>
+						  @endif
 		              </tr>
 		            @endforeach
 		        </template>

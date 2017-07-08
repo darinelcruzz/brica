@@ -152,6 +152,11 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
         'as' => 'pay'
     ]);
 
+    Route::get('cobrar/{id?}', [
+        'uses' => 'CashierScreenController@addRestToBalance',
+        'as' => 'charge'
+    ]);
+
     Route::get('produccion', [
         'uses' => 'CashierScreenController@showFinished',
         'as' => 'finished'

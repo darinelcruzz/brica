@@ -18,6 +18,11 @@ class Quotation extends Model
     	return $this->hasMany(Order::class, 'quotation');
     }
 
+	public function sale()
+	{
+		return $this->hasOne(Sale::class, 'quotation');
+	}
+
 	public function scopeTotalPaid($query, $date)
 	{
 		return $query->where('date_payment', $date)
