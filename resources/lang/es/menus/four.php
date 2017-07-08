@@ -41,7 +41,7 @@ return [
     ],
 
     'operators' => [
-        'title' => 'Producción',
+        'title' => 'Operadores',
         'icon' => 'fa fa-industry',
         'route' => 'production.operator',
     ],
