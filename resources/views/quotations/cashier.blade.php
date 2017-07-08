@@ -76,18 +76,20 @@
 
         <template slot="body">
             @foreach($finished as $row)
-              <tr>
-                  <td>{{ $row->id }}</td>
-                  <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->pay }}</td>
-                  <td>$ {{ $row->amount }}</td>
-                  <td>
-                      <a href="{{ route('quotation.charge', ['id' => $row->id]) }}"
-                          class="btn btn-success">
-                          <i class="fa fa-dollar"></i>
-                      </a>
-                  </td>
-              </tr>
+                @if ($row->sale)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->clientr->name }}</td>
+                        <td>{{ $row->pay }}</td>
+                        <td>$ {{ $row->amount }}</td>
+                        <td>
+                            <a href="{{ route('quotation.charge', ['id' => $row->id]) }}"
+                                class="btn btn-success">
+                                <i class="fa fa-dollar"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </template>
     </data-table>
