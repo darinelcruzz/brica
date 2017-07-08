@@ -14,6 +14,15 @@ return [
                 'title' => 'Producción',
                 'route' => 'quotation.make'
             ],
+
+            'show' => [
+                'title' => 'Cobrar anticipo/terminado',
+                'route' => 'quotation.show'
+            ],
+            'charge' => [
+                'title' => 'Cobrar producción',
+                'route' => 'quotation.finished'
+            ],
         ]
     ],
 

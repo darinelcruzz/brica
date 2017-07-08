@@ -14,4 +14,10 @@ class Sale extends Model
     {
     	return $this->belongsTo(Quotation::class, 'quotation');
     }
+
+    public function scopeTotalPaid($query, $date)
+	{
+		return $query->where('created_at', $date)
+			->sum('amount');
+	}
 }

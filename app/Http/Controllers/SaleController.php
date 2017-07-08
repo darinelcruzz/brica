@@ -19,11 +19,11 @@ class SaleController extends Controller
         $quotation = Quotation::find($request->quotation);
         $quotation->status = 'pagado';
         $quotation->save();
-        
+
         Sale::create([
             'quotation' => $request->quotation,
             'retainer' => $request->retainer,
-            'amount' => $request->amount
+            'amount' => $request->amount + $request->retainer
         ]);
 
         return redirect(route('sale.index'));

@@ -163,7 +163,7 @@ Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
     ]);
 
     Route::get('caja', [
-        'uses' => 'QuotationController@cash',
+        'uses' => 'AdminScreenController@cash',
         'as' => 'cash'
     ]);
 

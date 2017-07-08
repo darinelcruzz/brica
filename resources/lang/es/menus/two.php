@@ -25,10 +25,23 @@ return [
         ]
     ],
 
-    'operators' => [
-        'title' => 'Operadores',
+    'production' => [
+        'title' => 'Producción',
         'icon' => 'fa fa-industry',
-        'route' => 'production.operator',
+        'submenu' => [
+            'pending' => [
+                'title' => 'Gerente',
+                'route' => 'production.manager'
+            ],
+            'status' => [
+                'title' => 'Ingeniero',
+                'route' => 'production.engineers'
+            ],
+            'designs' => [
+                'title' => 'Agregar diseño',
+                'route' => 'design.form'
+            ],
+        ]
     ],
 
     'administration' => [

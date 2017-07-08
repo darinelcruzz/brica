@@ -30,7 +30,7 @@
                     <tr>
                         <th>1</th>
                         <th>Subtotal: </th>
-                        <th> ${{ $sale->retainer + $sale->amount }} </th>
+                        <th> ${{ $sale->amount }} </th>
                     </tr>
                     <tr>
                         <th>1</th>
@@ -57,7 +57,11 @@
                 <tr>
                     <th></th>
                     <th>Total</th>
-                    <th>$ {{ $sale->amount }} </th>
+                    @if ($sale->quotationr->type  == 'produccion')
+                        <th>$ {{ $sale->amount - $sale->retainer }} </th>
+                    @else
+                        <th>${{ $sale->amount }}</th>
+                    @endif
                 </tr>
             </tfooter>
         </table>
