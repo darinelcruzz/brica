@@ -10,33 +10,36 @@ use Jenssegers\Date\Date;
 
 class AdminScreenController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $date = Date::now();
+        $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
 
-        $sales = Sale::where('created_at', $date)->get();
-        $totalS = Sale::totalPaid($date);
-        $totalR = Quotation::totalPaid($date);
+        $quotations = Quotation::where('status', '!=', 'pendiente')
+                        ->where('date_payment', $date)
+                        ->get();
 
-        return view('sales.balance', compact('sales', 'totalS', 'totalR', 'date'));
+        $expenses = Expense::where('date', $date)->get();
+
+        $totalP = 0;
+        $totalE = 0;
+
+        $totals = $this->getTotals($quotations, $expenses);
+
+        return view('sales.balance', compact('quotations', 'expenses', 'date', 'totals'));
     }
 
-    function cash(Request $request)
+    function getTotals($quotations, $expenses)
     {
-        $date = $request->date;
-        $date = $date == 0 ? Date::now() : $date;
+        $totals = ['totalQ' => 0, 'totalE' => 0];
 
-        $paid = Quotation::where('date_payment',$date)->where('status', '!=', 'pendiente')->get();
+        foreach ($quotations as $quotation) {
+            $totals['totalQ'] += $quotation->amount;
+        }
 
-        $totalP = Quotation::totalPaid($date);
-        $totalP = $paid->isEmpty() ? '0': $totalP;
+        foreach ($expenses as $expense) {
+            $totals['totalE'] += $expense->amount;
+        }
 
-        $expenses = Expense::where('date',$date)->select('description', 'amount')->get();
-
-        $totalE = Expense::totalExpenses($date);
-        $totalE = $expenses->isEmpty() ? '0': $totalE;
-
-        $total = $totalP-$totalE;
-        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
+        return $totals;
     }
 }

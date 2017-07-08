@@ -23,6 +23,7 @@ class CashierScreenController extends Controller
         $quotation = Quotation::find($id);
         if($quotation->type == 'terminado') {
             $quotation->status = 'pagado';
+            $quotation->date_payment = Date::now()->format('Y-m-d');
             $quotation->save();
             return $this->saveAsSale($quotation);
         }
