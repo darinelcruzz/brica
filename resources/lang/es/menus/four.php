@@ -25,10 +25,6 @@ return [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
-            'pending' => [
-                'title' => 'Gerente',
-                'route' => 'production.manager'
-            ],
             'status' => [
                 'title' => 'Ingeniero',
                 'route' => 'production.engineers'
