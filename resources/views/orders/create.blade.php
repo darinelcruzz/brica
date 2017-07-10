@@ -20,7 +20,7 @@
                             !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
+                            {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                         </div>
                     </div>
 
@@ -40,9 +40,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-10">
-                                    {!! Field::select('caliber',
-                                        ['16' => '16', '15' => '15', '14' => '14', '12' => '12', '10' => '10', '3/16' => '3/16"', '1/4' => '1/4"', 'ANT 12' => 'ANT 12', 'ANT 1/4' => 'ANT 1/4"'], null,
-                                    ['tpl' => 'templates/withicon'], ['icon' => 'compress']) !!}
+                                    {!! Field::text('caliber', ['tpl' => 'templates/withicon'], ['icon' => 'compress']) !!}
                                 </div>
                             </div>
                             <div class="row">

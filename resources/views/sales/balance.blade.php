@@ -15,18 +15,6 @@
 				{!! Form::close() !!}
 			</solid-box>
 		</div>
-
-		<div class="col-md-5 col-md-offset-1">
-			<div class="small-box bg-primary">
-				<div class="inner">
-					<p>Ganancia</p>
-					<h3>${{ $totals['totalQ'] - $totals['totalE'] }}</h3>
-				</div>
-				<div class="icon">
-					<i class="fa fa-dollar"></i>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<div class="row">
@@ -44,19 +32,29 @@
 
 		        <template slot="body">
 		            @foreach($quotations as $quotation)
-		              <tr>
-		                  <td>{{ $quotation->id }}</td>
-		                  <td>{{ $quotation->clientr->name }}</td>
-		                  <td>{{ $quotation->type }}</td>
-						  @if ($quotation->type === 'produccion' && $quotation->status === 'pagado')
-							  <td>
-								  $ {{ $quotation->sale->amount }}
-							  </td>
-						  @else
-							  <td>$ {{ $quotation->amount }}</td>
-						  @endif
-		              </tr>
+		              @if ($quotation->amount)
+						  <tr>
+    		                  <td>{{ $quotation->id }}</td>
+    		                  <td>{{ $quotation->clientr->name }}</td>
+    		                  <td>{{ $quotation->type }}</td>
+    						  <td>$ {{ $quotation->amount }}</td>
+    		              </tr>
+		              @endif
 		            @endforeach
+
+					@foreach ($sales as $sale)
+						@if (date_format($sale->created_at, 'Y-m-d') === $date && $sale->quotationr->type != 'terminado')
+							<tr>
+								<td>{{ $sale->quotationr->id }}</td>
+								<td>{{ $sale->quotationr->clientr->name }}</td>
+								<td>{{ $sale->quotationr->type }}</td>
+								<td>$ {{ $sale->amount - $sale->retainer }}</td>
+							</tr>
+							@php
+								$totals['totalQ'] += $sale->amount - $sale->retainer;
+							@endphp
+						@endif
+					@endforeach
 		        </template>
 
 				<template slot="footer">
@@ -99,7 +97,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-4">
   			<div class="small-box bg-green">
     			<div class="inner">
     				<p>Ingresos Totales</p>
@@ -111,7 +109,7 @@
   			</div>
     	</div>
 
-    	<div class="col-md-5">
+    	<div class="col-md-4">
   			<div class="small-box bg-red">
     			<div class="inner">
     				<p>Egresos Totales</p>
@@ -122,5 +120,17 @@
     			</div>
   			</div>
 	    </div>
+
+		<div class="col-md-4">
+			<div class="small-box bg-primary">
+				<div class="inner">
+					<p>Ganancia</p>
+					<h3>${{ $totals['totalQ'] - $totals['totalE'] }}</h3>
+				</div>
+				<div class="icon">
+					<i class="fa fa-dollar"></i>
+				</div>
+			</div>
+		</div>
     </div>
 @endsection
