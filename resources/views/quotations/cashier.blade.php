@@ -80,8 +80,8 @@
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->clientr->name }}</td>
-                        <td>{{ $row->pay }}</td>
-                        <td>$ {{ $row->amount }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>$ {{ $row->sale->amount - $row->sale->retainer }}</td>
                         <td>
                             <a href="{{ route('quotation.charge', ['id' => $row->id]) }}"
                                 class="btn btn-success">
