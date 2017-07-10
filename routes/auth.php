@@ -58,6 +58,11 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         'as' => 'store'
     ]);
 
+    Route::get('orden/eliminar/{id}', [
+        'uses' => 'OrderController@deleteOrder',
+        'as' => 'deleteOrder'
+    ]);
+
     Route::get('gerente', [
         'uses' => 'ManagerScreenController@index',
         'as' => 'manager'
@@ -117,9 +122,19 @@ Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
 // Cotizaciones
 Route::group(['prefix' => 'cotizaciones', 'as' => 'quotation.'], function () {
 
+    Route::get('listado', [
+        'uses' => 'QuotationController@showAll',
+        'as' => 'showAll'
+    ]);
+
     Route::get('details/{id}', [
         'uses' => 'QuotationController@details',
         'as' => 'details'
+    ]);
+
+    Route::get('cancelar/{id}', [
+        'uses' => 'QuotationController@cancel',
+        'as' => 'cancel'
     ]);
 
     Route::get('anticipo', [
@@ -224,9 +239,14 @@ Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
         'as' => 'show'
     ]);
 
-    Route::get('editar/{id?}', [
+    Route::get('editar/{id}', [
         'uses' => 'ClientController@edit',
         'as' => 'edit'
+    ]);
+
+    Route::get('eliminar/{id}', [
+        'uses' => 'ClientController@deleteClient',
+        'as' => 'delete'
     ]);
 
     Route::post('cambiar', [

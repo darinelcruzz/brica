@@ -60,4 +60,11 @@ class OrderController extends Controller
         $order = Order::find($id);
         return view('orders.details', compact('order'));
     }
+
+	function deleteOrder($id)
+	{
+		Order::destroy($id);
+
+		return redirect('cotizaciones/listado');
+	}
 }

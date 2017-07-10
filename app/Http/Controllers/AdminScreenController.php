@@ -15,6 +15,7 @@ class AdminScreenController extends Controller
         $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
 
         $quotations = Quotation::where('status', '!=', 'pendiente')
+                        ->where('status', '!=', 'cancelado')
                         ->where('date_payment', $date)
                         ->get();
 

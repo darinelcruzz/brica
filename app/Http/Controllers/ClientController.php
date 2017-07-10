@@ -25,19 +25,17 @@ class ClientController extends Controller
 
 		if ($request->from === 'terminado') {
 			return redirect(route('quotation.create'));
+		} elseif ($request->from === 'produccion') {
+			return redirect(route('quotation.make'));# code...
+		} else {
+			return back();
 		}
-
-		return redirect(route('quotation.make'));
     }
 
     public function show()
     {
-		$ruta = 'client.edit';
-        $clients = Client::get([
-            'id', 'name', 'rfc', 'city', 'phone', 'email', 'contact'
-        ]);
-
-        return view('clients.show', compact('clients', 'ruta'));
+        $clients = Client::all();
+        return view('clients.show', compact('clients'));
     }
 
 	public function edit($id)
@@ -58,4 +56,11 @@ class ClientController extends Controller
 
         return $this->show();
     }
+
+	function deleteClient($id)
+	{
+		Client::destroy($id);
+
+		return back();
+	}
 }

@@ -70,6 +70,10 @@ return [
                 'title' => 'Gastos',
                 'route' => 'expense.create'
             ],
+            'quotations' => [
+                'title' => 'Eliminar',
+                'route' => 'quotation.showAll'
+            ],
         ]
     ],
 

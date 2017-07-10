@@ -100,6 +100,22 @@ class QuotationController extends Controller
         return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
     }
 
+    function showAll()
+    {
+        $quotations = Quotation::where('status', '!=', 'cancelado')->get();
+
+        return view('quotations.show', compact('quotations'));
+    }
+
+    function cancel($id)
+    {
+        $q = Quotation::find($id);
+        $q->status = 'cancelado';
+        $q->save();
+
+        return back();
+    }
+
     function details($id)
     {
         $quotation = Quotation::find($id);

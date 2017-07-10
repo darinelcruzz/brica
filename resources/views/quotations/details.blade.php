@@ -27,6 +27,9 @@
                         <th>Tipo</th>
                         <th>Descripción</th>
                         <th>Detalle</th>
+                        @if(Auth::user()->level == 1)
+                            <th>Borrar</th>
+                        @endif
                     </tr>
                 </template>
 
@@ -43,6 +46,13 @@
                                   <i class="fa fa-forward" aria-hidden="true"></i>
                               </a>
                           </td>
+                          @if(Auth::user()->level == 1)
+                              <td>
+                                  <a href="{{ route('production.deleteOrder', ['id' => $order->id]) }}">
+                                      <i class="fa fa-trash"></i>
+                                  </a>
+                              </td>
+                          @endif
                       </tr>
                     @endforeach
                 </template>
