@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Quotation;
 use App\Order;
+use App\User;
 
 class ManagerScreenController extends Controller
 {
@@ -21,8 +22,10 @@ class ManagerScreenController extends Controller
 
         $terminated = Quotation::production('finalizado');
 
+        $teams = User::where('level', '5')->get();
+
         return view('production.manager', compact('pending', 'completed',
-            'authorized', 'production', 'terminated'));
+            'authorized', 'production', 'terminated', 'teams'));
     }
 
     function assign(Request $request)

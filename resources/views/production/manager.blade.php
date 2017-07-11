@@ -56,10 +56,10 @@
                         <div class="input-group input-group-sm">
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <select class="form-control" name="team">
-                                <<option selected disabled>Elige</option>
-                                <option value="R1">R1</option>
-                                <option value="R2">R2</option>
-                                <option value="R3">R3</option>
+                                <option selected disabled>Elige</option>
+                                @foreach ($teams as $team)
+                                    <option value="{{ $team->name }}">{{ $team->name }}</option>
+                                @endforeach
                             </select>
                             <span class="input-group-btn">
                               <button type="submit" class="btn btn-success btn-flat">
