@@ -16,18 +16,20 @@
 
         <template slot="body">
             @foreach($quotations as $row)
-            <tr>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->clientr->name }}</td>
-                <td>{{ $row->description }}</td>
-                <td>$ {{ $row->amount }}</td>
-                <td>
-                  <a href="{{ route('quotation.calculate', ['id' => $row->id]) }}"
-                      class="btn btn-success">
-                      <i class="fa fa-money" aria-hidden="true"></i>
-                  </a>
-                </td>
-            </tr>
+                @if (!$row->sale)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->clientr->name }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>$ {{ $row->amount }}</td>
+                        <td>
+                          <a href="{{ route('quotation.calculate', ['id' => $row->id]) }}"
+                              class="btn btn-success">
+                              <i class="fa fa-money" aria-hidden="true"></i>
+                          </a>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </template>
     </data-table>

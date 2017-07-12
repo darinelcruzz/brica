@@ -94,8 +94,38 @@
         </template>
     </data-table>
 
+    <data-table col="col-md-12" title="Crédito"
+        example="example4" color="box-info">
+        <template slot="header">
+            <tr>
+                <th>Cotización</th>
+                <th>Cliente</th>
+                <th>Descripción</th>
+                <th>Monto</th>
+                <th>Cobrar</th>
+            </tr>
+        </template>
+
+        <template slot="body">
+            @foreach($credit as $row)
+              <tr>
+                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->clientr->name }}</td>
+                  <td>{{ $row->description }}</td>
+                  <td>$ {{ $row->sale->amount or $row->amount }}</td>
+                  <td>
+                      <a href="{{ route('quotation.pay', ['id' => $row->id]) }}"
+                          class="btn btn-success">
+                          <i class="fa fa-dollar"></i>
+                      </a>
+                  </td>
+              </tr>
+            @endforeach
+        </template>
+    </data-table>
+
     <data-table col="col-md-12" title="Folios pagados"
-        example="example4" color="box-success" collapsed="collapsed-box">
+        example="example5" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>

@@ -39,10 +39,12 @@ class QuotationController extends Controller
     {
         $this->validate($request, ['client' => 'required','description' => 'required']);
 
+        $client = Client::find($request->client);
+
         $quotation = Quotation::create([
             'type' => $request->type,
             'client' => $request->client,
-            'status' => $request->status,
+            'status' => $client->credit ? 'credito': $request->status,
             'description' => $request->description,
             'amount' => $request->amount,
         ]);
@@ -75,29 +77,19 @@ class QuotationController extends Controller
             'deliver' => 'required'
             ]);
 
-            $quotation = Quotation::create($request->all());
-            $date = Date::now()->format('d-m-Y');
+        $quotation = Quotation::create($request->all());
 
-            return view('quotations.ticket', compact('quotation', 'date'));
-    }
+        if ($quotation->clientr->credit) {
+            $quotation->status = 'autorizado';
+            $quotation->amount = 0;
+            $quotation->save();
 
-    function cash(Request $request)
-    {
-        $date = $request->date;
-        $date = $date == 0 ? Date::now() : $date;
+            return redirect(route('production.engineers'));;
+        }
 
-        $paid = Quotation::where('date_payment',$date)->where('status', '!=', 'pendiente')->get();
+        $date = Date::now()->format('d-m-Y');
 
-        $totalP = Quotation::totalPaid($date);
-        $totalP = $paid->isEmpty() ? '0': $totalP;
-
-        $expenses = Expense::where('date',$date)->select('description', 'amount')->get();
-
-        $totalE = Expense::totalExpenses($date);
-        $totalE = $expenses->isEmpty() ? '0': $totalE;
-
-        $total = $totalP-$totalE;
-        return view('quotations.cash', compact('paid', 'totalP', 'expenses', 'totalE', 'date', 'total'));
+        return view('quotations.ticket', compact('quotation', 'date'));
     }
 
     function showAll()

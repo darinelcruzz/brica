@@ -16,6 +16,7 @@ class AdminScreenController extends Controller
 
         $quotations = Quotation::where('status', '!=', 'pendiente')
                         ->where('status', '!=', 'cancelado')
+                        ->where('status', '!=', 'credito')
                         ->where('date_payment', $date)
                         ->get();
 

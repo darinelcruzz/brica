@@ -14,9 +14,13 @@ class CashierScreenController extends Controller
         $terminated = Quotation::terminated('pendiente');
         $production = Quotation::production('pendiente');
         $finished = Quotation::production('finalizado');
-        $paid = Quotation::where('status', '!=', 'pendiente')->get();
+        $credit = Quotation::where('status', 'credito')->get();
+        $paid = Quotation::where('status', '!=', 'pendiente')
+                    ->where('status', '!=', 'cancelado')
+                    ->get();
 
-        return view('quotations.cashier', compact('terminated', 'production', 'finished', 'paid'));
+        return view('quotations.cashier', compact('terminated', 'production',
+            'finished', 'credit', 'paid'));
     }
 
     function pay($id)

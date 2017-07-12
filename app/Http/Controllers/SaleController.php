@@ -22,6 +22,13 @@ class SaleController extends Controller
             'amount' => $request->amount + $request->retainer
         ]);
 
+        $quotation = Quotation::find($request->quotation);
+
+        if ($quotation->clientr->credit) {
+            $quotation->status = 'credito';
+            $quotation->save();
+        }
+
         return redirect(route('sale.index'));
     }
 

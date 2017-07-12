@@ -43,7 +43,9 @@
 		            @endforeach
 
 					@foreach ($sales as $sale)
-						@if (date_format($sale->created_at, 'Y-m-d') === $date && $sale->quotationr->type != 'terminado')
+						@if (date_format($sale->created_at, 'Y-m-d') === $date
+								&& $sale->quotationr->type != 'terminado'
+								&& $sale->quotationr->status != 'credito')
 							<tr>
 								<td>{{ $sale->quotationr->id }}</td>
 								<td>{{ $sale->quotationr->clientr->name }}</td>
