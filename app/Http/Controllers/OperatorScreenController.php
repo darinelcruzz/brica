@@ -11,13 +11,8 @@ class OperatorScreenController extends Controller
 {
     function showQuotations()
     {
-        $currentQ = Quotation::where('status', 'produccion')
-            ->where('team', Auth::user()->email)
-            ->first();
-
-        if($currentQ) return $this->showOrders($currentQ->id);
-
         $rows = Quotation::where('status', 'asignado')
+            ->orWhere('status', 'produccion')
             ->where('team', Auth::user()->email)->get();
         $title = 'Cotizaciones';
 

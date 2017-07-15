@@ -11,9 +11,9 @@
                 <th>Descripción</th>
                 @if ($title == 'Cotizaciones')
                     <th>Entrega</th>
-                    <th>Empezar</th>
+                    <th>Empezar/Ver</th>
                 @else
-                    <th>Detalle</th>
+                    <th>Detalles</th>
                 @endif
             </tr>
         </template>
@@ -28,29 +28,40 @@
                         <td>{{ $row->deliver }}</td>
                         <td>
                             <a href="{{ route('production.start', ['id' => $row->id]) }}"
-                                class="btn btn-danger">
-                                    <i class="fa fa-play"></i>
+                                class="btn btn-{{ $row->status === 'produccion' ? 'success': 'danger' }}">
+                                    @if ($row->status === 'produccion')
+                                        <i class="fa fa-eye"></i>
+                                    @else
+                                        <i class="fa fa-forward" aria-hidden="true"></i>
+                                    @endif
                             </a>
                         </td>
                     @else
                         <td>
                             <a href="{{ route('production.order.details', ['id' => $row->id]) }}"
                                 class="btn btn-success">
-                                    <i class="fa fa-play"></i>
+                                    <i class="fa fa-info"></i>nfo
                             </a>
                         </td>
                     @endif
                 </tr>
             @endforeach
         </template>
+    </data-table>
 
+    <row-woc col="col-md-12">
         @if($title != 'Cotizaciones')
-            <template slot="footer">
+
                     @if (isset($row))
+                        <a href="{{ route('production.operator') }}"
+                            class="btn btn-primary">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                &nbsp;Regresar
+                        </a>
 
                         <a href="{{ route('production.finish', ['id' => $row->quotation]) }}"
-                            class="btn btn-danger">
-                                <i class="fa fa-stop" aria-hidden="true"></i>
+                            class="btn btn-danger pull-right">
+                                <i class="fa fa-check" aria-hidden="true"></i>
                                 &nbsp;Terminar
                         </a>
                     @else
@@ -58,8 +69,7 @@
                         <br>
                         <a href="{{ route('production.change')}}" class="'btn btn-primary'">Cambiar estado</a>
                     @endif
-            </template>
         @endif
-    </data-table>
+    </row-woc>
 
 @endsection
