@@ -11,9 +11,9 @@ class OperatorScreenController extends Controller
 {
     function showQuotations()
     {
-        $rows = Quotation::where('status', 'asignado')
-            ->orWhere('status', 'produccion')
-            ->where('team', Auth::user()->email)->get();
+        $rows = Quotation::where(['team' => Auth::user()->email, 'status' => 'asignado'])
+            ->orWhere(['team' => Auth::user()->email, 'status' => 'produccion'])
+            ->get();
         $title = 'Cotizaciones';
 
         return view('production.operators', compact('rows', 'title'));
