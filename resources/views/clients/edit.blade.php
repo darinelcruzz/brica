@@ -26,31 +26,35 @@
                         {!! Field::text('contact', $client->contact, ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="discount" class="control-label">Descuento (poner en 0 si se quiere quitar)</label>
-                            <div class="input-group">
-                                @if ($client->discount > 0)
-                                    <span class="input-group-addon">
-                                      <input type="checkbox" checked>
-                                    </span>
-                                    <input type="number" min="0" name="discount" class="form-control" value="{{ $client->discount }}">
-                                @else
-                                    <span class="input-group-addon">
-                                      <input type="checkbox" v-model="checked">
-                                    </span>
-                                    <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
-                                @endif
-                                <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                    @if (Auth::user()->level == 1)
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="discount" class="control-label">Descuento (poner en 0 si se quiere quitar)</label>
+                                <div class="input-group">
+                                    @if ($client->discount > 0)
+                                        <span class="input-group-addon">
+                                          <input type="checkbox" checked>
+                                        </span>
+                                        <input type="number" min="0" name="discount" class="form-control" value="{{ $client->discount }}">
+                                    @else
+                                        <span class="input-group-addon">
+                                          <input type="checkbox" v-model="checked">
+                                        </span>
+                                        <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
+                                    @endif
+                                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
-                <row-woc col="col-md-6">
-                    {!! Field::select('credit', ['No', 'Sí'], $client->credit,
-                    ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
-                </row-woc>
+                @if (Auth::user()->level == 1)
+                    <row-woc col="col-md-6">
+                        {!! Field::select('credit', ['No', 'Sí'], $client->credit,
+                        ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
+                    </row-woc>
+                @endif
 
                 <div class="box-footer">
                     <input type="hidden" name="id" value="{{ $client->id }}">

@@ -26,24 +26,28 @@
                         {!! Field::text('contact', ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="discount" class="control-label">Descuento</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                  <input type="checkbox" v-model="checked">
-                                </span>
-                                <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
-                                <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                    @if (Auth::user()->level == 1)
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="discount" class="control-label">Descuento</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <input type="checkbox" v-model="checked">
+                                    </span>
+                                    <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
+                                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
-                <row-woc col="col-md-6">
-                    {!! Field::select('credit', ['No', 'Sí'], 0,
-                    ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
-                </row-woc>
+                @if (Auth::user()->level == 1)
+                    <row-woc col="col-md-6">
+                        {!! Field::select('credit', ['No', 'Sí'], 0,
+                        ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
+                    </row-woc>
+                @endif
 
                 <div class="box-footer">
                     <input type="hidden" name="from" value="{{ $from }}">
