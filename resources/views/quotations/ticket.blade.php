@@ -47,11 +47,29 @@
             @endif
 
             <tfooter>
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    <th>$ {{ $quotation->amount }} </th>
-                </tr>
+                @if ($quotation->clientr->discount > 0 && $quotation->pay !== 'anticipo')
+                    <tr>
+                        <th></th>
+                        <th>Subtotal:</th>
+                        <th>$ {{ $amount }} </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Descuento: </th>
+                        <th>$ {{ $quotation->clientr->discount * $amount / 100 }} </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Total:</th>
+                        <th>$ {{ $quotation->amount }} </th>
+                    </tr>
+                @else
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>$ {{ $quotation->amount }} </th>
+                    </tr>
+                @endif
             </tfooter>
         </table>
     </div>

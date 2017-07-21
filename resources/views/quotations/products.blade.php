@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('client', $clients, null,
-                        ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'], ['icon' => 'user']) !!}
+                        ['v-model' => 'client_id', 'tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'],
+                        ['icon' => 'user']) !!}
                     </div>
 
                     <div class="col-md-6">
@@ -30,7 +31,9 @@
                 </div>
 
                 <row-woc col="col-md-12">
-                    <product-table :products="products" :retainer="0"></product-table>
+                    <product-table :products="products" :retainer="0"
+                        :discount="0">
+                    </product-table>
                 </row-woc>
 
                 <div class="box-footer">

@@ -27,15 +27,28 @@
 
             @if ($sale->quotationr->type  == 'produccion')
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Subtotal: </th>
-                        <th> ${{ $sale->amount }} </th>
-                    </tr>
+                    @if ($sale->quotationr->clientr->discount > 0)
+                        <tr>
+                            <th>1</th>
+                            <th>Subtotal: </th>
+                            <th>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) }} </th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>Descuento: </th>
+                            <th>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) * $sale->quotationr->clientr->discount / 100 }} </th>
+                        </tr>
+                    @else
+                        <tr>
+                            <th>1</th>
+                            <th>Subtotal: </th>
+                            <th>$ {{ $sale->amount }} </th>
+                        </tr>
+                    @endif
                     <tr>
                         <th>1</th>
                         <th>Anticipo: </th>
-                        <th> ${{ $sale->retainer }} </th>
+                        <th>$ {{ $sale->retainer }} </th>
                     </tr>
                 </tbody>
 
@@ -60,7 +73,7 @@
                     @if ($sale->quotationr->type  == 'produccion')
                         <th>$ {{ $sale->amount - $sale->retainer }} </th>
                     @else
-                        <th>${{ $sale->amount }}</th>
+                        <th>$ {{ $sale->amount }}</th>
                     @endif
                 </tr>
             </tfooter>

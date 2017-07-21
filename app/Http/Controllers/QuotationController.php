@@ -22,7 +22,7 @@ class QuotationController extends Controller
         $lastQ = Quotation::all()->last();
         $lastQ = empty($lastQ) ? 0: $lastQ->id;
 
-        return view('quotations.products', compact('products', 'clients', 'lastQ'));
+        return view('quotations.products', compact('products', 'clients', 'lastQ', 'discounts'));
     }
 
     function make()
@@ -46,8 +46,10 @@ class QuotationController extends Controller
             'client' => $request->client,
             'status' => $client->credit ? 'credito': $request->status,
             'description' => $request->description,
-            'amount' => $request->amount,
+            'amount' => $request->amount * (1 - $client->discount/100),
         ]);
+
+        $amount = $request->amount;
 
         $products = [];
 
@@ -66,7 +68,7 @@ class QuotationController extends Controller
         $quotation->save();
         $date = Date::now()->format('d-m-Y');
 
-        return view('quotations.ticket', compact('quotation', 'date'));
+        return view('quotations.ticket', compact('quotation', 'date', 'amount'));
     }
 
     function save(Request $request)

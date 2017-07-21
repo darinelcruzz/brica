@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::text('description', $quotation->decription, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
+                        {!! Field::text('description', $quotation->description, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
                     </div>
                     <div class="col-md-6">
                         {!! Field::number('advance', $quotation->amount ,
@@ -25,7 +25,9 @@
                 </div>
 
                 <row-woc col="col-md-12">
-                    <product-table :products="products" :retainer="{{ $quotation->amount }}"></product-table>
+                    <product-table :products="products" :retainer="{{ $quotation->amount }}"
+                        discount="{{ $quotation->clientr->discount / 100 }}">
+                    </product-table>
                 </row-woc>
 
                 <div class="box-footer">

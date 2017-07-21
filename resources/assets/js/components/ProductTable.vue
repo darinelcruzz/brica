@@ -38,7 +38,7 @@
                     <tr>
                         <td></td><td></td><td></td><td></td>
                         <td>
-                            - Anticipo:
+                            Anticipo:
                         </td>
                         <td>
                             $ {{ retainer }}
@@ -48,27 +48,59 @@
                     <tr>
                         <td></td><td></td><td></td><td></td>
                         <td>
+                            Descuento:
+                        </td>
+                        <td>
+                            $ {{ discount*total }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
                             <b>Total:</b>
                         </td>
-                        <td >
-                            $ {{ total - retainer }}
-                            <input type="hidden" name="amount" :value="total - retainer">
+                        <td>
+                            $ {{ total - retainer - discount*total }}
+                            <input type="hidden" name="amount" :value="total - retainer - discount*total">
                         </td>
                         <td></td>
                     </tr>
                 </template>
 
-                <tr v-else>
-                    <td></td><td></td><td></td><td></td>
-                    <td>
-                        <b>Total:</b>
-                    </td>
-                    <td >
-                        $ {{ total }}
-                        <input type="hidden" name="amount" :value="total">
-                    </td>
-                    <td></td>
-                </tr>
+                <template v-else>
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            Subtotal:
+                        </td>
+                        <td>
+                            $ {{ total }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr v-if="discount">
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            Descuento:
+                        </td>
+                        <td>
+                            $ {{ discount*total }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            <b>Total:</b>
+                        </td>
+                        <td>
+                            $ {{ total - discount*total }}
+                            <input type="hidden" name="amount" :value="total - discount*total">
+                        </td>
+                        <td></td>
+                    </tr>
+                </template>
 
             </tfoot>
         </table>
@@ -94,7 +126,7 @@ export default {
             total: 0,
         };
     },
-    props: ['products', 'retainer'],
+    props: ['products', 'retainer', 'discount'],
 
     methods: {
         addToTotal(total, num) {

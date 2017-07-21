@@ -13,11 +13,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('chat-message', require('./components/ChatMessage.vue'));
-Vue.component('chat-log', require('./components/ChatLog.vue'));
-Vue.component('chat-composer', require('./components/ChatComposer.vue'));
-Vue.component('app-select', require('./components/ConditionedFields.vue'));
 Vue.component('product-table', require('./components/ProductTable.vue'));
 Vue.component('product-row', require('./components/ProductRow.vue'));
 
@@ -35,6 +30,7 @@ const app = new Vue({
         type: 'produccion',
         products: [],
         product_id: 1,
+        client_id: null,
         quantity: 0,
         selected: '',
         selectedDesign: '',
