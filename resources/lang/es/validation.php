@@ -173,7 +173,8 @@ return [
         'family'                => 'familia',
         'contact'               => 'contacto',
         'advance'               => 'anticipo',
-        'retainer'               => 'anticipo'
+        'retainer'              => 'anticipo',
+        'credit'                => 'crédito'
     ],
 
 ];

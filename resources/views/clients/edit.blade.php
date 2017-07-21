@@ -1,34 +1,62 @@
 @extends('admin')
 
 @section('main-content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Editar cliente</h3>
+
+    <row-woc col="col-md-8">
+        <solid-box title="Nuevo cliente" color="box-info">
+
+            {!! Form::open(['method' => 'POST', 'route' => 'client.change']) !!}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::text('name', $client->name, ['tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
+                        {!! Field::text('city', $client->city, ['tpl' => 'templates/withicon'], ['icon' => 'globe']) !!}
+                        {!! Field::text('phone', $client->phone, ['tpl' => 'templates/withicon'], ['icon' => 'phone']) !!}
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Field::email('email', $client->email, ['tpl' => 'templates/withicon'], ['icon' => 'at']) !!}
+                        {!! Field::text('address', $client->address, ['tpl' => 'templates/withicon'], ['icon' => 'map-marker']) !!}
+                        {!! Field::text('rfc', $client->rfc, ['label' => 'R.F.C.', 'tpl' => 'templates/withicon'], ['icon' => 'book']) !!}
+                    </div>
                 </div>
 
-                <!-- form start -->
-                {!! Form::open(['method' => 'POST', 'route' => 'client.change', 'class' => 'form-horizontal']) !!}
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::text('contact', $client->contact, ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
+                    </div>
 
-                    <div class="box-body">
-                        {!! Field::text('name', $client->name, ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('city', $client->city, ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('phone', $client->phone, ['tpl' => 'templates/oneline']) !!}
-                        <hr>
-                        {!! Field::text('address', $client->address, ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('rfc', $client->rfc, ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::email('email', $client->email, ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('contact', $client->contact, ['tpl' => 'templates/oneline']) !!}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="discount" class="control-label">Descuento (poner en 0 si se quiere quitar)</label>
+                            <div class="input-group">
+                                @if ($client->discount > 0)
+                                    <span class="input-group-addon">
+                                      <input type="checkbox" checked>
+                                    </span>
+                                    <input type="number" min="0" name="discount" class="form-control" value="{{ $client->discount }}">
+                                @else
+                                    <span class="input-group-addon">
+                                      <input type="checkbox" v-model="checked">
+                                    </span>
+                                    <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
+                                @endif
+                                <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <input type="hidden" name="id" value="{{ $client->id }}">
-                        {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
-                    </div>
-                    <!-- /.box-footer -->
+                </div>
+
+                <row-woc col="col-md-6">
+                    {!! Field::select('credit', ['No', 'Sí'], $client->credit,
+                    ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
+                </row-woc>
+
+                <div class="box-footer">
+                    <input type="hidden" name="id" value="{{ $client->id }}">
+                    {!! Form::submit('Modificar', ['class' => 'btn btn-info pull-right']) !!}
+                </div>
                 {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
+        </solid-box>
+    </row-woc>
 @endsection

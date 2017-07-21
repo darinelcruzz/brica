@@ -23,6 +23,8 @@ class CreateClientsTable extends Migration
             $table->string('contact')->nullable();
             $table->string('rfc')->nullable();
             $table->string('city')->nullable();
+            $table->integer('credit')->default(0);
+            $table->integer('discount')->default(0);
 
             $table->timestamps();
         });

@@ -1,34 +1,55 @@
 @extends('admin')
 
 @section('main-content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Nuevo cliente</h3>
+
+    <row-woc col="col-md-8">
+        <solid-box title="Nuevo cliente" color="box-info">
+
+            {!! Form::open(['method' => 'POST', 'route' => 'client.store']) !!}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::text('name', ['tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
+                        {!! Field::text('city', ['tpl' => 'templates/withicon'], ['icon' => 'globe']) !!}
+                        {!! Field::text('phone', ['tpl' => 'templates/withicon'], ['icon' => 'phone']) !!}
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Field::email('email', ['tpl' => 'templates/withicon'], ['icon' => 'at']) !!}
+                        {!! Field::text('address', ['tpl' => 'templates/withicon'], ['icon' => 'map-marker']) !!}
+                        {!! Field::text('rfc', ['label' => 'R.F.C.', 'tpl' => 'templates/withicon'], ['icon' => 'book']) !!}
+                    </div>
                 </div>
 
-                <!-- form start -->
-                {!! Form::open(['method' => 'POST', 'route' => 'client.store', 'class' => 'form-horizontal']) !!}
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::text('contact', ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
+                    </div>
 
-                    <div class="box-body">
-                        {!! Field::text('name', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('city', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('phone', ['tpl' => 'templates/oneline']) !!}
-                        <hr>
-                        {!! Field::text('address', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('rfc', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::email('email', ['tpl' => 'templates/oneline']) !!}
-                        {!! Field::text('contact', ['tpl' => 'templates/oneline']) !!}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="discount" class="control-label">Descuento</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                  <input type="checkbox" v-model="checked">
+                                </span>
+                                <input type="number" min="0" name="discount" class="form-control" :disabled="!checked.length">
+                                <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <input type="hidden" name="from" value="{{ $from }}">
-                        {!! Form::submit('Agregar', ['class' => 'btn btn-info btn-block']) !!}
-                    </div>
-                    <!-- /.box-footer -->
+                </div>
+
+                <row-woc col="col-md-6">
+                    {!! Field::select('credit', ['No', 'Sí'], 0,
+                    ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
+                </row-woc>
+
+                <div class="box-footer">
+                    <input type="hidden" name="from" value="{{ $from }}">
+                    {!! Form::submit('Agregar', ['class' => 'btn btn-info pull-right']) !!}
+                </div>
                 {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
+        </solid-box>
+    </row-woc>
 @endsection

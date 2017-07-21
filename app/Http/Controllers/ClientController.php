@@ -28,7 +28,7 @@ class ClientController extends Controller
 		} elseif ($request->from === 'produccion') {
 			return redirect(route('quotation.make'));# code...
 		} else {
-			return back();
+			return redirect('clientes');
 		}
     }
 
