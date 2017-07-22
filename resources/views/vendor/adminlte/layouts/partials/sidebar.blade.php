@@ -5,15 +5,15 @@
         <!-- Sidebar Menu -->
         @if (Auth::check())
             @if (Auth::user()->level > 4)
-                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/five')])
+                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/' . $site . 'five')])
             @elseif (Auth::user()->level > 3)
-                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/four')])
+                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/' . $site . 'four')])
             @elseif (Auth::user()->level > 2)
-                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/three')])
+                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/' . $site . 'three')])
             @elseif (Auth::user()->level > 1)
-                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/two')])
+                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/' . $site . 'two')])
             @else
-                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/one')])
+                @include('adminlte::layouts.partials.menu_items', ['items' => trans('menus/' . $site . 'one')])
             @endif
         @endif
     </section>

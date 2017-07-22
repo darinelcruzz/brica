@@ -2,16 +2,16 @@
 <html lang="en">
 
 @section('htmlheader')
-    @include('adminlte::layouts.partials.htmlheader', ['headerTitle' => 'Intranet'])
+    @include('adminlte::layouts.partials.htmlheader', ['headerTitle' => 'Hercules'])
 @show
 
-<body class="skin-yellow sidebar-mini">
+<body class="skin-blue sidebar-mini">
 <div id="app" v-cloak>
     <div class="wrapper">
 
-    @include('adminlte::layouts.partials.mainheader', ['short' => 'R', 'long' => 'Runa'])
+    @include('adminlte::layouts.partials.mainheader', ['short' => 'H', 'long' => 'Hercules'])
 
-    @include('adminlte::layouts.partials.sidebar', ['site' => ''])
+    @include('adminlte::layouts.partials.sidebar', ['site' => 'hercules/'])
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
