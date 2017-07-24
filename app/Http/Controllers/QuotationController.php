@@ -81,15 +81,16 @@ class QuotationController extends Controller
 
         $quotation = Quotation::create($request->all());
 
+        $date = Date::now()->format('d-m-Y');
+
         if ($quotation->clientr->credit) {
             $quotation->status = 'autorizado';
             $quotation->amount = 0;
+            $quotation->date_payment = $date;
             $quotation->save();
 
             return redirect(route('production.engineers'));;
         }
-
-        $date = Date::now()->format('d-m-Y');
 
         return view('quotations.ticket', compact('quotation', 'date'));
     }
