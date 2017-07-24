@@ -102,7 +102,7 @@
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones en producción" example="example4"
-    color="box-warning">
+        color="box-warning">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -110,6 +110,7 @@
                 <th>Descripción</th>
                 <th>Equipo</th>
                 <th>Inicio</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -121,13 +122,19 @@
                 <td>{{ $row->description }}</td>
                 <td>{{ $row->team }}</td>
                 <td>{{ $row->startTime }}</td>
+                <td>
+                    <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-warning">
+                        <i class="fa fa-info" aria-hidden="true"></i>nfo
+                        <i class="fa fa-forward" aria-hidden="true"></i>
+                    </a>
+                </td>
             </tr>
             @endforeach
         </template>
     </data-table>
 
     <data-table col="col-md-12" title="Cotizaciones finalizadas" example="example5"
-    color="box-success" collapsed="collapsed-box">
+        color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
                 <th>Cotización</th>
@@ -136,6 +143,7 @@
                 <th>Equipo</th>
                 <th>Inicio</th>
                 <th>Final</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -148,6 +156,12 @@
                 <td>{{ $row->team }}</td>
                 <td>{{ $row->startTime }}</td>
                 <td>{{ $row->endTime }}</td>
+                <td>
+                    <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-success">
+                        <i class="fa fa-info" aria-hidden="true"></i>nfo
+                        <i class="fa fa-forward" aria-hidden="true"></i>
+                    </a>
+                </td>
             </tr>
             @endforeach
         </template>

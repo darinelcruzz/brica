@@ -9,7 +9,7 @@ class Client extends Model
     protected $fillable = [
     	'name', 'address', 'phone',
     	'email', 'contact', 'rfc', 'city',
-        'credit', 'discount'
+        'credit', 'folio', 'discount'
     ];
 
     function quotations()

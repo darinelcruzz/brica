@@ -43,10 +43,15 @@
                 </div>
 
                 @if (Auth::user()->level == 1)
-                    <row-woc col="col-md-6">
-                        {!! Field::select('credit', ['No', 'Sí'], 0,
-                        ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
-                    </row-woc>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Field::select('credit', ['No', 'Sí'], 0,
+                            ['tpl' => 'templates/withicon'], ['icon' => 'credit-card']) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Field::text('folio', ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                        </div>
+                    </div>
                 @endif
 
                 <div class="box-footer">
