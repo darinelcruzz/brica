@@ -79,7 +79,11 @@
                 @if ($row->sale)
                     <tr>
                         <td>{{ $row->id }}</td>
-                        <td>{{ $row->clientr->name }}</td>
+                        <td>
+                            {{ $row->clientr->name }} <br>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            {{ $row->clientr->phone }}
+                        </td>
                         <td>{{ $row->description }}</td>
                         <td>$ {{ $row->sale->amount - $row->sale->retainer }}</td>
                         <td>
@@ -114,7 +118,7 @@
                   <td>{{ $row->description }}</td>
                   <td>$ {{ $row->sale->amount or $row->amount }}</td>
                   <td>
-                      <a href="{{ route('quotation.pay', ['id' => $row->id]) }}"
+                      <a href="{{ route('quotation.charge', ['id' => $row->id]) }}"
                           class="btn btn-success">
                           <i class="fa fa-dollar"></i>
                       </a>
@@ -131,6 +135,7 @@
                 <th>Cotización</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
+                <th>Detalles</th>
                 <th>Tipo</th>
                 <th>Monto</th>
                 <th>Fecha</th>
@@ -143,6 +148,12 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->pay }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-success">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $row->type }}</td>
                   <td>$ {{ $row->amount }}</td>
                   <td>{{ $row->date_payment }}</td>

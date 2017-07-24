@@ -115,6 +115,7 @@
                 <th>Descripción</th>
                 <th>Equipo</th>
                 <th>Inicio</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -126,6 +127,12 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->startTime }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-warning">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>
@@ -141,6 +148,7 @@
                 <th>Equipo</th>
                 <th>Inicio</th>
                 <th>Final</th>
+                <th>Detalles</th>
             </tr>
         </template>
 
@@ -153,6 +161,12 @@
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->startTime }}</td>
                   <td>{{ $row->endTime }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-success">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>
