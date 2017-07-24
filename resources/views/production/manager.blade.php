@@ -113,6 +113,7 @@
                 <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
+                <th>Detalles</th>
                 <th>Equipo</th>
                 <th>Inicio</th>
             </tr>
@@ -124,6 +125,12 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-warning">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->startTime }}</td>
               </tr>
@@ -138,6 +145,7 @@
                 <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
+                <th>Detalles</th>
                 <th>Equipo</th>
                 <th>Inicio</th>
                 <th>Final</th>
@@ -150,6 +158,12 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
+                  <td>
+                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-success">
+                          <i class="fa fa-info" aria-hidden="true"></i>nfo
+                          <i class="fa fa-forward" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->startTime }}</td>
                   <td>{{ $row->endTime }}</td>

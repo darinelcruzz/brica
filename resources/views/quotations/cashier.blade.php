@@ -114,7 +114,7 @@
                   <td>{{ $row->description }}</td>
                   <td>$ {{ $row->sale->amount or $row->amount }}</td>
                   <td>
-                      <a href="{{ route('quotation.pay', ['id' => $row->id]) }}"
+                      <a href="{{ route('quotation.payCredit', ['id' => $row->id]) }}"
                           class="btn btn-success">
                           <i class="fa fa-dollar"></i>
                       </a>

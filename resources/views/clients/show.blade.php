@@ -21,7 +21,12 @@
             @foreach($clients as $client)
               <tr>
                   <td>{{ $client->id }}</td>
-                  <td>{{ $client->name }}</td>
+                  <td>
+                      {{ $client->name }}
+                      @if ($client->credit)
+                          <code><i class="fa fa-credit-card" aria-hidden="true"></i></code>
+                      @endif
+                  </td>
                   <td>{{ $client->rfc }}</td>
                   <td>{{ $client->address }}</td>
                   <td>{{ $client->phone }}</td>

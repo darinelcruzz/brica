@@ -40,6 +40,15 @@ class CashierScreenController extends Controller
         return back();
     }
 
+    function payCredit($id)
+    {
+        $quotation = Quotation::find($id);
+        $quotation->status = 'pagado';
+        $quotation->save();
+
+        return back();
+    }
+
     function addRestToBalance($id)
     {
         $quotation = Quotation::find($id);
