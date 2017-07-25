@@ -41,6 +41,8 @@ class QuotationController extends Controller
 
         $client = Client::find($request->client);
 
+        $date = Date::now()->format('d-m-Y');
+
         $quotation = Quotation::create([
             'type' => $request->type,
             'client' => $request->client,
@@ -48,8 +50,6 @@ class QuotationController extends Controller
             'description' => $request->description,
             'amount' => $request->amount * (1 - $client->discount/100),
         ]);
-
-        $amount = $request->amount;
 
         $products = [];
 
@@ -66,7 +66,12 @@ class QuotationController extends Controller
         $quotation->products = serialize($products);
 
         $quotation->save();
-        $date = Date::now()->format('d-m-Y');
+
+        $amount = $request->amount;
+
+        if ($client->credit) {
+            return redirect(route('production.engineers'));
+        }
 
         return view('quotations.ticket', compact('quotation', 'date', 'amount'));
     }
@@ -81,7 +86,7 @@ class QuotationController extends Controller
 
         $quotation = Quotation::create($request->all());
 
-        $date = Date::now()->format('d-m-Y');
+        $date = Date::now()->format('Y-m-d');
 
         if ($quotation->clientr->credit) {
             $quotation->status = 'autorizado';
@@ -89,7 +94,7 @@ class QuotationController extends Controller
             $quotation->date_payment = $date;
             $quotation->save();
 
-            return redirect(route('production.engineers'));;
+            return redirect(route('production.engineers'));
         }
 
         return view('quotations.ticket', compact('quotation', 'date'));
