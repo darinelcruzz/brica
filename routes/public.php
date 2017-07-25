@@ -35,3 +35,26 @@ Route::group(['prefix' => 'hercules'], function () {
         'as' => 'item.store'
     ]);
 });
+
+Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
+
+    Route::get('cotizaciones/produccion', [
+        'uses' => 'Runa\ProQuotationController@create',
+        'as' => 'quotationp.create'
+    ]);
+
+    Route::post('cotizaciones/produccion', [
+        'uses' => 'Runa\ProQuotationController@store',
+        'as' => 'quotationp.store'
+    ]);
+
+    Route::get('cotizaciones/terminado', [
+        'uses' => 'Runa\TerQuotationController@create',
+        'as' => 'quotationt.create'
+    ]);
+
+    Route::post('cotizaciones/terminado', [
+        'uses' => 'Runa\TerQuotationController@store',
+        'as' => 'quotationt.store'
+    ]);
+});
