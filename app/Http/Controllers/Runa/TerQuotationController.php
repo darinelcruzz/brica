@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Date\Date;
 use App\Client;
+use App\Sale;
 use App\Quotation;
 
 class TerQuotationController extends Controller
@@ -35,9 +36,25 @@ class TerQuotationController extends Controller
         if ($quotation->clientr->credit) {
             $quotation->storeAsCredit('credito', $quotation->amount);
 
-            return redirect('cotizaciones');
+            return redirect(route('runa.cashier'));
         }
 
         return view('runa.quotations.ticket', compact('quotation', 'amount'));
+    }
+
+    function pay(Quotation $quotation)
+    {
+        $quotation->update([
+            'status' => 'pagado',
+            'date_payment' => Date::now()->format('Y-m-d')
+        ]);
+
+        Sale::create([
+            'quotation' => $quotation->id,
+            'retainer' => $quotation->amount,
+            'amount' => $quotation->amount
+        ]);
+
+        return back();
     }
 }

@@ -57,4 +57,24 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'uses' => 'Runa\TerQuotationController@store',
         'as' => 'quotationt.store'
     ]);
+
+    Route::get('cotizaciones', [
+        'uses' => 'Runa\CashierScreenController@index',
+        'as' => 'cashier'
+    ]);
+
+    Route::get('cotizaciones/pagarter/{quotation}', [
+        'uses' => 'Runa\TerQuotationController@pay',
+        'as' => 'pay.terminated'
+    ]);
+
+    Route::get('cotizaciones/anticipo/{quotation}', [
+        'uses' => 'Runa\ProQuotationController@retainer',
+        'as' => 'pay.retainer'
+    ]);
+
+    Route::get('cotizaciones/pagarpro/{quotation}', [
+        'uses' => 'Runa\ProQuotationController@pay',
+        'as' => 'pay.production'
+    ]);
 });

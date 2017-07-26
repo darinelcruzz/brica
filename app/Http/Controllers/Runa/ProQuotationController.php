@@ -33,4 +33,20 @@ class ProQuotationController extends Controller
 
         return view('runa.quotations.ticket', compact('quotation'));
     }
+
+    function retainer(Quotation $quotation)
+    {
+        $quotation->update([
+            'status' => 'autorizado',
+            'date_payment' => Date::now()->format('Y-m-d')
+        ]);
+
+        return back();
+    }
+
+    function pay(Quotation $quotation)
+    {
+        $quotation->update(['status' => 'pagado']);
+        return back();
+    }
 }

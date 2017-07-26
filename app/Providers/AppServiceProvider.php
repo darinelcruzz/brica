@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\DuskServiceProvider;
 use App\Http\Composers\Runa\QuotationsComposer;
+use App\Http\Composers\Runa\CashierViewComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
     protected function registerViewComposers()
    {
        View::composer('runa.quotations.*', QuotationsComposer::class);
+       View::composer('runa.cashier.*', CashierViewComposer::class);
    }
 }
