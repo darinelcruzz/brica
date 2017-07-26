@@ -38,6 +38,11 @@ Route::group(['prefix' => 'hercules'], function () {
 
 Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
 
+    Route::get('/', function ()
+    {
+        return view('runa.home');
+    });
+
     Route::get('cotizaciones/produccion', [
         'uses' => 'Runa\ProQuotationController@create',
         'as' => 'quotationp.create'
@@ -76,5 +81,17 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::get('cotizaciones/pagarpro/{quotation}', [
         'uses' => 'Runa\ProQuotationController@pay',
         'as' => 'pay.production'
+    ]);
+
+    // Producción
+    Route::get('ingenieros', [
+        'uses' => 'Runa\EngineersScreenController@index',
+        'as' => 'engineer'
+    ]);
+
+    // Órdenes
+    Route::get('orden/crear/{id}', [
+        'uses' => 'Runa\OrderController@create',
+        'as' => 'order.create'
     ]);
 });

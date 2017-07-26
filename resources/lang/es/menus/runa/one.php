@@ -28,6 +28,17 @@ return [
         ],
     ],
 
+    'production' => [
+        'title' => 'Producción',
+        'icon' => 'fa fa-industry',
+        'submenu' => [
+            'terminated' => [
+                'title' => 'Ingenieros',
+                'route' => 'runa.engineer'
+            ],
+        ]
+    ],
+
     'logout' => [
         'title' => 'Cerrar Sesión',
         'icon' => 'fa fa-sign-out',
