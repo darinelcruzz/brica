@@ -35,8 +35,6 @@ class TerQuotationController extends Controller
 
         if ($quotation->clientr->credit) {
             $quotation->storeAsCredit('credito', $quotation->amount);
-
-            return redirect(route('runa.cashier'));
         }
 
         return view('runa.quotations.ticket', compact('quotation', 'amount'));

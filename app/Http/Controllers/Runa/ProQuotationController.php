@@ -49,4 +49,9 @@ class ProQuotationController extends Controller
         $quotation->update(['status' => 'pagado']);
         return back();
     }
+
+    function details(Quotation $quotation)
+    {
+        return view('runa.quotations.details', compact('quotation'));
+    }
 }

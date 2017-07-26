@@ -10,7 +10,7 @@
 
                 <!-- form start -->
                 {!! Form::open(['method' => 'POST',
-                    'route' => 'production.store', 'enctype' => 'multipart/form-data']) !!}
+                    'route' => 'runa.order.store', 'enctype' => 'multipart/form-data']) !!}
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-6">

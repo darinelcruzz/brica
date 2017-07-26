@@ -32,9 +32,28 @@ return [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
-            'terminated' => [
+            'engineer' => [
                 'title' => 'Ingenieros',
                 'route' => 'runa.engineer'
+            ],
+            'manager' => [
+                'title' => 'Gerente',
+                'route' => 'runa.manager'
+            ],
+        ]
+    ],
+
+    'clients' => [
+        'title' => 'Clientes',
+        'icon' => 'fa fa-user',
+        'submenu' => [
+            'add' => [
+                'title' => 'Agregar',
+                'route' => 'runa.client.create'
+            ],
+            'index' => [
+                'title' => 'Lista',
+                'route' => 'runa.client.index'
             ],
         ]
     ],

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -39,7 +40,7 @@ class OrderController extends Controller
 			$order->save();
 		}
 
-    	return redirect(route('production.engineers'));
+    	return redirect(route('runa.engineer'));
     }
 
 	public function getDesigns()
@@ -53,16 +54,15 @@ class OrderController extends Controller
 		return $links;
 	}
 
-	function details($id)
+	function details(Order $order)
     {
-        $order = Order::find($id);
-        return view('orders.details', compact('order'));
+        return view('runa.orders.details', compact('order'));
     }
 
-	function deleteOrder($id)
+	function destroy($id)
 	{
 		Order::destroy($id);
 
-		return redirect('cotizaciones/listado');
+		return back();
 	}
 }

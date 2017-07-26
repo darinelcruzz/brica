@@ -83,15 +83,71 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'pay.production'
     ]);
 
+    Route::get('cotizaciones/details/{quotation}', [
+        'uses' => 'Runa\ProQuotationController@details',
+        'as' => 'quotation.details'
+    ]);
+
     // Producción
     Route::get('ingenieros', [
         'uses' => 'Runa\EngineersScreenController@index',
         'as' => 'engineer'
     ]);
 
+    Route::get('ingenieros/{quotation}/completar', [
+        'uses' => 'Runa\EngineersScreenController@complete',
+        'as' => 'engineer.complete'
+    ]);
+
+    Route::get('gerente', [
+        'uses' => 'Runa\ManagerScreenController@index',
+        'as' => 'manager'
+    ]);
+
+    Route::get('gerente/asignar', [
+        'uses' => 'Runa\ManagerScreenController@assign',
+        'as' => 'manager.assign'
+    ]);
+
     // Órdenes
     Route::get('orden/crear/{id}', [
         'uses' => 'Runa\OrderController@create',
         'as' => 'order.create'
+    ]);
+
+    Route::post('orden/crear', [
+        'uses' => 'Runa\OrderController@store',
+        'as' => 'order.store'
+    ]);
+
+    // Clientes
+    Route::get('clientes', [
+        'uses' => 'Runa\ClientController@index',
+        'as' => 'client.index'
+    ]);
+
+    Route::get('cliente/crear', [
+        'uses' => 'Runa\ClientController@create',
+        'as' => 'client.create'
+    ]);
+
+    Route::post('cliente/crear', [
+        'uses' => 'Runa\ClientController@store',
+        'as' => 'client.store'
+    ]);
+
+    Route::get('cliente/editar/{client}', [
+        'uses' => 'Runa\ClientController@edit',
+        'as' => 'client.edit'
+    ]);
+
+    Route::post('cliente/editar', [
+        'uses' => 'Runa\ClientController@change',
+        'as' => 'client.change'
+    ]);
+
+    Route::get('cliente/eliminar/{client}', [
+        'uses' => 'Runa\ClientController@destroy',
+        'as' => 'client.destroy'
     ]);
 });

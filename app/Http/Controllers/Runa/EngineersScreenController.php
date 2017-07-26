@@ -13,7 +13,7 @@ class EngineersScreenController extends Controller
         return view('runa.production.engineers');
     }
 
-    function ordersReady(Quotation $quotation)
+    function complete(Quotation $quotation)
     {
         $quotation->update(['status' => 'terminado']);
 
