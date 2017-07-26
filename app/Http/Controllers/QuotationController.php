@@ -69,10 +69,6 @@ class QuotationController extends Controller
 
         $amount = $request->amount;
 
-        if ($client->credit) {
-            return redirect(route('production.engineers'));
-        }
-
         return view('quotations.ticket', compact('quotation', 'date', 'amount'));
     }
 
