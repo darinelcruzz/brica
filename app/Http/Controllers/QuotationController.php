@@ -84,9 +84,8 @@ class QuotationController extends Controller
 
         $date = Date::now()->format('Y-m-d');
 
-        if ($quotation->clientr->credit) {
+        if ($quotation->clientr->credit && $quotation->amount == 0) {
             $quotation->status = 'autorizado';
-            $quotation->amount = 0;
             $quotation->date_payment = $date;
             $quotation->save();
 

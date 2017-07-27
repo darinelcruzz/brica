@@ -6,7 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\DuskServiceProvider;
-use App\Http\Composers\SidebarComposer;
+use App\Http\Composers\Runa\QuotationsComposer;
+use App\Http\Composers\Runa\ProductionComposer;
+use App\Http\Composers\Runa\CashierViewComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
 
     protected function registerViewComposers()
    {
-       View::composer('menus.sidebar', SidebarComposer::class);
+       View::composer('runa.quotations.*', QuotationsComposer::class);
+       View::composer('runa.cashier.*', CashierViewComposer::class);
+       View::composer('runa.production.*', ProductionComposer::class);
    }
 }

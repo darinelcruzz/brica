@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Quotation extends Model
 {
@@ -39,4 +40,43 @@ class Quotation extends Model
 	{
 		return $query->where('type', 'terminado')->where('status', $status)->get();
 	}
+
+	public function scopeInBalance($query, $date)
+    {
+        return $query->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->where('date_payment', $date)
+			->get();
+    }
+
+	public function storeProducts($request)
+	{
+		$products = [];
+
+        for ($i = 0; $i < count($request->quantity); $i++) {
+            $product = [];
+
+            if($request->quantity[$i] > 0) {
+                $product['quantity'] =  $request->quantity[$i];
+                $product['material'] =  $request->material[$i];
+                $product['total'] =  $request->total[$i];
+                array_push($products, $product);
+            }
+        }
+
+        $this->products = serialize($products);
+        $this->amount = $this->amount * (1 - $this->clientr->discount/100);
+
+        $this->save();
+	}
+
+	public function storeAsCredit($status, $amount)
+    {
+        $this->update([
+            'status' => $status,
+            'amount' => $amount,
+            'date_payment' => Date::now()->format('Y-m-d')
+        ]);
+    }
 }
