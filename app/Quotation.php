@@ -41,6 +41,15 @@ class Quotation extends Model
 		return $query->where('type', 'terminado')->where('status', $status)->get();
 	}
 
+	public function scopeInBalance($query, $date)
+    {
+        return $query->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->where('date_payment', $date)
+			->get();
+    }
+
 	public function storeProducts($request)
 	{
 		$products = [];

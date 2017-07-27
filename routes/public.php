@@ -150,4 +150,14 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'uses' => 'Runa\ClientController@destroy',
         'as' => 'client.destroy'
     ]);
+
+    Route::get('caja', [
+        'uses' => 'AdminScreenController@index',
+        'as' => 'cash'
+    ]);
+
+    Route::post('caja', [
+        'uses' => 'AdminScreenController@index',
+        'as' => 'cash'
+    ]);
 });

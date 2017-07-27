@@ -43,6 +43,17 @@ return [
         ]
     ],
 
+    'admin' => [
+        'title' => 'Administración',
+        'icon' => 'fa fa-line-chart',
+        'submenu' => [
+            'cash' => [
+                'title' => 'Caja',
+                'route' => 'runa.cash'
+            ],
+        ]
+    ],
+
     'clients' => [
         'title' => 'Clientes',
         'icon' => 'fa fa-user',
