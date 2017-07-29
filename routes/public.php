@@ -119,6 +119,26 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'manager.assign'
     ]);
 
+    Route::get('operadores', [
+        'uses' => 'Runa\OperatorScreenController@index',
+        'as' => 'operator'
+    ]);
+
+    Route::get('operadores/comenzar/{quotation}', [
+        'uses' => 'Runa\OperatorScreenController@start',
+        'as' => 'operator.start'
+    ]);
+
+    Route::get('operadores/terminar/{quotation}', [
+        'uses' => 'Runa\OperatorScreenController@finish',
+        'as' => 'operator.finish'
+    ]);
+
+    Route::get('operadores/{quotation}/ordenes', [
+        'uses' => 'Runa\OperatorScreenController@orders',
+        'as' => 'operator.orders'
+    ]);
+
     // Órdenes
     Route::get('orden/crear/{id}', [
         'uses' => 'Runa\OrderController@create',
@@ -128,6 +148,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::post('orden/crear', [
         'uses' => 'Runa\OrderController@store',
         'as' => 'order.store'
+    ]);
+
+    Route::get('orden/{order}', [
+        'uses' => 'Runa\OrderController@show',
+        'as' => 'order.show'
     ]);
 
     // Clientes

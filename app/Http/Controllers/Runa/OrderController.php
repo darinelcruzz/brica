@@ -43,6 +43,11 @@ class OrderController extends Controller
     	return redirect(route('runa.engineer'));
     }
 
+    function show(Order $order)
+    {
+        return view('runa.orders.show', compact('order'));
+    }
+
 	public function getDesigns()
 	{
 		$files = Storage::files('public/designs');
@@ -53,11 +58,6 @@ class OrderController extends Controller
 
 		return $links;
 	}
-
-	function details(Order $order)
-    {
-        return view('runa.orders.details', compact('order'));
-    }
 
 	function destroy($id)
 	{
