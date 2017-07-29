@@ -27,6 +27,21 @@ class AdminScreenController extends Controller
                         'date', 'totals', 'sales'));
     }
 
+    function manage()
+    {
+        $quotations = Quotation::where('status', '!=', 'pagado')
+            ->where('status', '!=', 'cancelado')->get();
+
+        return view('runa.delete', compact('quotations'));
+    }
+
+    function cancel(Quotation $quotation)
+    {
+        $quotation->update(['status' => 'cancelado']);
+        
+        return back();
+    }
+
     function getTotals($quotations, $expenses)
     {
         $totals = ['totalQ' => 0, 'totalE' => 0];

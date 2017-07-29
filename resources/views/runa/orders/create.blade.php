@@ -16,7 +16,7 @@
                         <div class="col-md-6">
                             {!! Field::select('type',
                                 ['maquila' => 'Maquila', 'produccion' => 'Producción'], null,
-                                ['tpl' => 'templates/withicon'], ['icon' => 'industry'])
+                                ['tpl' => 'templates/withicon', 'empty' => 'Escoge tipo'], ['icon' => 'industry'])
                             !!}
                         </div>
                         <div class="col-md-6">
@@ -27,7 +27,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('design', ['nuevo' => 'Nuevo', 'existente' => 'Existente'], null,
-                            ['empty' => false, 'tpl' => 'templates/withicon', 'v-model' => 'selected'], ['icon' => 'wrench']) !!}
+                            ['tpl' => 'templates/withicon', 'v-model' => 'selected', 'empty' => 'Elegir nuevo o existente'],
+                            ['icon' => 'wrench']) !!}
                         </div>
                         <div v-if="disable(selected)" class="col-md-6">
                             {!! Field::select('added', $links , null,
@@ -46,7 +47,7 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     {!! Field::select('measureType', ['externas' => 'Externas', 'internas' => 'Internas', 'segun muestra' => 'Según muestra'], null,
-                                        ['tpl' => 'templates/withicon'], ['icon' => 'external-link']
+                                        ['tpl' => 'templates/withicon', 'empty' => false], ['icon' => 'external-link']
                                     ) !!}
                                 </div>
                             </div>

@@ -12,7 +12,7 @@
                     <dd>{{ $quotation->description }}</dd>
                     <dt>Entrega:</dt>
                     <dd>{{ $quotation->deliver }}</dd>
-                    <dt>Anticipo</dt>
+                    <dt>Anticipo:</dt>
                     <dd>$ {{ $quotation->amount }}</dd>
                 </dl>
             </solid-box>
@@ -40,8 +40,8 @@
                           <td>{{ $order->type }}</td>
                           <td>{{ $order->description }}</td>
                           <td>
-                              <a href="{{ route('production.order.details', ['id' => $order->id]) }}"
-                                  class="btn btn-info">
+                              <a href="{{ route('runa.order.show', ['id' => $order->id]) }}"
+                                  class="btn btn-info btn-xs">
                                   <i class="fa fa-info" aria-hidden="true"></i>nfo
                                   <i class="fa fa-forward" aria-hidden="true"></i>
                               </a>

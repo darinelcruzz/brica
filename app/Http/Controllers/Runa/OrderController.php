@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Jenssegers\Date\Date;
 use Carbon\Carbon;
 use App\Order;
 
@@ -32,7 +33,7 @@ class OrderController extends Controller
 
 		if ($order->design == 'nuevo') {
 			$file = $request->new_design;
-			$filename = str_random(40);
+			$filename = Date::now()->format('Ymdhis');
 			$ext = $file->extension();
 			$file->storeAs('public/temp', "$filename.$ext");
 

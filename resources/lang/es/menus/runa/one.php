@@ -37,6 +37,10 @@ return [
                 'title' => 'Gerente',
                 'route' => 'runa.manager'
             ],
+            'designs' => [
+                'title' => 'Diseños',
+                'route' => 'runa.designs'
+            ],
         ]
     ],
 
@@ -51,6 +55,10 @@ return [
             'expenses' => [
                 'title' => 'Gastos',
                 'route' => 'runa.expenses'
+            ],
+            'manage' => [
+                'title' => 'Eliminar',
+                'route' => 'runa.manage'
             ],
         ]
     ],

@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('runa')
 
 @section('main-content')
     <!-- form start -->

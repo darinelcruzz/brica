@@ -25,10 +25,9 @@ class ProQuotationController extends Controller
 
         $quotation = Quotation::create($request->all());
 
-        if ($quotation->clientr->credit) {
+        if ($quotation->clientr->credit && $quotation->amount == 0) {
             $quotation->storeAsCredit('autorizado', 0);
-
-            return redirect('produccion/ingenieros');
+            return redirect('runa/ingenieros');
         }
 
         return view('runa.quotations.ticket', compact('quotation'));
