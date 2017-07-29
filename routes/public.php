@@ -161,6 +161,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'client.destroy'
     ]);
 
+    // Administración
     Route::get('caja', [
         'uses' => 'Runa\AdminScreenController@index',
         'as' => 'cash'
@@ -179,5 +180,57 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::post('gastos', [
         'uses' => 'Runa\AdminScreenController@addExpense',
         'as' => 'expenses.create'
+    ]);
+
+    // Productos
+    Route::get('productos', [
+        'uses' => 'Runa\ProductController@index',
+        'as' => 'products'
+    ]);
+
+    Route::get('productos/crear', [
+        'uses' => 'Runa\ProductController@create',
+        'as' => 'product.create'
+    ]);
+
+    Route::post('productos/crear', [
+        'uses' => 'Runa\ProductController@store',
+        'as' => 'product.store'
+    ]);
+
+    Route::get('productos/editar/{product}', [
+        'uses' => 'Runa\ProductController@edit',
+        'as' => 'product.edit'
+    ]);
+
+    Route::post('productos/editar', [
+        'uses' => 'Runa\ProductController@update',
+        'as' => 'product.update'
+    ]);
+
+    // Usuarios
+    Route::get('usuarios', [
+        'uses' => 'Runa\UserController@index',
+        'as' => 'users'
+    ]);
+
+    Route::get('usuarios/crear', [
+        'uses' => 'Runa\UserController@create',
+        'as' => 'user.create'
+    ]);
+
+    Route::post('usuarios/crear', [
+        'uses' => 'Runa\UserController@store',
+        'as' => 'user.store'
+    ]);
+
+    Route::get('usuarios/editar/{product}', [
+        'uses' => 'Runa\UserController@edit',
+        'as' => 'user.edit'
+    ]);
+
+    Route::post('usuarios/editar', [
+        'uses' => 'Runa\UserController@update',
+        'as' => 'user.update'
     ]);
 });
