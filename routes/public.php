@@ -68,6 +68,16 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'cashier'
     ]);
 
+    Route::get('cotizaciones/finalizadas', [
+        'uses' => 'Runa\CashierScreenController@finished',
+        'as' => 'cashier.finished'
+    ]);
+
+    Route::get('cotizaciones/finalizadas/{quotation}', [
+        'uses' => 'Runa\CashierScreenController@calculate',
+        'as' => 'cashier.calculate'
+    ]);
+
     Route::get('cotizaciones/pagarter/{quotation}', [
         'uses' => 'Runa\TerQuotationController@pay',
         'as' => 'pay.terminated'
@@ -152,12 +162,22 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     ]);
 
     Route::get('caja', [
-        'uses' => 'AdminScreenController@index',
+        'uses' => 'Runa\AdminScreenController@index',
         'as' => 'cash'
     ]);
 
     Route::post('caja', [
-        'uses' => 'AdminScreenController@index',
+        'uses' => 'Runa\AdminScreenController@index',
         'as' => 'cash'
+    ]);
+
+    Route::get('gastos', [
+        'uses' => 'Runa\AdminScreenController@expenses',
+        'as' => 'expenses'
+    ]);
+
+    Route::post('gastos', [
+        'uses' => 'Runa\AdminScreenController@addExpense',
+        'as' => 'expenses.create'
     ]);
 });

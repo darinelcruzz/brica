@@ -41,4 +41,23 @@ class AdminScreenController extends Controller
 
         return $totals;
     }
+
+    function expenses()
+	{
+        $expenses = Expense::all();
+		$date = Date::now()->format('Y-m-d');
+		return view('runa.expenses', compact('date', 'expenses'));
+	}
+
+	function addExpense(Request $request)
+	{
+		$this->validate($request, [
+            'description' => 'required',
+    		'amount' => 'required',
+    	]);
+
+    	Expense::create($request->all());
+
+		return redirect(route('runa.expenses'));
+	}
 }

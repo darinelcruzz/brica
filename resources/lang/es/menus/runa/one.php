@@ -14,18 +14,15 @@ return [
                 'title' => 'Producción',
                 'route' => 'runa.quotationp.create'
             ],
-        ]
-    ],
-
-    'cashier' => [
-        'title' => 'Cajera',
-        'icon' => 'fa fa-money',
-        'submenu' => [
-            'index' => [
-                'title' => 'Cobrar',
+            'charge' => [
+                'title' => 'Cobrar ticket',
                 'route' => 'runa.cashier'
             ],
-        ],
+            'finished' => [
+                'title' => 'Generar ticket',
+                'route' => 'runa.cashier.finished'
+            ],
+        ]
     ],
 
     'production' => [
@@ -50,6 +47,10 @@ return [
             'cash' => [
                 'title' => 'Caja',
                 'route' => 'runa.cash'
+            ],
+            'expenses' => [
+                'title' => 'Gastos',
+                'route' => 'runa.expenses'
             ],
         ]
     ],
