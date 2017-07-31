@@ -70,42 +70,6 @@ return [
         ]
     ],
 
-    'products' => [
-        'title' => 'Productos',
-        'icon' => 'fa fa-barcode',
-        'submenu' => [
-            'add' => [
-                'title' => 'Agregar',
-                'route' => 'runa.product.create'
-            ],
-            'index' => [
-                'title' => 'Lista',
-                'route' => 'runa.products'
-            ],
-        ]
-    ],
-
-    'users' => [
-        'title' => 'Usuarios',
-        'icon' => 'fa fa-key',
-        'submenu' => [
-            'add' => [
-                'title' => 'Agregar',
-                'route' => 'runa.user.create'
-            ],
-            'index' => [
-                'title' => 'Lista',
-                'route' => 'runa.users'
-            ],
-        ]
-    ],
-
-    'operators' => [
-        'title' => 'Operadores',
-        'icon' => 'fa fa-cogs',
-        'route' => 'runa.operator',
-    ],
-
     'logout' => [
         'title' => 'Cerrar Sesión',
         'icon' => 'fa fa-sign-out',

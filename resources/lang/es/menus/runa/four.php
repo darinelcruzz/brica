@@ -18,10 +18,6 @@ return [
                 'title' => 'Cobrar ticket',
                 'route' => 'runa.cashier'
             ],
-            'finished' => [
-                'title' => 'Generar ticket',
-                'route' => 'runa.cashier.finished'
-            ],
         ]
     ],
 
@@ -33,69 +29,10 @@ return [
                 'title' => 'Ingenieros',
                 'route' => 'runa.engineer'
             ],
-            'manager' => [
-                'title' => 'Gerente',
-                'route' => 'runa.manager'
-            ],
-        ]
-    ],
 
-    'admin' => [
-        'title' => 'Administración',
-        'icon' => 'fa fa-line-chart',
-        'submenu' => [
-            'cash' => [
-                'title' => 'Caja',
-                'route' => 'runa.cash'
-            ],
-            'expenses' => [
-                'title' => 'Gastos',
-                'route' => 'runa.expenses'
-            ],
-        ]
-    ],
-
-    'clients' => [
-        'title' => 'Clientes',
-        'icon' => 'fa fa-user',
-        'submenu' => [
-            'add' => [
-                'title' => 'Agregar',
-                'route' => 'runa.client.create'
-            ],
-            'index' => [
-                'title' => 'Lista',
-                'route' => 'runa.client.index'
-            ],
-        ]
-    ],
-
-    'products' => [
-        'title' => 'Productos',
-        'icon' => 'fa fa-barcode',
-        'submenu' => [
-            'add' => [
-                'title' => 'Agregar',
-                'route' => 'runa.product.create'
-            ],
-            'index' => [
-                'title' => 'Lista',
-                'route' => 'runa.products'
-            ],
-        ]
-    ],
-
-    'users' => [
-        'title' => 'Usuarios',
-        'icon' => 'fa fa-key',
-        'submenu' => [
-            'add' => [
-                'title' => 'Agregar',
-                'route' => 'runa.user.create'
-            ],
-            'index' => [
-                'title' => 'Lista',
-                'route' => 'runa.users'
+            'designs' => [
+                'title' => 'Diseños',
+                'route' => 'runa.designs'
             ],
         ]
     ],
