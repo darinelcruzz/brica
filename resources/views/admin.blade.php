@@ -2,7 +2,7 @@
 <html lang="en">
 
 @section('htmlheader')
-    @include('adminlte::layouts.partials.htmlheader', ['headerTitle' => 'Intranet'])
+    @include('adminlte::layouts.partials.htmlheader', ['headerTitle' => 'BRICA'])
 @show
 
 <body class="skin-yellow sidebar-mini">

@@ -63,7 +63,7 @@
 					<tr>
 						<td></td><td></td>
 						<td><b>Total:</b></td>
-						<td>$ {{ $totals['totalQ'] }}</td>
+						<td>$ {{ number_format($totals['totalQ'], 2, '.', ',') }}</td>
 					</tr>
 				</template>
 		    </data-table-com>
@@ -91,7 +91,7 @@
 				<template slot="footer">
 					<tr>
 						<td><b>Total:</b></td>
-						<td>$ {{ $totals['totalE'] }}</td>
+						<td>$ {{ number_format($totals['totalE'], 2, '.', ',') }}</td>
 					</tr>
 				</template>
 		    </data-table-com>
@@ -103,7 +103,7 @@
   			<div class="small-box bg-green">
     			<div class="inner">
     				<p>Ingresos Totales</p>
-      				<h3>${{ $totals['totalQ'] }}</h3>
+      				<h3>$ {{ number_format($totals['totalQ'], 2, '.', ',') }}</h3>
     			</div>
     			<div class="icon">
       				<i class="fa fa-dollar"></i>
@@ -115,7 +115,7 @@
   			<div class="small-box bg-red">
     			<div class="inner">
     				<p>Egresos Totales</p>
-      				<h3>${{ $totals['totalE'] }}</h3>
+      				<h3>$ {{ number_format($totals['totalE'], 2, '.', ',') }}</h3>
     			</div>
     			<div class="icon">
       				<i class="fa fa-dollar"></i>
@@ -127,7 +127,7 @@
 			<div class="small-box bg-primary">
 				<div class="inner">
 					<p>Ganancia</p>
-					<h3>${{ $totals['totalQ'] - $totals['totalE'] }}</h3>
+					<h3>$ {{ number_format($totals['totalQ'] - $totals['totalE'], 2, '.', ',') }}</h3>
 				</div>
 				<div class="icon">
 					<i class="fa fa-dollar"></i>

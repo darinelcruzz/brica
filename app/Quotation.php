@@ -24,6 +24,11 @@ class Quotation extends Model
 		return $this->hasOne(Sale::class, 'quotation');
 	}
 
+	function getRetainerAttribute()
+    {
+        return '$ ' . number_format($this->amount, 2, '.', ',');
+    }
+
 	public function scopeTotalPaid($query, $date)
 	{
 		return $query->where('date_payment', $date)

@@ -6,11 +6,19 @@ Route::get('salir', function ()
 {
     Auth::logout();
 
-    return redirect('/');
+    return redirect('/intranet');
 })->name('getout');
 
 Route::get('/products', function () {
     return DB::table('products')->get();
+});
+
+Route::get('/intranet', function () {
+    return view('brica');
+});
+
+Route::get('/', function () {
+    return view('comingsoon');
 });
 
 Route::group(['prefix' => 'hercules'], function () {

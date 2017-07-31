@@ -17,11 +17,6 @@ Route::post('subir-archivo', [
     'as' => 'design.upload'
 ]);
 
-Route::get('/', function () {
-    $user = Auth::user();
-    return view('welcome', compact('user'));
-});
-
 // Entradas
 Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
     Route::get('crear', [
@@ -391,7 +386,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'pay.production'
     ]);
 
-    Route::get('cotizaciones/details/{quotation}', [
+    Route::get('cotizaciones/detalles/{quotation}', [
         'uses' => 'Runa\ProQuotationController@details',
         'as' => 'quotation.details'
     ]);

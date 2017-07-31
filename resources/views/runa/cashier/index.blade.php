@@ -20,7 +20,7 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>$ {{ $row->amount }}</td>
+                  <td>{{ $row->retainer }}</td>
                   <td>
                       <a href="{{ route('runa.pay.terminated', ['id' => $row->id]) }}"
                           class="btn btn-success">
@@ -50,7 +50,7 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->pay }}</td>
-                  <td>$ {{ $row->amount }}</td>
+                  <td>{{ $row->retainer }}</td>
                   <td>
                       <a href="{{ route('runa.pay.retainer', ['id' => $row->id]) }}"
                           class="btn btn-success">
@@ -116,7 +116,7 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>$ {{ $row->sale->amount or $row->amount }}</td>
+                  <td>{{ $row->sale->amount or $row->retainer }}</td>
                   @if ($row->type == 'produccion')
                       <td>
                           <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
@@ -164,7 +164,7 @@
                       </a>
                   </td>
                   <td>{{ $row->type }}</td>
-                  <td>$ {{ $row->amount }}</td>
+                  <td>{{ $row->retainer }}</td>
                   <td>{{ $row->date_payment }}</td>
               </tr>
             @endforeach

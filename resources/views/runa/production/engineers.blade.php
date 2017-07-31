@@ -64,7 +64,7 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-info btn-xs">
+                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-info btn-xs">
                           <i class="fa fa-info" aria-hidden="true"></i>nfo
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
@@ -96,7 +96,7 @@
                   <td>{{ $row->team }}</td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-danger btn-xs">
+                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-danger btn-xs">
                           <i class="fa fa-info" aria-hidden="true"></i>nfo
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
@@ -128,7 +128,7 @@
                 <td>{{ $row->team }}</td>
                 <td>{{ $row->startTime }}</td>
                 <td>
-                    <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-warning btn-xs">
+                    <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-warning btn-xs">
                         <i class="fa fa-info" aria-hidden="true"></i>nfo
                         <i class="fa fa-forward" aria-hidden="true"></i>
                     </a>
@@ -162,7 +162,7 @@
                 <td>{{ $row->startTime }}</td>
                 <td>{{ $row->endTime }}</td>
                 <td>
-                    <a href="{{ route('quotation.details', ['id' => $row->id]) }}" class="btn btn-success btn-xs">
+                    <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-success btn-xs">
                         <i class="fa fa-info" aria-hidden="true"></i>nfo
                         <i class="fa fa-forward" aria-hidden="true"></i>
                     </a>
