@@ -8,7 +8,13 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    Proximamente
+    Proximamente web Grupo Brica <br>
+    <a href="/intranet" class="btn btn-default">
+        Ir a la Intranet &nbsp;
+        <i class="fa fa-forward" aria-hidden="true"></i>
+    </a>
   </div>
+
+</div>
 </body>
 </html>
