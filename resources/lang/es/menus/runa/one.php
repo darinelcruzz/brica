@@ -63,6 +63,21 @@ return [
         ]
     ],
 
+    'questions' => [
+        'title' => 'Preguntas',
+        'icon' => 'fa fa-question-circle-o',
+        'submenu' => [
+            'index' => [
+                'title' => 'Lista',
+                'route' => 'runa.questions'
+            ],
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'runa.question.create'
+            ],
+        ]
+    ],
+
     'clients' => [
         'title' => 'Clientes',
         'icon' => 'fa fa-user',

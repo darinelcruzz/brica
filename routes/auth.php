@@ -577,4 +577,20 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'uses' => 'Runa\DesignsController@destroy',
         'as' => 'design.destroy'
     ]);
+
+    // Preguntas
+    Route::get('preguntas', [
+        'uses' => 'Runa\QuestionController@index',
+        'as' => 'questions'
+    ]);
+
+    Route::get('preguntas/crear', [
+        'uses' => 'Runa\QuestionController@create',
+        'as' => 'question.create'
+    ]);
+
+    Route::post('preguntas/crear', [
+        'uses' => 'Runa\QuestionController@store',
+        'as' => 'question.store'
+    ]);
 });
