@@ -40,6 +40,10 @@
             </data-table-com>
         </div>
 
+        @php
+            $totalsize = 0;
+        @endphp
+
         <div class="col-md-8">
             <data-table-com title="Temporales/nuevos"
                 example="example1" color="box-default">
@@ -56,7 +60,10 @@
                     @foreach($temps as $temp)
                       <tr>
                           <td>
-                              {{ substr($temp, 12) }}
+                              {{ substr($temp, 12) }} / {{ number_format(Storage::size($temp) / 1048576, 2) . ' MB' }}
+                              @php
+                                  $totalsize += Storage::size($temp) / 1048576;
+                              @endphp
                           </td>
                           <td>
                               <a href="{{ Storage::url($temp) }}">
@@ -74,6 +81,10 @@
                           </td>
                       </tr>
                     @endforeach
+                </template>
+
+                <template slot="footer">
+                    {{ number_format($totalsize, 2) . ' MB' }}
                 </template>
             </data-table-com>
         </div>
