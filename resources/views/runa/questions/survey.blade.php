@@ -19,12 +19,18 @@
   <!-- Hero content: will be in the middle -->
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title">
-        Title
-      </h1>
-      <h2 class="subtitle">
-        Subtitle
-      </h2>
+
+      @foreach ($questions as $question)
+          <h1 class="title">{{ $question->body }}</h1>
+          @foreach ($question->all_answers as $key => $value)
+              <input type="radio" name="{{ $question->id }}" value="1">
+              <span class="icon is-medium">
+                  <i class="{{ $icons[$question->type][$key] }}" aria-hidden="true"></i>
+              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          @endforeach
+          <hr>
+      @endforeach
+
     </div>
   </div>
 </section>
