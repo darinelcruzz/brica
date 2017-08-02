@@ -14,9 +14,9 @@ return [
                 'title' => 'Producción',
                 'route' => 'runa.quotationp.create'
             ],
-            'charge' => [
-                'title' => 'Cobrar ticket',
-                'route' => 'runa.cashier'
+            'finished' => [
+                'title' => 'Generar ticket',
+                'route' => 'runa.cashier.finished'
             ],
         ]
     ],

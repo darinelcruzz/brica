@@ -50,8 +50,7 @@
                 <template slot="header">
                     <tr>
                         <th>Nombre</th>
-                        <th>Ver</th>
-                        <th>Eliminar</th>
+                        <th>Acciones</th>
                         <th>Fecha</th>
                     </tr>
                 </template>
@@ -68,9 +67,7 @@
                           <td>
                               <a href="{{ Storage::url($temp) }}">
                                   <i class="fa fa-eye" aria-hidden="true"></i>
-                              </a>
-                          </td>
-                          <td>
+                              </a> &nbsp;&nbsp;
                               <a href="{{ route('runa.design.destroy', ['img' => substr($temp, 12)]) }}"
                                   title="ELIMINAR">
                                   <i class="fa fa-trash-o" aria-hidden="true"></i>
