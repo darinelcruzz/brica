@@ -5,11 +5,15 @@
     <row-woc col="col-md-6">
         <solid-box title="Preguntas" color="box-warning">
             @foreach ($questions as $question)
-                <h4>{{ $question->body }}</h4>
+                <h4>{{ $question->body }}
+                <a href="{{ route('runa.question.edit', ['id' => $question->id])}}">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                </a>
+                </h4>
                 @foreach ($question->all_answers as $key => $value)
-                    <input type="radio" name="{{ $question->id }}" value="1">
                     <i class="{{ $icons[$question->type][$key] }}" aria-hidden="true">
-                    </i>&nbsp;&nbsp;
+                    </i>
+                    <code>{{ $value }}</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 @endforeach
                 <br><hr>
             @endforeach

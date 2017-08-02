@@ -19,18 +19,22 @@
   <!-- Hero content: will be in the middle -->
   <div class="hero-body">
     <div class="container has-text-centered">
-
-      @foreach ($questions as $question)
-          <h1 class="title">{{ $question->body }}</h1>
-          @foreach ($question->all_answers as $key => $value)
-              <input type="radio" name="{{ $question->id }}" value="1">
-              <span class="icon is-medium">
-                  <i class="{{ $icons[$question->type][$key] }}" aria-hidden="true"></i>
-              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {!! Form::open(['method' => 'POST', 'route' => 'runa.question.survey']) !!}
+          @foreach ($questions as $question)
+              <h1 class="title">{{ $question->body }}</h1>
+              @foreach ($question->all_answers as $key => $value)
+                  <input type="radio" class="radio_item" name="{{ $question->id }}" value="{{ $key }}" id="{{ $question->id }}_{{ $key }}">
+                  <label class="label_item" for="{{ $question->id }}_{{ $key }}">
+                      <span class="icon is-large">
+                          <i class="{{ $icons[$question->type][$key] }}" aria-hidden="true"></i>
+                      </span>
+                  </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              @endforeach
+              <hr>
           @endforeach
-          <hr>
-      @endforeach
 
+          {!! Form::submit('Terminar', ['class' => 'button is-dark is-large']) !!}
+        {!! Form::close() !!}
     </div>
   </div>
 </section>

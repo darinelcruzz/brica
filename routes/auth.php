@@ -1,23 +1,5 @@
 <?php
 
-// Entradas
-Route::group(['prefix' => 'entradas', 'as' => 'entries.'], function () {
-    Route::get('crear', [
-        'uses' => 'EntryController@create',
-        'as' => 'create'
-    ]);
-
-    Route::post('crear', [
-        'uses' => 'EntryController@store',
-        'as' => 'store'
-    ]);
-
-    Route::get('/', [
-        'uses' => 'EntryController@show',
-        'as' => 'show'
-    ]);
-});
-
 Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
 
     Route::get('/', function ()
@@ -302,8 +284,23 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'question.store'
     ]);
 
+    Route::get('preguntas/editar/{rquestion}', [
+        'uses' => 'Runa\QuestionController@edit',
+        'as' => 'question.edit'
+    ]);
+
+    Route::post('preguntas/editar', [
+        'uses' => 'Runa\QuestionController@update',
+        'as' => 'question.update'
+    ]);
+
     Route::get('preguntas/responder', [
         'uses' => 'Runa\QuestionController@answer',
         'as' => 'question.answer'
+    ]);
+
+    Route::post('preguntas/responder', [
+        'uses' => 'Runa\QuestionController@survey',
+        'as' => 'question.survey'
     ]);
 });

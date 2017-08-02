@@ -43,6 +43,45 @@ class QuestionController extends Controller
         return redirect('runa/preguntas');
     }
 
+    function survey(Request $request)
+    {
+        foreach ($request->all() as $id => $index) {
+            $question = RQuestion::find($id);
+            if ($question) {
+                $answers = $question->all_answers;
+                $answers[$index] += 1;
+                $question->update([
+                    'answers' => serialize($answers)
+                ]);
+            }
+        }
+
+        return redirect('runa/preguntas/responder');
+    }
+
+    function edit(RQuestion $rquestion)
+    {
+        return view('runa.questions.edit', compact('rquestion'));
+    }
+
+    function update(Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required',
+            'type' => 'required'
+        ]);
+
+        $question = RQuestion::find($request->id);
+
+        $question->update([
+            'body' => $request->body,
+            'type' => $request->type,
+            'answers' => $request->reset ? $this->generateAnswers($request->type) : $question->answers
+        ]);
+
+        return redirect('runa/preguntas');
+    }
+
     function generateAnswers($type)
     {
         if($type) {
