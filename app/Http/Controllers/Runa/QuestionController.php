@@ -15,6 +15,13 @@ class QuestionController extends Controller
         return view('runa.questions.index', compact('questions', 'icons'));
     }
 
+    function answer()
+    {
+        $questions = RQuestion::all();
+        $icons = $this->getIcons();
+        return view('runa.questions.survey', compact('questions', 'icons'));
+    }
+
     function create()
     {
         return view('runa.questions.create');

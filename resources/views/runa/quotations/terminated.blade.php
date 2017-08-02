@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <a href="{{ route('client.create', ['from' => 'terminado'])}}">
+                        <a href="{{ route('runa.client.create', ['from' => 'terminado'])}}">
                             <button type="button" class="btn btn-warning">Nuevo cliente</button>
                         </a>
                     </div>

@@ -12,7 +12,7 @@
                         ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'], ['icon' => 'user']) !!}
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ route('client.create', ['from' => 'produccion'])}}">
+                        <a href="{{ route('runa.client.create', ['from' => 'produccion'])}}">
                             <button type="button" class="btn btn-warning">Nuevo cliente</button>
                         </a>
                     </div>

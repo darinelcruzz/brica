@@ -52,7 +52,7 @@
                       </a>
                   </td>
                   <td>
-                      {!! Form::open(['method' => 'POST', 'route' => 'production.assign']) !!}
+                      {!! Form::open(['method' => 'POST', 'route' => 'runa.manager.assign']) !!}
                         <div class="input-group input-group-sm">
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <select class="form-control" name="team">

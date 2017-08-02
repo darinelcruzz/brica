@@ -75,6 +75,10 @@ return [
                 'title' => 'Crear',
                 'route' => 'runa.question.create'
             ],
+            'answer' => [
+                'title' => 'Cuestionario',
+                'route' => 'runa.question.answer'
+            ],
         ]
     ],
 

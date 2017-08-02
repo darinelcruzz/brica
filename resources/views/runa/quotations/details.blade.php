@@ -48,7 +48,7 @@
                           </td>
                           @if(Auth::user()->level == 1)
                               <td>
-                                  <a href="{{ route('production.deleteOrder', ['id' => $order->id]) }}">
+                                  <a href="{{ route('runa.order.destroy', ['id' => $order->id]) }}">
                                       <i class="fa fa-trash"></i>
                                   </a>
                               </td>

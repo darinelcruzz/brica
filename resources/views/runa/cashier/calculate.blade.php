@@ -4,7 +4,7 @@
     <row-woc col="col-md-10">
         <solid-box title="Nueva Cotización" color="box-warning">
             <!-- form start -->
-            {!! Form::open(['method' => 'POST', 'route' => 'sale.save']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'runa.sale.save']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::text('client', $quotation->clientr->name, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}

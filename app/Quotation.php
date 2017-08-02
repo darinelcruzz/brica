@@ -7,7 +7,10 @@ use Jenssegers\Date\Date;
 
 class Quotation extends Model
 {
-	protected $fillable = ['type', 'client', 'status', 'description', 'amount', 'date_payment', 'pay', 'deliver'];
+	protected $fillable = [
+		'type', 'client', 'status', 'description', 'team', 'startTime', 'endTime',
+		'amount', 'date_payment', 'pay', 'deliver', 'products'
+	];
 
 	public function clientr()
     {

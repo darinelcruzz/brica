@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('runa')
 
 @section('main-content')
 
@@ -26,7 +26,7 @@
                     <td>${{ $sale->amount }} (anticipo ${{ $sale->retainer}})</td>
                 @endif
                 <td>
-                  <a href="{{ route('sale.print', ['id' => $sale->id])}}" class="btn btn-success">
+                  <a href="{{ route('runa.sale.ticket', ['id' => $sale->id])}}" class="btn btn-success">
                       <i class="fa fa-print" aria-hidden="true"></i>&nbsp;
                       ticket
                   </a>

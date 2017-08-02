@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Quotation;
 use App\Sale;
 
@@ -29,12 +30,12 @@ class SaleController extends Controller
             $quotation->save();
         }
 
-        return redirect(route('sale.index'));
+        return redirect(route('runa.sale.index'));
     }
 
-    function printTicket($id)
+    function ticket($id)
     {
         $sale = Sale::find($id);
-        return view('runa.sales.print', compact('sale'));
+        return view('runa.sales.ticket', compact('sale'));
     }
 }
