@@ -33,7 +33,7 @@ class OrderController extends Controller
 
 		if ($order->design == 'nuevo') {
 			$file = $request->new_design;
-			$filename = Date::now()->format('Ymdhis');
+			$filename = Date::now()->format('Ymdhis') . 'Q' . $order->quotation;
 			$ext = $file->extension();
 			$file->storeAs('public/temp', "$filename.$ext");
 

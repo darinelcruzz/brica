@@ -40,14 +40,15 @@
             </data-table-com>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <data-table-com title="Temporales/nuevos"
-                example="example6" color="box-default">
+                example="example1" color="box-default">
                 <template slot="header">
                     <tr>
                         <th>Nombre</th>
                         <th>Ver</th>
                         <th>Eliminar</th>
+                        <th>Fecha</th>
                     </tr>
                 </template>
 
@@ -67,6 +68,9 @@
                                   title="ELIMINAR">
                                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                               </a>
+                          </td>
+                          <td>
+                              {{ date('d-m-Y', Storage::lastModified($temp)) }}
                           </td>
                       </tr>
                     @endforeach
