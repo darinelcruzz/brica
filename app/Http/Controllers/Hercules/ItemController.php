@@ -31,7 +31,7 @@ class ItemController extends Controller
 
         HItem::create($request->all());
 
-        return redirect(route('item.index'));
+        return redirect(route('hercules.items'));
     }
 
     public function show($id)

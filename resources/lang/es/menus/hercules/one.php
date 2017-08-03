@@ -3,15 +3,30 @@
 return [
     'articles' => [
         'title' => 'Artículos',
+        'icon' => 'fa fa-list-ol',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.item.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.items'
+            ],
+        ]
+    ],
+
+    'bodyworks' => [
+        'title' => 'Carrocerías',
         'icon' => 'fa fa-truck',
         'submenu' => [
             'create' => [
                 'title' => 'Crear',
-                'route' => 'item.create'
+                'route' => 'hercules.bodywork.create'
             ],
-            'history' => [
+            'list' => [
                 'title' => 'Lista',
-                'route' => 'item.index'
+                'route' => 'hercules.bodyworks'
             ],
         ]
     ],

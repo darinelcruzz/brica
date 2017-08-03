@@ -9,7 +9,7 @@
 <div id="app" v-cloak>
     <div class="wrapper">
 
-    @include('adminlte::layouts.partials.mainheader', ['short' => 'H', 'long' => 'Hercules'])
+    @include('adminlte::layouts.partials.mainheader', ['short' => 'H', 'long' => 'hercules'])
 
     @include('adminlte::layouts.partials.sidebar', ['site' => 'hercules/'])
 

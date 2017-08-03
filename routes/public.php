@@ -21,16 +21,16 @@ Route::get('/', function () {
     return view('comingsoon');
 });
 
-Route::group(['prefix' => 'hercules'], function () {
+Route::group(['prefix' => 'hercules', 'as' => 'hercules.'], function () {
 
     Route::get('/', function ()
     {
-        return view('hercules');
+        return view('hercules.home');
     });
 
     Route::get('articulos', [
         'uses' => 'Hercules\ItemController@index',
-        'as' => 'item.index'
+        'as' => 'items'
     ]);
 
     Route::get('articulos/crear', [
@@ -41,5 +41,20 @@ Route::group(['prefix' => 'hercules'], function () {
     Route::post('articulos/crear', [
         'uses' => 'Hercules\ItemController@store',
         'as' => 'item.store'
+    ]);
+
+    Route::get('carrocerias', [
+        'uses' => 'Hercules\BodyworkController@index',
+        'as' => 'bodyworks'
+    ]);
+
+    Route::get('carrocerias/crear', [
+        'uses' => 'Hercules\BodyworkController@create',
+        'as' => 'bodywork.create'
+    ]);
+
+    Route::post('carrocerias/crear', [
+        'uses' => 'Hercules\BodyworkController@store',
+        'as' => 'bodywork.store'
     ]);
 });
