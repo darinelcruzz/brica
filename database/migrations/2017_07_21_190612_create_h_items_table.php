@@ -21,6 +21,7 @@ class CreateHItemsTable extends Migration
             $table->string('unity');
             $table->double('weight');
             $table->double('price');
+            $table->string('family');
 
             $table->timestamps();
         });
