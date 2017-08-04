@@ -7,6 +7,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         return view('runa.home');
     });
 
+    Route::get('error', function()
+    {
+        return view('error');
+    });
+
     Route::get('cotizaciones/produccion', [
         'uses' => 'Runa\ProQuotationController@create',
         'as' => 'quotationp.create'
@@ -30,7 +35,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::get('cotizaciones', [
         'uses' => 'Runa\CashierScreenController@index',
         'as' => 'cashier'
-    ]);
+    ])->middleware('payment');
 
     Route::get('cotizaciones/finalizadas', [
         'uses' => 'Runa\CashierScreenController@finished',
@@ -173,32 +178,32 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::get('caja', [
         'uses' => 'Runa\AdminScreenController@index',
         'as' => 'cash'
-    ]);
+    ])->middleware('money');
 
     Route::post('caja', [
         'uses' => 'Runa\AdminScreenController@index',
         'as' => 'cash'
-    ]);
+    ])->middleware('money');
 
     Route::get('gastos', [
         'uses' => 'Runa\AdminScreenController@expenses',
         'as' => 'expenses'
-    ]);
+    ])->middleware('money');
 
     Route::post('gastos', [
         'uses' => 'Runa\AdminScreenController@addExpense',
         'as' => 'expenses.create'
-    ]);
+    ])->middleware('money');
 
     Route::get('administrar', [
         'uses' => 'Runa\AdminScreenController@manage',
         'as' => 'manage'
-    ]);
+    ])->middleware('owners');
 
     Route::get('cancelar/{quotation}', [
         'uses' => 'Runa\AdminScreenController@cancel',
         'as' => 'cancel'
-    ]);
+    ])->middleware('owners');
 
     // Productos
     Route::get('productos', [
@@ -230,27 +235,27 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::get('usuarios', [
         'uses' => 'Runa\UserController@index',
         'as' => 'users'
-    ]);
+    ])->middleware('owners');
 
     Route::get('usuarios/crear', [
         'uses' => 'Runa\UserController@create',
         'as' => 'user.create'
-    ]);
+    ])->middleware('owners');
 
     Route::post('usuarios/crear', [
         'uses' => 'Runa\UserController@store',
         'as' => 'user.store'
-    ]);
+    ])->middleware('owners');
 
     Route::get('usuarios/editar/{product}', [
         'uses' => 'Runa\UserController@edit',
         'as' => 'user.edit'
-    ]);
+    ])->middleware('owners');
 
     Route::post('usuarios/editar', [
         'uses' => 'Runa\UserController@update',
         'as' => 'user.update'
-    ]);
+    ])->middleware('owners');
 
     // Diseños
     Route::get('disenos', [
@@ -272,27 +277,27 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     Route::get('preguntas', [
         'uses' => 'Runa\QuestionController@index',
         'as' => 'questions'
-    ]);
+    ])->middleware('owners');
 
     Route::get('preguntas/crear', [
         'uses' => 'Runa\QuestionController@create',
         'as' => 'question.create'
-    ]);
+    ])->middleware('owners');
 
     Route::post('preguntas/crear', [
         'uses' => 'Runa\QuestionController@store',
         'as' => 'question.store'
-    ]);
+    ])->middleware('owners');
 
     Route::get('preguntas/editar/{rquestion}', [
         'uses' => 'Runa\QuestionController@edit',
         'as' => 'question.edit'
-    ]);
+    ])->middleware('owners');
 
     Route::post('preguntas/editar', [
         'uses' => 'Runa\QuestionController@update',
         'as' => 'question.update'
-    ]);
+    ])->middleware('owners');
 
     Route::get('preguntas/responder', [
         'uses' => 'Runa\QuestionController@answer',

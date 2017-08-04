@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Runa\RQuestion;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {

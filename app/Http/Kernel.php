@@ -57,5 +57,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'owners' => \App\Http\Middleware\Runa\Owners::class,
+        'money' => \App\Http\Middleware\Runa\MoneyHandlers::class,
+        'payment' => \App\Http\Middleware\Runa\TicketPayments::class,
     ];
 }
