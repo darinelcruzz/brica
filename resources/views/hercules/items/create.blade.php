@@ -9,6 +9,12 @@
                     {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
                 </row-woc>
 
+                <row-woc col="col-md-12">
+                    {!! Field::select('family',
+                      ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido', 'pintura' => 'Pintura', 'montaje' => 'Montaje'],
+                      null, ['tpl' => 'templates/withicon', 'empty' => false], ['icon' => 'cogs']) !!}
+                </row-woc>
+
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::text('unity', ['tpl' => 'templates/withicon'], ['icon' => 'info-circle']) !!}
