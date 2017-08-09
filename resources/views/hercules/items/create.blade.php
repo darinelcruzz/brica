@@ -10,10 +10,14 @@
                 </row-woc>
 
                 <row-woc col="col-md-12">
-                    {!! Field::select('family',
-                      ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido', 'pintura' => 'Pintura', 'montaje' => 'Montaje'],
-                      null, ['tpl' => 'templates/withicon', 'empty' => false], ['icon' => 'cogs']) !!}
+                  <label for="processes">Procesos:</label><br>
+                    {!! Form::checkboxes('processes',
+                      ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
+                        'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline'])
+                    !!}
                 </row-woc>
+
+                <hr>
 
                 <div class="row">
                     <div class="col-md-6">

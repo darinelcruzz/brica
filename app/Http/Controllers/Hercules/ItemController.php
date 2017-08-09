@@ -29,24 +29,44 @@ class ItemController extends Controller
             'price' => 'required',
         ]);
 
-        HItem::create($request->all());
+        $item = HItem::create([
+          'description' => $request->description,
+          'caliber' => $request->caliber,
+          'unity' => $request->unity,
+          'weight' => $request->weight,
+          'price' => $request->price,
+          'family' => ''
+        ]);
+
+        $item->addProcesses($request->processes);
 
         return redirect(route('hercules.items'));
     }
 
-    public function show($id)
+    public function show(HItem $hitem)
     {
         //
     }
 
-    public function edit($id)
+    public function edit(HItem $hitem)
     {
-        //
+        return view('hercules.items.edit', compact('hitem'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      $item = HItem::find($request->id);
+
+      $item->update([
+        'description' => $request->description,
+        'caliber' => $request->caliber,
+        'unity' => $request->unity,
+        'weight' => $request->weight,
+        'price' => $request->price,
+        'family' => serialize($request->processes)
+      ]);
+
+      return redirect(route('hercules.items'));
     }
 
     public function destroy($id)
