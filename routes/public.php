@@ -68,9 +68,9 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.'], function () {
         'as' => 'bodywork.store'
     ]);
 
-    Route::post('carrocerias/crear/procesos', [
-        'uses' => 'Hercules\BodyworkController@process',
-        'as' => 'bodywork.process'
+    Route::post('carrocerias/crear/cantidades', [
+        'uses' => 'Hercules\BodyworkController@addQuantities',
+        'as' => 'bodywork.quantities'
     ]);
 
     Route::get('carrocerias/editar/{hbodywork}', [

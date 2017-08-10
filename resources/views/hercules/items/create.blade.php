@@ -22,12 +22,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::text('unity', ['tpl' => 'templates/withicon'], ['icon' => 'info-circle']) !!}
-                        {!! Field::number('price', ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
+                        {!! Field::number('price', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
                     </div>
 
                     <div class="col-md-6">
-                        {!! Field::text('caliber', ['tpl' => 'templates/withicon'], ['icon' => 'bolt']) !!}
-                        {!! Field::number('weight', ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'balance-scale']) !!}
+                        {!! Field::text('caliber', '-', ['tpl' => 'templates/withicon'], ['icon' => 'bolt']) !!}
+                        {!! Field::number('weight', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'balance-scale']) !!}
                     </div>
                 </div>
 
