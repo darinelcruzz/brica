@@ -9,6 +9,7 @@ use Laravel\Dusk\DuskServiceProvider;
 use App\Http\Composers\Runa\QuotationsComposer;
 use App\Http\Composers\Runa\ProductionComposer;
 use App\Http\Composers\Runa\CashierViewComposer;
+use App\Http\Composers\Hercules\BodyworkComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
        View::composer('runa.quotations.*', QuotationsComposer::class);
        View::composer('runa.cashier.*', CashierViewComposer::class);
        View::composer('runa.production.*', ProductionComposer::class);
+       View::composer('hercules.bodyworks.create', BodyworkComposer::class);
    }
 }

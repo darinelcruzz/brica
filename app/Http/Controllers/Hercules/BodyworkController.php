@@ -17,26 +17,24 @@ class BodyworkController extends Controller
 
     function create()
     {
-      return view('hercules.bodyworks.create');
+        return view('hercules.bodyworks.create');
     }
 
     function store(Request $request)
     {
-      $bodywork = HBodywork::create($request->all());
+      $bodywork = HBodywork::create([
+          'description' => $request->description,
+          'family' => $request->family,
+          'height' => $request->height,
+          'width' => $request->width,
+          'length' => $request->length,
+          'welding' => serialize($request->welding),
+          'anchoring' => serialize($request->anchoring),
+          'clothing' => serialize($request->clothing),
+          'painting' => serialize($request->painting),
+          'mounting' => serialize($request->mounting),
+      ]);
 
-      $processes = ['soldadura', 'fondeo', 'vestido', 'pintura', 'montaje'];
-
-      $index = 0;
-
-      $items = $this->getItems('soldadura');
-
-      return view('hercules.bodyworks.process', compact('items', 'index', 'processes'));
-    }
-
-    function getItems($process)
-    {
-        return HItem::all()->filter(function ($item) {
-            return strpos($item->family, 'soldadura');
-        })->pluck('description', 'id')->toArray();
+      return redirect(route('hercules.bodyworks'));
     }
 }

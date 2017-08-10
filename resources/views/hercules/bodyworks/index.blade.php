@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    <data-table col="col-md-6" title="Carrocerías"
+    <data-table col="col-md-12" title="Carrocerías"
         example="example2" color="box-default">
         <template slot="header">
             <tr>
@@ -10,6 +10,7 @@
                 <th>Descripción</th>
                 <th>Medidas</th>
                 <th>Precio</th>
+                <th>Procesos</th>
             </tr>
         </template>
 
@@ -19,11 +20,18 @@
                   <td>{{ $bodywork->id }}</td>
                   <td>{{ $bodywork->description }}</td>
                   <td>
-                      Alto: {{ $bodywork->height }}<br>
-                      Largo: {{ $bodywork->length }}<br>
-                      Ancho: {{ $bodywork->width }}
+                      Alto: {{ $bodywork->height }} m<br>
+                      Largo: {{ $bodywork->length }} m<br>
+                      Ancho: {{ $bodywork->width }} m
                   </td>
                   <td>{{ $bodywork->price }}</td>
+                  <td>
+                      S: {{ $bodywork->welding }}<br>
+                      F: {{ $bodywork->anchoring }}<br>
+                      V: {{ $bodywork->clothing }}<br>
+                      P: {{ $bodywork->painting }}<br>
+                      M: {{ $bodywork->mounting }}
+                  </td>
               </tr>
             @endforeach
         </template>

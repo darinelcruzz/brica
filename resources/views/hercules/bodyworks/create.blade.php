@@ -2,28 +2,38 @@
 
 @section('main-content')
 
-  <row-woc col="col-md-6">
+  <row-woc col="col-md-12">
       <solid-box title="Agregar carrocería" color="box-primary">
           {!! Form::open(['method' => 'POST', 'route' => 'hercules.bodywork.store']) !!}
 
-              <row-woc col="col-md-12">
-                  {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
-              </row-woc>
+              <div class="row">
+                  <div class="col-md-6">
+                      {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
+                  </div>
 
-              <row-woc col="col-md-12">
-                  {!! Field::text('family', ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
-              </row-woc>
+                  <div class="col-md-6">
+                      {!! Field::text('family', ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
+                  </div>
+              </div>
 
               <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       {!! Field::number('length', 0, ['tpl' => 'templates/iconatend', 'step' => '0.01'], ['icon' => 'arrows-h', 'unit' => 'm']) !!}
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       {!! Field::number('width', 0, ['tpl' => 'templates/iconatend', 'step' => '0.01'], ['icon' => 'expand', 'unit' => 'm']) !!}
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       {!! Field::number('height', 0, ['tpl' => 'templates/iconatend', 'step' => '0.01'], ['icon' => 'arrows-v', 'unit' => 'm']) !!}
                   </div>
+              </div>
+
+              <div class="box-group" id="accordion">
+                  @foreach ($processes as $process => $proceso)
+                      <accordion-item title="{{ ucfirst($proceso) }}">
+                          {!! Form::checkboxes($process, $items[$process], null, ['class' => 'inline']) !!}
+                      </accordion-item>
+                  @endforeach
               </div>
 
               <div class="box-footer">

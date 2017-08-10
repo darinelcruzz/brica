@@ -2,6 +2,13 @@
 
 @section('main-content')
 
+    <row-woc col="col-md-3">
+        <a href="{{ route('hercules.item.create') }}" class="btn btn-app">
+            <span class="badge bg-aqua">{{ count($items) }}</span>
+            <i class="fa fa-edit"></i> Agregar
+        </a>
+    </row-woc>
+
     <data-table col="col-md-12" title="Artículos"
         example="example1" color="box-primary">
         <template slot="header">
