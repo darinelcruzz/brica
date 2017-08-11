@@ -1,6 +1,22 @@
 <?php
 
 return [
+
+    'receipts' => [
+        'title' => 'Recibos',
+        'icon' => 'fa fa-file-text-o',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.receipt.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.receipts'
+            ],
+        ]
+    ],
+
     'articles' => [
         'title' => 'Artículos',
         'icon' => 'fa fa-list-ol',
@@ -27,6 +43,21 @@ return [
             'list' => [
                 'title' => 'Lista',
                 'route' => 'hercules.bodyworks'
+            ],
+        ]
+    ],
+
+    'clients' => [
+        'title' => 'Clientes',
+        'icon' => 'fa fa-user',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.client.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.clients'
             ],
         ]
     ],

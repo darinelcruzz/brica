@@ -21,7 +21,7 @@ class CreateHBodyworksTable extends Migration
             $table->double('length');
             $table->double('width');
             $table->double('height');
-            $table->double('price');
+            $table->double('price')->nullable();
             $table->mediumText('welding');
             $table->mediumText('anchoring');
             $table->mediumText('clothing');

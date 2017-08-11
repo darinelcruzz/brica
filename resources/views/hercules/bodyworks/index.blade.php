@@ -3,7 +3,7 @@
 @section('main-content')
 
     <data-table col="col-md-12" title="Carrocerías"
-        example="example2" color="box-default">
+        example="example2" color="box-primary">
         <template slot="header">
             <tr>
                 <th>ID</th>

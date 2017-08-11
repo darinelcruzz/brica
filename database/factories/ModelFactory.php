@@ -78,3 +78,18 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'name' => $types[array_rand($types)],
     ];
 });
+
+$factory->define(App\Models\Hercules\HItem::class, function (Faker\Generator $faker) {
+    $design = array('m', 'l', 'kg', 'pieza');
+    $family = array('soldadura', 'fondeo', 'vestido', 'pintura', 'montaje');
+    $rand_keys = array_rand($design, 2);
+
+    return [
+        'description' => $faker->sentence(3),
+        'caliber' => $faker->randomDigit,
+        'unity' => $design[array_rand($design)],
+        'family' => serialize([$family[$rand_keys[0]], $family[$rand_keys[1]]]),
+        'price' => $faker->randomFloat(2, 0, 500),
+        'weight' => $faker->randomFloat(2, 0, 50),
+    ];
+});

@@ -31,7 +31,17 @@
               <div class="box-group" id="accordion">
                   @foreach ($processes as $process => $proceso)
                       <accordion-item title="{{ ucfirst($proceso) }}">
-                          {!! Form::checkboxes($process, $items[$process], null, ['class' => 'inline']) !!}
+                          <ul style="display: flex; flex-flow: row wrap; list-style-type:none;">
+                              @foreach ($items[$process] as $id => $description)
+                                  <li style="flex-basis: 25%">
+                                      <label class="checkbox-inline">
+                                          <input name="{{ $process }}[]" type="checkbox" value="{{ $id }}">
+                                          {{ $description }}
+                                      </label>
+                                  </li>
+                              @endforeach
+                          </ul>
+                          {{--!! Form::checkboxes($process, $items[$process], null, ['class' => 'inline']) !!--}}
                       </accordion-item>
                   @endforeach
               </div>

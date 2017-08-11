@@ -174,7 +174,9 @@ return [
         'contact'               => 'contacto',
         'advance'               => 'anticipo',
         'retainer'              => 'anticipo',
-        'credit'                => 'crédito'
+        'credit'                => 'crédito',
+        'bodywork'              => 'carrocería',
+        'observations'              => 'observaciones',
     ],
 
 ];
