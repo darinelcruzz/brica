@@ -58,6 +58,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.'], function () {
         'as' => 'bodyworks'
     ]);
 
+    Route::get('carroceria/{hbodywork}', [
+        'uses' => 'Hercules\BodyworkController@show',
+        'as' => 'bodywork.show'
+    ]);
+
     Route::get('carrocerias/crear', [
         'uses' => 'Hercules\BodyworkController@create',
         'as' => 'bodywork.create'

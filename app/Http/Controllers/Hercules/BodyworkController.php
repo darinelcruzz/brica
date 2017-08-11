@@ -53,12 +53,17 @@ class BodyworkController extends Controller
         return redirect(route('hercules.bodyworks'));
     }
 
+    function show(HBodywork $hbodywork)
+    {
+        return view('hercules.bodyworks.show', compact('hbodywork'));
+    }
+
     function buildProcess($ids, $quantities)
     {
         $process = [];
 
         for ($i = 0; $i < count($ids); $i++) {
-            $process[$i] = [$ids[$i] => $quantities[$i]];
+            $process[$ids[$i]] = $quantities[$i];
         }
 
         return $process;

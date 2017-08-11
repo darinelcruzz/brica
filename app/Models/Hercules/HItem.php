@@ -21,4 +21,9 @@ class HItem extends Model
     {
       $this->update(['family' => serialize($processes)]);
     }
+
+    public function getFormattedPriceAttribute()
+    {
+        return '$ ' . number_format($this->price, 2, '.', ',');
+    }
 }
