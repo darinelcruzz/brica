@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('comingsoon');
 });
 
-Route::group(['prefix' => 'hercules', 'as' => 'hercules.'], function () {
+Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth'], function () {
 
     Route::get('/', function ()
     {
