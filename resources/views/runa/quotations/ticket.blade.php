@@ -3,7 +3,7 @@
 @section('main-content')
 
     <div align="center">
-        <h3 align >Runa Aceros</h3>
+        <h3>Runa Aceros</h3>
         <p>Panamericana 1262, Chichima Guadalupe, <br>
             Centro, CP. 30000, <br>
             Comitán de Domínguez, Chiapas<br>

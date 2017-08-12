@@ -16,6 +16,11 @@ class ReceiptController extends Controller
         return view('hercules.receipts.index', compact('receipts'));
     }
 
+    function show(HReceipt $hreceipt)
+    {
+        return view('hercules.receipts.show', compact('hreceipt'));
+    }
+
     function create()
     {
         $clients = HClient::pluck('name', 'id')->toArray();

@@ -18,7 +18,13 @@
         <template slot="body">
             @foreach($receipts as $receipt)
               <tr>
-                  <td>{{ $receipt->id }}</td>
+                  <td>
+                      {{ $receipt->id }}
+                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                          class="btn btn-info btn-xs">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $receipt->clientr->name }}</td>
                   <td>{{ $receipt->bodyworkr->description }}</td>
                   <td>{{ $receipt->retainer }} de {{ $receipt->bodyworkr->computeTotal() }}</td>
