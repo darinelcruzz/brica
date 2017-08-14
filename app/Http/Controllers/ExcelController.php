@@ -24,7 +24,7 @@ class ExcelController extends Controller
 
     function import()
     {
-    	Excel::load('quotations.xlsx', function($reader) {
+    	Excel::load('items.xlsx', function($reader) {
             foreach ($reader->get() as $item) {
                 HItem::create([
                   'description' => $item->description,
@@ -32,7 +32,7 @@ class ExcelController extends Controller
                   'unity' => $item->unity,
                   'weight' => $item->weight,
                   'price' => $item->price,
-                  'family' => $item->family
+                  'family' => serialize([strtolower($item->family)])
                 ]);
             }
         });
