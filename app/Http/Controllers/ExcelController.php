@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Hercules\HItem;
+use App\Quotation;
 
 class ExcelController extends Controller
 {
