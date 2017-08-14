@@ -22,6 +22,14 @@ class BodyworkController extends Controller
 
     function store(Request $request)
     {
+        $this->validate($request, [
+            'description' => 'required',
+            'family' => 'required',
+            'height' => 'required',
+            'width' => 'required',
+            'length' => 'required',
+        ]);
+
       $bodywork = HBodywork::create([
           'description' => $request->description,
           'family' => $request->family,
