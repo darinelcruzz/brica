@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Hercules\HBodywork;
 use App\Models\Hercules\HClient;
 use App\Models\Hercules\HReceipt;
+use Jenssegers\Date\Date;
 
 class ReceiptController extends Controller
 {
@@ -25,7 +26,8 @@ class ReceiptController extends Controller
     {
         $clients = HClient::pluck('name', 'id')->toArray();
         $bodyworks = HBodywork::pluck('description', 'id')->toArray();
-        return view('hercules.receipts.create', compact('clients', 'bodyworks'));
+        $today = Date::now();
+        return view('hercules.receipts.create', compact('clients', 'bodyworks', 'today'));
     }
 
     function store(Request $request)

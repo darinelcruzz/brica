@@ -58,6 +58,16 @@ class Quotation extends Model
 			->get();
     }
 
+	public function scopeTeamProductivity($query, $team, $date)
+    {
+        return $query->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->where('date_payment', $date)
+			->where('team', $team)
+			->get();
+    }
+
 	public function storeProducts($request)
 	{
 		$products = [];

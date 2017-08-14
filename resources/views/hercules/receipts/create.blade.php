@@ -25,13 +25,17 @@
                     </div>
 
                     <div class="col-md-6">
-                        {!! Field::number('retainer', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
+                        {!! Field::date('deliver', $today, ['tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::date('deliver', ['tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
+                        {!! Field::number('amount', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Field::number('retainer', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'money']) !!}
                     </div>
                 </div>
 

@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('comingsoon');
 });
 
+Route::get('excel/exportar', 'ExcelController@export');
+
+Route::get('excel/importar', 'ExcelController@import');
+
 Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth'], function () {
 
     Route::get('/', function ()

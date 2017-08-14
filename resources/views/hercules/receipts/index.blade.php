@@ -12,24 +12,29 @@
                 <th>Anticipo</th>
                 <th>Color</th>
                 <th>Observaciones</th>
+                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
             </tr>
         </template>
 
         <template slot="body">
             @foreach($receipts as $receipt)
               <tr>
-                  <td>
-                      {{ $receipt->id }}
-                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                          class="btn btn-info btn-xs">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
-                  </td>
+                  <td>{{ $receipt->id }}</td>
                   <td>{{ $receipt->clientr->name }}</td>
                   <td>{{ $receipt->bodyworkr->description }}</td>
                   <td>{{ $receipt->retainer }} de {{ $receipt->bodyworkr->computeTotal() }}</td>
                   <td>{{ $receipt->color }}</td>
                   <td>{{ $receipt->observations }}</td>
+                  <td>
+                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                          class="btn btn-default btn-xs">
+                          <i class="fa fa-print" aria-hidden="true"></i>
+                      </a>&nbsp;&nbsp;
+                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                          class="btn btn-success btn-xs">
+                          <i class="fa fa-forward" aria-hidden="true" title="A PRODUCCIÓN"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>

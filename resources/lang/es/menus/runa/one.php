@@ -60,6 +60,10 @@ return [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
             ],
+            'productivity' => [
+                'title' => 'Productividad',
+                'route' => 'runa.report'
+            ],
         ]
     ],
 
