@@ -33,14 +33,16 @@
                             </thead>
 
                             <tbody>
-                                @foreach (unserialize($hbodywork->welding) as $id => $quantity)
-                                    <tr>
-                                      <td>{{ $quantity }}</td>
-                                      <td>{{ HItem::find($id)->description }}</td>
-                                      <td>{{ HItem::find($id)->formatted_price }}</td>
-                                      <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
-                                    </tr>
-                                @endforeach
+                                @if ($hbodywork->welding != 'N;')
+                                    @foreach (unserialize($hbodywork->welding) as $id => $quantity)
+                                        <tr>
+                                          <td>{{ $quantity }}</td>
+                                          <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->formatted_price }}</td>
+                                          <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
 
                             <tfoot>
@@ -65,14 +67,16 @@
                               </thead>
 
                               <tbody>
-                                  @foreach (unserialize($hbodywork->anchoring) as $id => $quantity)
-                                      <tr>
-                                        <td>{{ $quantity }}</td>
-                                        <td>{{ HItem::find($id)->description }}</td>
-                                        <td>{{ HItem::find($id)->formatted_price }}</td>
-                                        <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
-                                      </tr>
-                                  @endforeach
+                                  @if ($hbodywork->anchoring != 'N;')
+                                      @foreach (unserialize($hbodywork->anchoring) as $id => $quantity)
+                                          <tr>
+                                            <td>{{ $quantity }}</td>
+                                            <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ HItem::find($id)->formatted_price }}</td>
+                                            <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
+                                          </tr>
+                                      @endforeach
+                                  @endif
                               </tbody>
 
                               <tfoot>
@@ -97,14 +101,16 @@
                             </thead>
 
                             <tbody>
-                                @foreach (unserialize($hbodywork->clothing) as $id => $quantity)
-                                    <tr>
-                                      <td>{{ $quantity }}</td>
-                                      <td>{{ HItem::find($id)->description }}</td>
-                                      <td>{{ HItem::find($id)->formatted_price }}</td>
-                                      <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
-                                    </tr>
-                                @endforeach
+                                @if ($hbodywork->clothing != 'N;')
+                                    @foreach (unserialize($hbodywork->clothing) as $id => $quantity)
+                                        <tr>
+                                          <td>{{ $quantity }}</td>
+                                          <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->formatted_price }}</td>
+                                          <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
 
                             <tfoot>
@@ -129,14 +135,16 @@
                             </thead>
 
                             <tbody>
-                                  @foreach (unserialize($hbodywork->painting) as $id => $quantity)
-                                      <tr>
-                                        <td>{{ $quantity }}</td>
-                                        <td>{{ HItem::find($id)->description }}</td>
-                                        <td>{{ HItem::find($id)->formatted_price }}</td>
-                                        <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
-                                      </tr>
-                                  @endforeach
+                                @if ($hbodywork->painting != 'N;')
+                                      @foreach (unserialize($hbodywork->painting) as $id => $quantity)
+                                          <tr>
+                                            <td>{{ $quantity }}</td>
+                                            <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ HItem::find($id)->formatted_price }}</td>
+                                            <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
+                                          </tr>
+                                      @endforeach
+                                  @endif
                              </tbody>
 
                              <tfoot>
@@ -161,14 +169,16 @@
                             </thead>
 
                             <tbody>
-                                @foreach (unserialize($hbodywork->mounting) as $id => $quantity)
-                                    <tr>
-                                      <td>{{ $quantity }}</td>
-                                      <td>{{ HItem::find($id)->description }}</td>
-                                      <td>{{ HItem::find($id)->formatted_price }}</td>
-                                      <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
-                                    </tr>
-                                @endforeach
+                                @if ($hbodywork->mounting != 'N;')
+                                    @foreach (unserialize($hbodywork->mounting) as $id => $quantity)
+                                        <tr>
+                                          <td>{{ $quantity }}</td>
+                                          <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->formatted_price }}</td>
+                                          <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
 
                             <tfoot>

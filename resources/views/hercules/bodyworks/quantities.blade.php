@@ -14,56 +14,66 @@
 
                 <accordion-item title="Soldadura">
                     <ul style="display: flex; flex-flow: row wrap;">
-                        @foreach (unserialize($bodywork->welding) as $item)
-                            <li style="flex-basis: 33%">
-                                {!! Field::number('welding[]', 0,
-                                    ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
-                            </li>
-                        @endforeach
+                        @if ($bodywork->welding != 'N;')
+                            @foreach (unserialize($bodywork->welding) as $item)
+                                <li style="flex-basis: 33%">
+                                    {!! Field::number('welding[]', 0,
+                                        ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </accordion-item>
 
                 <accordion-item title="Fondeo">
                     <ul style="display: flex; flex-flow: row wrap;">
-                        @foreach (unserialize($bodywork->anchoring) as $item)
-                            <li style="flex-basis: 33%">
-                                {!! Field::number('anchoring[]', 0,
-                                    ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
-                            </li>
-                        @endforeach
+                        @if ($bodywork->anchoring != 'N;')
+                            @foreach (unserialize($bodywork->anchoring) as $item)
+                                <li style="flex-basis: 33%">
+                                    {!! Field::number('anchoring[]', 0,
+                                        ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </accordion-item>
 
                 <accordion-item title="Vestido">
                     <ul style="display: flex; flex-flow: row wrap;">
-                        @foreach (unserialize($bodywork->clothing) as $item)
-                            <li style="flex-basis: 33%">
-                                {!! Field::number('clothing[]', 0,
-                                    ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
-                            </li>
-                        @endforeach
+                        @if ($bodywork->clothing != 'N;')
+                            @foreach (unserialize($bodywork->clothing) as $item)
+                                <li style="flex-basis: 33%">
+                                    {!! Field::number('clothing[]', 0,
+                                        ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </accordion-item>
 
                 <accordion-item title="Pintura">
                     <ul style="display: flex; flex-flow: row wrap;">
-                        @foreach (unserialize($bodywork->painting) as $item)
-                            <li style="flex-basis: 33%">
-                                {!! Field::number('painting[]', 0,
-                                    ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
-                            </li>
-                        @endforeach
+                        @if ($bodywork->painting != 'N;')
+                            @foreach (unserialize($bodywork->painting) as $item)
+                                <li style="flex-basis: 33%">
+                                    {!! Field::number('painting[]', 0,
+                                        ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </accordion-item>
 
                 <accordion-item title="Montaje">
                     <ul style="display: flex; flex-flow: row wrap;">
-                        @foreach (unserialize($bodywork->mounting) as $item)
-                            <li style="flex-basis: 33%">
-                                {!! Field::number('mounting[]', 0,
-                                    ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
-                            </li>
-                        @endforeach
+                        @if ($bodywork->mounting != 'N;')
+                            @foreach (unserialize($bodywork->mounting) as $item)
+                                <li style="flex-basis: 33%">
+                                    {!! Field::number('mounting[]', 0,
+                                        ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </accordion-item>
             </div>

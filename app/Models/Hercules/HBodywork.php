@@ -17,8 +17,10 @@ class HBodywork extends Model
     {
         $total = 0;
 
-        foreach (unserialize($this->$process) as $id => $quantity) {
-            $total += HItem::find($id)->price * $quantity;
+        if (!empty(unserialize($this->$process))) {
+            foreach (unserialize($this->$process) as $id => $quantity) {
+                $total += HItem::find($id)->price * $quantity;
+            }
         }
 
         return $total;
@@ -31,8 +33,10 @@ class HBodywork extends Model
 
         foreach ($processes as $process) {
             $subtotal = 0;
-            foreach (unserialize($this->$process) as $id => $quantity) {
-                $subtotal += HItem::find($id)->price * $quantity;
+            if (!empty(unserialize($this->$process))) {
+                foreach (unserialize($this->$process) as $id => $quantity) {
+                    $subtotal += HItem::find($id)->price * $quantity;
+                }
             }
 
             $total += $subtotal;
