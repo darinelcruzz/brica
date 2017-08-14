@@ -11,6 +11,9 @@ class HItem extends Model
     function getProcessesAttribute()
     {
       $processes = '';
+      if(!unserialize($this->family)) {
+          return '<code>no se especificó un proceso</code>';
+      }
       foreach (unserialize($this->family) as $process) {
         $processes .= "$process, ";
       }

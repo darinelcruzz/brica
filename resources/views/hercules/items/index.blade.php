@@ -38,7 +38,7 @@
                   <td>{{ $item->unity }}</td>
                   <td>{{ $item->weight }}</td>
                   <td>{{ $item->price }}</td>
-                  <td>{{ $item->processes }}</td>
+                  <td>{!! $item->processes !!}</td>
               </tr>
             @endforeach
         </template>
