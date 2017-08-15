@@ -13,7 +13,6 @@ class OperatorScreenController extends Controller
     function index()
     {
         $rows = Quotation::where(['team' => Auth::user()->email, 'status' => 'asignado'])
-            ->orWhere(['team' => Auth::user()->email, 'status' => 'produccion'])
             ->get();
         $title = 'Cotizaciones';
 
