@@ -41,6 +41,6 @@ class AppServiceProvider extends ServiceProvider
        View::composer('runa.quotations.*', QuotationsComposer::class);
        View::composer('runa.cashier.*', CashierViewComposer::class);
        View::composer('runa.production.*', ProductionComposer::class);
-       View::composer('hercules.bodyworks.create', BodyworkComposer::class);
+       View::composer('hercules.bodyworks.*', BodyworkComposer::class);
    }
 }

@@ -18,10 +18,13 @@
               <tr>
                   <td>{{ $bodywork->id }}</td>
                   <td>
-                      {{ $bodywork->description }}
                       <a href="{{ route('hercules.bodywork.show', ['bodywork' => $bodywork->id]) }}"
-                          class="btn btn-info btn-xs">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        title='DETALLES'>
+                          {{ $bodywork->description }}
+                      </a>&nbsp;&nbsp;
+                      <a href="{{ route('hercules.bodywork.edit', ['bodywork' => $bodywork->id]) }}"
+                        title='EDITAR'>
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>

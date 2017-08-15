@@ -66,6 +66,33 @@ class BodyworkController extends Controller
         return view('hercules.bodyworks.show', compact('hbodywork'));
     }
 
+    function edit(HBodywork $hbodywork)
+    {
+        return view('hercules.bodyworks.edit', compact('hbodywork'));
+    }
+
+    function update(Request $request)
+    {
+        $bodywork = HBodywork::find($request->id);
+
+        $formerData = $this->getOldProcesses($bodywork);
+
+        $bodywork->update([
+            'description' => $request->description,
+            'family' => $request->family,
+            'height' => $request->height,
+            'width' => $request->width,
+            'length' => $request->length,
+            'welding' => serialize($request->welding),
+            'anchoring' => serialize($request->anchoring),
+            'clothing' => serialize($request->clothing),
+            'painting' => serialize($request->painting),
+            'mounting' => serialize($request->mounting),
+        ]);
+
+        return view('hercules.bodyworks.quantities', compact('bodywork', 'formerData'));
+    }
+
     function buildProcess($ids, $quantities)
     {
         $process = [];
@@ -75,5 +102,18 @@ class BodyworkController extends Controller
         }
 
         return $process;
+    }
+
+    function getOldProcesses($bodywork)
+    {
+        $processes = [
+            'welding' => unserialize($bodywork->welding),
+            'anchoring' => unserialize($bodywork->anchoring),
+            'clothing' => unserialize($bodywork->clothing),
+            'painting' => unserialize($bodywork->painting),
+            'mounting' => unserialize($bodywork->mounting)
+        ];
+
+        return $processes;
     }
 }

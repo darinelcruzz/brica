@@ -17,7 +17,8 @@
                         @if ($bodywork->welding != 'N;')
                             @foreach (unserialize($bodywork->welding) as $item)
                                 <li style="flex-basis: 33%">
-                                    {!! Field::number('welding[]', 0,
+                                    {!! Field::number('welding[]',
+                                        empty($formerData['welding'][$item]) ? 0: $formerData['welding'][$item],
                                         ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
                                 </li>
                             @endforeach
@@ -30,7 +31,8 @@
                         @if ($bodywork->anchoring != 'N;')
                             @foreach (unserialize($bodywork->anchoring) as $item)
                                 <li style="flex-basis: 33%">
-                                    {!! Field::number('anchoring[]', 0,
+                                    {!! Field::number('anchoring[]',
+                                        empty($formerData['anchoring'][$item]) ? 0: $formerData['anchoring'][$item],
                                         ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
                                 </li>
                             @endforeach
@@ -43,7 +45,8 @@
                         @if ($bodywork->clothing != 'N;')
                             @foreach (unserialize($bodywork->clothing) as $item)
                                 <li style="flex-basis: 33%">
-                                    {!! Field::number('clothing[]', 0,
+                                    {!! Field::number('clothing[]',
+                                        empty($formerData['clothing'][$item]) ? 0: $formerData['clothing'][$item],
                                         ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
                                 </li>
                             @endforeach
@@ -56,7 +59,8 @@
                         @if ($bodywork->painting != 'N;')
                             @foreach (unserialize($bodywork->painting) as $item)
                                 <li style="flex-basis: 33%">
-                                    {!! Field::number('painting[]', 0,
+                                    {!! Field::number('painting[]',
+                                        empty($formerData['painting'][$item]) ? 0: $formerData['painting'][$item],
                                         ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
                                 </li>
                             @endforeach
@@ -69,7 +73,8 @@
                         @if ($bodywork->mounting != 'N;')
                             @foreach (unserialize($bodywork->mounting) as $item)
                                 <li style="flex-basis: 33%">
-                                    {!! Field::number('mounting[]', 0,
+                                    {!! Field::number('mounting[]',
+                                        empty($formerData['mounting'][$item]) ? 0: $formerData['mounting'][$item],
                                         ['tpl' => 'templates/mini', 'label' => HItem::find($item)->description, 'step' => '0.01']) !!}
                                 </li>
                             @endforeach
