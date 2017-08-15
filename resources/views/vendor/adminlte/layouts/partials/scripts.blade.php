@@ -7,6 +7,9 @@
 <!-- iCheck 1.0.1 -->
 <script src="{{ asset('/plugins/icheck.min.js') }}"></script>
 
+<!-- ChartJS 1.0.1 -->
+<script src="{{ asset('/plugins/chartjs/Chart.min.js') }}"></script>
+
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2.full.min.js') }}"></script>
 
@@ -42,7 +45,7 @@ $(function () {
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
     });
-    
+
     //Initialize Select2 Elements
     $(".select2").select2();
 

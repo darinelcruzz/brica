@@ -206,7 +206,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     ])->middleware('owners');
 
     Route::get('productividad', [
-        'uses' => 'Runa\AdminScreenController@report',
+        'uses' => 'Runa\ReportController@report',
         'as' => 'report'
     ])->middleware('money');
 

@@ -75,16 +75,4 @@ class AdminScreenController extends Controller
 
 		return redirect(route('runa.expenses'));
 	}
-
-    function report(Request $request)
-    {
-        $date = $request->date == 0 ? Date::now() : $request->date;
-
-        $r1 = Quotation::teamProductivity('R1', $date);
-        $r2 = Quotation::teamProductivity('R2', $date);
-        $r3 = Quotation::teamProductivity('R3', $date);
-        $r4 = Quotation::teamProductivity('R4', $date);
-
-        return view('runa.report', compact('r1', 'r2', 'r3', 'r4', 'date'));
-    }
 }
