@@ -31,7 +31,7 @@ class CashierScreenController extends Controller
         foreach($quotations as $quotation) {
             if ($quotation->payment_date) {
                 $quotation->update([
-                    'date_payment' => Date::createFromFormat('Y-m-d', $quotation->payment_date)
+                    'date_payment' => Date::createFromFormat('Y-m-d H:i:s', $quotation->payment_date)->format('Y-m-d')
                 ]);
             }
         }
