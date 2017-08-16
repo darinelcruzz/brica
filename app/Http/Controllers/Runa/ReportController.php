@@ -12,8 +12,8 @@ class ReportController extends Controller
 {
     function report(Request $request)
     {
-        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d', $request->startDate);
-        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d', $request->endDate);
+        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
+        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
 
         $quotations = $this->getTotals($startDate, $endDate);
 
@@ -37,6 +37,7 @@ class ReportController extends Controller
 
             $quotations = Quotation::whereBetween('payment_date', [$startDate, $endDate])
                 ->where('status', '!=', 'pendiente')
+                ->where('type', 'produccion')
                 ->where('status', '!=', 'cancelado')
     			->where('status', '!=', 'credito')
     			->where('team', "R$i")

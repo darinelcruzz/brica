@@ -20,9 +20,6 @@
 	{!! Form::close() !!}
 
 	<hr>
-	{{ $startDate }} ----- {{ $endDate }} <br>
-	{{ $quotations[1] }}
-	<hr>
 
 	<row-woc col="col-md-10 col-md-offset-1">
 		{!! $chart->render() !!}
