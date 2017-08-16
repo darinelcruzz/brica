@@ -25,12 +25,12 @@ Route::get('excel/exportar', 'ExcelController@export');
 
 Route::get('excel/importar', 'ExcelController@import');
 
-Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'owners'], function () {
+Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth'], function () {
 
     Route::get('/', function ()
     {
         return view('hercules.home');
-    });
+    })->middleware('owners');
 
     Route::get('articulos', [
         'uses' => 'Hercules\ItemController@index',
