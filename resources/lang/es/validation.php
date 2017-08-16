@@ -176,7 +176,9 @@ return [
         'retainer'              => 'anticipo',
         'credit'                => 'crédito',
         'bodywork'              => 'carrocería',
-        'observations'              => 'observaciones',
+        'observations'          => 'observaciones',
+        'startDate'             => 'fecha inicio',
+        'endDate'               => 'fecha final',
     ],
 
 ];

@@ -58,12 +58,13 @@ class Quotation extends Model
 			->get();
     }
 
-	public function scopeTeamReport($query, $team)
+	public function scopeTeamReport($query, $team, $start, $end)
     {
         return $query->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
 			->where('status', '!=', 'credito')
 			->where('team', $team)
+			//->whereBetween('date_payment', [$start, $end])
 			->sum('amount');
     }
 

@@ -13,6 +13,10 @@
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2.full.min.js') }}"></script>
 
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
 <!-- DataTables -->
 <script src="{{ asset('/plugins/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/plugins/dataTables.bootstrap.min.js') }}"></script>
@@ -48,6 +52,25 @@ $(function () {
 
     //Initialize Select2 Elements
     $(".select2").select2();
+
+    // Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+         ranges: {
+           'Hoy': [moment(), moment()],
+           'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
+           'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+           'Este mes': [moment().startOf('month'), moment().endOf('month')],
+           'Mes anterior': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+         },
+         startDate: moment().subtract(29, 'days'),
+         endDate: moment()
+       },
+       function (start, end) {
+         $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+       }
+    );
 
     // Data Table With Full Features
     $("#example1").DataTable({

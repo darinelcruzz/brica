@@ -12,21 +12,29 @@ class ReportController extends Controller
 {
     function report(Request $request)
     {
-        $date = $request->date == 0 ? Date::now() : $request->date;
-
-        $r1 = Quotation::teamReport('R1');
-        $r2 = Quotation::teamReport('R2');
-        $r3 = Quotation::teamReport('R3');
-        $r4 = Quotation::teamReport('R4');
+        $startDate = $request->startDate == 0 ? Date::now() : $request->startDate;
+        $endDate = $request->endDate == 0 ? Date::now() : $request->endDate;
 
         $chart = Charts::create('bar', 'highcharts')
                 ->title('Rendimiento')
                 ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
                 ->labels(['Runa1', 'Runa2', 'Runa3', 'Runa4'])
                 ->elementLabel('Total generado ($)')
-                ->values([$r1, $r2, $r3, $r4])
+                ->values($this->getSums($startDate, $endDate))
                 ->dimensions(0,500);
 
-        return view('runa.report', compact('chart', 'seno'));
+        return view('runa.report', compact('chart', 'startDate', 'endDate', 'r'));
+    }
+
+    function getSums($start, $end)
+    {
+        $sums = [];
+
+        for ($i=1; $i < 5; $i++) {
+            $r = Quotation::teamReport("R$i", $start, $end);
+            $sums[$i - 1] = empty($r) ? 0: $r;
+        }
+
+        return $sums;
     }
 }
