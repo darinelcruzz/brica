@@ -12,6 +12,8 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         return view('error');
     });
 
+    Route::get('llenar', 'Runa\CashierScreenController@changeToTimestamp');
+
     Route::get('cotizaciones/produccion', [
         'uses' => 'Runa\ProQuotationController@create',
         'as' => 'quotationp.create'

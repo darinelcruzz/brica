@@ -44,7 +44,8 @@ class TerQuotationController extends Controller
     {
         $quotation->update([
             'status' => 'pagado',
-            'date_payment' => Date::now()->format('Y-m-d')
+            'date_payment' => Date::now()->format('Y-m-d'),
+            'payment_date' => Date::now()
         ]);
 
         Sale::create([

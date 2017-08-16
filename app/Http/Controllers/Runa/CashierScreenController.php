@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Quotation;
+use Jenssegers\Date\Date;
 
 class CashierScreenController extends Controller
 {
@@ -21,5 +22,20 @@ class CashierScreenController extends Controller
     function calculate(Quotation $quotation)
     {
         return view('runa.cashier.calculate', compact('quotation'));
+    }
+
+    function changeToTimestamp()
+    {
+        $quotations = Quotation::all();
+
+        foreach($quotations as $quotation) {
+            if ($quotation->date_payment) {
+                $quotation->update([
+                    'payment_date' => Date::createFromFormat('Y-m-d', $quotation->date_payment)
+                ]);
+            }
+        }
+
+        return 'Done';
     }
 }

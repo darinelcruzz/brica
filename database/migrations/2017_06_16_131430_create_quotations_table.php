@@ -21,7 +21,7 @@ class CreateQuotationsTable extends Migration
             $table->string('status')->default('pendiente');
             $table->string('description')->nullable();
             $table->float('amount')->nullable();
-            $table->string('date_payment')->nullable();
+            $table->timestamp('payment_date')->nullable();
             $table->string('deliver')->nullable();
             $table->string('team')->nullable();
             $table->string('pay')->nullable();

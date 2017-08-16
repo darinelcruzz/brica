@@ -37,7 +37,8 @@ class ProQuotationController extends Controller
     {
         $quotation->update([
             'status' => 'autorizado',
-            'date_payment' => Date::now()->format('Y-m-d')
+            'date_payment' => Date::now()->format('Y-m-d'),
+            'payment_date' => Date::now()
         ]);
 
         return back();

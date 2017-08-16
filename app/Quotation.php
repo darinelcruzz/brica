@@ -9,7 +9,7 @@ class Quotation extends Model
 {
 	protected $fillable = [
 		'type', 'client', 'status', 'description', 'team', 'startTime', 'endTime',
-		'amount', 'date_payment', 'pay', 'deliver', 'products'
+		'amount', 'date_payment', 'payment_date', 'pay', 'deliver', 'products'
 	];
 
 	public function clientr()
@@ -56,16 +56,6 @@ class Quotation extends Model
 			->where('status', '!=', 'credito')
 			->where('date_payment', $date)
 			->get();
-    }
-
-	public function scopeTeamReport($query, $team, $start, $end)
-    {
-        return $query->where('status', '!=', 'pendiente')
-			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'credito')
-			->where('team', $team)
-			//->whereBetween('date_payment', [$start, $end])
-			->sum('amount');
     }
 
 	public function storeProducts($request)
