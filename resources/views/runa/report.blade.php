@@ -21,7 +21,13 @@
 
 	<hr>
 
-	<row-woc col="col-md-10 col-md-offset-1">
-		{!! $chart->render() !!}
-	</row-woc>
+	<div class="row">
+		<div class="col-md-6">
+			{!! $money->render() !!}
+		</div>
+
+		<div class="col-md-6">
+			{!! $works->render() !!}
+		</div>
+	</div>
 @endsection

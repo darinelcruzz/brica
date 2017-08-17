@@ -16,7 +16,7 @@
 
         <template slot="body">
             @foreach($finished as $row)
-                @if (!$row->sale)
+                @if (!$row->sale && $row->client != 1)
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->clientr->name }}</td>
