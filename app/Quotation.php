@@ -9,7 +9,7 @@ class Quotation extends Model
 {
 	protected $fillable = [
 		'type', 'client', 'status', 'description', 'team', 'startTime', 'endTime',
-		'amount', 'date_payment', 'payment_date', 'pay', 'deliver', 'products'
+		'amount', 'date_payment', 'payment_date', 'notified', 'pay', 'deliver', 'products'
 	];
 
 	public function clientr()

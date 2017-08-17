@@ -70,7 +70,7 @@
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
-                <th>Pagar</th>
+                <th><i class="fa fa-cog" aria-hidden="true"></i></th>
             </tr>
         </template>
 
@@ -80,7 +80,18 @@
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>
-                            {{ $row->clientr->name }} <br>
+                            {{ $row->clientr->name }} &nbsp;&nbsp;&nbsp;
+                            @if (Auth::user()->level == 2)
+                                @if (!$row->notified)
+                                    <a href="{{ route('runa.notify', ['id' => $row->id]) }}"
+                                        class="btn btn-xs btn-info" title="CLIENTE AVISADO">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                @else
+                                    <i class="fa fa-check"></i>
+                                @endif
+                            @endif
+                            <br>
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             {{ $row->clientr->phone }}
                         </td>
@@ -88,8 +99,8 @@
                         <td>$ {{ $row->sale->amount - $row->sale->retainer }}</td>
                         <td>
                             <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
-                                class="btn btn-success">
-                                <i class="fa fa-dollar"></i>
+                                class="btn btn-xs btn-success" title="COBRAR">
+                                <i class="fa fa-dollar"></i> &nbsp;COBRAR
                             </a>
                         </td>
                     </tr>

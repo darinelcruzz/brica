@@ -46,7 +46,16 @@ class ProQuotationController extends Controller
 
     function pay(Quotation $quotation)
     {
-        $quotation->update(['status' => 'pagado']);
+        $quotation->update([
+            'status' => 'pagado',
+            'notified' => 1
+        ]);
+        return back();
+    }
+
+    function notify(Quotation $quotation)
+    {
+        $quotation->update(['notified' => 1]);
         return back();
     }
 

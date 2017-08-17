@@ -64,6 +64,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'pay.production'
     ]);
 
+    Route::get('cotizaciones/notificado/{quotation}', [
+        'uses' => 'Runa\ProQuotationController@notify',
+        'as' => 'notify'
+    ]);
+
     Route::get('cotizaciones/detalles/{quotation}', [
         'uses' => 'Runa\ProQuotationController@details',
         'as' => 'quotation.details'
