@@ -22,6 +22,7 @@
                 $toNotify = App\Quotation::where('type', 'produccion')
                     ->where('status', 'finalizado')
                     ->where('notified', 0)
+                    ->where('client', '!=', 1)
                     ->count();
             @endphp
             <div class="navbar-custom-menu">

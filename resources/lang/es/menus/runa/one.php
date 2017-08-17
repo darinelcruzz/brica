@@ -22,6 +22,10 @@ return [
                 'title' => 'Generar ticket',
                 'route' => 'runa.cashier.finished'
             ],
+            'hercules' => [
+                'title' => 'Hercules',
+                'route' => 'runa.cashier.hercules'
+            ],
         ]
     ],
 
