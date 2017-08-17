@@ -44,11 +44,6 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'cashier.finished'
     ]);
 
-    Route::get('cotizaciones/hercules', [
-        'uses' => 'Runa\CashierScreenController@hercules',
-        'as' => 'cashier.hercules'
-    ]);
-
     Route::get('cotizaciones/finalizadas/{quotation}', [
         'uses' => 'Runa\CashierScreenController@calculate',
         'as' => 'cashier.calculate'
