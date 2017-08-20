@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-	{!! Form::open(['method' => 'POST', 'route' => 'runa.report']) !!}
+	{!! Form::open(['method' => 'POST', 'route' => 'runa.report.sales']) !!}
 	<row-woc col="col-md-10 col-md-offset-1">
 		<div class="row">
 			<div class="col-md-6">
@@ -22,12 +22,8 @@
 	<hr>
 
 	<div class="row">
-		<div class="col-md-6">
-			{!! $money->render() !!}
-		</div>
-
-		<div class="col-md-6">
-			{!! $works->render() !!}
+		<div class="col-md-12">
+			{!! $salesChart->render() !!}
 		</div>
 	</div>
 @endsection

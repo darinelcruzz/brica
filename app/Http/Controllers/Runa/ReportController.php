@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Charts;
 use App\Quotation;
+use App\Sale;
 use Jenssegers\Date\Date;
 
 class ReportController extends Controller
 {
-    function report(Request $request)
+    function teams(Request $request)
     {
         $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
         $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
@@ -33,7 +34,24 @@ class ReportController extends Controller
                 ->values($this->getWorks($startDate, $endDate))
                 ->dimensions(0,500);
 
-        return view('runa.report', compact('money', 'works', 'startDate', 'endDate'));
+        return view('runa.reports.teams', compact('money', 'works', 'startDate', 'endDate'));
+    }
+
+    function sales(Request $request)
+    {
+      $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
+      $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+
+      $data = $this->getSalesTotals($startDate, $endDate);
+      $salesChart = Charts::create('area', 'highcharts')
+                        ->elementLabel("Total")
+                        ->title('Ventas')
+                        ->values($data[0])
+                        ->labels($data[1])
+                        ->colors(['#3c8dbc'])
+                        ->dimensions(1000, 500);
+
+      return view('runa.reports.sales', compact('salesChart', 'startDate', 'endDate'));
     }
 
     function getTotals($startDate, $endDate)
@@ -47,8 +65,8 @@ class ReportController extends Controller
                 ->where('status', '!=', 'pendiente')
                 ->where('type', 'produccion')
                 ->where('status', '!=', 'cancelado')
-    			->where('status', '!=', 'credito')
-    			->where('team', "R$i")
+          			->where('status', '!=', 'credito')
+          			->where('team', "R$i")
                 ->get();
 
             foreach ($quotations as $quotation) {
@@ -59,6 +77,31 @@ class ReportController extends Controller
         }
 
         return $sums;
+    }
+
+    function getSalesTotals($startDate, $endDate)
+    {
+        $sums = [];
+        $labels = [];
+
+        $quotations = Quotation::whereBetween('payment_date', [$startDate, $endDate])
+            ->where('status', '!=', 'pendiente')
+            ->where('type', 'produccion')
+            ->where('status', '!=', 'cancelado')
+      			->where('status', '!=', 'credito')
+            ->get();
+
+        foreach ($quotations as $quotation) {
+            if ($quotation->sale) {
+              array_push($sums, $quotation->sale->amount);
+              array_push($labels, $quotation->created_at);
+            } elseif ($quotation->amount) {
+              array_push($sums, $quotation->amount);
+              array_push($labels, $quotation->created_at);
+            }
+        }
+
+        return [$sums, $labels];
     }
 
     function getWorks($startDate, $endDate)

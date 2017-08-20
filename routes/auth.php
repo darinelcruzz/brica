@@ -213,13 +213,23 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
     ])->middleware('owners');
 
     Route::get('productividad', [
-        'uses' => 'Runa\ReportController@report',
-        'as' => 'report'
+        'uses' => 'Runa\ReportController@teams',
+        'as' => 'report.teams'
     ])->middleware('money');
 
     Route::post('productividad', [
-        'uses' => 'Runa\ReportController@report',
-        'as' => 'report'
+        'uses' => 'Runa\ReportController@teams',
+        'as' => 'report.teams'
+    ])->middleware('money');
+
+    Route::get('reportes/ventas', [
+        'uses' => 'Runa\ReportController@sales',
+        'as' => 'report.sales'
+    ])->middleware('money');
+
+    Route::post('reportes/ventas', [
+        'uses' => 'Runa\ReportController@sales',
+        'as' => 'report.sales'
     ])->middleware('money');
 
     // Productos

@@ -61,8 +61,12 @@ return [
                 'route' => 'runa.manage'
             ],
             'productivity' => [
-                'title' => 'Productividad',
-                'route' => 'runa.report'
+                'title' => 'Reporte equipos',
+                'route' => 'runa.report.teams'
+            ],
+            'sales' => [
+                'title' => 'Reporte ventas',
+                'route' => 'runa.report.sales'
             ],
         ]
     ],
