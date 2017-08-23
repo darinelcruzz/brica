@@ -8,6 +8,7 @@ use Charts;
 use App\Quotation;
 use App\Sale;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -88,7 +89,7 @@ class ReportController extends Controller
             ->where('status', '!=', 'pendiente')
             ->where('type', 'produccion')
             ->where('status', '!=', 'cancelado')
-      			->where('status', '!=', 'credito')
+            ->where('status', '!=', 'credito')
             ->get();
 
         foreach ($quotations as $quotation) {
