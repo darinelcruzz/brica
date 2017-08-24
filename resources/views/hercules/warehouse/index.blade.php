@@ -20,7 +20,7 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
+                      <a href="{{ route('hercules.warehouse.show', ['bodywork' => $order->bodyworkr->id]) }}"
                         class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>

@@ -38,7 +38,7 @@
                       Por el concepto de:
                       <address>
                         <strong>{{ $hreceipt->bodyworkr->description }}</strong><br>
-                        ({{ '$ ' . number_format($hreceipt->bodyworkr->computeTotal(), 2, '.', ',') }})<br>
+                        ({{ $hreceipt->formatted_amount }})<br>
                         <i class="fa fa-paint-brush" aria-hidden="true"></i> {{ $hreceipt->color }} <br>
                         Entrega: <br>
                         <b>{{ $hreceipt->deliver }}</b>
@@ -48,9 +48,9 @@
                     <div class="col-sm-4 invoice-col">
                       La cantidad de:
                       <address>
-                        <strong>{{ '$ ' . number_format($hreceipt->retainer, 2, '.', ',') }}</strong><br>
+                        <strong>{{ $hreceipt->formatted_retainer }}</strong><br>
                         Restante:<br>
-                        <b>{{ '$ ' . number_format($hreceipt->bodyworkr->computeTotal() - $hreceipt->retainer, 2, '.', ',') }}</b>
+                        <b>{{ $hreceipt->rest }}</b>
                       </address>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
                   <td>{{ $receipt->id }}</td>
                   <td>{{ $receipt->clientr->name }}</td>
                   <td>{{ $receipt->bodyworkr->description }}</td>
-                  <td>{{ $receipt->retainer }} de {{ $receipt->bodyworkr->computeTotal() }}</td>
+                  <td>{{ $receipt->formatted_retainer }}</td>
                   <td>{{ $receipt->color }}</td>
                   <td>{{ $receipt->observations }}</td>
                   <td>

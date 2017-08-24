@@ -182,6 +182,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'warehouse'
     ]);
 
+    Route::get('almacen/surtir/{hbodywork}', [
+        'uses' => 'Hercules\WarehouseController@show',
+        'as' => 'warehouse.show'
+    ]);
+
     Route::get('gerente', [
         'uses' => 'Hercules\ManagerController@index',
         'as' => 'manager'
