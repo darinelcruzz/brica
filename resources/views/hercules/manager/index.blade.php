@@ -37,8 +37,9 @@
                       {{ $order->welding }}
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'soldadura']) }}"
-                          class="btn btn-primary btn-xs" title="A SOLDADURA">
+                      <a style="{{ !$order->welding ? "pointer-events: none; display: inline-block;" : '' }}"
+                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'soldadura']) }}"
+                          class="btn btn-primary btn-xs" {{ !$order->welding ? " disabled" : '' }}>
                           Soldadura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -84,8 +85,9 @@
                       {{ $order->anchoring }}
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'fondeo']) }}"
-                          class="btn btn-warning btn-xs" title="A FONDEO">
+                      <a style="{{ !$order->anchoring ? "pointer-events: none; display: inline-block;" : '' }}"
+                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'fondeo']) }}"
+                          class="btn btn-warning btn-xs" {{ !$order->anchoring ? " disabled" : '' }}>
                           Fondeo <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -131,8 +133,9 @@
                       {{ $order->clothing }}
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
-                          class="btn btn-success btn-xs" title="A VESTIDO">
+                      <a style="{{ !$order->clothing ? "pointer-events: none; display: inline-block;" : '' }}"
+                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
+                          class="btn btn-success btn-xs" {{ !$order->clothing ? " disabled" : '' }}>
                           Vestido <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -178,8 +181,9 @@
                       {{ $order->painting }}
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
-                          class="btn btn-default btn-xs" title="A PINTURA">
+                      <a style="{{ !$order->painting ? "pointer-events: none; display: inline-block;" : '' }}"
+                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
+                          class="btn btn-default btn-xs" {{ !$order->painting ? " disabled" : '' }}>
                           Pintura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -225,8 +229,9 @@
                       {{ $order->mounting }}
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'montaje']) }}"
-                          class="btn btn-info btn-xs" title="A MONTAJE">
+                      <a style="{{ !$order->mounting ? "pointer-events: none; display: inline-block;" : '' }}"
+                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'montaje']) }}"
+                          class="btn btn-info btn-xs" {{ !$order->mounting ? " disabled" : '' }}>
                           Montaje <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
