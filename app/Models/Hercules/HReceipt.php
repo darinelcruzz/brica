@@ -5,6 +5,7 @@ namespace App\Models\Hercules;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hercules\HClient;
 use App\Models\Hercules\HOrder;
+use Jenssegers\Date\Date;
 
 class HReceipt extends Model
 {
@@ -27,4 +28,10 @@ class HReceipt extends Model
 	{
 		return $this->hasOne(HOrder::class, 'receipt');
 	}
+
+    function getDeliverDateAttribute()
+    {
+        $date = Date::createFromFormat('Y-m-d', $this->deliver);
+        return $date->format('l, d F Y');
+    }
 }

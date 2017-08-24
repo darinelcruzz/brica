@@ -9,9 +9,9 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Equipo</th>
                 <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Selecciona equipo</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -26,18 +26,20 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->receiptr->observations }}</td>
                   <td>
                       @if (!$order->welding)
-                          @include('templates/hercules/assign')
+                          @include('templates/hercules/assign', [
+                              'tprocess' => 'welding', 'tproceso' => 'soldadura', 'tcolor' => 'primary'
+                          ])
                       @endif
                       {{ $order->welding }}
                   </td>
-                  <td>{{ $order->receiptr->observations }}</td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'soldadura']) }}"
                           class="btn btn-primary btn-xs" title="A SOLDADURA">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Soldadura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
@@ -52,8 +54,10 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Asignado a</th>
+                <th>Inicio</th>
+                <th>Selecciona equipo</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -68,12 +72,21 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
-                  <td>{{ $order->receiptr->observations }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->welding }}</td>
+                  <td>{{ $order->startDate }}</td>
+                  <td>
+                      @if (!$order->anchoring)
+                          @include('templates/hercules/assign', [
+                              'tprocess' => 'anchoring', 'tproceso' => 'fondeo', 'tcolor' => 'warning'
+                          ])
+                      @endif
+                      {{ $order->anchoring }}
+                  </td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'fondeo']) }}"
                           class="btn btn-warning btn-xs" title="A FONDEO">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Fondeo <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
@@ -88,8 +101,10 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Asignado a</th>
+                <th>Inicio</th>
+                <th>Selecciona equipo</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -104,12 +119,21 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
-                  <td>{{ $order->receiptr->observations }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->anchoring }}</td>
+                  <td>{{ $order->startDate }}</td>
+                  <td>
+                      @if (!$order->clothing)
+                          @include('templates/hercules/assign', [
+                              'tprocess' => 'clothing', 'tproceso' => 'vestido', 'tcolor' => 'success'
+                          ])
+                      @endif
+                      {{ $order->clothing }}
+                  </td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
                           class="btn btn-success btn-xs" title="A VESTIDO">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Vestido <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
@@ -124,8 +148,10 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Asignado a</th>
+                <th>Inicio</th>
+                <th>Selecciona equipo</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -140,12 +166,21 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
-                  <td>{{ $order->receiptr->observations }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->clothing }}</td>
+                  <td>{{ $order->startDate }}</td>
+                  <td>
+                      @if (!$order->painting)
+                          @include('templates/hercules/assign', [
+                              'tprocess' => 'painting', 'tproceso' => 'pintura', 'tcolor' => 'default'
+                          ])
+                      @endif
+                      {{ $order->painting }}
+                  </td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
                           class="btn btn-default btn-xs" title="A PINTURA">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Pintura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
@@ -160,8 +195,10 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Asignado a</th>
+                <th>Inicio</th>
+                <th>Selecciona equipo</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -176,12 +213,21 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
-                  <td>{{ $order->receiptr->observations }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->painting }}</td>
+                  <td>{{ $order->startDate }}</td>
+                  <td>
+                      @if (!$order->mounting)
+                          @include('templates/hercules/assign', [
+                              'tprocess' => 'mounting', 'tproceso' => 'montaje', 'tcolor' => 'info'
+                          ])
+                      @endif
+                      {{ $order->mounting }}
+                  </td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'montaje']) }}"
                           class="btn btn-info btn-xs" title="A MONTAJE">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Montaje <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
@@ -196,8 +242,9 @@
                 <th>Orden</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Asignado a</th>
+                <th>Inicio</th>
+                <th>Mover a</th>
             </tr>
         </template>
 
@@ -212,12 +259,13 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
-                  <td>{{ $order->receiptr->observations }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
+                  <td>{{ $order->mounting }}</td>
+                  <td>{{ $order->startDate }}</td>
                   <td>
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"
                           class="btn btn-danger btn-xs" title="TERMINAR">
-                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Terminar &nbsp;<i class="fa fa-check" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>
