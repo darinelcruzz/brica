@@ -161,4 +161,34 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'uses' => 'Hercules\ReceiptController@destroy',
         'as' => 'receipt.destroy'
     ]);
+
+    Route::get('recibo/{hreceipt}/transformar', [
+        'uses' => 'Hercules\ReceiptController@order',
+        'as' => 'receipt.order'
+    ]);
+
+    Route::get('orden/{horder}', [
+        'uses' => 'Hercules\OrderController@show',
+        'as' => 'order.show'
+    ]);
+
+    Route::get('orden/{horden}/estado/{status}', [
+        'uses' => 'Hercules\OrderController@status',
+        'as' => 'order.status'
+    ]);
+
+    Route::get('almacen', [
+        'uses' => 'Hercules\WarehouseController@index',
+        'as' => 'warehouse'
+    ]);
+
+    Route::get('gerente', [
+        'uses' => 'Hercules\ManagerController@index',
+        'as' => 'manager'
+    ]);
+
+    Route::post('gerente/asignar', [
+        'uses' => 'Hercules\ManagerController@assign',
+        'as' => 'manager.assign'
+    ]);
 });

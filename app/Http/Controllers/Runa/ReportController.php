@@ -44,7 +44,7 @@ class ReportController extends Controller
       $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
 
       $data = $this->getSalesTotals($startDate, $endDate);
-      $salesChart = Charts::create('area', 'highcharts')
+      $salesChart = Charts::create('bar', 'highcharts')
                         ->elementLabel("Total")
                         ->title('Ventas')
                         ->values($data[0])
@@ -85,20 +85,23 @@ class ReportController extends Controller
         $sums = [];
         $labels = [];
 
-        $quotations = Quotation::whereBetween('payment_date', [$startDate, $endDate])
-            ->where('status', '!=', 'pendiente')
-            ->where('type', 'produccion')
-            ->where('status', '!=', 'cancelado')
-            ->where('status', '!=', 'credito')
+        $sales = Sale::whereBetween('created_at', [$startDate, $endDate])
             ->get();
 
-        foreach ($quotations as $quotation) {
-            if ($quotation->sale) {
-              array_push($sums, $quotation->sale->amount);
-              array_push($labels, $quotation->created_at);
-            } elseif ($quotation->amount) {
-              array_push($sums, $quotation->amount);
-              array_push($labels, $quotation->created_at);
+        $startDay = substr($startDate, 0, 10);
+        $sum = 0;
+
+        foreach ($sales as $sale) {
+            if ($sale->quotationr->status != 'cancelado') {
+                if ($sale->created_at->format('Y-m-d') == $startDay) {
+                    $sum += $sale->amount;
+                } else {
+                    array_push($sums, $sum);
+                    $dateLabel = Date::createFromFormat('Y-m-d H:i:s', $sale->created_at);
+                    array_push($labels, $dateLabel->format('d-M'));
+                    $sum = $sale->amount;
+                    $startDay = $sale->created_at->format('Y-m-d');
+                }
             }
         }
 

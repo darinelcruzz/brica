@@ -25,8 +25,8 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                  <th>Cantidad</th>
                                   <th>Artículo</th>
+                                  <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
                                 </tr>
@@ -36,8 +36,8 @@
                                 @if ($hbodywork->welding != 'N;')
                                     @foreach (unserialize($hbodywork->welding) as $id => $quantity)
                                         <tr>
-                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
                                         </tr>
@@ -59,8 +59,8 @@
                         <table id="example2" class="table table-bordered table-hover">
                               <thead>
                                   <tr>
-                                    <th>Cantidad</th>
                                     <th>Artículo</th>
+                                    <th>Cantidad</th>
                                     <th>Precio Unitario</th>
                                     <th>Precio total</th>
                                   </tr>
@@ -70,8 +70,8 @@
                                   @if ($hbodywork->anchoring != 'N;')
                                       @foreach (unserialize($hbodywork->anchoring) as $id => $quantity)
                                           <tr>
-                                            <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->formatted_price }}</td>
                                             <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
                                           </tr>
@@ -93,8 +93,8 @@
                         <table id="example3" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                  <th>Cantidad</th>
                                   <th>Artículo</th>
+                                  <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
                                 </tr>
@@ -104,8 +104,8 @@
                                 @if ($hbodywork->clothing != 'N;')
                                     @foreach (unserialize($hbodywork->clothing) as $id => $quantity)
                                         <tr>
-                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
                                         </tr>
@@ -127,8 +127,8 @@
                         <table id="example4" class="table table-bordered table-hover">
                             <thead>
                               <tr>
-                                <th>Cantidad</th>
                                 <th>Artículo</th>
+                                <th>Cantidad</th>
                                 <th>Precio Unitario</th>
                                 <th>Precio total</th>
                               </tr>
@@ -138,8 +138,8 @@
                                 @if ($hbodywork->painting != 'N;')
                                       @foreach (unserialize($hbodywork->painting) as $id => $quantity)
                                           <tr>
-                                            <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->formatted_price }}</td>
                                             <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
                                           </tr>
@@ -161,8 +161,8 @@
                         <table id="example5" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                  <th>Cantidad</th>
                                   <th>Artículo</th>
+                                  <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
                                 </tr>
@@ -172,8 +172,8 @@
                                 @if ($hbodywork->mounting != 'N;')
                                     @foreach (unserialize($hbodywork->mounting) as $id => $quantity)
                                         <tr>
-                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
                                         </tr>

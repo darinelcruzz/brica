@@ -30,10 +30,12 @@
                           class="btn btn-default btn-xs">
                           <i class="fa fa-print" aria-hidden="true"></i>
                       </a>&nbsp;&nbsp;
-                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                          class="btn btn-success btn-xs">
-                          <i class="fa fa-forward" aria-hidden="true" title="A PRODUCCIÓN"></i>
-                      </a>
+                      @if (!$receipt->order)
+                          <a href="{{ route('hercules.receipt.order', ['id' => $receipt->id]) }}"
+                              class="btn btn-success btn-xs">
+                              <i class="fa fa-forward" aria-hidden="true" title="A PRODUCCIÓN"></i>
+                          </a>
+                      @endif
                   </td>
               </tr>
             @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Hercules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Hercules\HBodywork;
+use App\Models\Hercules\HOrder;
 use App\Models\Hercules\HClient;
 use App\Models\Hercules\HReceipt;
 use Jenssegers\Date\Date;
@@ -43,5 +44,15 @@ class ReceiptController extends Controller
         HReceipt::create($request->all());
 
         return redirect(route('hercules.receipts'));
+    }
+
+    function order(HReceipt $hreceipt)
+    {
+        HOrder::create([
+            'bodywork' => $hreceipt->bodywork,
+            'receipt' => $hreceipt->id
+        ]);
+
+        return back();
     }
 }

@@ -17,6 +17,27 @@ return [
         ]
     ],
 
+    'warehouse' => [
+        'title' => 'Almacen',
+        'icon' => 'fa fa-cubes',
+        'submenu' => [
+            'index' => [
+                'title' => 'Por surtir',
+                'route' => 'hercules.warehouse'
+            ],
+            'inventory' => [
+                'title' => 'Inventario',
+                'route' => 'hercules.warehouse'
+            ],
+        ]
+    ],
+
+    'manager' => [
+        'title' => 'Gerente',
+        'icon' => 'fa fa-cogs',
+        'route' => 'hercules.manager',
+    ],
+
     'articles' => [
         'title' => 'Artículos',
         'icon' => 'fa fa-list-ol',

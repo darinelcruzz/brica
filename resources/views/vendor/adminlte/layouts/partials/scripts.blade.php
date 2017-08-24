@@ -88,5 +88,11 @@ $(function () {
     $("#example5").DataTable({
       "order":[[ 0 , "asc"]]
     });
+    $("#example6").DataTable({
+      "order":[[ 0 , "asc"]]
+    });
+    $("#example7").DataTable({
+      "order":[[ 0 , "asc"]]
+    });
 });
 </script>

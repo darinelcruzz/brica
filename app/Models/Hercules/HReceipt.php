@@ -4,6 +4,7 @@ namespace App\Models\Hercules;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hercules\HClient;
+use App\Models\Hercules\HOrder;
 
 class HReceipt extends Model
 {
@@ -21,4 +22,9 @@ class HReceipt extends Model
     {
         return $this->belongsTo(HBodywork::class, 'bodywork');
     }
+
+    function order()
+	{
+		return $this->hasOne(HOrder::class, 'receipt');
+	}
 }
