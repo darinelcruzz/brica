@@ -68,9 +68,14 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                        class="btn btn-warning btn-xs"  title='LISTA DE MATERIALES'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;
+                      <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
+                        class="btn btn-warning btn-xs"  title='FOTO'>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
@@ -85,9 +90,9 @@
                       {{ $order->anchoring }}
                   </td>
                   <td>
-                      <a style="{{ !$order->anchoring ? "pointer-events: none; display: inline-block;" : '' }}"
+                      <a style="{{ !$order->anchoring || $order->status != 'surtido fondeo' ? "pointer-events: none; display: inline-block;" : '' }}"
                         href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'fondeo']) }}"
-                          class="btn btn-warning btn-xs" {{ !$order->anchoring ? " disabled" : '' }}>
+                          class="btn btn-warning btn-xs" {{ !$order->anchoring || $order->status != 'surtido fondeo' ? " disabled" : '' }}>
                           Fondeo <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -116,9 +121,14 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                        class="btn btn-success btn-xs"  title='VER PROGRESO'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;
+                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
+                        class="btn btn-success btn-xs"  title='FOTO'>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
@@ -133,9 +143,9 @@
                       {{ $order->clothing }}
                   </td>
                   <td>
-                      <a style="{{ !$order->clothing ? "pointer-events: none; display: inline-block;" : '' }}"
+                      <a style="{{ !$order->clothing || $order->status != 'surtido vestido' ? "pointer-events: none; display: inline-block;" : '' }}"
                         href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
-                          class="btn btn-success btn-xs" {{ !$order->clothing ? " disabled" : '' }}>
+                          class="btn btn-success btn-xs" {{ !$order->clothing || $order->status != 'surtido vestido' ? " disabled" : '' }}>
                           Vestido <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -164,9 +174,14 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
+                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
                         class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;
+                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
+                        class="btn btn-default btn-xs"  title='FOTO'>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
@@ -181,9 +196,9 @@
                       {{ $order->painting }}
                   </td>
                   <td>
-                      <a style="{{ !$order->painting ? "pointer-events: none; display: inline-block;" : '' }}"
+                      <a style="{{ !$order->painting || $order->status != 'surtido pintura' ? "pointer-events: none; display: inline-block;" : '' }}"
                         href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
-                          class="btn btn-default btn-xs" {{ !$order->painting ? " disabled" : '' }}>
+                          class="btn btn-default btn-xs" {{ !$order->painting || $order->status != 'surtido pintura' ? " disabled" : '' }}>
                           Pintura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -212,9 +227,14 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
+                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
                         class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;
+                      <a href="{{ route('hercules.photo.load', ['horder' => $order->id]) }}"
+                        class="btn btn-info btn-xs"  title='FOTO'>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
@@ -229,9 +249,9 @@
                       {{ $order->mounting }}
                   </td>
                   <td>
-                      <a style="{{ !$order->mounting ? "pointer-events: none; display: inline-block;" : '' }}"
+                      <a style="{{ !$order->mounting || $order->status != 'surtido montaje' ? "pointer-events: none; display: inline-block;" : '' }}"
                         href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'montaje']) }}"
-                          class="btn btn-info btn-xs" {{ !$order->mounting ? " disabled" : '' }}>
+                          class="btn btn-info btn-xs" {{ !$order->mounting || $order->status != 'surtido montaje' ? " disabled" : '' }}>
                           Montaje <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
@@ -259,9 +279,14 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                        class="btn btn-danger btn-xs"  title='VER PROGRESO'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;
+                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
+                        class="btn btn-danger btn-xs"  title='ACTUALIZAR'>
+                        <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>

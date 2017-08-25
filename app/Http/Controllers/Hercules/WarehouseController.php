@@ -17,6 +17,12 @@ class WarehouseController extends Controller
 
     function show(HOrder $horder, HBodywork $hbodywork)
     {
-        return view('hercules.warehouse.show', compact('hbodywork', 'horder'));
+        $status = [
+            'pendiente', 'surtido soldadura', 'soldadura', 'surtido fondeo', 'fondeo',
+            'surtido vestido', 'vestido', 'surtido pintura', 'pintura',
+            'surtido montaje', 'montaje', 'terminado'
+        ];
+
+        return view('hercules.warehouse.show', compact('hbodywork', 'horder', 'status'));
     }
 }

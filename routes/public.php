@@ -177,6 +177,16 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'order.status'
     ]);
 
+    Route::get('orden/foto/{horden}', [
+        'uses' => 'Hercules\PhotoUploadController@create',
+        'as' => 'photo.load'
+    ]);
+
+    Route::post('orden/foto', [
+        'uses' => 'Hercules\PhotoUploadController@upload',
+        'as' => 'photo.upload'
+    ]);
+
     Route::get('almacen', [
         'uses' => 'Hercules\WarehouseController@index',
         'as' => 'warehouse'

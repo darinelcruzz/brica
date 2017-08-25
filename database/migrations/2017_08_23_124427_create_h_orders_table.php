@@ -24,6 +24,7 @@ class CreateHOrdersTable extends Migration
             $table->string('clothing')->nullable();
             $table->string('painting')->nullable();
             $table->string('mounting')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamp('startDate')->nullable();
             $table->timestamp('endDate')->nullable();
 

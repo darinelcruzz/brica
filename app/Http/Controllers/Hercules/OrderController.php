@@ -19,6 +19,11 @@ class OrderController extends Controller
             'endDate' => $status == 'terminado' ? Date::now()->format('Y-m-d H:i:s') : $order->endDate,
         ]);
 
+        if ($status == 'surtido soldadura') {
+            return redirect(route('hercules.warehouse'));
+        }
+
         return back();
+
     }
 }

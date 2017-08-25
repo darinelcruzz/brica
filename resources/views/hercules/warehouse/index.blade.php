@@ -28,11 +28,29 @@
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
                   <td>
-                      @if ($order->status == 'pendiente')
-                        no se ha surtido
-                      @elseif ($order->status == 'surtido')
-                        <button type="button" class="btn btn-xs btn-warning">S</button>
-                      @endif
+                        @if ($order->status == 'pendiente')
+                            no se ha surtido
+                        @elseif ($order->status == 'surtido soldadura' || $order->status == 'soldadura')
+                            <button type="button" class="btn btn-xs btn-warning">S</button>
+                        @elseif ($order->status == 'surtido fondeo' || $order->status == 'fondeo')
+                            <button type="button" class="btn btn-xs btn-warning">S</button>
+                            <button type="button" class="btn btn-xs btn-success">F</button>
+                        @elseif ($order->status == 'surtido vestido' || $order->status == 'vestido')
+                            <button type="button" class="btn btn-xs btn-warning">S</button>
+                            <button type="button" class="btn btn-xs btn-success">F</button>
+                            <button type="button" class="btn btn-xs btn-default">V</button>
+                        @elseif ($order->status == 'surtido pintura' || $order->status == 'pintura')
+                            <button type="button" class="btn btn-xs btn-warning">S</button>
+                            <button type="button" class="btn btn-xs btn-success">F</button>
+                            <button type="button" class="btn btn-xs btn-default">V</button>
+                            <button type="button" class="btn btn-xs btn-info">P</button>
+                        @elseif ($order->status == 'surtido montaje' || $order->status == 'montaje')
+                            <button type="button" class="btn btn-xs btn-warning">S</button>
+                            <button type="button" class="btn btn-xs btn-success">F</button>
+                            <button type="button" class="btn btn-xs btn-default">V</button>
+                            <button type="button" class="btn btn-xs btn-info">P</button>
+                            <button type="button" class="btn btn-xs btn-danger">M</button>
+                        @endif
                   </td>
               </tr>
             @endforeach
