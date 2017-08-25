@@ -19,33 +19,35 @@
         </template>
 
         <template slot="body">
-            @forelse($rows as $row)
-                <tr>
-                    <td>{{ $row->id }}</td>
-                    <td>{{ $row->type }}</td>
-                    <td>{{ $row->description }}</td>
-                    @if ($title == 'Cotizaciones')
-                        <td>{{ $row->deliver }}</td>
-                        <td>
-                            <a href="{{ route('runa.operator.start', ['id' => $row->id]) }}"
-                                class="btn btn-{{ $row->status === 'produccion' ? 'success': 'danger' }} btn-xs">
-                                    @if ($row->status === 'produccion')
+            @if (!empty($rows))
+                @foreach($rows as $row)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->type }}</td>
+                        <td>{{ $row->description }}</td>
+                        @if ($title == 'Cotizaciones')
+                            <td>{{ $row->deliver }}</td>
+                            <td>
+                                <a href="{{ route('runa.operator.start', ['id' => $row->id]) }}"
+                                    class="btn btn-{{ $row->status === 'produccion' ? 'success': 'danger' }} btn-xs">
+                                        @if ($row->status === 'produccion')
+                                            <i class="fa fa-eye"></i>
+                                        @else
+                                            <i class="fa fa-forward" aria-hidden="true"></i>
+                                        @endif
+                                </a>
+                            </td>
+                        @else
+                            <td>
+                                <a href="{{ route('runa.order.show', ['id' => $row->id]) }}"
+                                    class="btn btn-primary btn-xs">
                                         <i class="fa fa-eye"></i>
-                                    @else
-                                        <i class="fa fa-forward" aria-hidden="true"></i>
-                                    @endif
-                            </a>
-                        </td>
-                    @else
-                        <td>
-                            <a href="{{ route('runa.order.show', ['id' => $row->id]) }}"
-                                class="btn btn-primary btn-xs">
-                                    <i class="fa fa-eye"></i>
-                            </a>
-                        </td>
-                    @endif
-                </tr>
-            @endforeach
+                                </a>
+                            </td>
+                        @endif
+                    </tr>
+                @endforeach
+            @endif
         </template>
     </data-table>
 

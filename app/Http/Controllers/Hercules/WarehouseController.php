@@ -23,6 +23,14 @@ class WarehouseController extends Controller
             'surtido montaje', 'montaje', 'terminado'
         ];
 
-        return view('hercules.warehouse.show', compact('hbodywork', 'horder', 'status'));
+        $processes = [
+            'welding' => 'soldadura',
+            'anchoring' => 'fondeo',
+            'clothing' => 'vestido',
+            'painting' => 'pintura',
+            'mounting' => 'montaje'
+        ];
+
+        return view('hercules.warehouse.show', compact('hbodywork', 'horder', 'status', 'processes'));
     }
 }
