@@ -49,7 +49,8 @@ class OperatorScreenController extends Controller
     function orders(Quotation $quotation)
     {
         $rows = $quotation->orders;
+        $id = $quotation->id;
         $title = 'Ordenes';
-        return view('runa.production.operator', compact('rows', 'title'));
+        return view('runa.production.operator', compact('rows', 'title', 'id'));
     }
 }

@@ -59,7 +59,7 @@
                     &nbsp;Regresar
             </a>
 
-            <a href="{{ route('runa.operator.finish', ['id' => $row->quotation]) }}"
+            <a href="{{ route('runa.operator.finish', ['id' => $id]) }}"
                 class="btn btn-danger pull-right">
                     <i class="fa fa-check" aria-hidden="true"></i>
                     &nbsp;Terminar
