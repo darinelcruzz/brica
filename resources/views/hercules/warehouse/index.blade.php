@@ -10,7 +10,7 @@
                 <th>Descripción</th>
                 <th>Entrega</th>
                 <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
+                <th>Surtido</th>
             </tr>
         </template>
 
@@ -20,18 +20,19 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.warehouse.show', ['bodywork' => $order->bodyworkr->id]) }}"
+                      <a href="{{ route('hercules.warehouse.show', ['order' => $order->id, 'bodywork' => $order->bodyworkr->id]) }}"
                         class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $order->receiptr->deliver }}</td>
+                  <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'surtido']) }}"
-                          class="btn btn-success btn-xs" title="MATERIAL PREPARADO">
-                          <i class="fa fa-check" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->status == 'pendiente')
+                        no se ha surtido
+                      @elseif ($order->status == 'surtido')
+                        <button type="button" class="btn btn-xs btn-warning">S</button>
+                      @endif
                   </td>
               </tr>
             @endforeach

@@ -22,13 +22,26 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         @if ($hbodywork->welding != 'N;')
-                            <ul style="list-style-type:none;">
+                            <ul style="list-style-type: none;">
                                 @foreach (unserialize($hbodywork->welding) as $id => $quantity)
-                                    <li>
+                                    <li style="text-decoration: {{ $horder->status == 'pendiente' ? 'none': 'line-through'}}">
+                                      @if ($horder->status == 'pendiente')
                                         <input type="checkbox"> &nbsp;
+                                      @else
+                                        <i class="fa fa-check" aria-hidden="true"></i>&nbsp;
+                                      @endif
                                         <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
                                     </li>
                                 @endforeach
+                                <br><br>
+                                @if ($horder->status == 'pendiente')
+                                  <li>
+                                    <a href="{{ route('hercules.order.status', ['id' => $horder->id, 'status' => 'surtido']) }}"
+                                      class="btn btn-primary btn-xs">
+                                      Listo <i class="fa fa-check" aria-hidden="true"></i>
+                                    </a>
+                                  </li>
+                                @endif
                             </ul>
                         @endif
                     </div>
@@ -42,6 +55,13 @@
                                         <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
                                     </li>
                                 @endforeach
+                                <br><br>
+                                <li>
+                                  <a href="#"
+                                    class="btn btn-primary btn-xs">
+                                    Listo <i class="fa fa-check" aria-hidden="true"></i>
+                                  </a>
+                                </li>
                             </ul>
                         @endif
                     </div>
@@ -55,6 +75,13 @@
                                         <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
                                     </li>
                                 @endforeach
+                                <br><br>
+                                <li>
+                                  <a href="#"
+                                    class="btn btn-primary btn-xs">
+                                    Listo <i class="fa fa-check" aria-hidden="true"></i>
+                                  </a>
+                                </li>
                             </ul>
                         @endif
                     </div>
@@ -68,6 +95,13 @@
                                         <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
                                     </li>
                                 @endforeach
+                                <br><br>
+                                <li>
+                                  <a href="#"
+                                    class="btn btn-primary btn-xs">
+                                    Listo <i class="fa fa-check" aria-hidden="true"></i>
+                                  </a>
+                                </li>
                             </ul>
                         @endif
                     </div>
@@ -81,6 +115,13 @@
                                         <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
                                     </li>
                                 @endforeach
+                                <br><br>
+                                <li>
+                                  <a href="#"
+                                    class="btn btn-primary btn-xs">
+                                    Listo <i class="fa fa-check" aria-hidden="true"></i>
+                                  </a>
+                                </li>
                             </ul>
                         @endif
                     </div>

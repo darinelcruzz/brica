@@ -182,7 +182,7 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'warehouse'
     ]);
 
-    Route::get('almacen/surtir/{hbodywork}', [
+    Route::get('almacen/orden/{horder}/carroceria/{hbodywork}', [
         'uses' => 'Hercules\WarehouseController@show',
         'as' => 'warehouse.show'
     ]);

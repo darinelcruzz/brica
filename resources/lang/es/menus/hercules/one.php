@@ -32,8 +32,8 @@ return [
         ]
     ],
 
-    'manager' => [
-        'title' => 'Gerente',
+    'production' => [
+        'title' => 'Producción',
         'icon' => 'fa fa-cogs',
         'route' => 'hercules.manager',
     ],
