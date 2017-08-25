@@ -95,9 +95,9 @@
                   <td>{{ $row->description }}</td>
                   <td>
                       {{ $row->team }} &nbsp;&nbsp;
-                      <a href="{{ route('runa.quotation.status', ['id' => $row->id, 'status' => 'terminado']) }}"
-                          class="btn btn-primary btn-xs" title="REASIGNAR">
-                          <i class="fa fa-backward" aria-hidden="true"></i>
+                      <a href="{{ route('runa.quotation.edit', ['id' => $row->id]) }}"
+                          class="btn btn-primary btn-xs" title="CAMBIAR">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $row->deliver }}</td>

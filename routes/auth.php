@@ -74,11 +74,6 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'quotation.details'
     ]);
 
-    Route::get('cotizaciones/{quotation}/estado/{status}', [
-        'uses' => 'Runa\ProQuotationController@status',
-        'as' => 'quotation.status'
-    ]);
-
     Route::get('cotizaciones/editar/{quotation}', [
         'uses' => 'Runa\ProQuotationController@edit',
         'as' => 'quotation.edit'

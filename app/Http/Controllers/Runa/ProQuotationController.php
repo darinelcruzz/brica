@@ -76,10 +76,4 @@ class ProQuotationController extends Controller
         Quotation::find($request->id)->update(['team' => $request->team]);
         return redirect(route('runa.manager'));
     }
-
-    function status($id, $status)
-    {
-        Quotation::find($id)->update(['status' => $status]);
-        return back();
-    }
 }
