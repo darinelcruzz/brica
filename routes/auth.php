@@ -74,6 +74,21 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'quotation.details'
     ]);
 
+    Route::get('cotizaciones/{quotation}/estado/{status}', [
+        'uses' => 'Runa\ProQuotationController@status',
+        'as' => 'quotation.status'
+    ]);
+
+    Route::get('cotizaciones/editar/{quotation}', [
+        'uses' => 'Runa\ProQuotationController@edit',
+        'as' => 'quotation.edit'
+    ]);
+
+    Route::post('cotizaciones/editar', [
+        'uses' => 'Runa\ProQuotationController@change',
+        'as' => 'quotation.change'
+    ]);
+
     // Producción
     Route::get('ingenieros', [
         'uses' => 'Runa\EngineersScreenController@index',

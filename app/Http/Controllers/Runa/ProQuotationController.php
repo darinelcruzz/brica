@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
 use App\Client;
+use App\User;
 use App\Quotation;
 
 class ProQuotationController extends Controller
@@ -62,5 +63,23 @@ class ProQuotationController extends Controller
     function details(Quotation $quotation)
     {
         return view('runa.quotations.details', compact('quotation'));
+    }
+
+    function edit(Quotation $quotation)
+    {
+        $teams = User::where('level', '5')->get();
+        return view('runa.quotations.edit', compact('quotation', 'teams'));
+    }
+
+    function change(Request $request)
+    {
+        Quotation::find($request->id)->update(['team' => $request->team]);
+        return redirect(route('runa.manager'));
+    }
+
+    function status($id, $status)
+    {
+        Quotation::find($id)->update(['status' => $status]);
+        return back();
     }
 }

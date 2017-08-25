@@ -93,7 +93,13 @@
                   <td>{{ $row->id }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>{{ $row->team }}</td>
+                  <td>
+                      {{ $row->team }} &nbsp;&nbsp;
+                      <a href="{{ route('runa.quotation.status', ['id' => $row->id, 'status' => 'terminado']) }}"
+                          class="btn btn-primary btn-xs" title="REASIGNAR">
+                          <i class="fa fa-backward" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $row->deliver }}</td>
                   <td>
                       <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-primary btn-xs">
@@ -131,7 +137,13 @@
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
-                  <td>{{ $row->team }}</td>
+                  <td>
+                      {{ $row->team }} &nbsp;&nbsp;
+                      <a href="{{ route('runa.quotation.edit', ['id' => $row->id]) }}"
+                          class="btn btn-warning btn-xs" title="CAMBIAR">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                  </td>
                   <td>{{ $row->startTime }}</td>
               </tr>
             @endforeach
