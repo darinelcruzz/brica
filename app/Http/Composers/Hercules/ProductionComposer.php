@@ -4,8 +4,9 @@ namespace App\Http\Composers\Hercules;
 
 use Illuminate\View\View;
 use App\Models\Hercules\HOrder;
+use App\Models\Hercules\HPersonnel;
 
-class ManagerComposer
+class ProductionComposer
 {
     public function compose(View $view)
     {
@@ -19,5 +20,9 @@ class ManagerComposer
         $view->painting = HOrder::where('status', 'pintura')
             ->orWhere('status', 'surtido montaje')->get();
         $view->mounting = HOrder::where('status', 'montaje')->get();
+
+        $view->terminated = HOrder::where('status', 'terminado')->get();
+
+        $view->personnel = HPersonnel::all();
     }
 }

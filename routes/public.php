@@ -197,13 +197,33 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'warehouse.show'
     ]);
 
-    Route::get('gerente', [
-        'uses' => 'Hercules\ManagerController@index',
-        'as' => 'manager'
+    Route::get('produccion', [
+        'uses' => 'Hercules\ProductionController@index',
+        'as' => 'production'
     ]);
 
-    Route::post('gerente/asignar', [
-        'uses' => 'Hercules\ManagerController@assign',
-        'as' => 'manager.assign'
+    Route::post('produccion/asignar', [
+        'uses' => 'Hercules\ProductionController@assign',
+        'as' => 'production.assign'
+    ]);
+
+    Route::get('produccion/terminados', [
+        'uses' => 'Hercules\ProductionController@done',
+        'as' => 'production.done'
+    ]);
+
+    Route::get('produccion/recibo/{horder}', [
+        'uses' => 'Hercules\ProductionController@ticket',
+        'as' => 'production.ticket'
+    ]);
+
+    Route::get('personal', [
+        'uses' => 'Hercules\PersonnelController@index',
+        'as' => 'personnel'
+    ]);
+
+    Route::post('personal', [
+        'uses' => 'Hercules\PersonnelController@create',
+        'as' => 'personnel.create'
     ]);
 });

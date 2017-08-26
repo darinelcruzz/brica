@@ -13,7 +13,7 @@ class PhotoUploadController extends Controller
     function create($id)
     {
         $order = HOrder::find($id);
-        return view('hercules.manager.photo', compact('order'));
+        return view('hercules.production.photo', compact('order'));
     }
 
     function upload(Request $request)

@@ -38,11 +38,11 @@ return [
         'submenu' => [
             'works' => [
                 'title' => 'Trabajos',
-                'route' => 'hercules.manager'
+                'route' => 'hercules.production'
             ],
             'inventory' => [
                 'title' => 'Generar ticket',
-                'route' => 'hercules.manager'
+                'route' => 'hercules.production.done'
             ],
         ]
     ],
@@ -90,6 +90,12 @@ return [
                 'route' => 'hercules.clients'
             ],
         ]
+    ],
+
+    'personnel' => [
+        'title' => 'Personal',
+        'icon' => 'fa fa-male',
+        'route' => 'hercules.personnel'
     ],
 
     'logout' => [

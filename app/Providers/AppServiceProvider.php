@@ -10,7 +10,7 @@ use App\Http\Composers\Runa\QuotationsComposer;
 use App\Http\Composers\Runa\ProductionComposer;
 use App\Http\Composers\Runa\CashierViewComposer;
 use App\Http\Composers\Hercules\BodyworkComposer;
-use App\Http\Composers\Hercules\ManagerComposer;
+use App\Http\Composers\Hercules\ProductionComposer as HProductionComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
        View::composer('runa.cashier.*', CashierViewComposer::class);
        View::composer('runa.production.*', ProductionComposer::class);
        View::composer('hercules.bodyworks.*', BodyworkComposer::class);
-       View::composer('hercules.manager.*', ManagerComposer::class);
+       View::composer('hercules.production.*', HProductionComposer::class);
    }
 }

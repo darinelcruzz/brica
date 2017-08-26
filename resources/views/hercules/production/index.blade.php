@@ -26,7 +26,7 @@
                   <td>{{ $order->receiptr->observations }}</td>
                   <td>
                       @if (!$order->welding)
-                          @include('templates/hercules/assign', [
+                          @include('hercules/production/assign', [
                               'tprocess' => 'welding', 'tproceso' => 'soldadura', 'tcolor' => 'primary'
                           ])
                       @endif
@@ -81,7 +81,7 @@
                   <td>{{ $order->startDate }}</td>
                   <td>
                       @if (!$order->anchoring)
-                          @include('templates/hercules/assign', [
+                          @include('hercules/production/assign', [
                               'tprocess' => 'anchoring', 'tproceso' => 'fondeo', 'tcolor' => 'warning'
                           ])
                       @endif
@@ -136,7 +136,7 @@
                   <td>{{ $order->startDate }}</td>
                   <td>
                       @if (!$order->clothing)
-                          @include('templates/hercules/assign', [
+                          @include('hercules/production/assign', [
                               'tprocess' => 'clothing', 'tproceso' => 'vestido', 'tcolor' => 'success'
                           ])
                       @endif
@@ -191,7 +191,7 @@
                   <td>{{ $order->startDate }}</td>
                   <td>
                       @if (!$order->painting)
-                          @include('templates/hercules/assign', [
+                          @include('hercules/production/assign', [
                               'tprocess' => 'painting', 'tproceso' => 'pintura', 'tcolor' => 'default'
                           ])
                       @endif
@@ -246,7 +246,7 @@
                   <td>{{ $order->startDate }}</td>
                   <td>
                       @if (!$order->mounting)
-                          @include('templates/hercules/assign', [
+                          @include('hercules/production/assign', [
                               'tprocess' => 'mounting', 'tproceso' => 'montaje', 'tcolor' => 'info'
                           ])
                       @endif

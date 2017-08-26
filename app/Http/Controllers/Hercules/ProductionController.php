@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Hercules\HOrder;
 
-class ManagerController extends Controller
+class ProductionController extends Controller
 {
     function index()
     {
-        return view('hercules.manager.index');
+        return view('hercules.production.index');
     }
 
     function assign(Request $request)
@@ -20,5 +20,15 @@ class ManagerController extends Controller
             "$request->process" => $request->team
         ]);
         return back();
+    }
+
+    function done()
+    {
+        return view('hercules.production.done');
+    }
+
+    function ticket(HOrder $horder)
+    {
+        return view('hercules.production.ticket', compact('horder'));
     }
 }
