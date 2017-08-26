@@ -18,13 +18,17 @@ class PhotoUploadController extends Controller
 
     function upload(Request $request)
     {
+        $order = HOrder::find($request->order);
+
         $file = $request->file;
         $name = 'ORDEN' . $request->order;
         $ext = $file->extension();
 
-        $file->storeAs("public/hercules", "$name.$ext");
+        if($order->photo) {
+            Storage::delete("public/hercules/$name.$ext");
+        }
 
-        $order = HOrder::find($request->order);
+        $file->storeAs("public/hercules", "$name.$ext");
 
         $order->update([
             'photo' => Storage::url("hercules/$name.$ext")

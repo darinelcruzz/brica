@@ -35,7 +35,16 @@ return [
     'production' => [
         'title' => 'Producción',
         'icon' => 'fa fa-cogs',
-        'route' => 'hercules.manager',
+        'submenu' => [
+            'works' => [
+                'title' => 'Trabajos',
+                'route' => 'hercules.manager'
+            ],
+            'inventory' => [
+                'title' => 'Generar ticket',
+                'route' => 'hercules.manager'
+            ],
+        ]
     ],
 
     'articles' => [

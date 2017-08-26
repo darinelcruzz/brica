@@ -20,11 +20,7 @@
               <tr>
                   <td>{{ $order->id }}</td>
                   <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $order->bodyworkr->id]) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      {{ $order->bodyworkr->description }}
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
@@ -68,10 +64,12 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                        class="btn btn-warning btn-xs"  title='LISTA DE MATERIALES'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->photo)
+                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                            class="btn btn-warning btn-xs"  title='FOTO'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                      @endif
                       &nbsp;
                       <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
                         class="btn btn-warning btn-xs"  title='FOTO'>
@@ -121,10 +119,12 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                        class="btn btn-success btn-xs"  title='VER PROGRESO'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->photo)
+                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                            class="btn btn-success btn-xs"  title='VER PROGRESO'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                      @endif
                       &nbsp;
                       <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
                         class="btn btn-success btn-xs"  title='FOTO'>
@@ -174,10 +174,12 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->photo)
+                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                            class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                      @endif
                       &nbsp;
                       <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
                         class="btn btn-default btn-xs"  title='FOTO'>
@@ -227,10 +229,12 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                        class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->photo)
+                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                            class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                      @endif
                       &nbsp;
                       <a href="{{ route('hercules.photo.load', ['horder' => $order->id]) }}"
                         class="btn btn-info btn-xs"  title='FOTO'>
@@ -279,10 +283,12 @@
                   <td>{{ $order->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                        class="btn btn-danger btn-xs"  title='VER PROGRESO'>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->photo)
+                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                            class="btn btn-danger btn-xs"  title='VER PROGRESO'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                      @endif
                       &nbsp;
                       <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
                         class="btn btn-danger btn-xs"  title='ACTUALIZAR'>
