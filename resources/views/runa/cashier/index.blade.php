@@ -98,15 +98,22 @@
                         <td>{{ $row->description }}</td>
                         @if ($row->sale)
                             <td>$ {{ $row->sale->amount - $row->sale->retainer }}</td>
+                            <td>
+                                <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
+                                    class="btn btn-xs btn-success" title="COBRAR">
+                                    <i class="fa fa-dollar"></i> &nbsp;COBRAR
+                                </a>
+                            </td>
                         @else
                             <td> ticket pendiente</td>
+                            <td>
+                                <a href="#" style="pointer-events: none; display: inline-block;"
+                                    class="btn btn-xs btn-success" title="COBRAR" disabled>
+                                    <i class="fa fa-dollar"></i> &nbsp;COBRAR
+                                </a>
+                            </td>
                         @endif
-                        <td>
-                            <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
-                                class="btn btn-xs btn-success" title="COBRAR">
-                                <i class="fa fa-dollar"></i> &nbsp;COBRAR
-                            </a>
-                        </td>
+
                     </tr>
                 @endif
             @endforeach
