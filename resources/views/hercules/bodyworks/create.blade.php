@@ -32,11 +32,11 @@
                   @foreach ($processes as $process => $proceso)
                       <accordion-item title="{{ ucfirst($proceso) }}">
                           <ul style="display: flex; flex-flow: row wrap; list-style-type:none;">
-                              @foreach ($items[$process] as $id => $description)
+                              @foreach ($items[$process] as $item)
                                   <li style="flex-basis: 25%">
                                       <label class="checkbox-inline">
-                                          <input name="{{ $process }}[]" type="checkbox" value="{{ $id }}">
-                                          {{ $description }}
+                                          <input name="{{ $process }}[]" type="checkbox" value="{{ $item->id }}">
+                                          {{ $item->description }} {{ $item->caliber }}
                                       </label>
                                   </li>
                               @endforeach

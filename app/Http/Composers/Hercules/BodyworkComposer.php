@@ -23,23 +23,23 @@ class BodyworkComposer
     {
         $welding = HItem::all()->filter(function ($item) {
             return strpos($item->family, 'soldadura');
-        })->pluck('description', 'id')->toArray();
+        });
 
         $anchoring = HItem::all()->filter(function ($item) {
             return strpos($item->family, 'fondeo');
-        })->pluck('description', 'id')->toArray();
+        });
 
         $clothing = HItem::all()->filter(function ($item) {
             return strpos($item->family, 'vestido');
-        })->pluck('description', 'id')->toArray();
+        });
 
         $painting = HItem::all()->filter(function ($item) {
             return strpos($item->family, 'pintura');
-        })->pluck('description', 'id')->toArray();
+        });
 
         $mounting = HItem::all()->filter(function ($item) {
             return strpos($item->family, 'montaje');
-        })->pluck('description', 'id')->toArray();
+        });
 
         return [
             'welding' => $welding,

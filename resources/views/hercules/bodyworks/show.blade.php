@@ -26,6 +26,7 @@
                             <thead>
                                 <tr>
                                   <th>Artículo</th>
+                                  <th>Calibre</th>
                                   <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
@@ -37,6 +38,7 @@
                                     @foreach (unserialize($hbodywork->welding) as $id => $quantity)
                                         <tr>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->caliber }}</td>
                                           <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
@@ -47,7 +49,7 @@
 
                             <tfoot>
                                 <tr>
-            						<td></td><td></td>
+            						<td></td><td></td><td></td>
             						<td><b>Total:</b></td>
             						<td>{{ '$ ' . number_format($hbodywork->computePrice('welding'), 2, '.', ',') }}</td>
             					</tr>
@@ -60,6 +62,7 @@
                               <thead>
                                   <tr>
                                     <th>Artículo</th>
+                                    <th>Calibre</th>
                                     <th>Cantidad</th>
                                     <th>Precio Unitario</th>
                                     <th>Precio total</th>
@@ -71,6 +74,7 @@
                                       @foreach (unserialize($hbodywork->anchoring) as $id => $quantity)
                                           <tr>
                                             <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ HItem::find($id)->caliber }}</td>
                                             <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->formatted_price }}</td>
                                             <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
@@ -81,7 +85,7 @@
 
                               <tfoot>
                                   <tr>
-              						<td></td><td></td>
+              						<td></td><td></td><td></td>
               						<td><b>Total:</b></td>
               						<td>{{ '$ ' . number_format($hbodywork->computePrice('anchoring'), 2, '.', ',') }}</td>
               					</tr>
@@ -94,6 +98,7 @@
                             <thead>
                                 <tr>
                                   <th>Artículo</th>
+                                  <th>Calibre</th>
                                   <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
@@ -105,6 +110,7 @@
                                     @foreach (unserialize($hbodywork->clothing) as $id => $quantity)
                                         <tr>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->caliber }}</td>
                                           <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
@@ -115,7 +121,7 @@
 
                             <tfoot>
                                 <tr>
-            						<td></td><td></td>
+            						<td></td><td></td><td></td>
             						<td><b>Total:</b></td>
             						<td>{{ '$ ' . number_format($hbodywork->computePrice('clothing'), 2, '.', ',') }}</td>
             					</tr>
@@ -128,6 +134,7 @@
                             <thead>
                               <tr>
                                 <th>Artículo</th>
+                                <th>Calibre</th>
                                 <th>Cantidad</th>
                                 <th>Precio Unitario</th>
                                 <th>Precio total</th>
@@ -139,6 +146,7 @@
                                       @foreach (unserialize($hbodywork->painting) as $id => $quantity)
                                           <tr>
                                             <td>{{ HItem::find($id)->description }}</td>
+                                            <td>{{ HItem::find($id)->caliber }}</td>
                                             <td>{{ $quantity }}</td>
                                             <td>{{ HItem::find($id)->formatted_price }}</td>
                                             <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
@@ -149,7 +157,7 @@
 
                              <tfoot>
                                  <tr>
-             						<td></td><td></td>
+             						<td></td><td></td><td></td>
              						<td><b>Total:</b></td>
              						<td>{{ '$ ' . number_format($hbodywork->computePrice('painting'), 2, '.', ',') }}</td>
              					</tr>
@@ -162,6 +170,7 @@
                             <thead>
                                 <tr>
                                   <th>Artículo</th>
+                                  <th>Calibre</th>
                                   <th>Cantidad</th>
                                   <th>Precio Unitario</th>
                                   <th>Precio total</th>
@@ -173,6 +182,7 @@
                                     @foreach (unserialize($hbodywork->mounting) as $id => $quantity)
                                         <tr>
                                           <td>{{ HItem::find($id)->description }}</td>
+                                          <td>{{ HItem::find($id)->caliber }}</td>
                                           <td>{{ $quantity }}</td>
                                           <td>{{ HItem::find($id)->formatted_price }}</td>
                                           <td>{{ '$ ' . number_format(HItem::find($id)->price * $quantity, 2, '.', ',') }}</td>
@@ -183,7 +193,7 @@
 
                             <tfoot>
                                 <tr>
-            						<td></td><td></td>
+            						<td></td><td></td><td></td>
             						<td><b>Total:</b></td>
             						<td>{{ '$ ' . number_format($hbodywork->computePrice('mounting'), 2, '.', ',') }}</td>
             					</tr>
