@@ -27,7 +27,7 @@ return [
             ],
             'inventory' => [
                 'title' => 'Inventario',
-                'route' => 'hercules.warehouse'
+                'route' => 'hercules.items'
             ],
         ]
     ],
