@@ -35,7 +35,11 @@ class HBodywork extends Model
             $subtotal = 0;
             if (!empty(unserialize($this->$process))) {
                 foreach (unserialize($this->$process) as $id => $quantity) {
-                    $subtotal += HItem::find($id)->price * $quantity;
+                    try {
+                        $subtotal += HItem::find($id)->price * $quantity;
+                    } catch (\Exception $e) {
+                        $subtotal += 0;
+                    }
                 }
             }
 

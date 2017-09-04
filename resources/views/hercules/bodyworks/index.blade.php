@@ -32,7 +32,7 @@
                       Largo: {{ $bodywork->length }} m<br>
                       Ancho: {{ $bodywork->width }} m
                   </td>
-                  <td>{{-- '$ ' . number_format($bodywork->computeTotal(), 2, '.', ',') --}}</td>
+                  <td>{{ '$ ' . number_format($bodywork->computeTotal(), 2, '.', ',') }}</td>
               </tr>
             @endforeach
         </template>
