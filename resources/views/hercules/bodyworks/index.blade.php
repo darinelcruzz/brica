@@ -9,7 +9,7 @@
                 <th>ID</th>
                 <th>Descripción</th>
                 <th>Medidas</th>
-                <th>Precio</th>
+                <th>Costo</th>
             </tr>
         </template>
 
