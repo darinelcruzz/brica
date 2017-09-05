@@ -242,6 +242,16 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
         'as' => 'report.sales'
     ])->middleware('money');
 
+    Route::get('reportes/clientes', [
+        'uses' => 'Runa\ReportController@clients',
+        'as' => 'report.clients'
+    ])->middleware('money');
+
+    Route::post('reportes/clientes', [
+        'uses' => 'Runa\ReportController@clients',
+        'as' => 'report.clients'
+    ])->middleware('money');
+
     // Productos
     Route::get('productos', [
         'uses' => 'Runa\ProductController@index',

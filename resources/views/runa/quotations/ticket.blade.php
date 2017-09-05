@@ -2,20 +2,22 @@
 
 @section('main-content')
 
-    <div align="center">
-        <h3>Runa Aceros</h3>
-        <p>Panamericana 1262, Chichima Guadalupe, <br>
-            Centro, CP. 30000, <br>
-            Comitán de Domínguez, Chiapas<br>
-            Tel.: 01-(963)-63-2-0405
-        </p>
-    </div>
+    <section class="invoice">
 
-    <h5>Cliente: {{ $quotation->clientr->name }}</h5>
-    <h5> Folio: {{ $quotation->id }} </h5>
-    <h5> Fecha: {{ $date }} </h5>
+        <div align="center">
+            <h3>Runa Aceros</h3>
+            <p>Panamericana 1262, Chichima Guadalupe, <br>
+                Centro, CP. 30000, <br>
+                Comitán de Domínguez, Chiapas<br>
+                Tel.: 01-(963)-63-2-0405
+            </p>
+        </div>
 
-    <div class="col-md-12">
+        <h5><b>Cliente:</b> {{ $quotation->clientr->uppercase_name }}</h5>
+        <h5><b>Folio:</b> {{ $quotation->id }} </h5>
+        <h5><b>Fecha:</b> {{ Jenssegers\Date\Date::now()->format('d/M/Y h:i a') }} </h5>
+
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -25,26 +27,23 @@
                 </tr>
             </thead>
 
-            @if ( $quotation->pay  == 'anticipo' )
-                <tbody>
+            <tbody>
+                @if ($quotation->pay  == 'anticipo')
                     <tr>
-                        <th>1</th>
-                        <th>Anticipo</th>
-                        <th> ${{ $quotation->amount }} </th>
+                        <td></td>
+                        <td>Anticipo</td>
+                        <td>{{ $quotation->retainer }}</td>
                     </tr>
-                </tbody>
-
-            @else
-                <tbody>
+                @else
                     @foreach (unserialize($quotation->products) as $product)
                         <tr>
-                            <th>{{ $product['quantity'] }}</th>
-                            <th>{{ App\Product::find($product['material'])->name }}</th>
-                            <th>$ {{ $product['total'] }}</th>
+                            <td>{{ $product['quantity'] }}</td>
+                            <td>{{ App\Product::find($product['material'])->name }}</td>
+                            <td>$ {{ number_format($product['total'], 2, '.', ',') }}</td>
                         </tr>
                     @endforeach
-                </tbody>
-            @endif
+                @endif
+            </tbody>
 
             <tfooter>
                 @if ($quotation->clientr->discount > 0 && $quotation->pay !== 'anticipo')
@@ -66,19 +65,20 @@
                 @else
                     <tr>
                         <th></th>
-                        <th>Total</th>
-                        <th>$ {{ $quotation->amount }} </th>
+                        <th>Total: </th>
+                        <th>{{ $quotation->retainer }}</th>
                     </tr>
                 @endif
             </tfooter>
         </table>
-    </div>
 
-    <div class="row no-print">
-        <button onclick="printTicket()" class="btn btn-default">
-            <i class="fa fa-print"></i> Imprimir
-        </button>
-    </div>
+        <div class="row no-print">
+            <button onclick="printTicket()" class="btn btn-warning pull-right">
+                <i class="fa fa-print"></i> Imprimir
+            </button>
+        </div>
+
+    </section>
 
     <script>
     function printTicket() {

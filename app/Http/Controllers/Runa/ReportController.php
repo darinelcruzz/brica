@@ -55,6 +55,33 @@ class ReportController extends Controller
       return view('runa.reports.sales', compact('salesChart', 'startDate', 'endDate'));
     }
 
+    function clients(Request $request)
+    {
+        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
+        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+
+        $quotations = Quotation::selectRaw("month(payment_date) as month, day(payment_date) as day,
+            count(*) as quantity")->groupBy('day', 'month', 'payment_date')->get()->toArray();
+
+        $values = [];
+        $labels = [];
+
+        foreach ($quotations as $quotation) {
+            array_push($values, $quotation['quantity']);
+            array_push($labels, $quotation['day'] . '-' . $quotation['month']);
+        }
+
+        $clientsChart = Charts::create('bar', 'highcharts')
+                          ->elementLabel("Total")
+                          ->title('Clientes')
+                          ->values($values)
+                          ->labels($labels)
+                          ->colors(['#3c8dbc'])
+                          ->dimensions(1000, 500);
+
+        return view('runa.reports.clients', compact('clientsChart', 'startDate', 'endDate'));
+    }
+
     function getTotals($startDate, $endDate)
     {
         $sums = [];

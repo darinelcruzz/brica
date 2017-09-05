@@ -16,4 +16,17 @@ class Client extends Model
     {
         return $this->hasMany(Quotation::class, 'client');
     }
+
+    function getUppercaseNameAttribute()
+    {
+        $string = ucwords(strtolower($this->name));
+
+        foreach (array('-', '\'') as $delimiter) {
+          if (strpos($string, $delimiter) !== false) {
+            $string = implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
+          }
+        }
+        
+        return $string;
+    }
 }

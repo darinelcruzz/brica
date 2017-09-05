@@ -2,89 +2,83 @@
 
 @section('main-content')
 
-    <div align="center">
-        <h3 align >Runa Aceros</h3>
-        <p>Panamericana 1262, Chichima Guadalupe, <br>
-            Centro, CP. 30000, <br>
-            Comitán de Domínguez, Chiapas<br>
-            Tel.: 01-(963)-63-2-0405
-        </p>
-    </div>
+    <section class="invoice">
 
-    <h5>Cliente: {{ $sale->quotationr->clientr->name }}</h5>
-    <h5>Folio: {{ $sale->id }} </h5>
-    <h5>Fecha: {{ $sale->created_at }} </h5>
+        <div align="center">
+            <h3 align >Runa Aceros</h3>
+            <p>Panamericana 1262, Chichima Guadalupe, <br>
+                Centro, CP. 30000, <br>
+                Comitán de Domínguez, Chiapas<br>
+                Tel.: 01-(963)-63-2-0405
+            </p>
+        </div>
 
-    <div class="col-md-12">
-        <table class="table table-striped">
+        <div class="row">
+            <h5><b>Cliente:</b> {{ $sale->quotationr->clientr->uppercase_name }}</h5>
+            <h5><b>Folio:</b> {{ $sale->id }} </h5>
+            <h5><b>Fecha:</b> {{ $sale->sale_date }} </h5>
+        </div>
+
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Cant.</th>
+                    <th>Cantidad</th>
                     <th>Descripción</th>
                     <th>Importe</th>
                 </tr>
             </thead>
 
-            @if ($sale->quotationr->type  == 'produccion')
-                <tbody>
-                    @if ($sale->quotationr->clientr->discount > 0)
+            <tbody>
+                @if ($sale->quotationr->products)
+                    @foreach (unserialize($sale->quotationr->products) as $product)
                         <tr>
-                            <th>1</th>
-                            <th>Subtotal: </th>
-                            <th>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) }} </th>
+                            <td>{{ $product['quantity'] }}</td>
+                            <td>{{ App\Product::find($product['material'])->name }}</td>
+                            <td>$ {{ number_format($product['total'], 2, '.', ',') }}</td>
                         </tr>
-                        <tr>
-                            <th>1</th>
-                            <th>Descuento: </th>
-                            <th>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) * $sale->quotationr->clientr->discount / 100 }} </th>
-                        </tr>
-                    @else
-                        <tr>
-                            <th>1</th>
-                            <th>Subtotal: </th>
-                            <th>$ {{ $sale->amount }} </th>
-                        </tr>
-                    @endif
-                    <tr>
-                        <th>1</th>
-                        <th>Anticipo: </th>
-                        <th>$ {{ $sale->retainer }} </th>
-                    </tr>
-                </tbody>
+                    @endforeach
+                @endif
 
-            @else
-                <tbody>
-                    @if(unserialize($sale->quotationr->products))
-                        @foreach (unserialize($sale->quotationr->products) as $product)
+                @if ($sale->quotationr->type  == 'produccion')
+
+                        @if ($sale->quotationr->clientr->discount > 0)
                             <tr>
-                                <th>{{ $product['quantity'] }}</th>
-                                <th>{{ App\Product::find($product['material'])->name }}</th>
-                                <th>$ {{ $product['total'] }}</th>
+                                <th></th>
+                                <th>Subtotal: </th>
+                                <td>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) }} </td>
                             </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            @endif
+                            <tr>
+                                <th></th>
+                                <th>Descuento: </th>
+                                <td>$ {{ $sale->amount * 100 / (100 - $sale->quotationr->clientr->discount) * $sale->quotationr->clientr->discount / 100 }} </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <th></th>
+                                <th>Subtotal: </th>
+                                <td>$ {{ number_format($sale->amount, 2, '.', ',') }}</td>
+                            </tr>
+                        @endif
+                        <tr>
+                            <th></th>
+                            <th>Anticipo: </th>
+                            <td>$ {{ number_format($sale->retainer, 2, '.', ',') }}</td>
+                        </tr>
+                @endif
+
+            </tbody>
 
             <tfooter>
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    @if ($sale->quotationr->type  == 'produccion')
-                        <th>$ {{ $sale->amount - $sale->retainer }} </th>
-                    @else
-                        <th>$ {{ $sale->amount }}</th>
-                    @endif
-                </tr>
+                <tr><th></th><th>Total: </th><th>{{ $sale->sale_total }}</th></tr>
             </tfooter>
         </table>
-    </div>
 
-    <div class="row no-print">
-        <button onclick="printTicket()" class="btn btn-default">
-            <i class="fa fa-print"></i> Imprimir
-        </button>
-    </div>
+        <div class="row no-print">
+            <button onclick="printTicket()" class="btn btn-warning pull-right">
+                <i class="fa fa-print"></i> Imprimir
+            </button>
+        </div>
+    </section>
 
     <script>
     function printTicket() {

@@ -25,6 +25,8 @@ class SaleController extends Controller
 
         $quotation = Quotation::find($request->quotation);
 
+        $quotation->storeProducts($request);
+
         if ($quotation->clientr->credit) {
             $quotation->status = 'credito';
             $quotation->save();
