@@ -84,6 +84,6 @@ class ReceiptController extends Controller
         HReceipt::find($request->id)
             ->update($request->all());
 
-        return redirect(route('hercules.warehouse.inventory'));
+        return redirect(route('hercules.semis'));
     }
 }

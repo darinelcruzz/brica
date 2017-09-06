@@ -25,8 +25,9 @@
                 </li>
             @else
                 <li>
-                  <a href="{{ route('hercules.order.status', ['id' => $horder->id, 'status' => "surtido $proceso"]) }}"
-                    class="btn btn-primary btn-xs">
+                  <a style="{{ array_search($horder->status, $status) < $number ? "pointer-events: none; display: inline-block;" : '' }}"
+                    href="{{ route('hercules.order.status', ['id' => $horder->id, 'status' => "surtido $proceso"]) }}"
+                    class="btn btn-primary btn-xs" {{ array_search($horder->status, $status) < $number ? " disabled" : '' }}>
                     Listo <i class="fa fa-check" aria-hidden="true"></i>
                   </a>
                 </li>

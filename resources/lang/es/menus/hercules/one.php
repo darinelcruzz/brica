@@ -10,6 +10,10 @@ return [
                 'title' => 'Crear',
                 'route' => 'hercules.receipt.create'
             ],
+            'inventory' => [
+                'title' => 'Semiterminados',
+                'route' => 'hercules.semis'
+            ],
             'list' => [
                 'title' => 'Lista',
                 'route' => 'hercules.receipts'
@@ -20,16 +24,7 @@ return [
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
-        'submenu' => [
-            'index' => [
-                'title' => 'Por surtir',
-                'route' => 'hercules.warehouse'
-            ],
-            'inventory' => [
-                'title' => 'Inventario',
-                'route' => 'hercules.warehouse.inventory'
-            ],
-        ]
+        'route' => 'hercules.warehouse'
     ],
 
     'production' => [

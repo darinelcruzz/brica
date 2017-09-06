@@ -167,6 +167,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'receipt.order'
     ]);
 
+    Route::get('semiterminados', [
+        'uses' => 'Hercules\WarehouseController@inventory',
+        'as' => 'semis'
+    ]);
+
     Route::get('orden/{horder}', [
         'uses' => 'Hercules\OrderController@show',
         'as' => 'order.show'
@@ -205,11 +210,6 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
     Route::get('almacen', [
         'uses' => 'Hercules\WarehouseController@index',
         'as' => 'warehouse'
-    ]);
-
-    Route::get('almacen/inventario', [
-        'uses' => 'Hercules\WarehouseController@inventory',
-        'as' => 'warehouse.inventory'
     ]);
 
     Route::get('almacen/orden/{horder}/carroceria/{hbodywork}', [

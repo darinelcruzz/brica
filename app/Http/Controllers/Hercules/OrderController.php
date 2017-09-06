@@ -63,7 +63,7 @@ class OrderController extends Controller
         ]);
 
         if ($order->status == 'interno') {
-            return redirect(route('hercules.warehouse.inventory'));
+            return redirect(route('hercules.semis'));
         }
         return redirect(route('hercules.production'));
     }
