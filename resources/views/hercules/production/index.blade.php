@@ -10,7 +10,6 @@
                 <th>Descripción</th>
                 <th>Entrega</th>
                 <th>Observaciones</th>
-                <th>Selecciona equipo</th>
                 <th>Mover a</th>
             </tr>
         </template>
@@ -20,22 +19,25 @@
               <tr>
                   <td>{{ $order->id }}</td>
                   <td>
-                      {{ $order->bodyworkr->description }}
+                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;&nbsp;
+                      @if ($order->serial_number)
+                          <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
+                              class="btn btn-primary btn-xs">
+                              <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
+                          </a>
+                      @else
+                          <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
+                              class="btn btn-primary btn-xs" title="GENERAR TICKET">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </a>
+                      @endif
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
                   <td>
-                      @if (!$order->welding)
-                          @include('hercules/production/assign', [
-                              'tprocess' => 'welding', 'tproceso' => 'soldadura', 'tcolor' => 'primary'
-                          ])
-                      @endif
-                      {{ $order->welding }}
-                  </td>
-                  <td>
-                      <a style="{{ !$order->welding ? "pointer-events: none; display: inline-block;" : '' }}"
+                      <a style="{{ !$order->welding || $order->status != 'surtido soldadura' ? "pointer-events: none; display: inline-block;" : '' }}"
                         href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'soldadura']) }}"
-                          class="btn btn-primary btn-xs" {{ !$order->welding ? " disabled" : '' }}>
+                          class="btn btn-primary btn-xs" {{ !$order->welding || $order->status != 'surtido soldadura' ? " disabled" : '' }}>
                           Soldadura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>

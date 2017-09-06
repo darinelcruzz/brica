@@ -177,6 +177,21 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'order.status'
     ]);
 
+    Route::get('orden/{horden}/actualizar', [
+        'uses' => 'Hercules\OrderController@ticket',
+        'as' => 'order.ticket'
+    ]);
+
+    Route::post('orden/actualizar', [
+        'uses' => 'Hercules\OrderController@update',
+        'as' => 'order.update'
+    ]);
+
+    Route::get('orden/imprimir/{horden}', [
+        'uses' => 'Hercules\OrderController@showTicket',
+        'as' => 'order.print_ticket'
+    ]);
+
     Route::get('orden/foto/{horden}', [
         'uses' => 'Hercules\PhotoUploadController@create',
         'as' => 'photo.load'

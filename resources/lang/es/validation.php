@@ -179,6 +179,12 @@ return [
         'observations'          => 'observaciones',
         'startDate'             => 'fecha inicio',
         'endDate'               => 'fecha final',
+        'serial_number'         => 'número de serie',
+        'brand'                 => 'marca',
+        'model'                 => 'modelo',
+        'floor'                 => 'piso',
+        'clothing_spec'         => 'vestido',
+        'welding'               => 'soldador',
     ],
 
 ];

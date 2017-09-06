@@ -10,7 +10,9 @@ class ProductionComposer
 {
     public function compose(View $view)
     {
-        $view->pending = HOrder::where('status', 'surtido soldadura')->get();
+        $view->pending = HOrder::where('status', 'pendiente')
+                        ->orWhere('status', 'surtido soldadura')
+                        ->get();
         $view->welding = HOrder::where('status', 'soldadura')
             ->orWhere('status', 'surtido fondeo')->get();
         $view->anchoring = HOrder::where('status', 'fondeo')
