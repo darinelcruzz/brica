@@ -12,7 +12,7 @@
                   @else
                     <input type="checkbox"> &nbsp;
                   @endif
-                    <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }}
+                    <b>{{ $quantity }}</b> &nbsp; {{ HItem::find($id)->description }} {{ HItem::find($id)->caliber}}
                 </li>
             @endforeach
             <br><br>
