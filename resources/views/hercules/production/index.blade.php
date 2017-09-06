@@ -178,7 +178,7 @@
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
                       @if ($order->photo)
                           <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
+                            class="btn btn-default btn-xs"  title='LISTA DE MATERIALES'>
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
                       @endif
@@ -200,11 +200,18 @@
                       {{ $order->painting }}
                   </td>
                   <td>
-                      <a style="{{ !$order->painting || $order->status != 'surtido pintura' ? "pointer-events: none; display: inline-block;" : '' }}"
-                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
-                          class="btn btn-default btn-xs" {{ !$order->painting || $order->status != 'surtido pintura' ? " disabled" : '' }}>
-                          Pintura <i class="fa fa-forward" aria-hidden="true"></i>
-                      </a>
+                      @if ($order->receiptr->client == 1)
+                          <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'interno']) }}"
+                              class="btn btn-default btn-xs">
+                              <b>Almacén</b> <i class="fa fa-forward" aria-hidden="true"></i>
+                          </a>
+                      @else
+                          <a style="{{ !$order->painting || $order->status != 'surtido pintura' ? "pointer-events: none; display: inline-block;" : '' }}"
+                            href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
+                              class="btn btn-default btn-xs" {{ !$order->painting || $order->status != 'surtido pintura' ? " disabled" : '' }}>
+                              <b>Pintura </b> <i class="fa fa-forward" aria-hidden="true"></i>
+                          </a>
+                      @endif
                   </td>
               </tr>
             @endforeach

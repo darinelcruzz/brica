@@ -21,13 +21,21 @@ class HOrder extends Model
 
     function getStartAttribute()
     {
-        $date = Date::createFromFormat('Y-m-d H:i:s', $this->startDate);
-        return $date->format('d/M/Y h:i a');
+        if ($this->startDate) {
+            $date = Date::createFromFormat('Y-m-d H:i:s', $this->startDate);
+            return $date->format('d/M/Y h:i a');
+        }
+
+        return '';
     }
 
     function getEndAttribute()
     {
-        $date = Date::createFromFormat('Y-m-d H:i:s', $this->endDate);
-        return $date->format('d/M/Y h:i a');
+        if ($this->endDate) {
+            $date = Date::createFromFormat('Y-m-d H:i:s', $this->endDate);
+            return $date->format('d/M/Y h:i a');
+        }
+
+        return '';
     }
 }

@@ -18,8 +18,8 @@
 
                 <table class="table">
                     <tr>
-                        <td><strong>Inicio:</strong>  {{-- $order->start --}}</td>
-                        <td><strong>Término:</strong>  {{-- $order->end --}}</td>
+                        <td><strong>Inicio:</strong>  {{ $order->start }}</td>
+                        <td><strong>Término:</strong>  {{ $order->end }}</td>
                     </tr>
                     <tr>
                         <td><strong>Carrocería tipo:</strong>  {{ $order->bodyworkr->description }}</td>

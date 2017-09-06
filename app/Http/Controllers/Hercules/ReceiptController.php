@@ -33,13 +33,20 @@ class ReceiptController extends Controller
 
     function store(Request $request)
     {
-        $this->validate($request, [
-            'client' => 'required',
-            'bodywork' => 'required',
-            'color' => 'required',
-            'retainer' => 'required',
-            'deliver' => 'required'
-        ]);
+        if ($request->client == 1) {
+            $this->validate($request, [
+                'client' => 'required',
+                'bodywork' => 'required'
+            ]);
+        } else {
+            $this->validate($request, [
+                'client' => 'required',
+                'bodywork' => 'required',
+                'color' => 'required',
+                'retainer' => 'required',
+                'deliver' => 'required'
+            ]);
+        }
 
         HReceipt::create($request->all());
 
@@ -54,5 +61,29 @@ class ReceiptController extends Controller
         ]);
 
         return back();
+    }
+
+    function edit(HReceipt $hreceipt)
+    {
+        $clients = HClient::pluck('name', 'id')->toArray();
+        $bodyworks = HBodywork::pluck('description', 'id')->toArray();
+        $today = Date::now();
+
+        return view('hercules.receipts.edit', compact('hreceipt', 'clients', 'bodyworks', 'today'));
+    }
+
+    function update(Request $request)
+    {
+        $this->validate($request, [
+            'client' => 'required',
+            'color' => 'required',
+            'retainer' => 'required',
+            'deliver' => 'required'
+        ]);
+
+        HReceipt::find($request->id)
+            ->update($request->all());
+
+        return redirect(route('hercules.warehouse.inventory'));
     }
 }

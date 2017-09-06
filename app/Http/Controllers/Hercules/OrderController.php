@@ -62,6 +62,9 @@ class OrderController extends Controller
             'supervisor' => $request->supervisor,
         ]);
 
+        if ($order->status == 'interno') {
+            return redirect(route('hercules.warehouse.inventory'));
+        }
         return redirect(route('hercules.production'));
     }
 }

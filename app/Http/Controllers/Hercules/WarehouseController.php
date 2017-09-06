@@ -11,7 +11,9 @@ class WarehouseController extends Controller
 {
     function index()
     {
-        $orders = HOrder::where('status', '!=', 'terminado')->get();
+        $orders = HOrder::where('status', '!=', 'terminado')
+                        ->where('status', '!=', 'interno')->get();
+
         return view('hercules.warehouse.index', compact('orders'));
     }
 
@@ -32,5 +34,12 @@ class WarehouseController extends Controller
         ];
 
         return view('hercules.warehouse.show', compact('hbodywork', 'horder', 'status', 'processes'));
+    }
+
+    function inventory()
+    {
+        $inventory = HOrder::where('status', 'interno')->get();
+
+        return view('hercules.warehouse.inner', compact('inventory'));
     }
 }
