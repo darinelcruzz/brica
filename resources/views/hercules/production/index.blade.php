@@ -27,7 +27,7 @@
                           </a>
                       @else
                           <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
-                              class="btn btn-success btn-xs" title="GENERAR TICKET">
+                              class="btn btn-primary btn-xs" title="GENERAR TICKET">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                           </a>
                       @endif
