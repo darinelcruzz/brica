@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Charts;
 use App\Quotation;
 use App\Sale;
+use App\Client;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
 
@@ -60,26 +61,37 @@ class ReportController extends Controller
         $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
         $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
 
-        $quotations = Quotation::selectRaw("month(payment_date) as month, day(payment_date) as day,
-            count(*) as quantity")->groupBy('day', 'month', 'payment_date')->get()->toArray();
+        $clients = Client::all();
 
         $values = [];
         $labels = [];
 
-        foreach ($quotations as $quotation) {
-            array_push($values, $quotation['quantity']);
-            array_push($labels, $quotation['day'] . '-' . $quotation['month']);
+        foreach ($clients as $client) {
+            if ($client->name != "HERCULES" && $client->name != "PUBLICO GENERAL") {
+                if ($client->getMoney($startDate, $endDate) > 0) {
+                    array_push($values, $client->getMoney($startDate, $endDate));
+                    array_push($labels, $client->uppercase_name);
+                }
+            }
         }
 
         $clientsChart = Charts::create('bar', 'highcharts')
-                          ->elementLabel("Total")
-                          ->title('Clientes')
+                          ->elementLabel("Total ($)")
+                          ->title('Reporte $ clientes')
                           ->values($values)
                           ->labels($labels)
-                          ->colors(['#3c8dbc'])
-                          ->dimensions(1000, 500);
+                          ->colors(['#3c8dbc', '#f56954'])
+                          ->dimensions(1000, 750);
 
         return view('runa.reports.clients', compact('clientsChart', 'startDate', 'endDate'));
+    }
+
+    function products(Request $request)
+    {
+        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
+        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+
+        return view('runa.reports.products', compact('startDate', 'endDate'));
     }
 
     function getTotals($startDate, $endDate)

@@ -26,7 +26,31 @@ class Client extends Model
             $string = implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
           }
         }
-        
+
         return $string;
+    }
+
+    function getMoneyMadeAttribute()
+    {
+        $total = 0;
+        foreach ($this->quotations as $quotation) {
+            $total += $quotation->sale ? $quotation->sale->amount: $quotation->amount;
+        }
+
+        return $total;
+    }
+
+    function getMoney($startDate, $endDate)
+    {
+        $quotations = $this->quotations;
+
+        $total = 0;
+        foreach ($quotations as $quotation) {
+            if ($quotation->payment_date > $startDate && $quotation->payment_date < $endDate) {
+                $total += $quotation->sale ? $quotation->sale->amount: $quotation->amount;
+            }
+        }
+
+        return $total;
     }
 }
