@@ -46,7 +46,7 @@ return [
 
     'admin' => [
         'title' => 'Administración',
-        'icon' => 'fa fa-line-chart',
+        'icon' => 'fa fa-eye',
         'submenu' => [
             'cash' => [
                 'title' => 'Caja',
@@ -60,13 +60,28 @@ return [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
             ],
+        ]
+    ],
+
+    'reports' => [
+        'title' => 'Reportes',
+        'icon' => 'fa fa-line-chart',
+        'submenu' => [
             'productivity' => [
-                'title' => 'Reporte equipos',
+                'title' => 'Equipos',
                 'route' => 'runa.report.teams'
             ],
             'sales' => [
-                'title' => 'Reporte ventas',
+                'title' => 'Ventas',
                 'route' => 'runa.report.sales'
+            ],
+            'clients' => [
+                'title' => 'Clientes',
+                'route' => 'runa.report.clients'
+            ],
+            'products' => [
+                'title' => 'Productos',
+                'route' => 'runa.report.products'
             ],
         ]
     ],
