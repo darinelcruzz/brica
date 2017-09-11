@@ -92,6 +92,21 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'bodywork.update'
     ]);
 
+    Route::get('carrocerias/duplicar/{hbodywork}', [
+        'uses' => 'Hercules\BodyworkController@clone',
+        'as' => 'bodywork.clone'
+    ]);
+
+    Route::post('carrocerias/duplicar', [
+        'uses' => 'Hercules\BodyworkController@duplicate',
+        'as' => 'bodywork.duplicate'
+    ]);
+
+    Route::get('carrocerias/deshabilitar/{hbodywork}', [
+        'uses' => 'Hercules\BodyworkController@disable',
+        'as' => 'bodywork.disable'
+    ]);
+
     Route::get('clientes', [
         'uses' => 'Hercules\ClientController@index',
         'as' => 'clients'

@@ -11,7 +11,7 @@ class BodyworkController extends Controller
 {
     function index()
     {
-        $bodyworks = HBodywork::all();
+        $bodyworks = HBodywork::where('price', 1)->get();
         return view('hercules.bodyworks.index', compact('bodyworks'));
     }
 
@@ -93,6 +93,33 @@ class BodyworkController extends Controller
         return view('hercules.bodyworks.quantities', compact('bodywork', 'formerData'));
     }
 
+    function clone(HBodywork $hbodywork)
+    {
+        return view('hercules.bodyworks.clone', compact('hbodywork'));
+    }
+
+    function duplicate(Request $request)
+    {
+        $bodywork = HBodywork::find($request->id);
+
+        $formerData = $this->getOldProcesses($bodywork);
+
+        $bodywork = HBodywork::create([
+            'description' => $request->description,
+            'family' => $request->family,
+            'height' => $request->height,
+            'width' => $request->width,
+            'length' => $request->length,
+            'welding' => serialize($request->welding),
+            'anchoring' => serialize($request->anchoring),
+            'clothing' => serialize($request->clothing),
+            'painting' => serialize($request->painting),
+            'mounting' => serialize($request->mounting),
+        ]);
+
+        return view('hercules.bodyworks.quantities', compact('bodywork', 'formerData'));
+    }
+
     function buildProcess($ids, $quantities)
     {
         $process = [];
@@ -115,5 +142,14 @@ class BodyworkController extends Controller
         ];
 
         return $processes;
+    }
+
+    function disable(HBodywork $hbodywork)
+    {
+        $hbodywork->update([
+            'price' => 0,
+        ]);
+
+        return back();
     }
 }

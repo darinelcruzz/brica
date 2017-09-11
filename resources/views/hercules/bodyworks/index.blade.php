@@ -8,7 +8,7 @@
             <tr>
                 <th>ID</th>
                 <th>Descripción</th>
-                <th>Medidas</th>
+                <th>Medidas (alto x largo x ancho)</th>
                 <th>Costo</th>
             </tr>
         </template>
@@ -26,11 +26,21 @@
                         title='EDITAR'>
                           <i class="fa fa-pencil" aria-hidden="true"></i>
                       </a>
+                      &nbsp;&nbsp;
+                      <a href="{{ route('hercules.bodywork.clone', ['bodywork' => $bodywork->id]) }}"
+                        title='DUPLICAR'>
+                          <i class="fa fa-clone" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;&nbsp;
+                      <a href="{{ route('hercules.bodywork.disable', ['bodywork' => $bodywork->id]) }}"
+                        title='DESHABILITAR'>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
                   </td>
                   <td>
-                      Alto: {{ $bodywork->height }} m<br>
-                      Largo: {{ $bodywork->length }} m<br>
-                      Ancho: {{ $bodywork->width }} m
+                      {{ $bodywork->height }} m <i class="fa fa-times" aria-hidden="true"></i>
+                      {{ $bodywork->length }} m <i class="fa fa-times" aria-hidden="true"></i>
+                      {{ $bodywork->width }} m
                   </td>
                   <td>{{ '$ ' . number_format($bodywork->computeTotal(), 2, '.', ',') }}</td>
               </tr>
