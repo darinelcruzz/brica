@@ -16,6 +16,11 @@ class PersonnelController extends Controller
 
     function create(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'type' => 'required'
+        ]);
+
         HPersonnel::create($request->all());
 
         return redirect(route('hercules.personnel'));

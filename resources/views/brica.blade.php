@@ -38,7 +38,7 @@
   <div class="lockscreen-item">
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <img src="{{ asset('/img/logoch.jpg') }}" alt="Hercules">
+      <img src="{{ asset('/img/carrocerias.png') }}" alt="Hercules">
     </div>
     <!-- /.lockscreen-image -->
 
