@@ -6,12 +6,12 @@
 	<row-woc col="col-md-10 col-md-offset-1">
 		<div class="row">
 			<div class="col-md-6">
-				{!! Field::date('startDate', $startDate, ['tpl' => 'templates/withicon'],
+				{!! Field::date('startDate', $dates['start'], ['tpl' => 'templates/withicon'],
 					['icon' => 'calendar-o']) !!}
 			</div>
 
 			<div class="col-md-6">
-				{!! Field::date('endDate', $endDate, ['tpl' => 'templates/withicon'],
+				{!! Field::date('endDate', $dates['end'], ['tpl' => 'templates/withicon'],
 					['icon' => 'calendar']) !!}
 			</div>
 		</div>

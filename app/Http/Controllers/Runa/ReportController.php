@@ -15,83 +15,65 @@ class ReportController extends Controller
 {
     function teams(Request $request)
     {
-        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
-        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+        $dates = $this->getFormattedDates($request);
 
-        $quotations = $this->getTotals($startDate, $endDate);
+        $money = $this->createChart(
+            'Dinero', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
+            $this->getTotals($dates['start'], $dates['end'])
+        );
 
-        $money = Charts::create('bar', 'highcharts')
-                ->title('Dinero')
-                ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
-                ->labels(['Runa1', 'Runa2', 'Runa3', 'Runa4'])
-                ->elementLabel('Total generado ($)')
-                ->values($this->getTotals($startDate, $endDate))
-                ->dimensions(0,500);
+        $works = $this->createChart(
+            'Trabajos', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
+            $this->getWorks($dates['start'], $dates['end'])
+        );
 
-        $works = Charts::create('bar', 'highcharts')
-                ->title('Trabajos')
-                ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
-                ->labels(['Runa1', 'Runa2', 'Runa3', 'Runa4'])
-                ->elementLabel('Total trabajado')
-                ->values($this->getWorks($startDate, $endDate))
-                ->dimensions(0,500);
-
-        return view('runa.reports.teams', compact('money', 'works', 'startDate', 'endDate'));
+        return view('runa.reports.teams', compact('money', 'works', 'dates'));
     }
 
     function sales(Request $request)
     {
-      $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
-      $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+      $dates = $this->getFormattedDates($request);
 
-      $data = $this->getSalesTotals($startDate, $endDate);
-      $salesChart = Charts::create('bar', 'highcharts')
-                        ->elementLabel("Total")
-                        ->title('Ventas')
-                        ->values($data[0])
-                        ->labels($data[1])
-                        ->colors(['#3c8dbc'])
-                        ->dimensions(1000, 500);
+      $data = $this->getSalesTotals($dates['start'], $dates['end']);
 
-      return view('runa.reports.sales', compact('salesChart', 'startDate', 'endDate'));
+      $salesChart = $this->createChart('Ventas', $data[1], $data[0]);
+
+      return view('runa.reports.sales', compact('salesChart', 'dates'));
     }
 
     function clients(Request $request)
     {
-        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
-        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+        $dates = $this->getFormattedDates($request);
 
-        $clients = Client::all();
+        $clients = Client::where([
+            ['name', '!=', 'HERCULES'],
+            ['name', '!=', 'PUBLICO GENERAL'],
+        ])->get();
+
+        $labels = $clients->filter(function ($client) use ($dates) {
+            return $client->getMoney($dates['start'], $dates['end']) > 0;
+        })->transform(function ($client) {
+            return $client->uppercase_name;
+        })->toArray();
 
         $values = [];
-        $labels = [];
 
         foreach ($clients as $client) {
-            if ($client->name != "HERCULES" && $client->name != "PUBLICO GENERAL") {
-                if ($client->getMoney($startDate, $endDate) > 0) {
-                    array_push($values, $client->getMoney($startDate, $endDate));
-                    array_push($labels, $client->uppercase_name);
-                }
+            if ($client->getMoney($dates['start'], $dates['end']) > 0) {
+                array_push($values, $client->getMoney($dates['start'], $dates['end']));
             }
         }
 
-        $clientsChart = Charts::create('bar', 'highcharts')
-                          ->elementLabel("Total ($)")
-                          ->title('Reporte $ clientes')
-                          ->values($values)
-                          ->labels($labels)
-                          ->colors(['#3c8dbc', '#f56954'])
-                          ->dimensions(1000, 750);
+        $clientsChart = $this->createChart('Clientes', $labels, $values);
 
-        return view('runa.reports.clients', compact('clientsChart', 'startDate', 'endDate'));
+        return view('runa.reports.clients', compact('clientsChart', 'dates'));
     }
 
     function products(Request $request)
     {
-        $startDate = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
-        $endDate = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+        $dates = $this->getFormattedDates($request);
 
-        return view('runa.reports.products', compact('startDate', 'endDate'));
+        return view('runa.reports.products', compact('dates'));
     }
 
     function getTotals($startDate, $endDate)
@@ -166,5 +148,27 @@ class ReportController extends Controller
         }
 
         return $quantities;
+    }
+
+    function getFormattedDates(Request $request)
+    {
+        $start = $request->startDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
+        $end = $request->endDate == 0 ? Date::now() : Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+
+        return [
+            'start' => $start,
+            'end' => $end
+        ];
+    }
+
+    function createChart($title, $labels, $values)
+    {
+        return Charts::create('bar', 'highcharts')
+                ->title($title)
+                ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
+                ->labels($labels)
+                ->elementLabel('Total generado ($)')
+                ->values($values)
+                ->dimensions(0,500);
     }
 }
