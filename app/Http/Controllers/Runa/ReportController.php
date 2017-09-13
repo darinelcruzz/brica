@@ -8,6 +8,7 @@ use Charts;
 use App\Quotation;
 use App\Sale;
 use App\Client;
+use App\Product;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
 
@@ -64,7 +65,7 @@ class ReportController extends Controller
             }
         }
 
-        $clientsChart = $this->createChart('Clientes', $labels, $values);
+        $clientsChart = $this->createChart('Clientes', $labels, $values, 'Total compras ($)');
 
         return view('runa.reports.clients', compact('clientsChart', 'dates'));
     }
@@ -73,7 +74,37 @@ class ReportController extends Controller
     {
         $dates = $this->getFormattedDates($request);
 
-        return view('runa.reports.products', compact('dates'));
+        $quotations = Quotation::whereBetween('payment_date', [$dates['start'], $dates['end']])
+            ->where('status', '!=', 'pendiente')
+            ->where('status', '!=', 'cancelado')
+            ->where('status', '!=', 'credito')
+            ->get();
+
+        $items = Product::all();
+
+        $data = [];
+
+        foreach ($items as $item) {
+            $total = 0;
+
+            foreach ($quotations as $quotation) {
+                $products = unserialize($quotation->products);
+
+                if ($products) {
+                    foreach ($products as $product) {
+                        $total += $item->id == $product['material'] ? $product['quantity'] : 0;
+                    }
+                }
+            }
+
+            if ($total) {
+                $data[$item->complete_name] = $total;
+            }
+        }
+
+        $chart = $this->createChart('Productos', array_keys($data), array_values($data), 'Total vendido');
+
+        return view('runa.reports.products', compact('dates', 'chart'));
     }
 
     function getTotals($startDate, $endDate)
@@ -161,13 +192,13 @@ class ReportController extends Controller
         ];
     }
 
-    function createChart($title, $labels, $values)
+    function createChart($title, $labels, $values, $element = 'Total generado ($)')
     {
         return Charts::create('bar', 'highcharts')
                 ->title($title)
                 ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
                 ->labels($labels)
-                ->elementLabel('Total generado ($)')
+                ->elementLabel($element)
                 ->values($values)
                 ->dimensions(0,500);
     }

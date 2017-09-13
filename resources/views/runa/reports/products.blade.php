@@ -23,7 +23,7 @@
 
 	<div class="row">
 		<div align="center">
-			<h1>PENDIENTE</h1> {{--!! $productsChart->render() !!--}}
+			{!! $chart->render() !!}
 		</div>
 	</div>
 @endsection

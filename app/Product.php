@@ -14,4 +14,17 @@ class Product extends Model
     {
         return '$ ' . number_format($this->price, 2, '.', ',');
     }
+
+    function getCompleteNameAttribute()
+    {
+        $string = ucwords(strtolower($this->name));
+
+        foreach (array('-', '\'') as $delimiter) {
+          if (strpos($string, $delimiter) !== false) {
+            $string = implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
+          }
+        }
+
+        return $string . " ($this->unity)";
+    }
 }
