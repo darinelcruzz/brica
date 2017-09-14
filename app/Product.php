@@ -15,7 +15,7 @@ class Product extends Model
         return '$ ' . number_format($this->price, 2, '.', ',');
     }
 
-    function getCompleteNameAttribute()
+    function getLabel($quantity)
     {
         $string = ucwords(strtolower($this->name));
 
@@ -25,6 +25,6 @@ class Product extends Model
           }
         }
 
-        return $string . " ($this->unity)";
+        return $string . " ($quantity $this->unity)";
     }
 }

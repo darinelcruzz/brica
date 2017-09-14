@@ -85,24 +85,26 @@ class ReportController extends Controller
         $data = [];
 
         foreach ($items as $item) {
-            $total = 0;
+            $totalP = 0;
+            $totalU = 0;
 
             foreach ($quotations as $quotation) {
                 $products = unserialize($quotation->products);
 
                 if ($products) {
                     foreach ($products as $product) {
-                        $total += $item->id == $product['material'] ? $product['quantity'] : 0;
+                        $totalP += $item->id == $product['material'] ? $product['total'] : 0;
+                        $totalU += $item->id == $product['material'] ? $product['quantity'] : 0;
                     }
                 }
             }
 
-            if ($total) {
-                $data[$item->complete_name] = $total;
+            if ($totalP) {
+                $data[$item->getLabel($totalU)] = $totalP;
             }
         }
 
-        $chart = $this->createChart('Productos', array_keys($data), array_values($data), 'Total vendido');
+        $chart = $this->createChart('Productos', array_keys($data), array_values($data), 'Total vendido ($)');
 
         return view('runa.reports.products', compact('dates', 'chart'));
     }
