@@ -31,11 +31,11 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::number('amount', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
+                        {!! Field::number('amount', ['tpl' => 'templates/withicon', 'step' => '0.01', 'min' => '0'], ['icon' => 'usd']) !!}
                     </div>
 
                     <div class="col-md-6">
-                        {!! Field::number('retainer', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'money']) !!}
+                        {!! Field::number('retainer', 0, ['tpl' => 'templates/withicon', 'step' => '0.01', 'min' => '0'], ['icon' => 'money']) !!}
                     </div>
                 </div>
 

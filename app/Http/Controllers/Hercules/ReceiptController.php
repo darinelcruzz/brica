@@ -43,8 +43,8 @@ class ReceiptController extends Controller
                 'client' => 'required',
                 'bodywork' => 'required',
                 'color' => 'required',
-                'retainer' => 'required',
-                'deliver' => 'required'
+                'deliver' => 'required',
+                'amount' => 'required'
             ]);
         }
 
