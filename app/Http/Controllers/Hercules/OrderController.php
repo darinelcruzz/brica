@@ -14,11 +14,7 @@ class OrderController extends Controller
     {
         $order = HOrder::find($id);
 
-        $order->update([
-            'status' => $status,
-            'startDate' => $status == 'soldadura' ? Date::now()->format('Y-m-d H:i:s') : $order->startDate,
-            'endDate' => $status == 'terminado' ? Date::now()->format('Y-m-d H:i:s') : $order->endDate,
-        ]);
+        $order->updateStatus($status);
 
         if ($status == 'surtido soldadura') {
             return redirect(route('hercules.warehouse'));
@@ -26,6 +22,16 @@ class OrderController extends Controller
 
         return back();
 
+    }
+
+    function move(Request $request)
+    {
+        $this->validate($request, ['status' => 'required']);
+
+        $order = HOrder::find($request->id);
+        $order->updateStatus($request->status);
+
+        return back();
     }
 
     function ticket($id)
@@ -51,7 +57,7 @@ class OrderController extends Controller
 
         $order = HOrder::find($request->id);
 
-        $order->update([
+        /*$order->update([
             'serial_number' => $request->serial_number,
             'brand' => $request->brand,
             'model' => $request->model,
@@ -60,7 +66,9 @@ class OrderController extends Controller
             'welding' => $request->welding,
             'clothing_spec' => $request->clothing_spec,
             'supervisor' => $request->supervisor,
-        ]);
+        ]);*/
+
+        $order->update($request->except(['id']));
 
         if ($order->status == 'interno') {
             return redirect(route('hercules.semis'));

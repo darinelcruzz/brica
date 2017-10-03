@@ -46,276 +46,56 @@
         </template>
     </data-table>
 
-    <data-table col="col-md-12" title="Soldadura"
-        example="example2" color="box-warning" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-                <th>Asignado a</th>
-                <th>Inicio</th>
-                <th>Selecciona equipo</th>
-                <th>Mover a</th>
-            </tr>
-        </template>
+    @foreach ($processes as $process)
+        <data-table col="col-md-12" title="{{ ucfirst($process['spanish']) }}"
+            example="example{{ $loop->index + 2 }}" color="box-{{ $process['color'] }}" collapsed="collapsed-box">
+            <template slot="header">
+                <tr>
+                    @foreach ($header as $th)
+                        @if (!$loop->parent->last)
+                            <th>{{ $th }}</th>
+                        @elseif ($th != 'Selecciona equipo')
+                            <th>{{ $th }}</th>
+                        @endif
+                    @endforeach
+                </tr>
+            </template>
 
-        <template slot="body">
-            @foreach($welding as $order)
-              <tr>
-                  <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      @if ($order->photo)
-                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-warning btn-xs"  title='FOTO'>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
+            <template slot="body">
+                @foreach(${$process['english']} as $order)
+                  <tr>
+                      <td>{{ $order->id }}</td>
+                      <td>
+                          {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
+                          @includeWhen($order->photo, 'hercules/components/photo')
+                          @include('hercules/components/upload_photo')
+                      </td>
+                      <td>{{ $order->receiptr->deliver_date }}</td>
+                      <td>{{ $order->{$process['english']} }}</td>
+                      <td>{{ $order->startDate }}</td>
+                      @if (!$loop->parent->last)
+                          <td>
+                              @includeWhen(!$order->{$process['next']['e']}, 'hercules/production/assign')
+                              {{ $order->{$process['next']['e']} }}
+                          </td>
                       @endif
-                      &nbsp;
-                      <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
-                        class="btn btn-warning btn-xs"  title='FOTO'>
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->welding }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>
-                      @if (!$order->anchoring)
-                          @include('hercules/production/assign', [
-                              'tprocess' => 'anchoring', 'tproceso' => 'fondeo', 'tcolor' => 'warning'
-                          ])
-                      @endif
-                      {{ $order->anchoring }}
-                  </td>
-                  <td>
-                      <a style="{{ !$order->anchoring || $order->status != 'surtido fondeo' ? "pointer-events: none; display: inline-block;" : '' }}"
-                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'fondeo']) }}"
-                          class="btn btn-warning btn-xs" {{ !$order->anchoring || $order->status != 'surtido fondeo' ? " disabled" : '' }}>
-                          Fondeo <i class="fa fa-forward" aria-hidden="true"></i>
-                      </a>
-                  </td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
-
-    <data-table col="col-md-12" title="Fondeo"
-        example="example3" color="box-success" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-                <th>Asignado a</th>
-                <th>Inicio</th>
-                <th>Selecciona equipo</th>
-                <th>Mover a</th>
-            </tr>
-        </template>
-
-        <template slot="body">
-            @foreach($anchoring as $order)
-              <tr>
-                  <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      @if ($order->photo)
-                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-success btn-xs"  title='VER PROGRESO'>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                      @endif
-                      &nbsp;
-                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
-                        class="btn btn-success btn-xs"  title='FOTO'>
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->anchoring }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>
-                      @if (!$order->clothing)
-                          @include('hercules/production/assign', [
-                              'tprocess' => 'clothing', 'tproceso' => 'vestido', 'tcolor' => 'success'
-                          ])
-                      @endif
-                      {{ $order->clothing }}
-                  </td>
-                  <td>
-                      <a style="{{ !$order->clothing || $order->status != 'surtido vestido' ? "pointer-events: none; display: inline-block;" : '' }}"
-                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
-                          class="btn btn-success btn-xs" {{ !$order->clothing || $order->status != 'surtido vestido' ? " disabled" : '' }}>
-                          Vestido <i class="fa fa-forward" aria-hidden="true"></i>
-                      </a>
-                  </td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
-
-    <data-table col="col-md-12" title="Vestido"
-        example="example4" color="box-default" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-                <th>Asignado a</th>
-                <th>Inicio</th>
-                <th>Selecciona equipo</th>
-                <th>Mover a</th>
-            </tr>
-        </template>
-
-        <template slot="body">
-            @foreach($clothing as $order)
-              <tr>
-                  <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      @if ($order->photo)
-                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-default btn-xs"  title='LISTA DE MATERIALES'>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                      @endif
-                      &nbsp;
-                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
-                        class="btn btn-default btn-xs"  title='FOTO'>
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->clothing }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>
-                      @if (!$order->painting)
-                          @include('hercules/production/assign', [
-                              'tprocess' => 'painting', 'tproceso' => 'pintura', 'tcolor' => 'default'
-                          ])
-                      @endif
-                      {{ $order->painting }}
-                  </td>
-                  <td>
-                      @if ($order->receiptr->client == 1)
-                          <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'interno']) }}"
-                              class="btn btn-default btn-xs">
-                              <b>Almacén</b> <i class="fa fa-forward" aria-hidden="true"></i>
-                          </a>
-                      @else
-                          <a style="{{ !$order->painting || $order->status != 'surtido pintura' ? "pointer-events: none; display: inline-block;" : '' }}"
-                            href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pintura']) }}"
-                              class="btn btn-default btn-xs" {{ !$order->painting || $order->status != 'surtido pintura' ? " disabled" : '' }}>
-                              <b>Pintura </b> <i class="fa fa-forward" aria-hidden="true"></i>
-                          </a>
-                      @endif
-                  </td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
-
-    <data-table col="col-md-12" title="Pintura"
-        example="example5" color="box-info" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-                <th>Asignado a</th>
-                <th>Inicio</th>
-                <th>Selecciona equipo</th>
-                <th>Mover a</th>
-            </tr>
-        </template>
-
-        <template slot="body">
-            @foreach($painting as $order)
-              <tr>
-                  <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      @if ($order->photo)
-                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-info btn-xs"  title='LISTA DE MATERIALES'>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                      @endif
-                      &nbsp;
-                      <a href="{{ route('hercules.photo.load', ['horder' => $order->id]) }}"
-                        class="btn btn-info btn-xs"  title='FOTO'>
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->painting }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>
-                      @if (!$order->mounting)
-                          @include('hercules/production/assign', [
-                              'tprocess' => 'mounting', 'tproceso' => 'montaje', 'tcolor' => 'info'
-                          ])
-                      @endif
-                      {{ $order->mounting }}
-                  </td>
-                  <td>
-                      <a style="{{ !$order->mounting || $order->status != 'surtido montaje' ? "pointer-events: none; display: inline-block;" : '' }}"
-                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'montaje']) }}"
-                          class="btn btn-info btn-xs" {{ !$order->mounting || $order->status != 'surtido montaje' ? " disabled" : '' }}>
-                          Montaje <i class="fa fa-forward" aria-hidden="true"></i>
-                      </a>
-                  </td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
-
-    <data-table col="col-md-12" title="Montaje"
-        example="example6" color="box-danger" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Entrega</th>
-                <th>Asignado a</th>
-                <th>Inicio</th>
-                <th>Mover a</th>
-            </tr>
-        </template>
-
-        <template slot="body">
-            @foreach($mounting as $order)
-              <tr>
-                  <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
-                      @if ($order->photo)
-                          <a href="{{ Storage::url(substr($order->photo, 9)) }}"
-                            class="btn btn-danger btn-xs"  title='VER PROGRESO'>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                      @endif
-                      &nbsp;
-                      <a href="{{ route('hercules.photo.load', ['bodywork' => $order->id]) }}"
-                        class="btn btn-danger btn-xs"  title='ACTUALIZAR'>
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->mounting }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"
-                          class="btn btn-danger btn-xs" title="TERMINAR">
-                          Terminar &nbsp;<i class="fa fa-check" aria-hidden="true"></i>
-                      </a>
-                  </td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
+                      <td>
+                          @if ($order->receiptr->client == 1)
+                              @include('hercules/production/moveto')
+                          @elseif ($loop->parent->last)
+                              <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"
+                                  class="btn btn-{{ $process['color'] }} btn-xs">
+                                  {{ ucfirst($process['next']['s']) }}
+                                  <i class="fa fa-forward" aria-hidden="true"></i>
+                              </a>
+                          @else
+                              @include('hercules/components/sbutton')
+                          @endif
+                      </td>
+                  </tr>
+                @endforeach
+            </template>
+        </data-table>
+    @endforeach
 
 @endsection

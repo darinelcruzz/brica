@@ -10,7 +10,7 @@
                 <th>Descripción</th>
                 <th>Entrega</th>
                 <th>Pendientes</th>
-                <th>Mover a</th>
+                <th>A producción</th>
             </tr>
         </template>
 
@@ -47,9 +47,9 @@
                       @endif
                   </td>
                   <td>
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'vestido']) }}"
+                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => $order->whereToGo ]) }}"
                           class="btn btn-primary btn-xs">
-                          Producción <i class="fa fa-forward" aria-hidden="true"></i>
+                          {{ ucfirst($order->whereToGo) }} <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
               </tr>

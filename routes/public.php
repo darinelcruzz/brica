@@ -197,6 +197,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'order.status'
     ]);
 
+    Route::post('orden/mover', [
+        'uses' => 'Hercules\OrderController@move',
+        'as' => 'order.move'
+    ]);
+
     Route::get('orden/{horden}/actualizar', [
         'uses' => 'Hercules\OrderController@ticket',
         'as' => 'order.ticket'

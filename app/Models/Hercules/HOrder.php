@@ -38,4 +38,30 @@ class HOrder extends Model
 
         return '';
     }
+
+    function updateStatus($status)
+    {
+        $this->update([
+            'status' => $status,
+            'startDate' => $status == 'soldadura' ? Date::now()->format('Y-m-d H:i:s') : $this->startDate,
+            'endDate' => $status == 'terminado' ? Date::now()->format('Y-m-d H:i:s') : $this->endDate,
+        ]);
+    }
+
+    function isOkToMove($process)
+    {
+        return $this->{$process['next']['e']} && $this->status == "surtido {$process['next']['s']}";
+    }
+
+    function getWhereToGoAttribute()
+    {
+        $processes = ['welding' => 'soldadura','anchoring' => 'fondeo',
+                'clothing' => 'vestido','painting' => 'pintura','mounting' => 'montaje'
+            ];
+        foreach ($processes as $english => $spanish) {
+            if ($this->$english == null) {
+                return $spanish;
+            }
+        }
+    }
 }

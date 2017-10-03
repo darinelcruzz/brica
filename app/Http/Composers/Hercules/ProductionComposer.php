@@ -26,5 +26,20 @@ class ProductionComposer
         $view->terminated = HOrder::where('status', 'terminado')->get();
 
         $view->personnel = HPersonnel::all();
+
+        $view->header = ['Orden', 'Descripción', 'Entrega', 'Asignado a', 'Inicio', 'Selecciona equipo', 'Mover a'];
+
+        $view->processes = [
+            ['english' => 'welding', 'spanish' => 'soldadura', 'color' => 'warning',
+             'next' => ['e' => 'anchoring', 's' => 'fondeo']],
+            ['english' => 'anchoring', 'spanish' => 'fondeo', 'color' => 'success',
+             'next' => ['e' => 'clothing', 's' => 'vestido']],
+            ['english' => 'clothing', 'spanish' => 'vestido', 'color' => 'default',
+             'next' => ['e' => 'painting', 's' => 'pintura']],
+            ['english' => 'painting', 'spanish' => 'pintura', 'color' => 'info',
+             'next' => ['e' => 'mounting', 's' => 'montaje']],
+            ['english' => 'mounting', 'spanish' => 'montaje', 'color' => 'danger',
+             'next' => ['e' => 'finished', 's' => 'terminado']],
+        ];
     }
 }
