@@ -55,13 +55,15 @@ class HOrder extends Model
 
     function getWhereToGoAttribute()
     {
-        $processes = ['welding' => 'soldadura','anchoring' => 'fondeo',
+        $processes = ['welding' => 'soldadura', 'anchoring' => 'fondeo',
                 'clothing' => 'vestido','painting' => 'pintura','mounting' => 'montaje'
-            ];
+        ];
+        $former = 'pendiente';
         foreach ($processes as $english => $spanish) {
             if ($this->$english == null) {
-                return $spanish;
+                return $former;
             }
+            $former = $spanish;
         }
     }
 }
