@@ -26,7 +26,7 @@
                     <div class="col-sm-4 invoice-col">
                       Recibí de:
                       <address>
-                        <strong>{{ $hreceipt->clientr->name }}</strong><br>
+                        <strong>{{ $hreceipt->name }}</strong><br>
                         {{ $hreceipt->clientr->address }}<br>
                         {{ $hreceipt->clientr->city }}<br>
                         {{ $hreceipt->clientr->phone }}<br>

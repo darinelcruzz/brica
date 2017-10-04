@@ -41,8 +41,12 @@
                               Actualizar ticket &nbsp;<i class="fa fa-file" aria-hidden="true"></i>
                           </a>
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
-                              class="btn btn-primary btn-xs">
-                              <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
+                              class="btn btn-primary btn-xs" title="IMPRIMIR TICKET">
+                              <i class="fa fa-print" aria-hidden="true"></i>
+                          </a>
+                          <a href="{{ route('hercules.receipt.show', ['id' => $order->receipt]) }}"
+                              class="btn btn-primary btn-xs" title="IMPRIMIR RECIBO">
+                              <i class="fa fa-file-text" aria-hidden="true"></i>
                           </a>
                       @endif
                   </td>
