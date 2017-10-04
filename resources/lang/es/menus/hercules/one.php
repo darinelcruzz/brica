@@ -32,11 +32,11 @@ return [
         'icon' => 'fa fa-cogs',
         'submenu' => [
             'works' => [
-                'title' => 'Trabajos',
+                'title' => 'Pendientes',
                 'route' => 'hercules.production'
             ],
-            'inventory' => [
-                'title' => 'Generar ticket',
+            'finished' => [
+                'title' => 'Terminados',
                 'route' => 'hercules.production.done'
             ],
         ]

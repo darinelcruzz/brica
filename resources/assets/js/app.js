@@ -37,6 +37,7 @@ const app = new Vue({
         selected: '',
         selectedDesign: '',
         checked: [],
+        hclient: "",
     },
     methods: {
         disable(option) {

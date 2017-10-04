@@ -20,8 +20,11 @@
             @foreach($receipts as $receipt)
               <tr>
                   <td>{{ $receipt->id }}</td>
-                  <td>{{ $receipt->clientr->name }}</td>
-                  <td>{{ $receipt->bodyworkr->description }}</td>
+                  <td>{{ $receipt->name }}</td>
+                  <td>
+                      {{ $receipt->bodyworkr->description }} <br>
+                      <code>{{ $receipt->serial_number }}</code>
+                  </td>
                   <td>{{ $receipt->formatted_retainer }}</td>
                   <td>{{ $receipt->color }}</td>
                   <td>{{ $receipt->observations }}</td>

@@ -39,6 +39,18 @@ class HOrder extends Model
         return '';
     }
 
+    function getStartDateForFinishedAttribute()
+    {
+        $date = Date::createFromFormat('Y-m-d H:i:s', $this->startDate);
+        return $date->format('d, M h:i a');
+    }
+
+    function getEndDateForFinishedAttribute()
+    {
+        $date = Date::createFromFormat('Y-m-d H:i:s', $this->endDate);
+        return $date->format('d, M h:i a');
+    }
+
     function updateStatus($status)
     {
         $this->update([

@@ -24,7 +24,8 @@
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs">
                               <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
-                          </a>
+                          </a><br>
+                          <code>{{ $order->serial_number }}</code>
                       @else
                           <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs" title="GENERAR TICKET">
@@ -69,6 +70,8 @@
                           {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
                           @includeWhen($order->photo, 'hercules/components/photo')
                           @include('hercules/components/upload_photo')
+                          <br>
+                          <code>{{ $order->serial_number }}</code>
                       </td>
                       <td>{{ $order->receiptr->deliver_date }}</td>
                       <td>{{ $order->{$process['english']} }}</td>

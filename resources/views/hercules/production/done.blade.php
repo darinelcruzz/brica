@@ -8,9 +8,9 @@
             <tr>
                 <th>Orden</th>
                 <th>Descripción</th>
+                <th>Cliente</th>
                 <th>Entrega</th>
-                <th>Inicio</th>
-                <th>Final</th>
+                <th>Inicio/Final</th>
                 <th>Observaciones</th>
             </tr>
         </template>
@@ -19,16 +19,10 @@
             @foreach($terminated as $order)
               <tr>
                   <td>{{ $order->id }}</td>
-                  <td>
-                      {{ $order->bodyworkr->description }} &nbsp;
-                      <a href="{{ route('hercules.production.ticket', ['id' => $order->id]) }}"
-                          class="btn btn-default btn-xs">
-                          <i class="fa fa-print" aria-hidden="true" title="TICKET"></i>
-                      </a>
-                  </td>
+                  <td>{{ $order->bodyworkr->description }} <br> <code>{{ $order->serial_number }}</code></td>
+                  <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->startDate }}</td>
-                  <td>{{ $order->endDate }}</td>
+                  <td>{{ $order->start_date_for_finished }} <br> {{ $order->end_date_for_finished}}</td>
                   <td>{{ $order->receiptr->observations }}</td>
               </tr>
             @endforeach

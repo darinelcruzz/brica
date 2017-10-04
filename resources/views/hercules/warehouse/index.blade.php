@@ -30,6 +30,8 @@
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
                       @endif
+                      <br>
+                      <code>{{ $order->serial_number }}</code>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>

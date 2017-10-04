@@ -185,6 +185,7 @@ return [
         'floor'                 => 'piso',
         'clothing_spec'         => 'vestido',
         'welding'               => 'soldador',
+        'other'                 => 'nombre'
     ],
 
 ];

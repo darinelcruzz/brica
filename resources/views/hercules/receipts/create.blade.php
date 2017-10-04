@@ -10,7 +10,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('client', $clients, null, ['tpl' => 'templates/withicon',
-                            'empty' => 'Seleccione el cliente'], ['icon' => 'address-card-o']) !!}
+                            'empty' => 'Seleccione el cliente', 'v-model' => 'hclient'], ['icon' => 'address-card-o']) !!}
+                        <template v-if="hclient == 2">
+                            {!! Field::text('other', ['tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
+                        </template>
                     </div>
 
                     <div class="col-md-6">
