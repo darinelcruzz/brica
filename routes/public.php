@@ -13,6 +13,10 @@ Route::get('/products', function () {
     return DB::table('products')->get();
 });
 
+Route::get('/hercules/products', function () {
+    return DB::table('h_items')->get();
+});
+
 Route::get('/intranet', function () {
     return view('brica');
 });
@@ -180,6 +184,16 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
     Route::get('recibo/{hreceipt}/transformar', [
         'uses' => 'Hercules\ReceiptController@order',
         'as' => 'receipt.order'
+    ]);
+
+    Route::get('terminados', [
+        'uses' => 'Hercules\StockSaleController@index',
+        'as' => 'stocksales'
+    ]);
+
+    Route::get('terminados/crear', [
+        'uses' => 'Hercules\StockSaleController@create',
+        'as' => 'stocksale.create'
     ]);
 
     Route::get('semiterminados', [

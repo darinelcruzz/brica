@@ -10,10 +10,6 @@ return [
                 'title' => 'Crear',
                 'route' => 'hercules.receipt.create'
             ],
-            'inventory' => [
-                'title' => 'Semiterminados',
-                'route' => 'hercules.semis'
-            ],
             'list' => [
                 'title' => 'Lista',
                 'route' => 'hercules.receipts'
@@ -21,10 +17,35 @@ return [
         ]
     ],
 
+    'stocksale' => [
+        'title' => 'Terminado',
+        'icon' => 'fa fa-object-ungroup',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.stocksale.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.stocksales'
+            ],
+        ]
+    ],
+
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
-        'route' => 'hercules.warehouse'
+        'submenu' => [
+            'stock' => [
+                'title' => 'Surtir material',
+                'route' => 'hercules.warehouse'
+            ],
+            'inventory' => [
+                'title' => 'Semiterminados',
+                'route' => 'hercules.semis'
+            ],
+        ]
+
     ],
 
     'production' => [
