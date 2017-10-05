@@ -196,6 +196,16 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'stocksale.create'
     ]);
 
+    Route::post('terminados/crear', [
+        'uses' => 'Hercules\StockSaleController@store',
+        'as' => 'stocksale.store'
+    ]);
+
+    Route::get('terminados/{hstocksale}', [
+        'uses' => 'Hercules\StockSaleController@show',
+        'as' => 'stocksale.show'
+    ]);
+
     Route::get('semiterminados', [
         'uses' => 'Hercules\WarehouseController@inventory',
         'as' => 'semis'

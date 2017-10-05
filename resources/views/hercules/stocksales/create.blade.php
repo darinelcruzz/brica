@@ -2,10 +2,10 @@
 
 @section('main-content')
 
-    <row-woc col="col-md-8">
+    <row-woc col="col-md-12">
         <solid-box title="Producto terminado" color="box-primary">
 
-            {!! Form::open(['method' => 'POST', 'route' => 'hercules.receipt.store']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'hercules.stocksale.store']) !!}
 
                 <div class="row">
                     <div class="col-md-6">
@@ -30,6 +30,10 @@
                         {!! Field::date('date', Jenssegers\Date\Date::now(), ['tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
                     </div>
                 </div>
+
+                <row-woc col="col-md-12">
+                    <item-table :retainer="0" :discount="0"></item-table>
+                </row-woc>
 
                 <div class="box-footer">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-primary pull-right']) !!}

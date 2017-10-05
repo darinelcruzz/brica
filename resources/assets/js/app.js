@@ -16,6 +16,9 @@ require('./bootstrap');
 Vue.component('product-table', require('./components/ProductTable.vue'));
 Vue.component('product-row', require('./components/ProductRow.vue'));
 
+Vue.component('item-table', require('./components/ItemTable.vue'));
+Vue.component('item-row', require('./components/ItemRow.vue'));
+
 Vue.component('row-woc', require('./components/lte/SingleElementRow.vue'));
 Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
 

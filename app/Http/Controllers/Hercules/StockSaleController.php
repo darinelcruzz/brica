@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Hercules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Hercules\HClient;
+use App\Models\Hercules\HStockSale;
 
 class StockSaleController extends Controller
 {
     public function index()
     {
-        //
+        $stocksales = HStockSale::all();
+        return view('hercules.stocksales.index', compact('stocksales'));
     }
 
     public function create()
@@ -21,12 +23,18 @@ class StockSaleController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['client' => 'required','other' => 'sometimes|required']);
+
+        $sale = HStockSale::create($request->except(['quantity', 'item', 'subtotal']));
+
+        $sale->storeProducts($request);
+
+        return $this->index();
     }
 
-    public function show($id)
+    public function show(HStockSale $hstocksale)
     {
-        //
+        return view('hercules.stocksales.show', compact('hstocksale'));
     }
 
     public function edit($id)
