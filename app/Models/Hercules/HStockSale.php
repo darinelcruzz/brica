@@ -37,6 +37,12 @@ class HStockSale extends Model
         return unserialize($this->products);
     }
 
+    function scopeTodayBalance($query, $date)
+    {
+        return $query->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59' ])
+                    ->get();
+    }
+
     public function storeProducts($request)
 	{
 		$products = [];

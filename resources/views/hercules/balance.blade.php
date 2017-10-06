@@ -37,15 +37,29 @@
 						<td>Terminado</td>
 						<td>{{ $stocksale->amount }}</td>
 					</tr>
+					@php
+						$totalIncome += $stocksale->total;
+					@endphp
 				@endforeach
 				@foreach($receipts as $receipt)
 					<tr>
 						<td>{{ $receipt->id }}</td>
-						<td>{{ $receipt->clientr->name }}</td>
+						<td>{{ $receipt->name }}</td>
 						<td>Producción</td>
-						<td>{{ $receipt->balance }}</td>
+						<td>{{ '$ ' . number_format($receipt->balance, 2) }}</td>
 					</tr>
+					@php
+						$totalIncome += $receipt->balance;
+					@endphp
 				@endforeach
+			</template>
+
+			<template slot="footer">
+				<tr>
+					<td colspan="2"></td>
+					<td><b>Total:</b></td>
+					<td>{{ '$ ' . number_format($totalIncome, 2) }}</td>
+				</tr>
 			</template>
 		</data-table-com>
 	</div>

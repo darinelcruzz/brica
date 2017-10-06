@@ -65,6 +65,12 @@ class HReceipt extends Model
     function getBalanceAttribute()
     {
         $balance = $this->amount > 0 ? $this->amount: $this->retainer;
-        return '$ ' . number_format($balance, 2);
+        return $balance;
+    }
+
+    function scopeTodayBalance($query, $date)
+    {
+        return $query->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59' ])
+                    ->get();
     }
 }

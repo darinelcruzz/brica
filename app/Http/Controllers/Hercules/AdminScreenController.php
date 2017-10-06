@@ -14,10 +14,12 @@ class AdminScreenController extends Controller
     {
         $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
 
-        $stocksales = HStockSale::all();
-        $receipts = HReceipt::all();
+        $stocksales = HStockSale::todayBalance($date);
+        $receipts = HReceipt::todayBalance($date);
 
-        return view('hercules.balance', compact('stocksales', 'receipts', 'date'));
+        $totalIncome = 0;
+
+        return view('hercules.balance', compact('stocksales', 'receipts', 'date', 'totalIncome'));
     }
 
 }

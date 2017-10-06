@@ -18,7 +18,7 @@
             @foreach($stocksales as $stocksale)
               <tr>
                   <td>{{ $stocksale->id }}</td>
-                  <td>{{ $stocksale->clientr->name }}</td>
+                  <td>{{ $stocksale->name }}</td>
                   <td>{{ $stocksale->formatted_date }}</td>
                   <td>{{ $stocksale->amount }}</td>
                   <td>{{ $stocksale->observations }}</td>
