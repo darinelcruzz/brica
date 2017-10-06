@@ -290,4 +290,14 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'uses' => 'Hercules\PersonnelController@create',
         'as' => 'personnel.create'
     ]);
+
+    Route::get('balance', [
+        'uses' => 'Hercules\AdminScreenController@index',
+        'as' => 'balance'
+    ]);
+
+    Route::post('balance', [
+        'uses' => 'Hercules\AdminScreenController@index',
+        'as' => 'balance'
+    ]);
 });

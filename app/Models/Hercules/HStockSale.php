@@ -15,6 +15,12 @@ class HStockSale extends Model
         return $this->belongsTo(HClient::class, 'client');
     }
 
+    function getNameAttribute()
+    {
+        $name = $this->client == 2 ? $this->other: $this->clientr->name;
+        return $name == null ? 'Otro': $name;
+    }
+
     function getAmountAttribute()
     {
         return '$ ' . number_format($this->total, 2);

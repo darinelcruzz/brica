@@ -61,4 +61,10 @@ class HReceipt extends Model
     {
         return '$ ' . number_format($this->amount - $this->retainer, 2);
     }
+
+    function getBalanceAttribute()
+    {
+        $balance = $this->amount > 0 ? $this->amount: $this->retainer;
+        return '$ ' . number_format($balance, 2);
+    }
 }
