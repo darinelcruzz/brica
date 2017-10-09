@@ -18,7 +18,7 @@ return [
     ],
 
     'stocksale' => [
-        'title' => 'Terminado',
+        'title' => 'Ventas',
         'icon' => 'fa fa-object-ungroup',
         'submenu' => [
             'create' => [
@@ -36,13 +36,17 @@ return [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
         'submenu' => [
-            'stock' => [
-                'title' => 'Surtir material',
+            'complete' => [
+                'title' => 'Terminados',
                 'route' => 'hercules.warehouse'
             ],
-            'inventory' => [
+            'incomplete' => [
                 'title' => 'Semiterminados',
                 'route' => 'hercules.semis'
+            ],
+            'all' => [
+                'title' => 'Todos',
+                'route' => 'hercules.warehouse.all'
             ],
         ]
 

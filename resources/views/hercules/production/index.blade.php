@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($pending as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receiptr->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;&nbsp;
                       @if ($order->serial_number)

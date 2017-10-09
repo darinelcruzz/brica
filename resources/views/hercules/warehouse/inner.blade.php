@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Producción interna"
+    <data-table col="col-md-12" title="Semiterminados"
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($inventory as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receiptr->id }}</td>
                   <td>
                       {{ $order->bodyworkr->description }}
                       &nbsp;&nbsp;&nbsp;

@@ -42,4 +42,11 @@ class WarehouseController extends Controller
 
         return view('hercules.warehouse.inner', compact('inventory'));
     }
+
+    function orders()
+    {
+        $orders = HOrder::all();
+
+        return view('hercules.warehouse.historial', compact('orders'));
+    }
 }

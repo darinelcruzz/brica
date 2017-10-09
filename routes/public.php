@@ -211,6 +211,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'semis'
     ]);
 
+    Route::get('ordenes', [
+        'uses' => 'Hercules\WarehouseController@orders',
+        'as' => 'warehouse.all'
+    ]);
+
     Route::get('orden/{horder}', [
         'uses' => 'Hercules\OrderController@show',
         'as' => 'order.show'

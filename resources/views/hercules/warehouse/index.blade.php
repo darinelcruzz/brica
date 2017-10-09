@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Pendientes"
+    <data-table col="col-md-12" title="Terminados"
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($orders as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receiptr->id }}</td>
                   <td>
                       <a href="{{ route('hercules.warehouse.show', ['order' => $order->id, 'bodywork' => $order->bodyworkr->id]) }}"
                         title='LISTA DE MATERIALES'>
