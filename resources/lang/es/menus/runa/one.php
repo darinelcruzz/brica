@@ -55,11 +55,11 @@ return [
             'expenses' => [
                 'title' => 'Gastos',
                 'route' => 'runa.expenses'
-            ],/*
+            ],
             'manage' => [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
-            ],*/
+            ],
         ]
     ],
 
