@@ -23785,7 +23785,8 @@ var app = new Vue({
         selected: '',
         selectedDesign: '',
         checked: [],
-        hclient: ""
+        hclient: "",
+        htype: ""
     },
     methods: {
         disable: function disable(option) {

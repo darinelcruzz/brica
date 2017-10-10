@@ -17,7 +17,15 @@
                     <tbody>
                         @foreach ($personnel as $member)
                             <tr>
-                                <td>{{ $member->name }}</td>
+                                <td>
+                                    {{ $member->name }} &nbsp;&nbsp;&nbsp;
+                                    <a href="{{ route('hercules.personnel.edit', ['id' => $member->id]) }}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>&nbsp;&nbsp;
+                                    <a href="{{ route('hercules.personnel.destroy', ['id' => $member->id]) }}">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                                 <td>{{ ucfirst($member->type) }}</td>
                             </tr>
                         @endforeach
@@ -30,7 +38,9 @@
             <solid-box title="Agregar elemento" color="box-primary">
                 {!! Form::open(['method' => 'POST', 'route' => 'hercules.personnel.create']) !!}
                     {!! Field::text('name', ['tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
-                    {!! Field::select('type', ['equipo' => 'Equipo', 'operador' => 'Operador'], null, ['tpl' => 'templates/withicon',
+                    {!! Field::select('type',
+                        ['equipo' => 'Equipo', 'soldador' => 'Soldador', 'carpintero' => 'Carpintero', 'pintor' => 'Pintor'],
+                        null, ['tpl' => 'templates/withicon',
                         'empty' => 'Elige tipo'], ['icon' => 'users']) !!}
                     {!! Form::submit('Agregar', ['class' => 'btn btn-primary pull-right']) !!}
                 {!! Form::close() !!}

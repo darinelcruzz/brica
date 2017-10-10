@@ -10,8 +10,8 @@ use Jenssegers\Date\Date;
 class HReceipt extends Model
 {
     protected $fillable = [
-        'client', 'other', 'bodywork', 'retainer', 'amount', 'color',
-        'deliver', 'observations'
+        'client', 'other', 'type', 'bodywork', 'retainer', 'amount', 'color',
+        'deliver', 'observations', 'process'
     ];
 
     function clientr()

@@ -10,8 +10,8 @@ class PersonnelController extends Controller
 {
     function index()
     {
-        $personnel = HPersonnel::all();
-        return view('hercules.personnel', compact('personnel'));
+        $personnel = HPersonnel::where('active', 1)->get();
+        return view('hercules.personnel.index', compact('personnel'));
     }
 
     function create(Request $request)
@@ -25,4 +25,26 @@ class PersonnelController extends Controller
 
         return redirect(route('hercules.personnel'));
     }
+
+    function edit(HPersonnel $hpersonnel)
+    {
+        return view('hercules.personnel.edit', compact('hpersonnel'));
+    }
+
+    function update(Request $request)
+    {
+        $personnel = HPersonnel::find($request->id);
+        $personnel->update($request->except(['id']));
+
+        return $this->index();
+    }
+
+    function destroy(HPersonnel $hpersonnel)
+    {
+        $hpersonnel->update(['active' => 0]);
+
+        return $this->index();
+    }
+
+
 }

@@ -93,3 +93,16 @@ $factory->define(App\Models\Hercules\HItem::class, function (Faker\Generator $fa
         'weight' => $faker->randomFloat(2, 0, 50),
     ];
 });
+
+$factory->define(App\Models\Hercules\HClient::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'address' => $faker->address,
+        'phone' => $faker->phoneNumber,
+        'contact' => $faker->name,
+        'contact_number' => $faker->phoneNumber,
+        'rfc' => $faker->regexify('[A-Z]{3}[0-9]{6}[A-Z]{2}'),
+        'city' => $faker->city,
+    ];
+});

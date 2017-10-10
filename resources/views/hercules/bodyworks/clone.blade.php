@@ -53,6 +53,7 @@
 
               <div class="box-footer">
                   <input type="hidden" name="id" value="{{ $hbodywork->id }}">
+                  <input type="hidden" name="type" value="{{ $hbodywork->type }}">
                   {!! Form::submit('Continuar', ['class' => 'btn btn-primary pull-right']) !!}
               </div>
               {!! Form::close() !!}

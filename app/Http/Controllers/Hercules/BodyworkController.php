@@ -11,13 +11,19 @@ class BodyworkController extends Controller
 {
     function index()
     {
-        $bodyworks = HBodywork::where('price', 1)->get();
+        $bodyworks = HBodywork::where('price', 1)->where('type', 'redila')->get();
         return view('hercules.bodyworks.index', compact('bodyworks'));
     }
 
-    function create()
+    function trailers()
     {
-        return view('hercules.bodyworks.create');
+        $bodyworks = HBodywork::where('price', 1)->where('type', 'remolque')->get();
+        return view('hercules.bodyworks.trailers', compact('bodyworks'));
+    }
+
+    function create($type)
+    {
+        return view('hercules.bodyworks.create', compact('type'));
     }
 
     function store(Request $request)
@@ -41,6 +47,7 @@ class BodyworkController extends Controller
           'clothing' => serialize($request->clothing),
           'painting' => serialize($request->painting),
           'mounting' => serialize($request->mounting),
+          'type' => $request->type,
       ]);
 
       return view('hercules.bodyworks.quantities', compact('bodywork'));
@@ -58,7 +65,7 @@ class BodyworkController extends Controller
             'mounting' => serialize($this->buildProcess(unserialize($bodywork->mounting), $request->mounting)),
         ]);
 
-        return redirect(route('hercules.bodyworks'));
+        return redirect('hercules/carrocerias/' . $bodywork->type . 's');
     }
 
     function show(HBodywork $hbodywork)

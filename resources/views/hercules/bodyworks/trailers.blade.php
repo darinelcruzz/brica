@@ -3,7 +3,7 @@
 @section('main-content')
 
     <row-woc col="col-md-3">
-        <a href="{{ route('hercules.bodywork.create', ['type' => 'redila']) }}" class="btn btn-app">
+        <a href="{{ route('hercules.bodywork.create', ['type' => 'remolque']) }}" class="btn btn-app">
             <span class="badge bg-aqua">{{ count($bodyworks) }}</span>
             <i class="fa fa-truck"></i> AGREGAR
         </a>

@@ -9,11 +9,10 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>R.F.C.</th>
-                <th>Ciudad</th>
+                <th>Ubicación</th>
                 <th>Teléfono</th>
                 <th>Correo</th>
                 <th>Contacto</th>
-                <th></th>
             </tr>
         </template>
 
@@ -26,13 +25,6 @@
                       @if ($client->credit)
                           <code><i class="fa fa-credit-card" aria-hidden="true"></i></code>
                       @endif
-                  </td>
-                  <td>{{ $client->rfc }}</td>
-                  <td>{{ $client->address }}</td>
-                  <td>{{ $client->phone }}</td>
-                  <td>{{ $client->email }}</td>
-                  <td>{{ $client->contact }}</td>
-                  <td>
                       <a href="{{ route('hercules.client.edit', ['id' => $client->id]) }}">
                           <i class="fa fa-edit"></i>
                       </a>
@@ -41,6 +33,16 @@
                               <i class="fa fa-trash"></i>
                           </a>
                       @endif
+                  </td>
+                  <td>{{ $client->rfc }}</td>
+                  <td>
+                      {{ $client->address }} {{ $client->city }}
+                  </td>
+                  <td>{{ $client->phone }}</td>
+                  <td>{{ $client->email }}</td>
+                  <td>
+                      {{ $client->contact }} <br>
+                      {{ $client->contact_number }}
                   </td>
               </tr>
             @endforeach

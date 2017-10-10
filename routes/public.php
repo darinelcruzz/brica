@@ -61,9 +61,14 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'item.update'
     ]);
 
-    Route::get('carrocerias', [
+    Route::get('carrocerias/redilas', [
         'uses' => 'Hercules\BodyworkController@index',
-        'as' => 'bodyworks'
+        'as' => 'bodyworks.trucks'
+    ]);
+
+    Route::get('carrocerias/remolques', [
+        'uses' => 'Hercules\BodyworkController@trailers',
+        'as' => 'bodyworks.trailers'
     ]);
 
     Route::get('carroceria/{hbodywork}', [
@@ -71,7 +76,7 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'bodywork.show'
     ]);
 
-    Route::get('carrocerias/crear', [
+    Route::get('carrocerias/crear/{type}', [
         'uses' => 'Hercules\BodyworkController@create',
         'as' => 'bodywork.create'
     ]);
@@ -294,6 +299,21 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
     Route::post('personal', [
         'uses' => 'Hercules\PersonnelController@create',
         'as' => 'personnel.create'
+    ]);
+
+    Route::get('personal/editar/{hpersonnel}', [
+        'uses' => 'Hercules\PersonnelController@edit',
+        'as' => 'personnel.edit'
+    ]);
+
+    Route::post('personal/editar', [
+        'uses' => 'Hercules\PersonnelController@update',
+        'as' => 'personnel.update'
+    ]);
+
+    Route::get('personal/eliminar/{hpersonnel}', [
+        'uses' => 'Hercules\PersonnelController@destroy',
+        'as' => 'personnel.destroy'
     ]);
 
     Route::get('balance', [

@@ -25,7 +25,7 @@ class ProductionComposer
 
         $view->terminated = HOrder::where('status', 'terminado')->get();
 
-        $view->personnel = HPersonnel::all();
+        $view->personnel = HPersonnel::where('active', 1)->get();
 
         $view->header = ['Orden', 'Descripción', 'Entrega', 'Asignado a', 'Inicio', 'Selecciona equipo', 'Mover a'];
 

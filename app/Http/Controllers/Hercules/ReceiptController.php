@@ -45,7 +45,9 @@ class ReceiptController extends Controller
                 'color' => 'required',
                 'deliver' => 'required',
                 'amount' => 'required',
-                'other' => 'sometimes|required'
+                'other' => 'sometimes|required',
+                'charge' => 'sometimes|required',
+                'process' => 'sometimes|required',
             ]);
         }
 
@@ -56,9 +58,10 @@ class ReceiptController extends Controller
 
     function order(HReceipt $hreceipt)
     {
-        HOrder::create([
+        $order = HOrder::create([
             'bodywork' => $hreceipt->bodywork,
-            'receipt' => $hreceipt->id
+            'receipt' => $hreceipt->id,
+            'status' => $hreceipt->process ? 'surtido ' . $hreceipt->process: 'pendiente'
         ]);
 
         return back();

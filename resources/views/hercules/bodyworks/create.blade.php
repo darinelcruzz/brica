@@ -3,7 +3,7 @@
 @section('main-content')
 
   <row-woc col="col-md-12">
-      <solid-box title="Agregar carrocería" color="box-primary">
+      <solid-box title="Agregar {{ $type }}" color="box-primary">
           {!! Form::open(['method' => 'POST', 'route' => 'hercules.bodywork.store']) !!}
 
               <div class="row">
@@ -50,6 +50,7 @@
               </div>
 
               <div class="box-footer">
+                  <input type="hidden" name="type" value="{{ $type }}">
                   {!! Form::submit('Continuar', ['class' => 'btn btn-primary pull-right']) !!}
               </div>
               {!! Form::close() !!}

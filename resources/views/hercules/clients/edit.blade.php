@@ -23,7 +23,8 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::text('contact', $hclient->contact, ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
+                        {!! Field::text('contact', $hclient->contact, ['tpl' => 'templates/withicon'], ['icon' => 'address-book-o']) !!}
+                        {!! Field::text('contact_number', $hclient->contact_number, ['tpl' => 'templates/withicon'], ['icon' => 'volume-control-phone']) !!}
                     </div>
 
                     @if (Auth::user()->level == 1)
