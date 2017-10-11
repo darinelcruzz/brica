@@ -25,6 +25,8 @@ Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
 Vue.component('data-table', require('./components/lte/DataTable.vue'));
 Vue.component('data-table-com', require('./components/lte/SmallDataTable.vue'));
 
+Vue.component('little-box', require('./components/lte/LittleColorBox.vue'));
+
 Vue.component('accordion-item', require('./components/lte/AccordionBoxItem.vue'));
 
 

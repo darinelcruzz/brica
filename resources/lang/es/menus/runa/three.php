@@ -18,6 +18,10 @@ return [
                 'title' => 'Cobrar ticket',
                 'route' => 'runa.cashier'
             ],
+            'finished' => [
+                'title' => 'Generar ticket',
+                'route' => 'runa.cashier.finished'
+            ],
         ]
     ],
 

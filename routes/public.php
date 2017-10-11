@@ -14,7 +14,7 @@ Route::get('/products', function () {
 });
 
 Route::get('/hercules/products', function () {
-    return DB::table('h_items')->get();
+    return DB::table('h_items')->where('type', 'inventario')->get();
 });
 
 Route::get('/intranet', function () {
@@ -334,5 +334,15 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
     Route::post('balance', [
         'uses' => 'Hercules\AdminScreenController@index',
         'as' => 'balance'
+    ]);
+
+    Route::get('gastos', [
+        'uses' => 'Hercules\AdminScreenController@expenses',
+        'as' => 'expenses'
+    ]);
+
+    Route::post('gastos/crear', [
+        'uses' => 'Hercules\AdminScreenController@createExpense',
+        'as' => 'expenses.create'
     ]);
 });

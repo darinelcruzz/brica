@@ -64,8 +64,13 @@ class HReceipt extends Model
 
     function getBalanceAttribute()
     {
-        $balance = $this->amount > 0 ? $this->amount: $this->retainer;
-        return $balance;
+        if ($this->order) {
+            if ($this->order->status != 'pagado') {
+                return $this->retainer;
+            }
+            return $this->amount;
+        }
+        return 0;
     }
 
     function scopeTodayBalance($query, $date)

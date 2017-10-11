@@ -2,6 +2,21 @@
 
 return [
 
+    'admin' => [
+        'title' => 'Administración',
+        'icon' => 'fa fa-key',
+        'submenu' => [
+            'create' => [
+                'title' => 'Balance',
+                'route' => 'hercules.balance'
+            ],
+            'list' => [
+                'title' => 'Gastos',
+                'route' => 'hercules.expenses'
+            ],
+        ]
+    ],
+
     'receipts' => [
         'title' => 'Recibos',
         'icon' => 'fa fa-file-text-o',
