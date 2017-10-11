@@ -10,13 +10,32 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = HItem::all();
+        $items = HItem::where('type', 'carroceria')->get();
         return view('hercules.items.index', compact('items'));
     }
 
-    public function create()
+    public function inventory()
     {
-        return view('hercules.items.create');
+        $items = HItem::where('type', 'inventario')->get();
+        $processes = ['soldadura', 'fondeo', 'vestido', 'pintura', 'montaje'];
+        return view('hercules.items.inventory', compact('items', 'processes'));
+    }
+
+    public function updateStock(Request $request)
+    {
+        $item = HItem::find($request->id);
+        if ($request->action == 'plus') {
+            $item->update(['stock' => $item->stock + $request->stock]);
+        } else {
+            $item->update(['stock' => $item->stock - $request->stock]);
+        }
+
+        return back();
+    }
+
+    public function create($type)
+    {
+        return view('hercules.items.create', compact('type'));
     }
 
     public function store(Request $request)
@@ -35,12 +54,18 @@ class ItemController extends Controller
           'unity' => $request->unity,
           'weight' => $request->weight,
           'price' => $request->price,
+          'type' => $request->type,
+          'code' => $request->code,
           'family' => ''
         ]);
 
-        $item->addProcesses($request->processes);
+        if($request->family) {
+            $item->update(['family' => $request->family]);
+        } else {
+            $item->addProcesses($request->processes);
+        }
 
-        return redirect(route('hercules.items'));
+        return redirect('hercules/articulos/' . $request->type . 's');
     }
 
     public function show(HItem $hitem)
@@ -63,10 +88,11 @@ class ItemController extends Controller
         'unity' => $request->unity,
         'weight' => $request->weight,
         'price' => $request->price,
-        'family' => serialize($request->processes)
+        'code' => $request->code,
+        'family' => $item->type == 'carroceria' ? serialize($request->processes): $request->family,
       ]);
 
-      return redirect(route('hercules.items'));
+      return redirect('hercules/articulos/' . $item->type . 's');
     }
 
     public function destroy($id)

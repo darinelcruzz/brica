@@ -36,12 +36,22 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         return view('hercules.home');
     })->middleware('owners');
 
-    Route::get('articulos', [
+    Route::get('articulos/carrocerias', [
         'uses' => 'Hercules\ItemController@index',
-        'as' => 'items'
+        'as' => 'bodyworks.items'
     ]);
 
-    Route::get('articulos/crear', [
+    Route::get('articulos/inventarios', [
+        'uses' => 'Hercules\ItemController@inventory',
+        'as' => 'stocksales.items'
+    ]);
+
+    Route::post('inventario/actualizar', [
+        'uses' => 'Hercules\ItemController@updateStock',
+        'as' => 'stock.update'
+    ]);
+
+    Route::get('articulos/crear/{type}', [
         'uses' => 'Hercules\ItemController@create',
         'as' => 'item.create'
     ]);

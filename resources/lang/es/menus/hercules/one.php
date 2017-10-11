@@ -5,16 +5,7 @@ return [
     'receipts' => [
         'title' => 'Recibos',
         'icon' => 'fa fa-file-text-o',
-        'submenu' => [
-            'create' => [
-                'title' => 'Crear',
-                'route' => 'hercules.receipt.create'
-            ],
-            'list' => [
-                'title' => 'Lista',
-                'route' => 'hercules.receipts'
-            ],
-        ]
+        'route' => 'hercules.receipts'
     ],
 
     'stocksale' => [
@@ -26,8 +17,12 @@ return [
                 'route' => 'hercules.stocksale.create'
             ],
             'list' => [
-                'title' => 'Lista',
+                'title' => 'Historial',
                 'route' => 'hercules.stocksales'
+            ],
+            'items' => [
+                'title' => 'Artículos',
+                'route' => 'hercules.stocksales.items'
             ],
         ]
     ],
@@ -67,25 +62,6 @@ return [
         ]
     ],
 
-    'articles' => [
-        'title' => 'Artículos',
-        'icon' => 'fa fa-list-ol',
-        'submenu' => [
-            'create' => [
-                'title' => 'Crear',
-                'route' => 'hercules.item.create'
-            ],
-            'list' => [
-                'title' => 'Lista',
-                'route' => 'hercules.items'
-            ],
-            'inventory' => [
-                'title' => 'Inventario',
-                'route' => 'hercules.items'
-            ],
-        ]
-    ],
-
     'bodyworks' => [
         'title' => 'Carrocerías',
         'icon' => 'fa fa-truck',
@@ -97,6 +73,10 @@ return [
             'trailer' => [
                 'title' => 'Remolques',
                 'route' => 'hercules.bodyworks.trailers'
+            ],
+            'items' => [
+                'title' => 'Artículos',
+                'route' => 'hercules.bodyworks.items'
             ],
         ]
     ],

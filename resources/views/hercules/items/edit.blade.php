@@ -5,16 +5,26 @@
         <solid-box title="Editar artículo" color="box-primary">
             {!! Form::open(['method' => 'POST', 'route' => 'hercules.item.update']) !!}
 
-                <row-woc col="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
                     {!! Field::text('description', $hitem->description, ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
-                </row-woc>
+                </div>
+                <div class="col-md-4">
+                    {!! Field::text('code', $hitem->code, ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                </div>
+            </div>
 
                 <row-woc col="col-md-12">
                   <label for="processes">Procesos:</label><br>
-                    {!! Form::checkboxes('processes',
-                      ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
-                        'pintura' => 'Pintura', 'montaje' => 'Montaje'], unserialize($hitem->family), ['class' => 'inline'])
-                    !!}
+                    @if ($hitem->type == 'carroceria')
+                        {!! Form::checkboxes('processes',
+                          ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
+                            'pintura' => 'Pintura', 'montaje' => 'Montaje'], unserialize($hitem->family), ['class' => 'inline'])
+                        !!}
+                    @else
+                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
+                          'pintura' => 'Pintura', 'montaje' => 'Montaje'], $hitem->family, ['class' => 'inline']) !!}
+                    @endif
                 </row-woc>
 
                 <hr>

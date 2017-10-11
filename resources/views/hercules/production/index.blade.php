@@ -83,7 +83,7 @@
                           </td>
                       @endif
                       <td>
-                          @if ($order->receiptr->client == 1)
+                          @if (($order->receiptr->client == 1 || $order->receiptr->type == 'reparacion') && $order->status != 'montaje')
                               @include('hercules/production/moveto')
                           @elseif ($loop->parent->last)
                               <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"

@@ -5,16 +5,26 @@
         <solid-box title="Agregar un artículo" color="box-primary">
             {!! Form::open(['method' => 'POST', 'route' => 'hercules.item.store']) !!}
 
-                <row-woc col="col-md-12">
-                    {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
-                </row-woc>
+                <div class="row">
+                    <div class="col-md-8">
+                        {!! Field::text('description', ['tpl' => 'templates/withicon'], ['icon' => 'comment-o']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('code', ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                    </div>
+                </div>
 
                 <row-woc col="col-md-12">
                   <label for="processes">Procesos:</label><br>
-                    {!! Form::checkboxes('processes',
-                      ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
-                        'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline'])
-                    !!}
+                    @if ($type == 'carroceria')
+                        {!! Form::checkboxes('processes',
+                          ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
+                            'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline'])
+                        !!}
+                    @else
+                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
+                          'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline']) !!}
+                    @endif
                 </row-woc>
 
                 <hr>
@@ -32,6 +42,7 @@
                 </div>
 
                 <div class="box-footer">
+                    <input type="hidden" name="type" value="{{ $type }}">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-primary pull-right']) !!}
                 </div>
                 {!! Form::close() !!}

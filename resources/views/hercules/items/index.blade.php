@@ -3,9 +3,9 @@
 @section('main-content')
 
     <row-woc col="col-md-3">
-        <a href="{{ route('hercules.item.create') }}" class="btn btn-app">
+        <a href="{{ route('hercules.item.create', ['type' => 'carroceria']) }}" class="btn btn-app">
             <span class="badge bg-aqua">{{ count($items) }}</span>
-            <i class="fa fa-edit"></i> Agregar
+            <i class="fa fa-puzzle-piece"></i> Agregar
         </a>
     </row-woc>
 
