@@ -65,7 +65,7 @@
             <template slot="body">
                 @foreach(${$process['english']} as $order)
                   <tr>
-                      <td>{{ $order->id }}</td>
+                      <td>{{ $order->receiptr->id }}</td>
                       <td>
                           {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
                           @includeWhen($order->photo, 'hercules/components/photo')

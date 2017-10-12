@@ -18,29 +18,49 @@
 
         <template slot="body">
             @foreach($receipts as $receipt)
-              <tr>
-                  <td>{{ $receipt->id }}</td>
-                  <td>{{ $receipt->name }}</td>
-                  <td>
-                      {{ $receipt->bodyworkr->description }} <br>
-                      <code>{{ $receipt->serial_number }}</code>
-                  </td>
-                  <td>{{ $receipt->formatted_retainer }}</td>
-                  <td>{{ $receipt->color }}</td>
-                  <td>{{ $receipt->observations }}</td>
-                  <td>
-                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                          class="btn btn-default btn-xs">
-                          <i class="fa fa-print" aria-hidden="true"></i>
-                      </a>&nbsp;&nbsp;
-                      @if (!$receipt->order)
+              @if (!$receipt->order)
+                  <tr>
+                      <td>{{ $receipt->id }}</td>
+                      <td>{{ $receipt->name }}</td>
+                      <td>
+                          {{ $receipt->bodyworkr->description }} <br>
+                          <code>{{ $receipt->serial_number }}</code>
+                      </td>
+                      <td>{{ $receipt->formatted_retainer }}</td>
+                      <td>{{ $receipt->color }}</td>
+                      <td>{{ $receipt->observations }}</td>
+                      <td>
+                          <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                              class="btn btn-default btn-xs">
+                              <i class="fa fa-print" aria-hidden="true"></i>
+                          </a>&nbsp;&nbsp;
                           <a href="{{ route('hercules.receipt.order', ['id' => $receipt->id]) }}"
                               class="btn btn-success btn-xs">
                               <i class="fa fa-forward" aria-hidden="true" title="A PRODUCCIÓN"></i>
                           </a>
-                      @endif
-                  </td>
-              </tr>
+                      </td>
+                  </tr>
+              @else
+                  @if ($receipt->order->status != 'cancelada')
+                      <tr>
+                          <td>{{ $receipt->id }}</td>
+                          <td>{{ $receipt->name }}</td>
+                          <td>
+                              {{ $receipt->bodyworkr->description }} <br>
+                              <code>{{ $receipt->serial_number }}</code>
+                          </td>
+                          <td>{{ $receipt->formatted_retainer }}</td>
+                          <td>{{ $receipt->color }}</td>
+                          <td>{{ $receipt->observations }}</td>
+                          <td>
+                              <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                                  class="btn btn-default btn-xs">
+                                  <i class="fa fa-print" aria-hidden="true"></i>
+                              </a>
+                          </td>
+                      </tr>
+                  @endif
+              @endif
             @endforeach
         </template>
     </data-table>
