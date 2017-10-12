@@ -25,6 +25,10 @@ return [
                 'title' => 'Crear',
                 'route' => 'hercules.receipt.create'
             ],
+            'available' => [
+                'title' => 'Disponibles',
+                'route' => 'hercules.receipt.available'
+            ],
             'historial' => [
                 'title' => 'Lista',
                 'route' => 'hercules.receipts'

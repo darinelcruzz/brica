@@ -12,7 +12,9 @@ class WarehouseController extends Controller
     function index()
     {
         $orders = HOrder::where('status', '!=', 'terminado')
-                        ->where('status', '!=', 'interno')->get();
+                        ->where('status', '!=', 'interno')
+                        ->where('status', '!=', 'cancelada')
+                        ->get();
 
         return view('hercules.warehouse.index', compact('orders'));
     }
@@ -39,13 +41,14 @@ class WarehouseController extends Controller
     function inventory()
     {
         $inventory = HOrder::where('status', 'interno')->get();
+        session(['url' => '/hercules/semiterminados']);
 
         return view('hercules.warehouse.inner', compact('inventory'));
     }
 
     function orders()
     {
-        $orders = HOrder::all();
+        $orders = HOrder::where('status', '!=', 'cancelada');
 
         return view('hercules.warehouse.historial', compact('orders'));
     }

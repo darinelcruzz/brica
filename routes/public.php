@@ -170,6 +170,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'receipts'
     ]);
 
+    Route::get('disponibles', [
+        'uses' => 'Hercules\ReceiptController@available',
+        'as' => 'receipt.available'
+    ]);
+
     Route::get('recibo/{hreceipt}', [
         'uses' => 'Hercules\ReceiptController@show',
         'as' => 'receipt.show'

@@ -32,6 +32,13 @@
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                           </a>
                       @endif
+                      @if ($order->receiptr->type == 'reparacion')
+                          <p class="text-red">REPARACIÓN</p>
+                      @elseif ($order->receiptr->type == 'redila')
+                          <p class="text-light-blue">REDILA</p>
+                      @else
+                          <p class="text-green">REMOLQUE</p>
+                      @endif
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
@@ -70,8 +77,7 @@
                           {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
                           @includeWhen($order->photo, 'hercules/components/photo')
                           @include('hercules/components/upload_photo')
-                          <br>
-                          <code>{{ $order->serial_number }}</code>
+                          @include('hercules/components/production_buttons')
                       </td>
                       <td>{{ $order->receiptr->deliver_date }}</td>
                       <td>{{ $order->{$process['english']} }}</td>
