@@ -13,6 +13,10 @@ Route::get('/products', function () {
     return DB::table('products')->get();
 });
 
+Route::get('/pruebas', function () {
+    return Jenssegers\Date\Date::now();
+});
+
 Route::get('/hercules/products', function () {
     return DB::table('h_items')->where('type', 'inventario')->get();
 });

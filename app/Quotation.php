@@ -58,6 +58,25 @@ class Quotation extends Model
 			->get();
     }
 
+	public function scopeReportSales($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('payment_date', [$startDate, $endDate])
+			->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->get();
+    }
+
+	function scopeMoneyByTeam($query, $team, $startDate, $endDate)
+	{
+		return $query->whereBetween('payment_date', [$startDate, $endDate])
+			->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('type', 'produccion')
+			->where('team', $team)
+			->get();
+	}
+
 	public function storeProducts($request)
 	{
 		$products = [];
