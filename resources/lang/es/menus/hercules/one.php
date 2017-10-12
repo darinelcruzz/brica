@@ -20,7 +20,16 @@ return [
     'receipts' => [
         'title' => 'Recibos',
         'icon' => 'fa fa-file-text-o',
-        'route' => 'hercules.receipts'
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.receipt.create'
+            ],
+            'historial' => [
+                'title' => 'Lista',
+                'route' => 'hercules.receipts'
+            ],
+        ]
     ],
 
     'stocksale' => [
