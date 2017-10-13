@@ -238,6 +238,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'stocksale.show'
     ]);
 
+    Route::get('terminados/ticket/{hstocksale}', [
+        'uses' => 'Hercules\StockSaleController@ticket',
+        'as' => 'stocksale.ticket'
+    ]);
+
     Route::get('semiterminados', [
         'uses' => 'Hercules\WarehouseController@inventory',
         'as' => 'semis'

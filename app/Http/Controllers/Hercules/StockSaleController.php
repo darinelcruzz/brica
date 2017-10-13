@@ -51,4 +51,9 @@ class StockSaleController extends Controller
     {
         //
     }
+
+    function ticket(HStockSale $hstocksale)
+    {
+        return view('hercules.stocksales.ticket', compact('hstocksale'));
+    }
 }
