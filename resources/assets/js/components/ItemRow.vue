@@ -24,7 +24,7 @@
 export default {
     data() {
         return {
-            product_id: 254,
+            product_id: 513,
             quantity: 0,
         };
     },
