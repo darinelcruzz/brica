@@ -27,6 +27,10 @@
                               title="EDITAR">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
+                            @if ($item->family == 'remolques')
+                                <br>
+                                <code>{{ '$ ' . number_format($item->price, 2) }}</code>
+                            @endif
                         </td>
                         <td>
                             @include('hercules.items.update_stock', ['color' => 'success', 'action' => 'plus'])
