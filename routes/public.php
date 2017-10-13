@@ -295,6 +295,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
         'as' => 'production'
     ]);
 
+    Route::get('produccion/finalizadas', [
+        'uses' => 'Hercules\ProductionController@finished',
+        'as' => 'production.finished'
+    ]);
+
     Route::post('produccion/asignar', [
         'uses' => 'Hercules\ProductionController@assign',
         'as' => 'production.assign'

@@ -87,6 +87,10 @@ return [
                 'title' => 'En proceso',
                 'route' => 'hercules.production'
             ],
+            'finished' => [
+                'title' => 'Finalizadas',
+                'route' => 'hercules.production.finished'
+            ],
         ]
     ],
 
