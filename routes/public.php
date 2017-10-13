@@ -18,7 +18,15 @@ Route::get('/pruebas', function () {
 });
 
 Route::get('/hercules/products', function () {
-    return DB::table('h_items')->where('type', 'inventario')->get();
+    $hitems = DB::table('h_items')->where('type', 'inventario')->get();
+    $items = [];
+
+    foreach ($hitems as $item) {
+        $items[$item->id] = $item;
+    }
+
+    return $items;
+
 });
 
 Route::get('/intranet', function () {

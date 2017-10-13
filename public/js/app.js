@@ -24868,7 +24868,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            product_id: 1,
+            product_id: 254,
             quantity: 0
         };
     },
@@ -24881,7 +24881,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         total: function total() {
-            return this.products[this.product_id - 1].price * this.quantity;
+            return this.products[this.product_id].price * this.quantity;
         }
     },
     filters: {
@@ -44989,7 +44989,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$forceUpdate()
       }
     }
-  })]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.products[_vm.product_id - 1].unity))]), _vm._v(" "), _c('td', [_c('select', {
+  })]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.products[_vm.product_id].unity))]), _vm._v(" "), _c('td', [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -45016,7 +45016,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": product.id
       }
     }, [_vm._v("\n                " + _vm._s(product.description) + "\n            ")])
-  }))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm._f("currency")(_vm.products[_vm.product_id - 1].price)))]), _vm._v(" "), _c('td', [_c('input', {
+  }))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm._f("currency")(_vm.products[_vm.product_id].price)))]), _vm._v(" "), _c('td', [_c('input', {
     attrs: {
       "type": "hidden",
       "name": "subtotal[]"
