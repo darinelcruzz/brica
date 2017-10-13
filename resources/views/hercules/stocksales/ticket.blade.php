@@ -16,7 +16,7 @@
         <div class="row">
             <h5><b>Cliente:</b> {{ $hstocksale->name }}</h5>
             <h5><b>Folio:</b> {{ $hstocksale->id }} </h5>
-            <h5><b>Fecha:</b> {{ $hstocksale->date }} </h5>
+            <h5><b>Fecha:</b> {{ substr($hstocksale->date, 0, 10) }} </h5>
         </div>
 
         <table class="table">
@@ -31,7 +31,10 @@
             <tbody>
                 @foreach (unserialize($hstocksale->products) as $product)
                     <tr>
-                        <td>{{ $product['q'] }}</td>
+                        <td>
+                            {{ $product['q'] }}
+                            {{ App\Models\Hercules\HItem::find($product['i'])->unity }}
+                        </td>
                         <td>{{ App\Models\Hercules\HItem::find($product['i'])->description }}</td>
                         <td>$ {{ number_format($product['t'], 2) }}</td>
                     </tr>
