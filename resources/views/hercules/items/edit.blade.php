@@ -22,8 +22,9 @@
                             'pintura' => 'Pintura', 'montaje' => 'Montaje'], unserialize($hitem->family), ['class' => 'inline'])
                         !!}
                     @else
-                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
-                          'pintura' => 'Pintura', 'montaje' => 'Montaje'], $hitem->family, ['class' => 'inline']) !!}
+                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo y pintura' => 'Fondeo & Pintura', 'vestido' => 'Vestido',
+                          'varios' => 'Art. varios', 'montaje' => 'Montaje', 'epp' => 'EPP', 'remolques' => 'Remolques'],
+                          $hitem->family, ['class' => 'inline']) !!}
                     @endif
                 </row-woc>
 
