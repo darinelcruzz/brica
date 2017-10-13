@@ -17,7 +17,7 @@ class ItemController extends Controller
     public function inventory()
     {
         $items = HItem::where('type', 'inventario')->get();
-        $processes = ['soldadura', 'fondeo', 'vestido', 'pintura', 'montaje'];
+        $processes = ['soldadura', 'fondeo y pintura', 'vestido', 'montaje', 'varios', 'epp', 'remolques'];
         return view('hercules.items.inventory', compact('items', 'processes'));
     }
 

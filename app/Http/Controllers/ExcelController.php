@@ -24,19 +24,22 @@ class ExcelController extends Controller
 
     function import()
     {
-    	Excel::load('items.xlsx', function($reader) {
+    	Excel::load('inventario.xlsx', function($reader) {
             foreach ($reader->get() as $item) {
                 HItem::create([
                   'description' => $item->description,
+                  'family' => $item->family,
                   'caliber' => $item->caliber,
                   'unity' => $item->unity,
                   'weight' => $item->weight,
                   'price' => $item->price,
-                  'family' => serialize([strtolower($item->family)])
+                  'type' => $item->type,
+                  'stock' => $item->stock,
+                  'code' => $item->code,
                 ]);
             }
         });
 
-        return redirect('hercules/articulos');
+        return redirect('hercules/articulos/inventarios');
     }
 }

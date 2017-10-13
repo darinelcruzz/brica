@@ -15,10 +15,12 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">Soldadura</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Fondeo</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">Fondeo y pintura</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Vestido</a></li>
-                    <li><a href="#tab_4" data-toggle="tab">Pintura</a></li>
-                    <li><a href="#tab_5" data-toggle="tab">Montaje</a></li>
+                    <li><a href="#tab_4" data-toggle="tab">Montaje</a></li>
+                    <li><a href="#tab_5" data-toggle="tab">Art. varios</a></li>
+                    <li><a href="#tab_6" data-toggle="tab">EPP</a></li>
+                    <li><a href="#tab_7" data-toggle="tab">Remolques</a></li>
                 </ul>
 
                 <div class="tab-content">
