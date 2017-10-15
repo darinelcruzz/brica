@@ -60,5 +60,7 @@ class Kernel extends HttpKernel
         'owners' => \App\Http\Middleware\Runa\Owners::class,
         'money' => \App\Http\Middleware\Runa\MoneyHandlers::class,
         'payment' => \App\Http\Middleware\Runa\TicketPayments::class,
+        'runa' => \App\Http\Middleware\Runa\CheckCompany::class,
+        'hercules' => \App\Http\Middleware\Hercules\CheckCompany::class,
     ];
 }

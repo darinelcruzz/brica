@@ -14,11 +14,16 @@
 
       <h3> ¡Ups! Algo anda mal.</h3>
       <p>
-          Parece que no tienes los permisos para acceder a esta parte del sitio.
+          Parece que no tienes los permisos para acceder a esta parte.
       </p>
 
-      <a href="/runa" class="btn btn-default pull-right">
-          Regresar &nbsp;
+      <a href="/{{ $company }}" class="btn btn-default pull-right">
+          Ir a {{ ucfirst($company) }} &nbsp;
+          <i class="fa fa-forward" aria-hidden="true"></i>
+      </a>
+      <br><br><br>
+      <a href="/salir" class="btn btn-default pull-right">
+          Intentar de nuevo &nbsp;
           <i class="fa fa-forward" aria-hidden="true"></i>
       </a>
   </div>

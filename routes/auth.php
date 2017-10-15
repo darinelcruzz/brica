@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'runa', 'as' => 'runa.'], function () {
+Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], function () {
 
     Route::get('/', function ()
     {

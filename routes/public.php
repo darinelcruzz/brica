@@ -13,6 +13,10 @@ Route::get('/products', function () {
     return DB::table('products')->get();
 });
 
+Route::get('permiso/{company}', function($company) {
+    return view('hercules/error', compact('company'));
+});
+
 Route::get('/pruebas', function () {
     return Jenssegers\Date\Date::now();
 });
@@ -41,12 +45,12 @@ Route::get('excel/exportar', 'ExcelController@export');
 
 Route::get('excel/importar', 'ExcelController@import');
 
-Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['auth', 'hercules']], function () {
 
     Route::get('/', function ()
     {
         return view('hercules.home');
-    })->middleware('owners');
+    });
 
     Route::get('articulos/carrocerias', [
         'uses' => 'Hercules\ItemController@index',
@@ -350,6 +354,36 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => 'auth
 
     Route::get('personal/eliminar/{hpersonnel}', [
         'uses' => 'Hercules\PersonnelController@destroy',
+        'as' => 'personnel.destroy'
+    ]);
+
+    Route::get('usuarios', [
+        'uses' => 'Hercules\UsersController@index',
+        'as' => 'users'
+    ]);
+
+    Route::get('usuarios/crear', [
+        'uses' => 'Hercules\UsersController@create',
+        'as' => 'user.create'
+    ]);
+
+    Route::post('usuarios/crear', [
+        'uses' => 'Hercules\UsersController@store',
+        'as' => 'user.store'
+    ]);
+
+    Route::get('usuarios/editar/{user}', [
+        'uses' => 'Hercules\UsersController@edit',
+        'as' => 'user.edit'
+    ]);
+
+    Route::post('usuarios/editar', [
+        'uses' => 'Hercules\UsersController@update',
+        'as' => 'user.update'
+    ]);
+
+    Route::get('usuarios/eliminar/{user}', [
+        'uses' => 'Hercules\UsersController@destroy',
         'as' => 'personnel.destroy'
     ]);
 

@@ -2,6 +2,25 @@
 
 return [
 
+    'stocksale' => [
+        'title' => 'Ventas',
+        'icon' => 'fa fa-object-ungroup',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.stocksale.create'
+            ],
+            'list' => [
+                'title' => 'Historial',
+                'route' => 'hercules.stocksales'
+            ],
+            'items' => [
+                'title' => 'Artículos',
+                'route' => 'hercules.stocksales.items'
+            ],
+        ]
+    ],
+
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',

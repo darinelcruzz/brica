@@ -1,8 +1,8 @@
-@extends('runa')
+@extends('hercules')
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Usuarios" example="example1" color="box-warning">
+    <data-table col="col-md-12" title="Usuarios" example="example1" color="box-primary">
         <template slot="header">
             <tr>
                 <th>ID</th>

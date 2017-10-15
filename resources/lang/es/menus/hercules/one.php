@@ -134,6 +134,21 @@ return [
         'route' => 'hercules.personnel'
     ],
 
+    'users' => [
+        'title' => 'Usuarios',
+        'icon' => 'fa fa-user',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.user.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.users'
+            ],
+        ]
+    ],
+
     'logout' => [
         'title' => 'Cerrar Sesión',
         'icon' => 'fa fa-sign-out',

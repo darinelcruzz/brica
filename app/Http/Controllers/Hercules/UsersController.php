@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Runa;
+namespace App\Http\Controllers\Hercules;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::where('user', '!=', 2)->get();
+        $users = User::where('user', '!=', 1)->get();
 
-        return view('runa.users.index', compact('users'));
+        return view('hercules.users.index', compact('users'));
     }
 
     public function create()
 	{
-		return view('runa.users.create');
+		return view('hercules.users.create');
 	}
 
 	public function store(Request $request)
@@ -40,6 +40,6 @@ class UserController extends Controller
 			'user' => $request->user
 		]);
 
-    	return redirect(route('runa.users'));
+    	return redirect(route('hercules.users'));
     }
 }
