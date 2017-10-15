@@ -79,16 +79,24 @@ class HReceipt extends Model
                     ->get();
     }
 
-    function scopeFromDateToDate($query, $startDate, $endDate)
+    function scopeRetainersFromDateToDate($query, $startDate, $endDate)
     {
-        return $query//->whereBetween('created_at', [$startDate, $endDate])
-            ->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
-            //->select('h_receipts.amount', 'h_receipts.retainer', 'h_receipts.created_at', 'h_orders.status')
-            //->selectRaw('h_receipts.amount, h_receipts.retainer, h_receipts.created_at')
+        return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
             ->whereBetween('h_receipts.created_at', [$startDate, $endDate])
-            ->selectRaw('amount, retainer, DATE_FORMAT(h_receipts.created_at, "%Y-%m-%d") as date, h_orders.status')
-            //->groupBy('date')
-			//->pluck('sum', 'day');
-            ->get();
+            ->where('h_orders.status', '!=', 'pagado')
+            ->selectRaw("SUM(retainer) as sum, DATE_FORMAT(h_receipts.created_at, '%d-%m') as date")
+            ->groupBy('date')
+			->pluck('sum', 'date');
+    }
+
+    function scopeAmountsFromDateToDate($query, $startDate, $endDate)
+    {
+        return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
+            ->orderBy('h_orders.updated_at', 'asc')
+            ->where('h_orders.status', 'pagado')
+            ->whereBetween('h_orders.updated_at', [$startDate, $endDate])
+            ->selectRaw("SUM(amount) as sum, DATE_FORMAT(h_orders.updated_at, '%d-%m') as date")
+            ->groupBy('date')
+			->pluck('sum', 'date');
     }
 }

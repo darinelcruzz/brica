@@ -30,7 +30,8 @@ class ProductionController extends Controller
     function finished()
     {
         $orders = HOrder::where('status', 'terminado')->get();
-        return view('hercules.production.finished', compact('orders'));
+        $paid = HOrder::where('status', 'pagado')->get();
+        return view('hercules.production.finished', compact('orders', 'paid'));
     }
 
     function ticket(HOrder $horder)

@@ -18,7 +18,7 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $sales = App\Models\Hercules\HReceipt::fromDateToDate('2017-10-01', '2017-10-14');
+    $sales = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-12', '2017-10-15');
     return $sales;
 });
 

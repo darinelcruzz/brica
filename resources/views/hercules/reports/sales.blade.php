@@ -20,8 +20,15 @@
 	<hr>
 
 	<div class="row">
-		<div align="center">
-			{!! $chart->render() !!}
+		<div class="col-md-6">
+			<div align="center">
+				{!! $stockSalesChart->render() !!}
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div align="center">
+				{!! $receiptsChart->render() !!}
+			</div>
 		</div>
 	</div>
 @endsection

@@ -22,7 +22,7 @@
 	<hr>
 
 	<div class="row">
-		<div align="center">
+		<div class="col-md-12" align="center">
 			{!! $chart->render() !!}
 		</div>
 	</div>
