@@ -94,6 +94,25 @@ return [
         ]
     ],
 
+    'reports' => [
+        'title' => 'Reportes',
+        'icon' => 'fa fa-bar-chart',
+        'submenu' => [
+            'create' => [
+                'title' => 'Ventas',
+                'route' => 'hercules.report.sales'
+            ],
+            'working' => [
+                'title' => 'En proceso',
+                'route' => 'hercules.report.sales'
+            ],
+            'finished' => [
+                'title' => 'Finalizadas',
+                'route' => 'hercules.report.sales'
+            ],
+        ]
+    ],
+
     'bodyworks' => [
         'title' => 'Carrocerías',
         'icon' => 'fa fa-truck',

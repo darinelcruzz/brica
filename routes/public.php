@@ -18,7 +18,8 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    return Jenssegers\Date\Date::now();
+    $sales = App\Models\Hercules\HReceipt::fromDateToDate('2017-10-01', '2017-10-14');
+    return $sales;
 });
 
 Route::get('/hercules/products', function () {
@@ -405,5 +406,15 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::post('gastos/crear', [
         'uses' => 'Hercules\AdminScreenController@createExpense',
         'as' => 'expenses.create'
+    ]);
+
+    Route::get('reporte/ventas', [
+        'uses' => 'Hercules\ReportsController@sales',
+        'as' => 'report.sales'
+    ]);
+
+    Route::post('reporte/ventas', [
+        'uses' => 'Hercules\ReportsController@sales',
+        'as' => 'report.sales'
     ]);
 });

@@ -43,6 +43,14 @@ class HStockSale extends Model
                     ->get();
     }
 
+    function scopeFromDateToDate($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('date', [$startDate, $endDate])
+			->groupBy('date')
+            ->selectRaw('sum(total) as sum, DATE_FORMAT(date, "%d-%c") as day')
+			->pluck('sum', 'day');
+    }
+
     public function storeProducts($request)
 	{
 		$products = [];
