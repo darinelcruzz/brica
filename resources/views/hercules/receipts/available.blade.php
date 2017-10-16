@@ -22,7 +22,7 @@
                           {{ $receipt->bodyworkr->description }}
                           &nbsp;&nbsp;&nbsp;
                           @if ($receipt->order->photo)
-                              <a href="{{ Storage::url(substr($order->photo, 9)) }}"
+                              <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
                                 class="btn btn-primary btn-xs"  title='FOTO'>
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                               </a>
