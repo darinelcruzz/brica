@@ -58,11 +58,11 @@ return [
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
-        'submenu' => [
+        /*'submenu' => [
             'complete' => [
-                'title' => 'Terminados',
+                'title' => 'Terminados',*/
                 'route' => 'hercules.warehouse'
-            ],
+            /*],
             'incomplete' => [
                 'title' => 'Semiterminados',
                 'route' => 'hercules.semis'
@@ -71,7 +71,7 @@ return [
                 'title' => 'Todos',
                 'route' => 'hercules.warehouse.all'
             ],
-        ]
+        ]*/
 
     ],
 

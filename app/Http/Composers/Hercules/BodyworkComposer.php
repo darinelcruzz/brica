@@ -21,23 +21,23 @@ class BodyworkComposer
 
     function getItems()
     {
-        $welding = HItem::all()->filter(function ($item) {
+        $welding = HItem::where('type', 'carroceria')->filter(function ($item) {
             return strpos($item->family, 'soldadura');
         });
 
-        $anchoring = HItem::all()->filter(function ($item) {
+        $anchoring = HItem::where('type', 'carroceria')->filter(function ($item) {
             return strpos($item->family, 'fondeo');
         });
 
-        $clothing = HItem::all()->filter(function ($item) {
+        $clothing = HItem::where('type', 'carroceria')->filter(function ($item) {
             return strpos($item->family, 'vestido');
         });
 
-        $painting = HItem::all()->filter(function ($item) {
+        $painting = HItem::where('type', 'carroceria')->filter(function ($item) {
             return strpos($item->family, 'pintura');
         });
 
-        $mounting = HItem::all()->filter(function ($item) {
+        $mounting = HItem::where('type', 'carroceria')->filter(function ($item) {
             return strpos($item->family, 'montaje');
         });
 
