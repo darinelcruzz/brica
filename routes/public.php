@@ -18,25 +18,14 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $sales = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-01', '2017-10-31');
-    $sales2 = App\Models\Hercules\HReceipt::retainersFromDateToDate('2017-10-01', '2017-10-31');
-    $total = array_merge_recursive($sales->toArray(), $sales2->toArray());
-    $newA = [];
-    foreach ($total as $key => $value) {
-        if(is_array($value)) {
-            $newA[$key] = array_sum($value);
-        } else {
-            $newA[$key] = $value;
-        }
-    }
-
-    return $newA;
+    return 'pruebas';
 });
 
 Route::get('/hercules/products', function () {
     $hitems = DB::table('h_items')
                 ->where('type', 'inventario')
                 ->where('family', 'remolques')
+                ->selectRaw('id, CONCAT(description, ", (", stock, " en existencia)") as description, unity, price')
                 ->get();
     $items = [];
 
@@ -72,9 +61,14 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         'as' => 'bodyworks.items'
     ]);
 
+    Route::get('articulos/inventarios/remolques', [
+        'uses' => 'Hercules\ItemController@trailers',
+        'as' => 'stocksales.items'
+    ]);
+
     Route::get('articulos/inventarios', [
         'uses' => 'Hercules\ItemController@inventory',
-        'as' => 'stocksales.items'
+        'as' => 'stocksales.items.inventory'
     ]);
 
     Route::post('inventario/actualizar', [

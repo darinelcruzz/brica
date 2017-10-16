@@ -14,10 +14,22 @@ class ItemController extends Controller
         return view('hercules.items.index', compact('items'));
     }
 
+    public function trailers()
+    {
+        $items = HItem::where('type', 'inventario')
+                    ->where('family', 'remolques')
+                    ->get();
+
+        return view('hercules.items.trailers', compact('items'));
+    }
+
     public function inventory()
     {
-        $items = HItem::where('type', 'inventario')->get();
+        $items = HItem::where('type', 'inventario')
+                    ->where('family', '!=', 'remolques')
+                    ->get();
         $processes = ['soldadura', 'fondeo y pintura', 'vestido', 'montaje', 'varios', 'epp', 'remolques'];
+
         return view('hercules.items.inventory', compact('items', 'processes'));
     }
 
@@ -65,7 +77,13 @@ class ItemController extends Controller
             $item->addProcesses($request->processes);
         }
 
-        return redirect('hercules/articulos/' . $request->type . 's');
+        if ($request->type == 'inventario') {
+            $url = $request->family == 'remolques' ? 'inventarios/remolques': 'inventarios';
+        } else {
+            $url = 'carrocerias';
+        }
+
+        return redirect('hercules/articulos/' . $url);
     }
 
     public function show(HItem $hitem)

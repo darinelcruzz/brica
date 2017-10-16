@@ -48,13 +48,17 @@ return [
                 'title' => 'Historial',
                 'route' => 'hercules.stocksales'
             ],
+            'inventory' => [
+                'title' => 'Artículos',
+                'route' => 'hercules.stocksales.items'
+            ],
         ]
     ],
 
     'inventory' => [
         'title' => 'Inventario',
         'icon' => 'fa fa-archive',
-        'route' => 'hercules.stocksales.items'
+        'route' => 'hercules.stocksales.items.inventory'
     ],
 
     'warehouse' => [

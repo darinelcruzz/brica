@@ -20,7 +20,6 @@
                     <li><a href="#tab_4" data-toggle="tab">Montaje</a></li>
                     <li><a href="#tab_5" data-toggle="tab">Art. varios</a></li>
                     <li><a href="#tab_6" data-toggle="tab">EPP</a></li>
-                    <li><a href="#tab_7" data-toggle="tab">Remolques</a></li>
                 </ul>
 
                 <div class="tab-content">
