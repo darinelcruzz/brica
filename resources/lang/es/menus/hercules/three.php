@@ -14,11 +14,13 @@ return [
                 'title' => 'Historial',
                 'route' => 'hercules.stocksales'
             ],
-            'items' => [
-                'title' => 'Artículos',
-                'route' => 'hercules.stocksales.items'
-            ],
         ]
+    ],
+
+    'inventory' => [
+        'title' => 'Inventario',
+        'icon' => 'fa fa-archive',
+        'route' => 'hercules.stocksales.items'
     ],
 
     'warehouse' => [

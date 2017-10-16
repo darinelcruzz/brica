@@ -33,10 +33,21 @@ class ReportsController extends Controller
     {
       $dates = $this->getFormattedDates($request);
       $sales = HStockSale::fromDateToDate($dates['start'], $dates['end'])->toArray();
-      $unpaidReceipts = HReceipt::retainersFromDateToDate($dates['start'], $dates['end'])->toArray();
+      $unpaidR = HReceipt::retainersFromDateToDate($dates['start'], $dates['end'])->toArray();
+      $paidR = HReceipt::amountsFromDateToDate($dates['start'], $dates['end'])->toArray();
+
+      $mergeR = array_merge_recursive($unpaidR, $paidR);
+      $receipts = [];
+      foreach ($mergeR as $key => $value) {
+          if(is_array($value)) {
+              $receipts[$key] = array_sum($value);
+          } else {
+              $receipts[$key] = $value;
+          }
+      }
 
       $stockSalesChart = $this->createChart('Producto terminado', array_keys($sales), array_values($sales));
-      $receiptsChart = $this->createChart('Carrocerías', array_keys($unpaidReceipts), array_values($unpaidReceipts));
+      $receiptsChart = $this->createChart('Carrocerías', array_keys($receipts), array_values($receipts));
 
       return view('hercules.reports.sales', compact('dates', 'stockSalesChart', 'receiptsChart'));
     }

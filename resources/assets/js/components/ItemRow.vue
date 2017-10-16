@@ -24,7 +24,7 @@
 export default {
     data() {
         return {
-            product_id: 513,
+            product_id: 679,
             quantity: 0,
         };
     },
@@ -43,6 +43,6 @@ export default {
         currency: function (value) {
           return '$ ' + value;
         }
-    }
+    },
 }
 </script>

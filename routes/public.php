@@ -18,12 +18,26 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $sales = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-12', '2017-10-15');
-    return $sales;
+    $sales = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-01', '2017-10-31');
+    $sales2 = App\Models\Hercules\HReceipt::retainersFromDateToDate('2017-10-01', '2017-10-31');
+    $total = array_merge_recursive($sales->toArray(), $sales2->toArray());
+    $newA = [];
+    foreach ($total as $key => $value) {
+        if(is_array($value)) {
+            $newA[$key] = array_sum($value);
+        } else {
+            $newA[$key] = $value;
+        }
+    }
+
+    return $newA;
 });
 
 Route::get('/hercules/products', function () {
-    $hitems = DB::table('h_items')->where('type', 'inventario')->get();
+    $hitems = DB::table('h_items')
+                ->where('type', 'inventario')
+                ->where('family', 'remolques')
+                ->get();
     $items = [];
 
     foreach ($hitems as $item) {
@@ -396,6 +410,16 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::post('balance', [
         'uses' => 'Hercules\AdminScreenController@index',
         'as' => 'balance'
+    ]);
+
+    Route::get('balance/mensual', [
+        'uses' => 'Hercules\AdminScreenController@monthly',
+        'as' => 'balance.monthly'
+    ]);
+
+    Route::post('balance/mensual', [
+        'uses' => 'Hercules\AdminScreenController@monthly',
+        'as' => 'balance.monthly'
     ]);
 
     Route::get('gastos', [

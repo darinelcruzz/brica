@@ -6,9 +6,13 @@ return [
         'title' => 'Administración',
         'icon' => 'fa fa-key',
         'submenu' => [
-            'create' => [
-                'title' => 'Balance',
+            'daily' => [
+                'title' => 'Balance diario',
                 'route' => 'hercules.balance'
+            ],
+            'monthly' => [
+                'title' => 'Balance mensual',
+                'route' => 'hercules.balance.monthly'
             ],
             'list' => [
                 'title' => 'Gastos',
@@ -48,11 +52,13 @@ return [
                 'title' => 'Historial',
                 'route' => 'hercules.stocksales'
             ],
-            'items' => [
-                'title' => 'Artículos',
-                'route' => 'hercules.stocksales.items'
-            ],
         ]
+    ],
+
+    'inventory' => [
+        'title' => 'Inventario',
+        'icon' => 'fa fa-archive',
+        'route' => 'hercules.stocksales.items'
     ],
 
     'warehouse' => [
@@ -98,16 +104,8 @@ return [
         'title' => 'Reportes',
         'icon' => 'fa fa-bar-chart',
         'submenu' => [
-            'create' => [
+            'sales' => [
                 'title' => 'Ventas',
-                'route' => 'hercules.report.sales'
-            ],
-            'working' => [
-                'title' => 'En proceso',
-                'route' => 'hercules.report.sales'
-            ],
-            'finished' => [
-                'title' => 'Finalizadas',
                 'route' => 'hercules.report.sales'
             ],
         ]

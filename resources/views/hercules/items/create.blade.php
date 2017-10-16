@@ -22,8 +22,8 @@
                             'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline'])
                         !!}
                     @else
-                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo' => 'Fondeo', 'vestido' => 'Vestido',
-                          'pintura' => 'Pintura', 'montaje' => 'Montaje'], null, ['class' => 'inline']) !!}
+                        {!! Form::radios('family', ['soldadura' => 'Soldadura', 'fondeo y pintura' => 'Fondeo & Pintura', 'vestido' => 'Vestido',
+                          'varios' => 'Art. varios', 'montaje' => 'Montaje', 'epp' => 'EPP', 'remolques' => 'Remolques'], null, ['class' => 'inline']) !!}
                     @endif
                 </row-woc>
 
