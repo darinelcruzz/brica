@@ -5,11 +5,17 @@
     <row-woc col="col-md-6">
 
         <solid-box title="Detalles: Orden {{ $order->id }}" color="box-primary">
-            <b>Carrocería tipo:</b> {{ $order->bodyworkr->description }} <br>
-            <b>Largo:</b> {{ $order->bodyworkr->length }}  m.
-            <b>Alto:</b> {{ $order->bodyworkr->height }}   m.
-            <b>Ancho:</b> {{ $order->bodyworkr->width }}   m. <br>
-            <b>Observaciones:</b> {{ $order->receiptr->observations }} <br><br>
+            @if ($order->bodywork)
+                <b>Carrocería tipo:</b> {{ $order->bodyworkr->description }} <br>
+                <b>Largo:</b> {{ $order->bodyworkr->length }}  m.
+                <b>Alto:</b> {{ $order->bodyworkr->height }}   m.
+                <b>Ancho:</b> {{ $order->bodyworkr->width }}   m. <br>
+                <b>Observaciones:</b> {{ $order->receiptr->observations }}
+            @else
+                <b>REPARACIÓN</b>
+            @endif
+
+            <br><br>
 
             {!! Form::open(['method' => 'POST', 'route' => 'hercules.order.update']) !!}
                 {!! Field::text('serial_number', $order->serial_number, ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
