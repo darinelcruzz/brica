@@ -10,6 +10,10 @@ return [
                 'title' => 'Balance',
                 'route' => 'hercules.balance'
             ],
+            'monthly' => [
+                'title' => 'Balance mensual',
+                'route' => 'hercules.balance.monthly'
+            ],
             'list' => [
                 'title' => 'Gastos',
                 'route' => 'hercules.expenses'
@@ -28,6 +32,10 @@ return [
             'available' => [
                 'title' => 'Disponibles',
                 'route' => 'hercules.receipt.available'
+            ],
+            'sold' => [
+                'title' => 'Vendidas',
+                'route' => 'hercules.receipt.sold'
             ],
             'historial' => [
                 'title' => 'Lista',

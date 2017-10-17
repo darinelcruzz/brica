@@ -21,6 +21,12 @@ return [
         ]
     ],
 
+    'inventory' => [
+        'title' => 'Inventario',
+        'icon' => 'fa fa-archive',
+        'route' => 'hercules.stocksales.items.inventory'
+    ],
+
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
