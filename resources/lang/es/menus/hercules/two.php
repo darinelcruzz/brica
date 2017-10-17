@@ -55,12 +55,6 @@ return [
         ]
     ],
 
-    'inventory' => [
-        'title' => 'Inventario',
-        'icon' => 'fa fa-archive',
-        'route' => 'hercules.stocksales.items.inventory'
-    ],
-
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
@@ -81,7 +75,24 @@ return [
 
     ],
 
-    // Reporte ventas
+    'bodyworks' => [
+        'title' => 'Carrocerías',
+        'icon' => 'fa fa-truck',
+        'submenu' => [
+            'truck' => [
+                'title' => 'Redilas',
+                'route' => 'hercules.bodyworks.trucks'
+            ],
+            'trailer' => [
+                'title' => 'Remolques',
+                'route' => 'hercules.bodyworks.trailers'
+            ],
+            'items' => [
+                'title' => 'Artículos',
+                'route' => 'hercules.bodyworks.items'
+            ],
+        ]
+    ],
 
     'clients' => [
         'title' => 'Clientes',

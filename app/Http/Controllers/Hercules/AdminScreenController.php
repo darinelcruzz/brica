@@ -25,18 +25,18 @@ class AdminScreenController extends Controller
         return view('hercules.admin.balance', compact('stocksales', 'receipts', 'date', 'expenses', 'totalI', 'totalE'));
     }
 
-    function monthly(Request $request)
+    function monthly()
     {
-        $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
+        $date = Date::now()->format('Y-m');
 
-        $stocksales = HStockSale::todayBalance($date);
-        $receipts = HReceipt::todayBalance($date);
-        $expenses = HExpense::todayBalance($date);
+        $stocksales = HStockSale::monthBalance($date);
+        $receipts = HReceipt::monthBalance($date);
+        $expenses = HExpense::monthBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('hercules.admin.monthly', compact('stocksales', 'receipts', 'date', 'expenses', 'totalI', 'totalE'));
+        return view('hercules.admin.monthly', compact('stocksales', 'receipts', 'expenses', 'totalI', 'totalE'));
     }
 
     function expenses()

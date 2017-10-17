@@ -18,7 +18,7 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    return 'pruebas';
+    return App\Models\Hercules\HReceipt::todayBalance('2017-10-17');
 });
 
 Route::get('/hercules/products', function () {
@@ -194,6 +194,16 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::get('disponibles', [
         'uses' => 'Hercules\ReceiptController@available',
         'as' => 'receipt.available'
+    ]);
+
+    Route::get('vendidas', [
+        'uses' => 'Hercules\ReceiptController@sold',
+        'as' => 'receipt.sold'
+    ]);
+
+    Route::post('vendidas/abonar', [
+        'uses' => 'Hercules\ReceiptController@deposit',
+        'as' => 'receipt.deposit'
     ]);
 
     Route::get('recibo/{hreceipt}', [

@@ -19,4 +19,10 @@ class HExpense extends Model
         return $query->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59' ])
                     ->sum('amount');
     }
+
+    function scopeMonthBalance($query, $date)
+    {
+        return $query->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
+                    ->get();
+    }
 }

@@ -27,6 +27,23 @@ class ReceiptController extends Controller
         return view('hercules.receipts.available', compact('receipts'));
     }
 
+    function sold()
+    {
+        $receipts = HReceipt::where('client', '!=', 1)->get();
+        session(['url' => '/hercules/vendidas']);
+
+        return view('hercules.receipts.sold', compact('receipts'));
+    }
+
+    function deposit(Request $request)
+    {
+        HReceipt::find($request->id)->update([
+                'retainer' => $request->retainer + $request->deposit,
+            ]);
+
+        return redirect(session('url'));
+    }
+
     function show(HReceipt $hreceipt)
     {
         return view('hercules.receipts.show', compact('hreceipt'));
@@ -50,8 +67,8 @@ class ReceiptController extends Controller
         } else {
             $this->validate($request, [
                 'client' => 'required',
-                'bodywork' => 'required',
-                'color' => 'required',
+                'bodywork' => 'sometimes|required',
+                'color' => 'sometimes|required',
                 'deliver' => 'required',
                 'amount' => 'required',
                 'other' => 'sometimes|required',

@@ -19,7 +19,7 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;&nbsp;&nbsp;
                       @if ($order->serial_number)
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs">
@@ -74,7 +74,7 @@
                   <tr>
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
-                          {{ $order->bodyworkr->description }} &nbsp;&nbsp;&nbsp;
+                          {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;&nbsp;
                           @includeWhen($order->photo, 'hercules/components/photo')
                           @include('hercules/components/upload_photo')
                           @include('hercules/components/production_buttons')

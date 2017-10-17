@@ -14,6 +14,7 @@ class WarehouseController extends Controller
         $orders = HOrder::where('status', '!=', 'terminado')
                         ->where('status', '!=', 'interno')
                         ->where('status', '!=', 'cancelada')
+                        ->where('bodywork', '>', '0')
                         ->get();
 
         return view('hercules.warehouse.index', compact('orders'));

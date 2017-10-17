@@ -11,24 +11,6 @@ use App\Models\Hercules\HReceipt;
 
 class ReportsController extends Controller
 {
-    function teams(Request $request)
-    {
-        $dates = $this->getFormattedDates($request);
-        $dataForCharts = $this->dataForTeams($dates['start'], $dates['end']);
-
-        $money = $this->createChart(
-            'Dinero', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
-            $dataForCharts[0]
-        );
-
-        $works = $this->createChart(
-            'Trabajos', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
-            $dataForCharts[1], 'Total trabajado'
-        );
-
-        return view('runa.reports.teams', compact('money', 'works', 'dates'));
-    }
-
     function sales(Request $request)
     {
       $dates = $this->getFormattedDates($request);
@@ -182,7 +164,7 @@ class ReportsController extends Controller
     {
         return Charts::create('bar', 'highcharts')
                 ->title($title)
-                ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
+                ->colors(['#3c8dbc'])
                 ->labels($labels)
                 ->elementLabel($element)
                 ->values($values)

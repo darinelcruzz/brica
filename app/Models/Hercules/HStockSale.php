@@ -43,6 +43,12 @@ class HStockSale extends Model
                     ->get();
     }
 
+    function scopeMonthBalance($query, $date)
+    {
+        return $query->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
+                    ->get();
+    }
+
     function scopeFromDateToDate($query, $startDate, $endDate)
     {
         return $query->whereBetween('date', [$startDate, $endDate])

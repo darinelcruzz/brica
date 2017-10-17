@@ -70,12 +70,18 @@ class HReceipt extends Model
             }
             return $this->amount;
         }
-        return 0;
+        return $this->retainer;
     }
 
     function scopeTodayBalance($query, $date)
     {
         return $query->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59' ])
+                    ->get();
+    }
+
+    function scopeMonthBalance($query, $date)
+    {
+        return $query->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
                     ->get();
     }
 

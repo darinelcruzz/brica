@@ -33,6 +33,10 @@ return [
                 'title' => 'Disponibles',
                 'route' => 'hercules.receipt.available'
             ],
+            'sold' => [
+                'title' => 'Vendidas',
+                'route' => 'hercules.receipt.sold'
+            ],
             'historial' => [
                 'title' => 'Lista',
                 'route' => 'hercules.receipts'

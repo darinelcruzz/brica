@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div v-if="htype != 'reparacion'" class="row">
                     <div class="col-md-6">
                         {!! Field::select('bodywork', $bodyworks, null, ['tpl' => 'templates/withicon',
                             'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}

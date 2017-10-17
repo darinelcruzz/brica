@@ -23,7 +23,7 @@
                       <td>{{ $receipt->id }}</td>
                       <td>{{ $receipt->name }}</td>
                       <td>
-                          {{ $receipt->bodyworkr->description }} <br>
+                          {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }} <br>
                           <code>{{ $receipt->serial_number }}</code>
                       </td>
                       <td>{{ $receipt->formatted_retainer }}</td>
@@ -46,7 +46,7 @@
                           <td>{{ $receipt->id }}</td>
                           <td>{{ $receipt->name }}</td>
                           <td>
-                              {{ $receipt->bodyworkr->description }} <br>
+                              {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }} <br>
                               <code>{{ $receipt->serial_number }}</code>
                           </td>
                           <td>{{ $receipt->formatted_retainer }}</td>

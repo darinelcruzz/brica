@@ -37,7 +37,7 @@
                     <div class="col-sm-4 invoice-col">
                       Por el concepto de:
                       <address>
-                        <strong>{{ $hreceipt->bodyworkr->description }}</strong><br>
+                        <strong>{{ $hreceipt->bodywork ? $hreceipt->bodyworkr->description: 'REPARACIÓN' }}</strong><br>
                         ({{ $hreceipt->formatted_amount }})<br>
                         <i class="fa fa-paint-brush" aria-hidden="true"></i> {{ $hreceipt->color }} <br>
                         Entrega: <br>
