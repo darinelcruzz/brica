@@ -23,7 +23,12 @@
                       <td>{{ $receipt->id }}</td>
                       <td>{{ $receipt->name }}</td>
                       <td>
-                          {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }} <br>
+                          {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }}
+                          &nbsp;&nbsp;
+                          <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </a>
+                          <br>
                           <code>{{ $receipt->serial_number }}</code>
                       </td>
                       <td>{{ $receipt->formatted_retainer }}</td>
@@ -46,7 +51,12 @@
                           <td>{{ $receipt->id }}</td>
                           <td>{{ $receipt->name }}</td>
                           <td>
-                              {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }} <br>
+                              {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }}
+                              &nbsp;&nbsp;
+                              <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                              </a>
+                              <br>
                               <code>{{ $receipt->serial_number }}</code>
                           </td>
                           <td>{{ $receipt->formatted_retainer }}</td>

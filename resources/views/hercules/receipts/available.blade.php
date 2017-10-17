@@ -15,33 +15,35 @@
 
         <template slot="body">
             @foreach($receipts as $receipt)
-              @if ($receipt->order->status != 'cancelada' || $receipt->order->status == 'terminado')
-                  <tr>
-                      <td>{{ $receipt->id }}</td>
-                      <td>
-                          {{ $receipt->bodyworkr->description }}
-                          &nbsp;&nbsp;&nbsp;
-                          @if ($receipt->order->photo)
-                              <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
-                                class="btn btn-primary btn-xs"  title='FOTO'>
-                                <i class="fa fa-eye" aria-hidden="true"></i>
+              @if ($receipt->order)
+                  @if ($receipt->order->status != 'cancelada')
+                      <tr>
+                          <td>{{ $receipt->id }}</td>
+                          <td>
+                              {{ $receipt->bodywork ? $receipt->bodyworkr->description: 'REPARACIÓN' }}
+                              &nbsp;&nbsp;&nbsp;
+                              @if ($receipt->order->photo)
+                                  <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
+                                    class="btn btn-primary btn-xs"  title='FOTO'>
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                  </a>
+                              @endif
+                          </td>
+                          <td>
+                              <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
+                                  class="btn btn-primary btn-xs" title="AGREGAR CLIENTE">
+                                  Agregar cliente&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
                               </a>
-                          @endif
-                      </td>
-                      <td>
-                          <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
-                              class="btn btn-primary btn-xs" title="AGREGAR CLIENTE">
-                              Agregar cliente&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
-                          </a>
-                          <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                              class="btn btn-success btn-xs" title="IMPRIMIR RECIBO">
-                              Imprimir recibo&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>
-                          </a>
-                      </td>
-                      <td>
-                          {{ ucfirst($receipt->order->status) }}
-                      </td>
-                  </tr>
+                              <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                                  class="btn btn-success btn-xs" title="IMPRIMIR RECIBO">
+                                  Imprimir recibo&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>
+                              </a>
+                          </td>
+                          <td>
+                              {{ ucfirst($receipt->order->status) }}
+                          </td>
+                      </tr>
+                  @endif
               @endif
             @endforeach
         </template>
