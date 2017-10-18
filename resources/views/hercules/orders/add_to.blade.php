@@ -44,7 +44,7 @@
                     <div class="row">
                         @if ($order->status != 'interno')
                             <div class="col-md-6">
-                                {!! Field::select('welding', $personnel, null, ['tpl' => 'templates/withicon',
+                                {!! Field::select($assigned, $personnel, null, ['label' => 'Equipo', 'tpl' => 'templates/withicon',
                                     'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
                             </div>
                         @else
@@ -55,8 +55,16 @@
                         </div>
                     </div><br>
                 @else
-                    {!! Field::select('welding', $personnel, null, ['tpl' => 'templates/withicon',
-                        'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
+                    {!! Field::text('serial_number', $order->serial_number, ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Field::select($assigned, $personnel, null, ['label' => 'Equipo', 'tpl' => 'templates/withicon',
+                                'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Field::text('supervisor', $order->supervisor, ['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
+                        </div>
+                    </div>
                     {!! Field::text('observations', ['tpl' => 'templates/withicon',
                         'empty' => 'Equipo o personal'], ['icon' => 'eye']) !!}
 

@@ -34,11 +34,11 @@ class OrderController extends Controller
         return back();
     }
 
-    function ticket($id)
+    function ticket($id, $assigned)
     {
         $personnel = HPersonnel::pluck('name', 'name')->toArray();
         $order = HOrder::find($id);
-        return view('hercules.orders.add_to', compact('order', 'personnel'));
+        return view('hercules.orders.add_to', compact('order', 'personnel', 'assigned'));
     }
 
     function showTicket($id)

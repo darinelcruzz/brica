@@ -19,21 +19,23 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;
-                      <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
-                          class="btn btn-primary btn-xs" title="GENERAR TICKET">
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                      </a>
-                      &nbsp;&nbsp;
-                      @if ($order->serial_number || $order->bodywork == 0)
+                      {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}
+                      @if ($order->serial_number)
+                          &nbsp;&nbsp;
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs">
                               <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
                           </a><br>
                           <code>{{ $order->serial_number }}</code>
+                      @else
+                          &nbsp;&nbsp;
+                          <a href="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
+                              class="btn btn-primary btn-xs" title="GENERAR TICKET">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </a>
                       @endif
                       @if ($order->receiptr->type == 'reparacion')
-                          <p class="text-red">REPARACIÓN</p>
+
                       @elseif ($order->receiptr->type == 'redila')
                           <p class="text-light-blue">REDILA</p>
                       @else
@@ -74,7 +76,7 @@
                   <tr>
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
-                          {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;&nbsp;
+                          {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }} &nbsp;&nbsp;&nbsp;
                           @includeWhen($order->photo, 'hercules/components/photo')
                           @include('hercules/components/upload_photo')
                           @include('hercules/components/production_buttons')

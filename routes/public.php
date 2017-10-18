@@ -291,7 +291,7 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         'as' => 'order.move'
     ]);
 
-    Route::get('orden/{horden}/actualizar', [
+    Route::get('orden/{horden}/actualizar/{assigned}', [
         'uses' => 'Hercules\OrderController@ticket',
         'as' => 'order.ticket'
     ]);
