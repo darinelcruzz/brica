@@ -9,16 +9,20 @@
                   <option value="vestido">Vestido</option>
                   <option value="pintura">Pintura</option>
                   <option value="montaje">Montaje</option>
+                  <option value="terminado">Terminado</option>
               @elseif ($order->status == 'vestido')
                   <option value="pintura">Pintura</option>
                   <option value="montaje">Montaje</option>
+                  <option value="terminado">Terminado</option>
               @elseif ($order->status == 'pintura')
                   <option value="montaje">Montaje</option>
+                  <option value="terminado">Terminado</option>
               @else
                   <option value="fondeo">Fondeo</option>
                   <option value="vestido">Vestido</option>
                   <option value="pintura">Pintura</option>
                   <option value="montaje">Montaje</option>
+                  <option value="terminado">Terminado</option>
               @endif
           @else
               <option value="interno">Almacén</option>
