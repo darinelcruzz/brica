@@ -20,7 +20,7 @@
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
                       {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;&nbsp;&nbsp;
-                      @if ($order->serial_number)
+                      @if ($order->serial_number || $order->bodywork == 0)
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs">
                               <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>

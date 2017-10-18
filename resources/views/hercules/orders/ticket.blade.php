@@ -22,7 +22,7 @@
                         <td><strong>Término:</strong>  {{ $order->end }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Carrocería tipo:</strong>  {{ $order->bodyworkr->description }}</td>
+                        <td><strong>Carrocería tipo:</strong>  {{ $order->bodywork ? $order->bodyworkr->description : 'REPARACIÓN' }}</td>
                         <td><strong>No. serie:</strong>  {{ $order->serial_number }}</td>
                     </tr>
                     <tr>
@@ -30,19 +30,19 @@
                         <td><strong>Modelo:</strong>  {{ $order->model }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Largo:</strong>  {{ $order->bodyworkr->length }} m.</td>
+                        <td><strong>Largo:</strong>  {{ $order->bodywork ? $order->bodyworkr->length : '' }} m.</td>
                         <td><strong>Ancho chasis:</strong>  {{ $order->chasis }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Alto:</strong>  {{ $order->bodyworkr->height }} m.</td>
+                        <td><strong>Alto:</strong>  {{ $order->bodywork ? $order->bodyworkr->height : '' }} m.</td>
                         <td><strong>Piso:</strong>  {{ $order->floor }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Ancho:</strong>  {{ $order->bodyworkr->width }} m.</td>
+                        <td><strong>Ancho:</strong>  {{ $order->bodywork ? $order->bodyworkr->width : '' }} m.</td>
                         <td><strong>Vestido:</strong>  {{ $order->clothing_spec }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><strong>Observaciones:</strong>  {{ $order->receiptr->observations }}</td>
+                        <td colspan="2"><strong>Observaciones:</strong>  {{ $order->bodywork ? $order->receiptr->observations: $order->observations }}</td>
                     </tr>
                     <tr>
                         <td><strong>Soldador:</strong> {{ $order->welding }}</td>

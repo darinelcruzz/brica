@@ -18,7 +18,7 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    return App\Models\Hercules\HReceipt::todayBalance('2017-10-17');
+    return App\Models\Hercules\HDeposit::restToPay(21);
 });
 
 Route::get('/hercules/products', function () {

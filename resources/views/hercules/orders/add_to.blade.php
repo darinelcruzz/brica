@@ -18,41 +18,50 @@
             <br><br>
 
             {!! Form::open(['method' => 'POST', 'route' => 'hercules.order.update']) !!}
-                {!! Field::text('serial_number', $order->serial_number, ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                @if ($order->bodywork)
+                    {!! Field::text('serial_number', $order->serial_number, ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
 
-                <div class="row">
-                    <div class="col-md-6">
-                        {!! Field::text('brand', $order->brand, ['tpl' => 'templates/withicon'], ['icon' => 'industry']) !!}
-                    </div>
-                    <div class="col-md-6">
-                        {!! Field::text('model', $order->model, ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        {!! Field::text('chasis', $order->chasis, ['tpl' => 'templates/withicon'], ['icon' => 'skyatlas']) !!}
-                    </div>
-                    <div class="col-md-6">
-                        {!! Field::text('floor', $order->floor, ['tpl' => 'templates/withicon'], ['icon' => 'object-group']) !!}
-                    </div>
-                </div>
-
-                {!! Field::text('clothing_spec', $order->clothing_spec, ['tpl' => 'templates/withicon'], ['icon' => 'codepen']) !!}
-
-                <div class="row">
-                    @if ($order->status != 'interno')
+                    <div class="row">
                         <div class="col-md-6">
-                            {!! Field::select('welding', $personnel, null, ['tpl' => 'templates/withicon',
-                                'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
+                            {!! Field::text('brand', $order->brand, ['tpl' => 'templates/withicon'], ['icon' => 'industry']) !!}
                         </div>
-                    @else
-                        <input type="hidden" name="welding" value="{{ $order->welding }}">
-                    @endif
-                    <div class="col-md-6">
-                        {!! Field::text('supervisor', $order->supervisor, ['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
+                        <div class="col-md-6">
+                            {!! Field::text('model', $order->model, ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
+                        </div>
                     </div>
-                </div><br>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Field::text('chasis', $order->chasis, ['tpl' => 'templates/withicon'], ['icon' => 'skyatlas']) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Field::text('floor', $order->floor, ['tpl' => 'templates/withicon'], ['icon' => 'object-group']) !!}
+                        </div>
+                    </div>
+
+                    {!! Field::text('clothing_spec', $order->clothing_spec, ['tpl' => 'templates/withicon'], ['icon' => 'codepen']) !!}
+
+                    <div class="row">
+                        @if ($order->status != 'interno')
+                            <div class="col-md-6">
+                                {!! Field::select('welding', $personnel, null, ['tpl' => 'templates/withicon',
+                                    'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
+                            </div>
+                        @else
+                            <input type="hidden" name="welding" value="{{ $order->welding }}">
+                        @endif
+                        <div class="col-md-6">
+                            {!! Field::text('supervisor', $order->supervisor, ['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
+                        </div>
+                    </div><br>
+                @else
+                    {!! Field::select('welding', $personnel, null, ['tpl' => 'templates/withicon',
+                        'empty' => 'Equipo o personal'], ['icon' => 'fire']) !!}
+                    {!! Field::text('observations', ['tpl' => 'templates/withicon',
+                        'empty' => 'Equipo o personal'], ['icon' => 'eye']) !!}
+
+                    <input type="hidden" name="startDate" value="{{ Jenssegers\Date\Date::now() }}">
+                @endif
 
                 <input type="hidden" name="id" value="{{ $order->id }}">
 

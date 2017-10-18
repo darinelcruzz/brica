@@ -5,6 +5,7 @@ namespace App\Models\Hercules;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hercules\HClient;
 use App\Models\Hercules\HOrder;
+use App\Models\Hercules\HDeposit;
 use Jenssegers\Date\Date;
 
 class HReceipt extends Model
@@ -60,6 +61,16 @@ class HReceipt extends Model
     function getRestAttribute()
     {
         return '$ ' . number_format($this->amount - $this->retainer, 2);
+    }
+
+    function getDepositAttribute()
+    {
+        $deposits = HDeposit::where('receipt', $this->id)->get();
+        $total = 0;
+        foreach ($deposits as $deposit) {
+            $total += $deposit->amount;
+        }
+        return $total + $this->retainer;
     }
 
     function getBalanceAttribute()

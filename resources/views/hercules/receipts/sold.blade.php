@@ -39,7 +39,7 @@
                           <td>
                               @include('hercules.receipts.update_retainer')
                           </td>
-                          <td>{{ '$ '. number_format($receipt->retainer, 2) }}</td>
+                          <td>{{ '$ '. number_format($receipt->deposit, 2) }}</td>
                           <td>{{ '$ '. number_format($receipt->amount, 2) }}</td>
                           <td>
                               {{ ucfirst($receipt->order->status) }}

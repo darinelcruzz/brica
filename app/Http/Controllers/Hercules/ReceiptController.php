@@ -8,6 +8,7 @@ use App\Models\Hercules\HBodywork;
 use App\Models\Hercules\HOrder;
 use App\Models\Hercules\HClient;
 use App\Models\Hercules\HReceipt;
+use App\Models\Hercules\HDeposit;
 use Jenssegers\Date\Date;
 
 class ReceiptController extends Controller
@@ -37,9 +38,7 @@ class ReceiptController extends Controller
 
     function deposit(Request $request)
     {
-        HReceipt::find($request->id)->update([
-                'retainer' => $request->retainer + $request->deposit,
-            ]);
+        HDeposit::create($request->all());
 
         return redirect(session('url'));
     }

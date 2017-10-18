@@ -50,23 +50,12 @@ class OrderController extends Controller
     function update(Request $request)
     {
         $this->validate($request, [
-            'serial_number' => 'required',
-            'welding' => 'required',
-            'supervisor' => 'required',
+            'serial_number' => 'sometimes|required',
+            'welding' => 'sometimes|required',
+            'supervisor' => 'sometimes|required',
         ]);
 
         $order = HOrder::find($request->id);
-
-        /*$order->update([
-            'serial_number' => $request->serial_number,
-            'brand' => $request->brand,
-            'model' => $request->model,
-            'chasis' => $request->chasis,
-            'floor' => $request->floor,
-            'welding' => $request->welding,
-            'clothing_spec' => $request->clothing_spec,
-            'supervisor' => $request->supervisor,
-        ]);*/
 
         $order->update($request->except(['id']));
 
