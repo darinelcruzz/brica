@@ -19,18 +19,18 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ $order->bodywork ? $order->bodyworkr->description: 'n/a' }} &nbsp;&nbsp;
+                      <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
+                          class="btn btn-primary btn-xs" title="GENERAR TICKET">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </a>
+                      &nbsp;&nbsp;
                       @if ($order->serial_number || $order->bodywork == 0)
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
                               class="btn btn-primary btn-xs">
                               <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
                           </a><br>
                           <code>{{ $order->serial_number }}</code>
-                      @else
-                          <a href="{{ route('hercules.order.ticket', ['id' => $order->id]) }}"
-                              class="btn btn-primary btn-xs" title="GENERAR TICKET">
-                              <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </a>
                       @endif
                       @if ($order->receiptr->type == 'reparacion')
                           <p class="text-red">REPARACIÓN</p>
