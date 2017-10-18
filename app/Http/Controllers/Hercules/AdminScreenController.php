@@ -8,6 +8,7 @@ use Jenssegers\Date\Date;
 use App\Models\Hercules\HStockSale;
 use App\Models\Hercules\HReceipt;
 use App\Models\Hercules\HExpense;
+use App\Models\Hercules\HDeposit;
 
 class AdminScreenController extends Controller
 {
@@ -18,11 +19,12 @@ class AdminScreenController extends Controller
         $stocksales = HStockSale::todayBalance($date);
         $receipts = HReceipt::todayBalance($date);
         $expenses = HExpense::todayBalance($date);
+        $deposits = HDeposit::todayBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('hercules.admin.balance', compact('stocksales', 'receipts', 'date', 'expenses', 'totalI', 'totalE'));
+        return view('hercules.admin.balance', compact('stocksales', 'receipts', 'date', 'expenses', 'deposits', 'totalI', 'totalE'));
     }
 
     function monthly()
@@ -32,11 +34,12 @@ class AdminScreenController extends Controller
         $stocksales = HStockSale::monthBalance($date);
         $receipts = HReceipt::monthBalance($date);
         $expenses = HExpense::monthBalance($date);
+        $deposits = HDeposit::monthBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('hercules.admin.monthly', compact('stocksales', 'receipts', 'expenses', 'totalI', 'totalE'));
+        return view('hercules.admin.monthly', compact('stocksales', 'receipts', 'expenses', 'deposits', 'totalI', 'totalE'));
     }
 
     function expenses()

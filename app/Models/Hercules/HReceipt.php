@@ -60,7 +60,7 @@ class HReceipt extends Model
 
     function getRestAttribute()
     {
-        return '$ ' . number_format($this->amount - $this->retainer, 2);
+        return '$ ' . number_format($this->amount - $this->deposit, 2);
     }
 
     function getDepositAttribute()

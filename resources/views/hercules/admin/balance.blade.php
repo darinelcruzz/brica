@@ -54,6 +54,19 @@
 						$totalI += $receipt->balance;
 					@endphp
 				@endforeach
+				@foreach($deposits as $deposit)
+					@if (true)
+						<tr>
+							<td>{{ $deposit->id }}</td>
+							<td>{{ $deposit->client }}</td>
+							<td>Abono</td>
+							<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
+						</tr>
+						@php
+							$totalI += $deposit->amount;
+						@endphp
+					@endif
+				@endforeach
 			</template>
 
 			<template slot="footer">

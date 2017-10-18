@@ -48,7 +48,7 @@
                     <div class="col-sm-4 invoice-col">
                       La cantidad de:
                       <address>
-                        <strong>{{ $hreceipt->formatted_retainer }}</strong><br>
+                        <strong>{{ '$ ' . number_format($hreceipt->deposit, 2) }}</strong><br>
                         Restante:<br>
                         <b>{{ $hreceipt->rest }}</b>
                       </address>
