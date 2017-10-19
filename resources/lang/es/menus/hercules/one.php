@@ -29,17 +29,21 @@ return [
                 'title' => 'Crear',
                 'route' => 'hercules.receipt.create'
             ],
+            'historial' => [
+                'title' => 'Lista',
+                'route' => 'hercules.receipts'
+            ],
             'available' => [
                 'title' => 'Disponibles',
                 'route' => 'hercules.receipt.available'
             ],
+            'deposits' => [
+                'title' => 'Abonar',
+                'route' => 'hercules.receipt.deposits'
+            ],
             'sold' => [
                 'title' => 'Vendidas',
                 'route' => 'hercules.receipt.sold'
-            ],
-            'historial' => [
-                'title' => 'Lista',
-                'route' => 'hercules.receipts'
             ],
         ]
     ],

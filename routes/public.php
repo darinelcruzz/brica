@@ -18,8 +18,8 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $r = App\Models\Hercules\HDeposit::monthBalance('2017-10');
-    return $r;
+    $r = App\Models\Hercules\HReceipt::where('client', '!=', 1)->get();
+    return $r[0]->order->status;
 });
 
 Route::get('/hercules/products', function () {
@@ -195,6 +195,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::get('disponibles', [
         'uses' => 'Hercules\ReceiptController@available',
         'as' => 'receipt.available'
+    ]);
+
+    Route::get('abonos', [
+        'uses' => 'Hercules\ReceiptController@deposits',
+        'as' => 'receipt.deposits'
     ]);
 
     Route::get('vendidas', [

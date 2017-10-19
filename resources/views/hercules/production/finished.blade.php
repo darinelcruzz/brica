@@ -18,7 +18,7 @@
         <template slot="body">
             @foreach($terminated as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receipt }}</td>
                   <td>
                       {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}
                       &nbsp;

@@ -28,10 +28,17 @@ class ReceiptController extends Controller
         return view('hercules.receipts.available', compact('receipts'));
     }
 
-    function sold()
+    function deposits()
     {
         $receipts = HReceipt::where('client', '!=', 1)->get();
-        session(['url' => '/hercules/vendidas']);
+        session(['url' => '/hercules/abonos']);
+
+        return view('hercules.receipts.deposits', compact('receipts'));
+    }
+
+    function sold(Request $request)
+    {
+        $receipts = HReceipt::where('client', '!=', 1)->get();
 
         return view('hercules.receipts.sold', compact('receipts'));
     }

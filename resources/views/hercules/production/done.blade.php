@@ -18,7 +18,7 @@
         <template slot="body">
             @foreach($terminated as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receipt }}</td>
                   <td>{{ $order->bodyworkr->description }} <br> <code>{{ $order->serial_number }}</code></td>
                   <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
