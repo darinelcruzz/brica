@@ -23,7 +23,7 @@ class ReceiptController extends Controller
     {
         $warehouse = HClient::find(1);
         $receipts = $warehouse->receipts;
-        session(['url' => '/hercules/disponibles']);
+        session(['url' => '/hercules/recibos/disponibles']);
 
         return view('hercules.receipts.available', compact('receipts'));
     }
@@ -31,7 +31,7 @@ class ReceiptController extends Controller
     function deposits()
     {
         $receipts = HReceipt::where('client', '!=', 1)->get();
-        session(['url' => '/hercules/abonos']);
+        session(['url' => '/hercules/recibos/abonos']);
 
         return view('hercules.receipts.deposits', compact('receipts'));
     }
@@ -85,7 +85,7 @@ class ReceiptController extends Controller
 
         HReceipt::create($request->all());
 
-        return redirect(route('hercules.receipts'));
+        return redirect(route('hercules.receipt.index'));
     }
 
     function order(HReceipt $hreceipt)

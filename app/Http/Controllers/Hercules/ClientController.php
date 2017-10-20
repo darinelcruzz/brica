@@ -8,6 +8,12 @@ use App\Models\Hercules\HClient;
 
 class ClientController extends Controller
 {
+    function index()
+    {
+        $clients = HClient::all();
+        return view('hercules.clients.index', compact('clients'));
+    }
+    
     function create()
 	{
 		return view('hercules.clients.create');
@@ -26,11 +32,6 @@ class ClientController extends Controller
         return redirect('hercules/clientes');
     }
 
-    function index()
-    {
-        $clients = HClient::all();
-        return view('hercules.clients.index', compact('clients'));
-    }
 
 	function edit(HClient $hclient)
     {

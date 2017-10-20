@@ -23,7 +23,7 @@ class PersonnelController extends Controller
 
         HPersonnel::create($request->all());
 
-        return redirect(route('hercules.personnel'));
+        return redirect(route('hercules.personnel.index'));
     }
 
     function edit(HPersonnel $hpersonnel)
@@ -45,6 +45,5 @@ class PersonnelController extends Controller
 
         return $this->index();
     }
-
 
 }

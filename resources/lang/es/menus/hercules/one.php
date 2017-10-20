@@ -8,7 +8,7 @@ return [
         'submenu' => [
             'daily' => [
                 'title' => 'Balance diario',
-                'route' => 'hercules.balance'
+                'route' => 'hercules.balance.index'
             ],
             'monthly' => [
                 'title' => 'Balance mensual',
@@ -16,7 +16,7 @@ return [
             ],
             'list' => [
                 'title' => 'Gastos',
-                'route' => 'hercules.expenses'
+                'route' => 'hercules.balance.expenses'
             ],
         ]
     ],
@@ -31,7 +31,7 @@ return [
             ],
             'historial' => [
                 'title' => 'Lista',
-                'route' => 'hercules.receipts'
+                'route' => 'hercules.receipt.index'
             ],
             'available' => [
                 'title' => 'Disponibles',
@@ -58,11 +58,11 @@ return [
             ],
             'list' => [
                 'title' => 'Historial',
-                'route' => 'hercules.stocksales'
+                'route' => 'hercules.stocksale.index'
             ],
             'inventory' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.stocksales.items'
+                'route' => 'hercules.item.stocksales'
             ],
         ]
     ],
@@ -70,7 +70,7 @@ return [
     'inventory' => [
         'title' => 'Inventario',
         'icon' => 'fa fa-archive',
-        'route' => 'hercules.stocksales.items.inventory'
+        'route' => 'hercules.item.inventory'
     ],
 
     'warehouse' => [
@@ -79,7 +79,7 @@ return [
         /*'submenu' => [
             'complete' => [
                 'title' => 'Terminados',*/
-                'route' => 'hercules.warehouse'
+                'route' => 'hercules.warehouse.index'
             /*],
             'incomplete' => [
                 'title' => 'Semiterminados',
@@ -103,7 +103,7 @@ return [
             ],
             'working' => [
                 'title' => 'En proceso',
-                'route' => 'hercules.production'
+                'route' => 'hercules.production.index'
             ],
             'finished' => [
                 'title' => 'Finalizadas',
@@ -129,15 +129,15 @@ return [
         'submenu' => [
             'truck' => [
                 'title' => 'Redilas',
-                'route' => 'hercules.bodyworks.trucks'
+                'route' => 'hercules.bodywork.trucks'
             ],
             'trailer' => [
                 'title' => 'Remolques',
-                'route' => 'hercules.bodyworks.trailers'
+                'route' => 'hercules.bodywork.trailers'
             ],
             'items' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.bodyworks.items'
+                'route' => 'hercules.item.bodyworks'
             ],
         ]
     ],
@@ -152,7 +152,7 @@ return [
             ],
             'list' => [
                 'title' => 'Lista',
-                'route' => 'hercules.clients'
+                'route' => 'hercules.client.index'
             ],
         ]
     ],
@@ -160,7 +160,7 @@ return [
     'personnel' => [
         'title' => 'Personal',
         'icon' => 'fa fa-male',
-        'route' => 'hercules.personnel'
+        'route' => 'hercules.personnel.index'
     ],
 
     'users' => [
@@ -173,7 +173,7 @@ return [
             ],
             'list' => [
                 'title' => 'Lista',
-                'route' => 'hercules.users'
+                'route' => 'hercules.user.index'
             ],
         ]
     ],

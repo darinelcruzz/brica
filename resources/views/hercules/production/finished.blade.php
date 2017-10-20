@@ -54,7 +54,7 @@
         <template slot="body">
             @foreach($paid as $order)
               <tr>
-                  <td>{{ $order->id }}</td>
+                  <td>{{ $order->receiptr->id }}</td>
                   <td>{{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }} <br> <code>{{ $order->serial_number }}</code></td>
                   <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>

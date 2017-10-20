@@ -14,13 +14,14 @@ class WarehouseController extends Controller
         $orders = HOrder::where('status', '!=', 'terminado')
                         ->where('status', '!=', 'interno')
                         ->where('status', '!=', 'cancelada')
+                        ->where('status', '!=', 'pagado')
                         ->where('bodywork', '>', '0')
                         ->get();
 
         return view('hercules.warehouse.index', compact('orders'));
     }
 
-    function show(HOrder $horder, HBodywork $hbodywork)
+    function show(HOrder $horder)
     {
         $status = [
             'pendiente', 'surtido soldadura', 'soldadura', 'surtido fondeo', 'fondeo',
@@ -36,7 +37,7 @@ class WarehouseController extends Controller
             'mounting' => 'montaje'
         ];
 
-        return view('hercules.warehouse.show', compact('hbodywork', 'horder', 'status', 'processes'));
+        return view('hercules.warehouse.show', compact('horder', 'status', 'processes'));
     }
 
     function inventory()

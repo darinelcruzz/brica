@@ -97,7 +97,7 @@ return [
             ],
             'list' => [
                 'title' => 'Lista',
-                'route' => 'hercules.clients'
+                'route' => 'hercules.client.index'
             ],
         ]
     ],

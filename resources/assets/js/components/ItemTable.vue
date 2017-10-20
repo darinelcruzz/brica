@@ -85,7 +85,7 @@ export default {
         }
     },
     created() {
-        axios.get('/hercules/products').then(response => {
+        axios.get('/hercules/articulos').then(response => {
             this.products = response.data;
         });
     }

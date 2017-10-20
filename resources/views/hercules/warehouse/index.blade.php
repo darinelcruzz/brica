@@ -2,11 +2,11 @@
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Terminados"
+    <data-table col="col-md-12" title="Surtir material"
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
-                <th>Orden</th>
+                <th>#</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
                 <th>Observaciones</th>
@@ -19,7 +19,7 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      <a href="{{ route('hercules.warehouse.show', ['order' => $order->id, 'bodywork' => $order->bodyworkr->id]) }}"
+                      <a href="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
                         title='LISTA DE MATERIALES'>
                         {{ $order->bodyworkr->description }}
                       </a>

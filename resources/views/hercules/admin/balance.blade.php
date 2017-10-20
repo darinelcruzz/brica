@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-5">
 		<solid-box title="Buscar" color="box-primary">
-			{!! Form::open(['method' => 'POST', 'route' => 'hercules.balance']) !!}
+			{!! Form::open(['method' => 'POST', 'route' => 'hercules.balance.index']) !!}
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 						{!! Field::date('date', $date, ['tpl' => 'templates/withicon'],

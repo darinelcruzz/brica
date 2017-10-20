@@ -5,7 +5,6 @@ Auth::routes();
 Route::get('salir', function ()
 {
     Auth::logout();
-
     return redirect('/intranet');
 })->name('getout');
 
@@ -22,29 +21,9 @@ Route::get('/pruebas', function () {
     return $r[0]->order->status;
 });
 
-Route::get('/hercules/products', function () {
-    $hitems = DB::table('h_items')
-                ->where('type', 'inventario')
-                ->where('family', 'remolques')
-                ->selectRaw('id, CONCAT(description, ", (", stock, " en existencia)") as description, unity, price')
-                ->get();
-    $items = [];
+Route::get('/intranet', function () { return view('brica'); });
 
-    foreach ($hitems as $item) {
-        $items[$item->id] = $item;
-    }
-
-    return $items;
-
-});
-
-Route::get('/intranet', function () {
-    return view('brica');
-});
-
-Route::get('/', function () {
-    return view('comingsoon');
-});
+Route::get('/', function () { return view('comingsoon'); });
 
 Route::get('excel/exportar', 'ExcelController@export');
 
@@ -57,390 +36,201 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         return view('hercules.home');
     });
 
-    Route::get('articulos/carrocerias', [
-        'uses' => 'Hercules\ItemController@index',
-        'as' => 'bodyworks.items'
-    ]);
-
-    Route::get('articulos/inventarios/remolques', [
-        'uses' => 'Hercules\ItemController@trailers',
-        'as' => 'stocksales.items'
-    ]);
-
-    Route::get('articulos/inventarios', [
-        'uses' => 'Hercules\ItemController@inventory',
-        'as' => 'stocksales.items.inventory'
-    ]);
-
-    Route::post('inventario/actualizar', [
-        'uses' => 'Hercules\ItemController@updateStock',
-        'as' => 'stock.update'
-    ]);
-
-    Route::get('articulos/crear/{type}', [
-        'uses' => 'Hercules\ItemController@create',
-        'as' => 'item.create'
-    ]);
-
-    Route::post('articulos/crear', [
-        'uses' => 'Hercules\ItemController@store',
-        'as' => 'item.store'
-    ]);
-
-    Route::get('articulos/editar/{hitem}', [
-        'uses' => 'Hercules\ItemController@edit',
-        'as' => 'item.edit'
-    ]);
-
-    Route::post('articulos/editar', [
-        'uses' => 'Hercules\ItemController@update',
-        'as' => 'item.update'
-    ]);
-
-    Route::get('carrocerias/redilas', [
-        'uses' => 'Hercules\BodyworkController@index',
-        'as' => 'bodyworks.trucks'
-    ]);
-
-    Route::get('carrocerias/remolques', [
-        'uses' => 'Hercules\BodyworkController@trailers',
-        'as' => 'bodyworks.trailers'
-    ]);
-
-    Route::get('carroceria/{hbodywork}', [
-        'uses' => 'Hercules\BodyworkController@show',
-        'as' => 'bodywork.show'
-    ]);
-
-    Route::get('carrocerias/crear/{type}', [
-        'uses' => 'Hercules\BodyworkController@create',
-        'as' => 'bodywork.create'
-    ]);
-
-    Route::post('carrocerias/crear', [
-        'uses' => 'Hercules\BodyworkController@store',
-        'as' => 'bodywork.store'
-    ]);
-
-    Route::post('carrocerias/crear/cantidades', [
-        'uses' => 'Hercules\BodyworkController@addQuantities',
-        'as' => 'bodywork.quantities'
-    ]);
-
-    Route::get('carrocerias/editar/{hbodywork}', [
-        'uses' => 'Hercules\BodyworkController@edit',
-        'as' => 'bodywork.edit'
-    ]);
-
-    Route::post('carrocerias/editar', [
-        'uses' => 'Hercules\BodyworkController@update',
-        'as' => 'bodywork.update'
-    ]);
-
-    Route::get('carrocerias/duplicar/{hbodywork}', [
-        'uses' => 'Hercules\BodyworkController@clone',
-        'as' => 'bodywork.clone'
-    ]);
-
-    Route::post('carrocerias/duplicar', [
-        'uses' => 'Hercules\BodyworkController@duplicate',
-        'as' => 'bodywork.duplicate'
-    ]);
-
-    Route::get('carrocerias/deshabilitar/{hbodywork}', [
-        'uses' => 'Hercules\BodyworkController@disable',
-        'as' => 'bodywork.disable'
-    ]);
-
-    Route::get('clientes', [
-        'uses' => 'Hercules\ClientController@index',
-        'as' => 'clients'
-    ]);
-
-    Route::get('cliente/{hclient}', [
-        'uses' => 'Hercules\ClientController@show',
-        'as' => 'client.show'
-    ]);
-
-    Route::get('clientes/crear', [
-        'uses' => 'Hercules\ClientController@create',
-        'as' => 'client.create'
-    ]);
-
-    Route::post('clientes/crear', [
-        'uses' => 'Hercules\ClientController@store',
-        'as' => 'client.store'
-    ]);
-
-    Route::get('clientes/editar/{hclient}', [
-        'uses' => 'Hercules\ClientController@edit',
-        'as' => 'client.edit'
-    ]);
-
-    Route::post('clientes/editar', [
-        'uses' => 'Hercules\ClientController@update',
-        'as' => 'client.update'
-    ]);
-
-    Route::get('clientes/eliminar/{hclient}', [
-        'uses' => 'Hercules\ClientController@destroy',
-        'as' => 'client.destroy'
-    ]);
-
-    Route::get('recibos', [
-        'uses' => 'Hercules\ReceiptController@index',
-        'as' => 'receipts'
-    ]);
-
-    Route::get('disponibles', [
-        'uses' => 'Hercules\ReceiptController@available',
-        'as' => 'receipt.available'
-    ]);
-
-    Route::get('abonos', [
-        'uses' => 'Hercules\ReceiptController@deposits',
-        'as' => 'receipt.deposits'
-    ]);
-
-    Route::get('vendidas', [
-        'uses' => 'Hercules\ReceiptController@sold',
-        'as' => 'receipt.sold'
-    ]);
-
-    Route::post('vendidas/abonar', [
-        'uses' => 'Hercules\ReceiptController@deposit',
-        'as' => 'receipt.deposit'
-    ]);
-
-    Route::get('recibo/{hreceipt}', [
-        'uses' => 'Hercules\ReceiptController@show',
-        'as' => 'receipt.show'
-    ]);
-
-    Route::get('recibos/crear', [
-        'uses' => 'Hercules\ReceiptController@create',
-        'as' => 'receipt.create'
-    ]);
-
-    Route::post('recibos/crear', [
-        'uses' => 'Hercules\ReceiptController@store',
-        'as' => 'receipt.store'
-    ]);
-
-    Route::get('recibos/editar/{hreceipt}', [
-        'uses' => 'Hercules\ReceiptController@edit',
-        'as' => 'receipt.edit'
-    ]);
-
-    Route::post('recibos/editar', [
-        'uses' => 'Hercules\ReceiptController@update',
-        'as' => 'receipt.update'
-    ]);
-
-    Route::get('recibos/eliminar/{hreceipt}', [
-        'uses' => 'Hercules\ReceiptController@destroy',
-        'as' => 'receipt.destroy'
-    ]);
-
-    Route::get('recibo/{hreceipt}/transformar', [
-        'uses' => 'Hercules\ReceiptController@order',
-        'as' => 'receipt.order'
-    ]);
-
-    Route::get('terminados', [
-        'uses' => 'Hercules\StockSaleController@index',
-        'as' => 'stocksales'
-    ]);
-
-    Route::get('terminados/crear', [
-        'uses' => 'Hercules\StockSaleController@create',
-        'as' => 'stocksale.create'
-    ]);
-
-    Route::post('terminados/crear', [
-        'uses' => 'Hercules\StockSaleController@store',
-        'as' => 'stocksale.store'
-    ]);
-
-    Route::get('terminados/{hstocksale}', [
-        'uses' => 'Hercules\StockSaleController@show',
-        'as' => 'stocksale.show'
-    ]);
-
-    Route::get('terminados/ticket/{hstocksale}', [
-        'uses' => 'Hercules\StockSaleController@ticket',
-        'as' => 'stocksale.ticket'
-    ]);
-
-    Route::get('semiterminados', [
-        'uses' => 'Hercules\WarehouseController@inventory',
-        'as' => 'semis'
-    ]);
-
-    Route::get('ordenes', [
-        'uses' => 'Hercules\WarehouseController@orders',
-        'as' => 'warehouse.all'
-    ]);
-
-    Route::get('orden/{horder}', [
-        'uses' => 'Hercules\OrderController@show',
-        'as' => 'order.show'
-    ]);
-
-    Route::get('orden/{horden}/estado/{status}', [
-        'uses' => 'Hercules\OrderController@status',
-        'as' => 'order.status'
-    ]);
-
-    Route::post('orden/mover', [
-        'uses' => 'Hercules\OrderController@move',
-        'as' => 'order.move'
-    ]);
-
-    Route::get('orden/{horden}/actualizar/{assigned}', [
-        'uses' => 'Hercules\OrderController@ticket',
-        'as' => 'order.ticket'
-    ]);
-
-    Route::post('orden/actualizar', [
-        'uses' => 'Hercules\OrderController@update',
-        'as' => 'order.update'
-    ]);
-
-    Route::get('orden/imprimir/{horden}', [
-        'uses' => 'Hercules\OrderController@showTicket',
-        'as' => 'order.print_ticket'
-    ]);
-
-    Route::get('orden/foto/{horden}', [
-        'uses' => 'Hercules\PhotoUploadController@create',
-        'as' => 'photo.load'
-    ]);
-
-    Route::post('orden/foto', [
-        'uses' => 'Hercules\PhotoUploadController@upload',
-        'as' => 'photo.upload'
-    ]);
-
-    Route::get('almacen', [
-        'uses' => 'Hercules\WarehouseController@index',
-        'as' => 'warehouse'
-    ]);
-
-    Route::get('almacen/orden/{horder}/carroceria/{hbodywork}', [
-        'uses' => 'Hercules\WarehouseController@show',
-        'as' => 'warehouse.show'
-    ]);
-
-    Route::get('produccion', [
-        'uses' => 'Hercules\ProductionController@index',
-        'as' => 'production'
-    ]);
-
-    Route::get('produccion/finalizadas', [
-        'uses' => 'Hercules\ProductionController@finished',
-        'as' => 'production.finished'
-    ]);
-
-    Route::post('produccion/asignar', [
-        'uses' => 'Hercules\ProductionController@assign',
-        'as' => 'production.assign'
-    ]);
-
-    Route::get('produccion/terminados', [
-        'uses' => 'Hercules\ProductionController@done',
-        'as' => 'production.done'
-    ]);
-
-    Route::get('produccion/recibo/{horder}', [
-        'uses' => 'Hercules\ProductionController@ticket',
-        'as' => 'production.ticket'
-    ]);
-
-    Route::get('personal', [
-        'uses' => 'Hercules\PersonnelController@index',
-        'as' => 'personnel'
-    ]);
-
-    Route::post('personal', [
-        'uses' => 'Hercules\PersonnelController@create',
-        'as' => 'personnel.create'
-    ]);
-
-    Route::get('personal/editar/{hpersonnel}', [
-        'uses' => 'Hercules\PersonnelController@edit',
-        'as' => 'personnel.edit'
-    ]);
-
-    Route::post('personal/editar', [
-        'uses' => 'Hercules\PersonnelController@update',
-        'as' => 'personnel.update'
-    ]);
-
-    Route::get('personal/eliminar/{hpersonnel}', [
-        'uses' => 'Hercules\PersonnelController@destroy',
-        'as' => 'personnel.destroy'
-    ]);
-
-    Route::get('usuarios', [
-        'uses' => 'Hercules\UsersController@index',
-        'as' => 'users'
-    ]);
-
-    Route::get('usuarios/crear', [
-        'uses' => 'Hercules\UsersController@create',
-        'as' => 'user.create'
-    ]);
-
-    Route::post('usuarios/crear', [
-        'uses' => 'Hercules\UsersController@store',
-        'as' => 'user.store'
-    ]);
-
-    Route::get('usuarios/editar/{user}', [
-        'uses' => 'Hercules\UsersController@edit',
-        'as' => 'user.edit'
-    ]);
-
-    Route::post('usuarios/editar', [
-        'uses' => 'Hercules\UsersController@update',
-        'as' => 'user.update'
-    ]);
-
-    Route::get('usuarios/eliminar/{user}', [
-        'uses' => 'Hercules\UsersController@destroy',
-        'as' => 'personnel.destroy'
-    ]);
-
-    Route::get('balance', [
-        'uses' => 'Hercules\AdminScreenController@index',
-        'as' => 'balance'
-    ]);
-
-    Route::post('balance', [
-        'uses' => 'Hercules\AdminScreenController@index',
-        'as' => 'balance'
-    ]);
-
-    Route::get('balance/mensual', [
-        'uses' => 'Hercules\AdminScreenController@monthly',
-        'as' => 'balance.monthly'
-    ]);
-
-    Route::post('balance/mensual', [
-        'uses' => 'Hercules\AdminScreenController@monthly',
-        'as' => 'balance.monthly'
-    ]);
-
-    Route::get('gastos', [
-        'uses' => 'Hercules\AdminScreenController@expenses',
-        'as' => 'expenses'
-    ]);
-
-    Route::post('gastos/crear', [
-        'uses' => 'Hercules\AdminScreenController@createExpense',
-        'as' => 'expenses.create'
-    ]);
+    Route::group(['prefix' => 'articulos', 'as' => 'item.'], function () {
+        $ctrl = 'Hercules\ItemController';
+
+        Route::get('/', ['uses' => "$ctrl@items"]);
+
+        Route::get('carrocerias', ['uses' => "$ctrl@index", 'as' => 'bodyworks']);
+
+        Route::get('inventarios/remolques', ['uses' => "$ctrl@trailers", 'as' => 'stocksales']);
+
+        Route::get('inventarios', ['uses' => "$ctrl@inventory",'as' => 'inventory']);
+
+        Route::post('inventario/actualizar', ['uses' => "$ctrl@updateStock",'as' => 'stock.update']);
+
+        Route::get('crear/{type}', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store",'as' => 'store']);
+
+        Route::get('editar/{hitem}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+    });
+
+    Route::group(['prefix' => 'carrocerias', 'as' => 'bodywork.'], function () {
+        $ctrl = 'Hercules\BodyworkController';
+
+        Route::get('redilas', ['uses' => "$ctrl@index", 'as' => 'trucks']);
+
+        Route::get('remolques', ['uses' => "$ctrl@trailers", 'as' => 'trailers']);
+
+        Route::get('crear/{type}', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+
+        Route::post('crear/cantidades', ['uses' => "$ctrl@addQuantities", 'as' => 'quantities']);
+
+        Route::get('editar/{hbodywork}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('duplicar/{hbodywork}', ['uses' => "$ctrl@clone", 'as' => 'clone']);
+
+        Route::post('duplicar', ['uses' => "$ctrl@duplicate", 'as' => 'duplicate']);
+
+        Route::get('deshabilitar/{hbodywork}', ['uses' => "$ctrl@disable", 'as' => 'disable']);
+
+        Route::get('{hbodywork}', ['uses' => "$ctrl@show", 'as' => 'show']);
+    });
+
+    Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
+        $ctrl = 'Hercules\ClientController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+
+        Route::get('{hclient}', ['uses' => "$ctrl@show", 'as' => 'show']);
+
+        Route::get('editar/{hclient}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('eliminar/{hclient}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+    });
+
+    Route::group(['prefix' => 'recibos', 'as' => 'receipt.'], function () {
+        $ctrl = 'Hercules\ReceiptController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('disponibles', ['uses' => "$ctrl@available", 'as' => 'available']);
+
+        Route::get('vendidas', ['uses' => "$ctrl@sold", 'as' => 'sold']);
+
+        Route::get('abonos', ['uses' => "$ctrl@deposits", 'as' => 'deposits']);
+
+        Route::post('abonos', ['uses' => "$ctrl@deposit", 'as' => 'deposit']);
+
+        Route::get('comprobante/{hreceipt}', ['uses' => "$ctrl@show", 'as' => 'show']);
+
+        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+
+        Route::get('editar/{hreceipt}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('transformar/{hreceipt}', ['uses' => "$ctrl@order", 'as' => 'order']);
+
+        Route::get('eliminar/{hreceipt}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+    });
+
+    Route::group(['prefix' => 'ventas', 'as' => 'stocksale.'], function () {
+        $ctrl = 'Hercules\StockSaleController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+
+        Route::get('{hstocksale}', ['uses' => "$ctrl@show", 'as' => 'show']);
+
+        Route::get('comprobante/{hstocksale}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+    });
+
+    Route::group(['prefix' => 'orden', 'as' => 'order.'], function () {
+        $ctrl = 'Hercules\OrderController';
+
+        Route::get('{horder}', ['uses' => "$ctrl@show", 'as' => 'show']);
+
+        Route::get('{horder}/estado/{status}', ['uses' => "$ctrl@status", 'as' => 'status']);
+
+        Route::post('mover', ['uses' => "$ctrl@move", 'as' => 'move']);
+
+        Route::get('{horder}/actualizar/{assigned}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+
+        Route::post('actualizar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('imprimir/{horder}', ['uses' => "$ctrl@showTicket", 'as' => 'print_ticket']);
+    });
+
+    Route::group(['prefix' => 'almacen', 'as' => 'warehouse.'], function () {
+        $ctrl = 'Hercules\WarehouseController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('semiterminados', ['uses' => "$ctrl@inventory", 'as' => 'semis']);
+
+        Route::get('ordenes', ['uses' => "$ctrl@orders", 'as' => 'all']);
+
+        Route::get('orden/{horder}', ['uses' => "$ctrl@show", 'as' => 'show']);
+    });
+
+    Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
+        $ctrl = 'Hercules\ProductionController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('finalizadas', ['uses' => "$ctrl@finished", 'as' => 'finished']);
+
+        Route::post('asignar', ['uses' => "$ctrl@assign", 'as' => 'assign']);
+
+        Route::get('terminados', ['uses' => "$ctrl@done", 'as' => 'done']);
+
+        Route::get('recibo/{horder}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+    });
+
+    Route::group(['prefix' => 'personal', 'as' => 'personnel.'], function () {
+        $ctrl = 'Hercules\PersonnelController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::post('/', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::get('editar/{hpersonnel}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('eliminar/{hpersonnel}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+    });
+
+    Route::group(['prefix' => 'usuarios', 'as' => 'user.'], function () {
+        $ctrl = 'Hercules\UsersController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+
+        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+
+        Route::get('editar/{user}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+
+        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('eliminar/{user}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+    });
+
+    Route::group(['prefix' => 'balance', 'as' => 'balance.'], function () {
+        $ctrl = 'Hercules\AdminScreenController';
+
+        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::post('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+
+        Route::get('mensual', ['uses' => "$ctrl@monthly", 'as' => 'monthly']);
+
+        Route::post('mensual', ['uses' => "$ctrl@monthly", 'as' => 'monthly']);
+
+        Route::get('gastos', ['uses' => "$ctrl@expenses", 'as' => 'expenses']);
+
+        Route::post('gastos', ['uses' => "$ctrl@createExpense", 'as' => 'expenses.create']);
+    });
 
     Route::get('reporte/ventas', [
         'uses' => 'Hercules\ReportsController@sales',
@@ -450,5 +240,15 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::post('reporte/ventas', [
         'uses' => 'Hercules\ReportsController@sales',
         'as' => 'report.sales'
+    ]);
+
+    Route::get('foto/cargar/{horder}', [
+        'uses' => 'Hercules\PhotoUploadController@create',
+        'as' => 'photo.load'
+    ]);
+
+    Route::post('foto/guardar', [
+        'uses' => 'Hercules\PhotoUploadController@upload',
+        'as' => 'photo.upload'
     ]);
 });

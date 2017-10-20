@@ -113,6 +113,21 @@ class ItemController extends Controller
       return redirect('hercules/articulos/' . $item->type . 's');
     }
 
+    function items()
+    {
+        $hitems = HItem::where('type', 'inventario')
+                    ->where('family', 'remolques')
+                    ->selectRaw('id, CONCAT(description, ", (", stock, " en existencia)") as description, unity, price')
+                    ->get();
+        $items = [];
+
+        foreach ($hitems as $item) {
+            $items[$item->id] = $item;
+        }
+
+        return $items;
+    }
+
     public function destroy($id)
     {
         //

@@ -19,7 +19,7 @@
                     @foreach ($processes as $english => $spanish)
                         @include('hercules.warehouse.tab', [
                             'tab' => $loop->iteration, 'number' => $loop->iteration * 2 - 2,
-                            'process' => $hbodywork->$english,  'proceso' => $spanish
+                            'process' => $horder->bodyworkr->$english,  'proceso' => $spanish
                         ])
                     @endforeach
                 </div>

@@ -24978,7 +24978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/hercules/products').then(function (response) {
+        axios.get('/hercules/articulos').then(function (response) {
             _this.products = response.data;
         });
     }

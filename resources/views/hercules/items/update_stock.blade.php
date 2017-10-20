@@ -1,4 +1,4 @@
-{!! Form::open(['method' => 'POST', 'route' => 'hercules.stock.update']) !!}
+{!! Form::open(['method' => 'POST', 'route' => 'hercules.item.stock.update']) !!}
 
 <div class="input-group input-group-sm">
     <input type="hidden" name="id" value="{{ $item->id }}">

@@ -40,6 +40,6 @@ class UsersController extends Controller
 			'user' => $request->user
 		]);
 
-    	return redirect(route('hercules.users'));
+    	return redirect(route('hercules.user.index'));
     }
 }

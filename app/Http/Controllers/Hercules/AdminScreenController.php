@@ -58,7 +58,7 @@ class AdminScreenController extends Controller
 
     	HExpense::create($request->all());
 
-		return redirect(route('hercules.expenses'));
+		return redirect(route('hercules.balance.expenses'));
 	}
 
 }

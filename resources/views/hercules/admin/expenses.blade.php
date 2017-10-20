@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<solid-box title="Agregar gasto" color="box-primary">
-				{!! Form::open(['method' => 'POST', 'route' => 'hercules.expenses.create']) !!}
+				{!! Form::open(['method' => 'POST', 'route' => 'hercules.balance.expenses.create']) !!}
 					<div class="row">
 						<div class="col-md-10 col-md-offset-1">
 							{!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
