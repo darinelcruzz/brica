@@ -17,8 +17,23 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $r = App\Models\Hercules\HReceipt::where('client', '!=', 1)->get();
-    return $r[0]->order->status;
+    $unpaidR = App\Models\Hercules\HReceipt::retainersFromDateToDate('2017-10-01', '2017-10-31')->toArray();
+    $paidR = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-01', '2017-10-31')->toArray();
+    $deposits = App\Models\Hercules\HDeposit::fromDateToDate('2017-10-01', '2017-10-31')->toArray();
+
+    $mergeR = array_merge_recursive($unpaidR, $paidR, $deposits);
+    $receipts = [];
+    foreach ($mergeR as $key => $value) {
+        if(is_array($value)) {
+            $receipts[$key] = array_sum($value);
+        } else {
+            $receipts[$key] = $value;
+        }
+    }
+
+    ksort($receipts);
+
+    return $receipts;
 });
 
 Route::get('/intranet', function () { return view('brica'); });

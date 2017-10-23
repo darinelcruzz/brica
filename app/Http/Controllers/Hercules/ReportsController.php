@@ -8,6 +8,7 @@ use Jenssegers\Date\Date;
 use Charts;
 use App\Models\Hercules\HStockSale;
 use App\Models\Hercules\HReceipt;
+use App\Models\Hercules\HDeposit;
 
 class ReportsController extends Controller
 {
@@ -17,8 +18,9 @@ class ReportsController extends Controller
       $sales = HStockSale::fromDateToDate($dates['start'], $dates['end'])->toArray();
       $unpaidR = HReceipt::retainersFromDateToDate($dates['start'], $dates['end'])->toArray();
       $paidR = HReceipt::amountsFromDateToDate($dates['start'], $dates['end'])->toArray();
+      $deposits = HDeposit::fromDateToDate($dates['start'], $dates['end'])->toArray();
 
-      $mergeR = array_merge_recursive($unpaidR, $paidR);
+      $mergeR = array_merge_recursive($unpaidR, $paidR, $deposits);
       $receipts = [];
       foreach ($mergeR as $key => $value) {
           if(is_array($value)) {
@@ -27,6 +29,8 @@ class ReportsController extends Controller
               $receipts[$key] = $value;
           }
       }
+
+      ksort($receipts);
 
       $stockSalesChart = $this->createChart('Producto terminado', array_keys($sales), array_values($sales));
       $receiptsChart = $this->createChart('Carrocerías', array_keys($receipts), array_values($receipts));
