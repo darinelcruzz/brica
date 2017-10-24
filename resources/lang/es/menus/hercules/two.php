@@ -6,9 +6,9 @@ return [
         'title' => 'Administración',
         'icon' => 'fa fa-key',
         'submenu' => [
-            'create' => [
-                'title' => 'Balance',
-                'route' => 'hercules.balance'
+            'daily' => [
+                'title' => 'Balance diario',
+                'route' => 'hercules.balance.index'
             ],
             'monthly' => [
                 'title' => 'Balance mensual',
@@ -16,7 +16,7 @@ return [
             ],
             'list' => [
                 'title' => 'Gastos',
-                'route' => 'hercules.expenses'
+                'route' => 'hercules.balance.expenses'
             ],
         ]
     ],
@@ -29,17 +29,21 @@ return [
                 'title' => 'Crear',
                 'route' => 'hercules.receipt.create'
             ],
+            'historial' => [
+                'title' => 'Lista',
+                'route' => 'hercules.receipt.index'
+            ],
             'available' => [
                 'title' => 'Disponibles',
                 'route' => 'hercules.receipt.available'
             ],
+            'deposits' => [
+                'title' => 'Abonar',
+                'route' => 'hercules.receipt.deposits'
+            ],
             'sold' => [
                 'title' => 'Vendidas',
                 'route' => 'hercules.receipt.sold'
-            ],
-            'historial' => [
-                'title' => 'Lista',
-                'route' => 'hercules.receipts'
             ],
         ]
     ],
@@ -54,11 +58,11 @@ return [
             ],
             'list' => [
                 'title' => 'Historial',
-                'route' => 'hercules.stocksales'
+                'route' => 'hercules.stocksale.index'
             ],
             'inventory' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.stocksales.items'
+                'route' => 'hercules.item.stocksales'
             ],
         ]
     ],
@@ -69,7 +73,7 @@ return [
         /*'submenu' => [
             'complete' => [
                 'title' => 'Terminados',*/
-                'route' => 'hercules.warehouse'
+                'route' => 'hercules.warehouse.index'
             /*],
             'incomplete' => [
                 'title' => 'Semiterminados',
@@ -89,15 +93,15 @@ return [
         'submenu' => [
             'truck' => [
                 'title' => 'Redilas',
-                'route' => 'hercules.bodyworks.trucks'
+                'route' => 'hercules.bodywork.trucks'
             ],
             'trailer' => [
                 'title' => 'Remolques',
-                'route' => 'hercules.bodyworks.trailers'
+                'route' => 'hercules.bodywork.trailers'
             ],
             'items' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.bodyworks.items'
+                'route' => 'hercules.item.bodyworks'
             ],
         ]
     ],
@@ -120,7 +124,7 @@ return [
     'personnel' => [
         'title' => 'Personal',
         'icon' => 'fa fa-male',
-        'route' => 'hercules.personnel'
+        'route' => 'hercules.personnel.index'
     ],
 
     'logout' => [

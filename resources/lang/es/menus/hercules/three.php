@@ -12,11 +12,11 @@ return [
             ],
             'list' => [
                 'title' => 'Historial',
-                'route' => 'hercules.stocksales'
+                'route' => 'hercules.stocksale.index'
             ],
             'inventory' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.stocksales.items'
+                'route' => 'hercules.item.stocksales'
             ],
         ]
     ],
@@ -24,7 +24,7 @@ return [
     'inventory' => [
         'title' => 'Inventario',
         'icon' => 'fa fa-archive',
-        'route' => 'hercules.stocksales.items.inventory'
+        'route' => 'hercules.item.inventory'
     ],
 
     'warehouse' => [
@@ -33,7 +33,7 @@ return [
         /*'submenu' => [
             'complete' => [
                 'title' => 'Terminados',*/
-                'route' => 'hercules.warehouse'
+                'route' => 'hercules.warehouse.index'
             /*],
             'incomplete' => [
                 'title' => 'Semiterminados',
@@ -57,7 +57,7 @@ return [
             ],
             'working' => [
                 'title' => 'En proceso',
-                'route' => 'hercules.production'
+                'route' => 'hercules.production.index'
             ],
             'finished' => [
                 'title' => 'Finalizadas',
@@ -74,15 +74,15 @@ return [
         'submenu' => [
             'truck' => [
                 'title' => 'Redilas',
-                'route' => 'hercules.bodyworks.trucks'
+                'route' => 'hercules.bodywork.trucks'
             ],
             'trailer' => [
                 'title' => 'Remolques',
-                'route' => 'hercules.bodyworks.trailers'
+                'route' => 'hercules.bodywork.trailers'
             ],
             'items' => [
                 'title' => 'Artículos',
-                'route' => 'hercules.bodyworks.items'
+                'route' => 'hercules.item.bodyworks'
             ],
         ]
     ],
@@ -105,7 +105,7 @@ return [
     'personnel' => [
         'title' => 'Personal',
         'icon' => 'fa fa-male',
-        'route' => 'hercules.personnel'
+        'route' => 'hercules.personnel.index'
     ],
 
     'logout' => [
