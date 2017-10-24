@@ -17,7 +17,7 @@
             <span class="sr-only">{{ trans('adminlte_lang::message.togglenav') }}</span>
         </a>
 
-        @if (Auth::user()->level == 2)
+        @if (Auth::user()->level == 2 && Auth::user()->user != 2)
             @php
                 $toNotify = App\Quotation::where('type', 'produccion')
                     ->where('status', 'finalizado')
