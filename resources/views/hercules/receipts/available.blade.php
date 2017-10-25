@@ -43,7 +43,7 @@
                                           </a>
                                       @endif
                                       <br>
-                                      {{ $receipt->serial_number }}
+                                      <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
                                       {{ ucfirst($receipt->order->status) }}
