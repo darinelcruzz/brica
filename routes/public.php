@@ -124,6 +124,8 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::get('disponibles', ['uses' => "$ctrl@available", 'as' => 'available']);
 
+        Route::get('disponibles/{id}/{location}', ['uses' => "$ctrl@export", 'as' => 'export']);
+
         Route::get('vendidas', ['uses' => "$ctrl@sold", 'as' => 'sold']);
 
         Route::get('abonos', ['uses' => "$ctrl@deposits", 'as' => 'deposits']);

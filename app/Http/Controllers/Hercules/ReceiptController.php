@@ -22,10 +22,11 @@ class ReceiptController extends Controller
     function available()
     {
         $warehouse = HClient::find(1);
-        $receipts = $warehouse->receipts;
+        $comitan = $warehouse->receipts->where('location', 'comitán');
+        $palenque = $warehouse->receipts->where('location', 'palenque');
         session(['url' => '/hercules/recibos/disponibles']);
 
-        return view('hercules.receipts.available', compact('receipts'));
+        return view('hercules.receipts.available', compact('comitan', 'palenque'));
     }
 
     function deposits()
@@ -120,6 +121,15 @@ class ReceiptController extends Controller
 
         HReceipt::find($request->id)
             ->update($request->all());
+
+        return redirect(session('url'));
+    }
+
+    function export($id, $location)
+    {
+        HReceipt::find($id)->update([
+            'location' => $location
+        ]);
 
         return redirect(session('url'));
     }
