@@ -31,17 +31,19 @@
                                           class="btn btn-info btn-xs" title="AGREGAR CLIENTE">
                                           <i class="fa fa-dollar" aria-hidden="true"></i> <i class="fa fa-user" aria-hidden="true"></i>
                                       </a>
-                                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                                          class="btn btn-default btn-xs" title="IMPRIMIR RECIBO">
-                                          <i class="fa fa-print" aria-hidden="true"></i>
-                                      </a>
-                                      &nbsp;&nbsp;
                                       @if ($receipt->order->photo)
                                           <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
                                             class="btn btn-primary btn-xs"  title='FOTO'>
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                           </a>
+                                      @else
+                                          <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                            class="btn btn-primary btn-xs"  title='FOTO'>
+                                            <i class="fa fa-upload" aria-hidden="true"></i>
+                                          </a>
                                       @endif
+                                      <br>
+                                      {{ $receipt->serial_number }}
                                   </td>
                                   <td>
                                       {{ ucfirst($receipt->order->status) }}
@@ -79,19 +81,22 @@
                                           <i class="fa fa-backward" aria-hidden="true"></i> C
                                       </a>
                                       <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
-                                          class="btn btn-primary btn-xs" title="AGREGAR CLIENTE">
+                                          class="btn btn-info btn-xs" title="AGREGAR CLIENTE">
                                           <i class="fa fa-dollar" aria-hidden="true"></i> <i class="fa fa-user" aria-hidden="true"></i>
-                                      </a>
-                                      <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                                          class="btn btn-default btn-xs" title="IMPRIMIR RECIBO">
-                                          <i class="fa fa-print" aria-hidden="true"></i>
                                       </a>
                                       @if ($receipt->order->photo)
                                           <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
                                             class="btn btn-primary btn-xs"  title='FOTO'>
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                           </a>
+                                      @else
+                                          <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                            class="btn btn-primary btn-xs"  title='FOTO'>
+                                            <i class="fa fa-upload" aria-hidden="true"></i>
+                                          </a>
                                       @endif
+                                      <br>
+                                      <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
                                       {{ ucfirst($receipt->order->status) }}

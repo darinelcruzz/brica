@@ -10,6 +10,7 @@ class ProductionController extends Controller
 {
     function index()
     {
+        session(['url' => '/hercules/produccion']);
         return view('hercules.production.index');
     }
 

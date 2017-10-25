@@ -34,7 +34,7 @@ class PhotoUploadController extends Controller
             'photo' => Storage::url("hercules/$name.$ext")
         ]);
 
-        return redirect(route('hercules.production'));
+        return redirect(session('url'));
     }
 
     function destroy($img)
