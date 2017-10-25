@@ -18,6 +18,9 @@
 
                 <table class="table">
                     <tr>
+                        <td><strong>Entrega (estimada):</strong>  {{ $horder->receiptr->deliver }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Inicio:</strong>  {{ $horder->start }}</td>
                         <td><strong>Término:</strong>  {{ $horder->end }}</td>
                     </tr>

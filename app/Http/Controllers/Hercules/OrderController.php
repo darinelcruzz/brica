@@ -60,8 +60,8 @@ class OrderController extends Controller
         $order->update($request->except(['id']));
 
         if ($order->status == 'interno') {
-            return redirect(route('hercules.semis'));
+            return redirect(route('hercules.warehouse.semis'));
         }
-        return redirect(route('hercules.production'));
+        return redirect(route('hercules.production.index'));
     }
 }

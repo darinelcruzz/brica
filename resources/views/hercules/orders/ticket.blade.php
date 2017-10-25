@@ -17,6 +17,9 @@
                 </div>
 
                 <table class="table">
+                    <tr>
+                        <td><strong>Entrega (estimada):</strong>  {{ $order->receiptr->deliver_date }}</td>
+                    </tr>
                     @if ($order->bodywork)
                         <tr>
                             <td><strong>Inicio:</strong>  {{ $order->start }}</td>

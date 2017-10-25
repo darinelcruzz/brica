@@ -21,6 +21,12 @@ return [
         ]
     ],
 
+    'available' => [
+        'title' => 'Disponibles',
+        'icon' => 'fa fa-hand-o-right',
+        'route' => 'hercules.receipt.available'
+    ],
+
     'inventory' => [
         'title' => 'Inventario',
         'icon' => 'fa fa-archive',
@@ -65,8 +71,6 @@ return [
             ],
         ]
     ],
-
-    // Reportes producción
 
     'bodyworks' => [
         'title' => 'Carrocerías',
