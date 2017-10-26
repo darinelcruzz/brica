@@ -55,6 +55,12 @@ return [
         ]
     ],
 
+    'inventory' => [
+        'title' => 'Inventario',
+        'icon' => 'fa fa-archive',
+        'route' => 'runa.item.index'
+    ],
+
     'clients' => [
         'title' => 'Clientes',
         'icon' => 'fa fa-user',

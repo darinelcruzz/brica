@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Hercules\HItem;
+use App\Models\Runa\RItem;
 use App\Quotation;
 
 class ExcelController extends Controller
@@ -24,22 +24,17 @@ class ExcelController extends Controller
 
     function import()
     {
-    	Excel::load('inventario.xlsx', function($reader) {
+    	Excel::load('ritems.xlsx', function($reader) {
             foreach ($reader->get() as $item) {
-                HItem::create([
+                RItem::create([
                   'description' => $item->description,
-                  'family' => $item->family,
                   'caliber' => $item->caliber,
                   'unity' => $item->unity,
                   'weight' => $item->weight,
-                  'price' => $item->price,
-                  'type' => $item->type,
-                  'stock' => $item->stock,
-                  'code' => $item->code,
                 ]);
             }
         });
 
-        return redirect('hercules/articulos/inventarios');
+        return redirect('/runa');
     }
 }

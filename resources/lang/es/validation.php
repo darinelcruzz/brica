@@ -190,6 +190,7 @@ return [
         'process'               => 'proceso',
         'contact_number'        => 'número del contacto',
         'code'                  => 'código',
+        'stock'                 => 'cantidad',
     ],
 
 ];

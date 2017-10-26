@@ -288,6 +288,37 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         'as' => 'product.update'
     ]);
 
+    // Artículos inventario
+    Route::get('articulos', [
+        'uses' => 'Runa\ItemController@index',
+        'as' => 'item.index'
+    ]);
+
+    Route::get('articulos/crear', [
+        'uses' => 'Runa\ItemController@create',
+        'as' => 'item.create'
+    ]);
+
+    Route::post('articulos/crear', [
+        'uses' => 'Runa\ItemController@store',
+        'as' => 'item.store'
+    ]);
+
+    Route::get('articulos/editar/{ritem}', [
+        'uses' => 'Runa\ItemController@edit',
+        'as' => 'item.edit'
+    ]);
+
+    Route::post('articulos/editar', [
+        'uses' => 'Runa\ItemController@update',
+        'as' => 'item.update'
+    ]);
+
+    Route::post('articulos/stock', [
+        'uses' => 'Runa\ItemController@stock',
+        'as' => 'item.stock'
+    ]);
+
     // Usuarios
     Route::get('usuarios', [
         'uses' => 'Runa\UserController@index',
