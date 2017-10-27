@@ -5,20 +5,11 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Runa\RItem;
-use Styde\Html\Facades\Alert;
 
 class ItemController extends Controller
 {
     function index()
     {
-        Alert::info('Your account is about to expire')
-           ->details('Renew now to learn about:')
-           ->items([
-               'Laravel',
-               'PHP',
-               'And more',
-           ])
-           ->button('ELIMINAR', '#', 'primary');
         $items = RItem::all();
         $processes = ['nissan', '3 toneladas', 'pick up', 'varios'];
         return view('runa.items.index', compact('items', 'processes'));
