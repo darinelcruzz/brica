@@ -25,6 +25,13 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Field::select('brand', ['NISSAN' => 'Nissan', '3 TONELADAS' => '3 Toneladas', 'PICK UP' => 'Pick up', 'VARIOS' => 'Varios'], null,
+                            ['tpl' => 'templates/withicon', 'empty' => 'Elija marca'], ['icon' => 'trademark']) !!}
+                    </div>
+                </div>
+
                 <div class="box-footer">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning pull-right']) !!}
                 </div>

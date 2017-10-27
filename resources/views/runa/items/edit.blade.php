@@ -20,6 +20,11 @@
                     <div class="col-md-6">
                         {!! Field::number('weight', $ritem->weight, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'balance-scale']) !!}
                     </div>
+
+                    <div class="col-md-6">
+                        {!! Field::select('brand', ['NISSAN' => 'Nissan', '3 TONELADAS' => '3 Toneladas', 'PICK UP' => 'Pick up', 'VARIOS' => 'Varios'],
+                            $ritem->brand, ['tpl' => 'templates/withicon', 'empty' => 'Elija una marca'], ['icon' => 'trademark']) !!}
+                    </div>
                 </div>
 
                 <div class="box-footer">
