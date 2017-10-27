@@ -319,6 +319,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         'as' => 'item.stock'
     ]);
 
+    Route::get('articulos/eliminar/{ritem}', [
+        'uses' => 'Runa\ItemController@destroy',
+        'as' => 'item.destroy'
+    ]);
+
     // Usuarios
     Route::get('usuarios', [
         'uses' => 'Runa\UserController@index',

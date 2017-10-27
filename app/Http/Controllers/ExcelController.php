@@ -31,6 +31,7 @@ class ExcelController extends Controller
                   'caliber' => $item->caliber,
                   'unity' => $item->unity,
                   'weight' => $item->weight,
+                  'brand' => $item->brand,
                 ]);
             }
         });

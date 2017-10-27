@@ -71,6 +71,8 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         Route::get('editar/{hitem}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
 
         Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+
+        Route::get('eliminar/{hitem}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
     });
 
     Route::group(['prefix' => 'carrocerias', 'as' => 'bodywork.'], function () {

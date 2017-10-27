@@ -128,8 +128,12 @@ class ItemController extends Controller
         return $items;
     }
 
-    public function destroy($id)
+    public function destroy(HItem $hitem)
     {
-        //
+        $hitem->update([
+            'type' => 'eliminado'
+        ]);
+
+        return back();
     }
 }
