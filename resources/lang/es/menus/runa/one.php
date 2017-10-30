@@ -92,7 +92,7 @@ return [
         'submenu' => [
             'index' => [
                 'title' => 'Lista',
-                'route' => 'runa.questions'
+                'route' => 'runa.question.index'
             ],
             'create' => [
                 'title' => 'Crear',
@@ -130,7 +130,7 @@ return [
             ],
             'index' => [
                 'title' => 'Lista',
-                'route' => 'runa.products'
+                'route' => 'runa.product.index'
             ],
         ]
     ],
@@ -151,7 +151,7 @@ return [
             ],
             'index' => [
                 'title' => 'Lista',
-                'route' => 'runa.users'
+                'route' => 'runa.user.index'
             ],
         ]
     ],
@@ -159,7 +159,7 @@ return [
     'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-cogs',
-        'route' => 'runa.operator',
+        'route' => 'runa.operator.index',
     ],
 
     'logout' => [

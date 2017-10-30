@@ -43,7 +43,7 @@ class OperatorScreenController extends Controller
             'endTime' => Carbon::now()->format('h:i:s a')
         ]);
 
-    	return redirect(route('runa.operator'));
+    	return redirect(route('runa.operator.index'));
     }
 
     function orders(Quotation $quotation)

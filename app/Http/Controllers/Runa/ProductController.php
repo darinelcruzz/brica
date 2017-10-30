@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     	$product = Product::create($request->all());
 
-    	return redirect(route('runa.products'));
+    	return redirect(route('runa.product.index'));
     }
 
     public function edit(Product $product)
@@ -52,6 +52,6 @@ class ProductController extends Controller
 
         Product::find($request->id)->update($request->all());
 
-        return redirect(route('runa.products'));
+        return redirect(route('runa.product.index'));
     }
 }

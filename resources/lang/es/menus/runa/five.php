@@ -5,7 +5,7 @@ return [
     'operators' => [
         'title' => 'Operadores',
         'icon' => 'fa fa-cogs',
-        'route' => 'runa.operator',
+        'route' => 'runa.operator.index',
     ],
 
     'logout' => [
