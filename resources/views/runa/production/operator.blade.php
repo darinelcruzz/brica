@@ -53,7 +53,7 @@
 
     <row-woc col="col-md-12">
         @if($title != 'Cotizaciones')
-            <a href="{{ route('runa.operator') }}"
+            <a href="{{ route('runa.operator.index') }}"
                 class="btn btn-primary">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
                     &nbsp;Regresar
