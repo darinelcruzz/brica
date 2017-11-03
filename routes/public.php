@@ -1,5 +1,13 @@
 <?php
 
+function usesas($ctrl, $fun, $as = null)
+{
+    if ($as) {
+        return ['uses' => "$ctrl@$fun", 'as' => $as];
+    }
+    return ['uses' => "$ctrl@$fun", 'as' => $fun];
+}
+
 Auth::routes();
 
 Route::get('salir', function ()
@@ -17,32 +25,15 @@ Route::get('permiso/{company}', function($company) {
 });
 
 Route::get('/pruebas', function () {
-    $unpaidR = App\Models\Hercules\HReceipt::retainersFromDateToDate('2017-10-01', '2017-10-31')->toArray();
-    $paidR = App\Models\Hercules\HReceipt::amountsFromDateToDate('2017-10-01', '2017-10-31')->toArray();
-    $deposits = App\Models\Hercules\HDeposit::fromDateToDate('2017-10-01', '2017-10-31')->toArray();
-
-    $mergeR = array_merge_recursive($unpaidR, $paidR, $deposits);
-    $receipts = [];
-    foreach ($mergeR as $key => $value) {
-        if(is_array($value)) {
-            $receipts[$key] = array_sum($value);
-        } else {
-            $receipts[$key] = $value;
-        }
-    }
-
-    ksort($receipts);
-
-    return $receipts;
+    return 'pruebas';
 });
 
 Route::get('/intranet', function () { return view('brica'); });
 
 Route::get('/', function () { return view('comingsoon'); });
 
-Route::get('excel/exportar', 'ExcelController@export');
-
-Route::get('excel/importar', 'ExcelController@import');
+#Route::get('excel/exportar', 'ExcelController@export');
+#Route::get('excel/importar', 'ExcelController@import');
 
 Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['auth', 'hercules']], function () {
 
@@ -56,23 +47,23 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::get('/', ['uses' => "$ctrl@items"]);
 
-        Route::get('carrocerias', ['uses' => "$ctrl@index", 'as' => 'bodyworks']);
+        Route::get('carrocerias', usesas($ctrl, 'index', 'bodyworks'));
 
-        Route::get('inventarios/remolques', ['uses' => "$ctrl@trailers", 'as' => 'stocksales']);
+        Route::get('inventarios/remolques', usesas($ctrl, 'trailers', 'stocksales'));
 
-        Route::get('inventarios', ['uses' => "$ctrl@inventory",'as' => 'inventory']);
+        Route::get('inventarios', usesas($ctrl, 'inventory'));
 
-        Route::post('inventario/actualizar', ['uses' => "$ctrl@updateStock",'as' => 'stock.update']);
+        Route::post('inventario/actualizar', usesas($ctrl, 'updateStock', 'stock.update'));
 
-        Route::get('crear/{type}', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear/{type}', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store",'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::get('editar/{hitem}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{hitem}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('eliminar/{hitem}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+        Route::get('eliminar/{hitem}', usesas($ctrl, 'destroy'));
     });
 
     Route::group(['prefix' => 'carrocerias', 'as' => 'bodywork.'], function () {
@@ -80,103 +71,103 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::get('redilas', ['uses' => "$ctrl@index", 'as' => 'trucks']);
 
-        Route::get('remolques', ['uses' => "$ctrl@trailers", 'as' => 'trailers']);
+        Route::get('remolques', usesas($ctrl, 'trailers'));
 
-        Route::get('crear/{type}', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear/{type}', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
         Route::post('crear/cantidades', ['uses' => "$ctrl@addQuantities", 'as' => 'quantities']);
 
-        Route::get('editar/{hbodywork}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{hbodywork}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('duplicar/{hbodywork}', ['uses' => "$ctrl@clone", 'as' => 'clone']);
+        Route::get('duplicar/{hbodywork}', usesas($ctrl, 'clone'));
 
-        Route::post('duplicar', ['uses' => "$ctrl@duplicate", 'as' => 'duplicate']);
+        Route::post('duplicar', usesas($ctrl, 'duplicate'));
 
-        Route::get('deshabilitar/{hbodywork}', ['uses' => "$ctrl@disable", 'as' => 'disable']);
+        Route::get('deshabilitar/{hbodywork}', usesas($ctrl, 'disable'));
 
-        Route::get('{hbodywork}', ['uses' => "$ctrl@show", 'as' => 'show']);
+        Route::get('{hbodywork}', usesas($ctrl, 'show'));
     });
 
     Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
         $ctrl = 'Hercules\ClientController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::get('{hclient}', ['uses' => "$ctrl@show", 'as' => 'show']);
+        Route::get('{hclient}', usesas($ctrl, 'show'));
 
-        Route::get('editar/{hclient}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{hclient}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('eliminar/{hclient}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+        Route::get('eliminar/{hclient}', usesas($ctrl, 'destroy'));
     });
 
     Route::group(['prefix' => 'recibos', 'as' => 'receipt.'], function () {
         $ctrl = 'Hercules\ReceiptController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::get('disponibles', ['uses' => "$ctrl@available", 'as' => 'available']);
+        Route::get('disponibles', usesas($ctrl, 'available'));
 
-        Route::get('disponibles/{id}/{location}', ['uses' => "$ctrl@export", 'as' => 'export']);
+        Route::get('disponibles/{id}/{location}', usesas($ctrl, 'export'));
 
-        Route::get('vendidas', ['uses' => "$ctrl@sold", 'as' => 'sold']);
+        Route::get('vendidas', usesas($ctrl, 'sold'));
 
-        Route::get('abonos', ['uses' => "$ctrl@deposits", 'as' => 'deposits']);
+        Route::get('abonos', usesas($ctrl, 'deposits'));
 
-        Route::post('abonos', ['uses' => "$ctrl@deposit", 'as' => 'deposit']);
+        Route::post('abonos', usesas($ctrl, 'deposit'));
 
-        Route::get('comprobante/{hreceipt}', ['uses' => "$ctrl@show", 'as' => 'show']);
+        Route::get('comprobante/{hreceipt}', usesas($ctrl, 'show'));
 
-        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::get('editar/{hreceipt}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{hreceipt}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('transformar/{hreceipt}', ['uses' => "$ctrl@order", 'as' => 'order']);
+        Route::get('transformar/{hreceipt}', usesas($ctrl, 'order'));
 
-        Route::get('eliminar/{hreceipt}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+        Route::get('eliminar/{hreceipt}', usesas($ctrl, 'destroy'));
     });
 
     Route::group(['prefix' => 'ventas', 'as' => 'stocksale.'], function () {
         $ctrl = 'Hercules\StockSaleController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::get('{hstocksale}', ['uses' => "$ctrl@show", 'as' => 'show']);
+        Route::get('{hstocksale}', usesas($ctrl, 'show'));
 
-        Route::get('comprobante/{hstocksale}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+        Route::get('comprobante/{hstocksale}', usesas($ctrl, 'ticket'));
     });
 
     Route::group(['prefix' => 'orden', 'as' => 'order.'], function () {
         $ctrl = 'Hercules\OrderController';
 
-        Route::get('{horder}', ['uses' => "$ctrl@show", 'as' => 'show']);
+        Route::get('{horder}', usesas($ctrl, 'show'));
 
-        Route::get('{horder}/estado/{status}', ['uses' => "$ctrl@status", 'as' => 'status']);
+        Route::get('{horder}/estado/{status}', usesas($ctrl, 'status'));
 
-        Route::post('mover', ['uses' => "$ctrl@move", 'as' => 'move']);
+        Route::post('mover', usesas($ctrl, 'move'));
 
-        Route::get('{horder}/actualizar/{assigned}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+        Route::get('{horder}/actualizar/{assigned}', usesas($ctrl, 'ticket'));
 
-        Route::post('actualizar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('actualizar', usesas($ctrl, 'update'));
 
-        Route::get('imprimir/{horder}', ['uses' => "$ctrl@showTicket", 'as' => 'print_ticket']);
+        Route::get('imprimir/{horder}', usesas($ctrl, 'showTicket', 'print_ticket'));
     });
 
     Route::group(['prefix' => 'almacen', 'as' => 'warehouse.'], function () {
@@ -194,80 +185,72 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::group(['prefix' => 'produccion', 'as' => 'production.'], function () {
         $ctrl = 'Hercules\ProductionController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::get('finalizadas', ['uses' => "$ctrl@finished", 'as' => 'finished']);
+        Route::get('finalizadas', usesas($ctrl, 'finished'));
 
-        Route::post('asignar', ['uses' => "$ctrl@assign", 'as' => 'assign']);
+        Route::post('asignar', usesas($ctrl, 'assign'));
 
-        Route::get('terminados', ['uses' => "$ctrl@done", 'as' => 'done']);
+        Route::get('terminados', usesas($ctrl, 'done'));
 
-        Route::get('recibo/{horder}', ['uses' => "$ctrl@ticket", 'as' => 'ticket']);
+        Route::get('recibo/{horder}', usesas($ctrl, 'ticket'));
     });
 
     Route::group(['prefix' => 'personal', 'as' => 'personnel.'], function () {
         $ctrl = 'Hercules\PersonnelController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::post('/', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::post('/', usesas($ctrl, 'create'));
 
-        Route::get('editar/{hpersonnel}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{hpersonnel}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('eliminar/{hpersonnel}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+        Route::get('eliminar/{hpersonnel}', usesas($ctrl, 'destroy'));
     });
 
     Route::group(['prefix' => 'usuarios', 'as' => 'user.'], function () {
         $ctrl = 'Hercules\UsersController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::get('crear', ['uses' => "$ctrl@create", 'as' => 'create']);
+        Route::get('crear', usesas($ctrl, 'create'));
 
-        Route::post('crear', ['uses' => "$ctrl@store", 'as' => 'store']);
+        Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::get('editar/{user}', ['uses' => "$ctrl@edit", 'as' => 'edit']);
+        Route::get('editar/{user}', usesas($ctrl, 'edit'));
 
-        Route::post('editar', ['uses' => "$ctrl@update", 'as' => 'update']);
+        Route::post('editar', usesas($ctrl, 'update'));
 
-        Route::get('eliminar/{user}', ['uses' => "$ctrl@destroy", 'as' => 'destroy']);
+        Route::get('eliminar/{user}', usesas($ctrl, 'destroy'));
     });
 
     Route::group(['prefix' => 'balance', 'as' => 'balance.'], function () {
         $ctrl = 'Hercules\AdminScreenController';
 
-        Route::get('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::get('/', usesas($ctrl, 'index'));
 
-        Route::post('/', ['uses' => "$ctrl@index", 'as' => 'index']);
+        Route::post('/', usesas($ctrl, 'index'));
 
-        Route::get('mensual', ['uses' => "$ctrl@monthly", 'as' => 'monthly']);
+        Route::get('mensual', usesas($ctrl, 'monthly'));
 
-        Route::post('mensual', ['uses' => "$ctrl@monthly", 'as' => 'monthly']);
+        Route::post('mensual', usesas($ctrl, 'monthly'));
 
-        Route::get('gastos', ['uses' => "$ctrl@expenses", 'as' => 'expenses']);
+        Route::get('gastos', usesas($ctrl, 'expenses'));
 
-        Route::post('gastos', ['uses' => "$ctrl@createExpense", 'as' => 'expenses.create']);
+        Route::post('gastos', usesas($ctrl, 'createExpense'));
     });
 
-    Route::get('reporte/ventas', [
-        'uses' => 'Hercules\ReportsController@sales',
-        'as' => 'report.sales'
-    ]);
+    Route::group(['prefix' => 'reporte', 'as' => 'report.'], function () {
+        Route::get('ventas', usesas('Hercules\ReportsController', 'sales'));
 
-    Route::post('reporte/ventas', [
-        'uses' => 'Hercules\ReportsController@sales',
-        'as' => 'report.sales'
-    ]);
+        Route::post('ventas', usesas('Hercules\ReportsController', 'sales'));
+    });
 
-    Route::get('foto/cargar/{horder}', [
-        'uses' => 'Hercules\PhotoUploadController@create',
-        'as' => 'photo.load'
-    ]);
+    Route::group(['prefix' => 'foto', 'as' => 'photo.'], function () {
+        Route::get('cargar/{horder}', usesas('Hercules\PhotoUploadController', 'create', 'load'));
 
-    Route::post('foto/guardar', [
-        'uses' => 'Hercules\PhotoUploadController@upload',
-        'as' => 'photo.upload'
-    ]);
+        Route::post('guardar', usesas('Hercules\PhotoUploadController', 'upload'));
+    });
 });
