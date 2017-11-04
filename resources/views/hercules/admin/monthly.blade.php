@@ -2,6 +2,8 @@
 
 @section('main-content')
 
+	@include('hercules.components.monthselector')
+
 	<div class="row">
 		<div class="col-md-7">
 			<data-table-com title="Ingresos" example="example1" color="box-success">
