@@ -49,8 +49,12 @@ return [
         'icon' => 'fa fa-eye',
         'submenu' => [
             'cash' => [
-                'title' => 'Caja',
-                'route' => 'runa.cash'
+                'title' => 'Balance diario',
+                'route' => 'runa.index'
+            ],
+            'monthly' => [
+                'title' => 'Balance mensual',
+                'route' => 'runa.monthly'
             ],
             'expenses' => [
                 'title' => 'Gastos',

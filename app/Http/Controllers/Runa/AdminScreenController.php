@@ -14,17 +14,25 @@ class AdminScreenController extends Controller
     function index(Request $request)
     {
         $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
-
         $quotations = Quotation::inBalance($date);
-
         $expenses = Expense::where('date', $date)->get();
-
         $totals = $this->getTotals($quotations, $expenses);
-
         $sales = Sale::all();
 
         return view('runa.balance', compact('quotations', 'expenses',
                         'date', 'totals', 'sales'));
+    }
+
+    function monthly(Request $request)
+    {
+        $date = $request->input('date', Date::now()->format('Y-m'));
+        $quotations = Quotation::monthBalance($date);
+        $expenses = Expense::monthBalance($date);
+
+        $totalI = 0;
+        $totalE = 0;
+
+        return view('runa.admin.monthly', compact('quotations', 'expenses', 'totalI', 'totalE', 'date'));
     }
 
     function manage()
@@ -57,22 +65,19 @@ class AdminScreenController extends Controller
         return $totals;
     }
 
-    function expenses()
+    function expenses(Request $request)
 	{
+        $this->validate($request, [
+            'description' => 'sometimes|required',
+    		'amount' => 'sometimes|required',
+    	]);
+
+        if ($request->input('description')) {
+            Expense::create($request->all());
+        }
+
         $expenses = Expense::all();
 		$date = Date::now()->format('Y-m-d');
 		return view('runa.expenses', compact('date', 'expenses'));
-	}
-
-	function addExpense(Request $request)
-	{
-		$this->validate($request, [
-            'description' => 'required',
-    		'amount' => 'required',
-    	]);
-
-    	Expense::create($request->all());
-
-		return redirect(route('runa.expenses'));
 	}
 }

@@ -45,8 +45,8 @@ return [
         'icon' => 'fa fa-line-chart',
         'submenu' => [
             'cash' => [
-                'title' => 'Caja',
-                'route' => 'runa.cash'
+                'title' => 'Balance',
+                'route' => 'runa.index'
             ],
             'expenses' => [
                 'title' => 'Gastos',

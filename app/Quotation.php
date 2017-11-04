@@ -29,7 +29,7 @@ class Quotation extends Model
 
 	function getRetainerAttribute()
     {
-        return '$ ' . number_format($this->amount, 2, '.', ',');
+        return '$ ' . number_format($this->amount, 2);
     }
 
 	public function scopeTotalPaid($query, $date)
@@ -55,6 +55,15 @@ class Quotation extends Model
 			->where('status', '!=', 'cancelado')
 			->where('status', '!=', 'credito')
 			->where('date_payment', $date)
+			->get();
+    }
+
+	public function scopeMonthBalance($query, $date)
+    {
+        return $query->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
 			->get();
     }
 

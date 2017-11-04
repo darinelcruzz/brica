@@ -1,6 +1,6 @@
 <row-woc col="col-md-5">
     <solid-box title="Fecha">
-        {!! Form::open(['method' => 'POST', 'route' => 'hercules.balance.monthly']) !!}
+        {!! Form::open(['method' => 'POST', 'route' => 'runa.monthly']) !!}
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="input-group">

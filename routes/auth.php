@@ -132,34 +132,24 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('cancelar/{quotation}', usesas($ctrl, 'cancel'))->middleware('owners');
 
-        Route::get('caja', usesas($ctrl, 'index', 'cash'))->middleware('money');
+        Route::match(['get', 'post'], 'diario', usesas($ctrl, 'index'))->middleware('money');
 
-        Route::post('caja', usesas($ctrl, 'index', 'cash'))->middleware('money');
+        Route::match(['get', 'post'], 'mensual', usesas($ctrl, 'monthly'))->middleware('money');
 
-        Route::get('gastos', usesas($ctrl, 'expenses'))->middleware('money');
-
-        Route::post('gastos', usesas($ctrl, 'addExpense', 'expenses.create'))->middleware('money');
+        Route::match(['get', 'post'], 'gastos', usesas($ctrl, 'expenses'))->middleware('money');
     });
 
     // Reportes en gráficas
     Route::group(['prefix' => 'reportes', 'as' => 'report.', 'middleware' => 'money'], function () {
         $ctrl = 'Runa\ReportController';
 
-        Route::get('equipos', usesas($ctrl, 'teams'));
+        Route::match(['get', 'post'], 'equipos', usesas($ctrl, 'teams'));
 
-        Route::post('equipos', usesas($ctrl, 'teams'));
+        Route::match(['get', 'post'], 'ventas', usesas($ctrl, 'sales'));
 
-        Route::get('ventas', usesas($ctrl, 'sales'));
+        Route::match(['get', 'post'], 'clientes', usesas($ctrl, 'clients'));
 
-        Route::post('ventas', usesas($ctrl, 'sales'));
-
-        Route::get('clientes', usesas($ctrl, 'clients'));
-
-        Route::post('clientes', usesas($ctrl, 'clients'));
-
-        Route::get('productos', usesas($ctrl, 'products'));
-
-        Route::post('productos', usesas($ctrl, 'products'));
+        Route::match(['get', 'post'], 'productos', usesas($ctrl, 'products'));
     });
 
     // Productos
