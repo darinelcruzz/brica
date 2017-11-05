@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Quotation;
+use App\Models\Runa\RCut;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -22,8 +23,9 @@ class OperatorScreenController extends Controller
             ])
             ->get();
         $title = 'Cotizaciones';
+        $cuts = RCut::all();
 
-        return view('runa.production.operator', compact('rows', 'title'));
+        return view('runa.production.operator', compact('rows', 'title', 'cuts'));
     }
 
     function start(Quotation $quotation)

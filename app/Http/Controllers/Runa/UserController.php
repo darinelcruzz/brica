@@ -40,6 +40,6 @@ class UserController extends Controller
 			'user' => $request->user
 		]);
 
-    	return redirect(route('runa.users'));
+    	return redirect(route('runa.user.index'));
     }
 }

@@ -18,7 +18,7 @@
                 <div class="small-box bg-green">
                     <div class="inner">
                         <p>Equipo</p>
-                        <h3>R2</h3>
+                        <h3>{{ auth()->user()->name }}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users"></i>
@@ -48,11 +48,40 @@
                     @include('icon', ['title' => 'Ancho', 'icon' => 'expand', 'number' => $order->width . ' cm'])
                 </div>
             </div>
-            @if ($order->added)
-                <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12">
+                @if ($order->added)
                     <img height="100%" width="100%" src="{{ $order->added }}">
-                </div>
-            @endif
+                @endif
+
+                <solid-box title="Solicitar corte" collapsed="collapsed-box">
+                    <row-woc col="col-md-6">
+                        <ul>
+                            @foreach ($order->cuts as $cut)
+                                <li>{{ $cut->quantity }} pieza(s) calibre {{ $cut->caliber }} de {{ $cut->length }} x {{ $cut->width}}.</li>
+                            @endforeach
+                        </ul>
+                    </row-woc>
+                    {!! Form::open(['method' => 'POST', 'route' => 'runa.cut.store']) !!}
+                        <div class="row">
+                            <div class="col-md-3">
+                                {!! Field::number('quantity', 0, ['label' => 'Piezas', 'min' => '0', 'step' => '0.1'])!!}
+                            </div>
+                            <div class="col-md-3">
+                                {!! Field::number('length', 0, ['min' => '0', 'step' => '0.1'])!!}
+                            </div>
+                            <div class="col-md-3">
+                                {!! Field::number('width', 0, ['min' => '0', 'step' => '0.1'])!!}
+                            </div>
+                            <div class="col-md-3">
+                                {!! Field::text('caliber')!!}
+                            </div>
+                        </div>
+                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                        <input type="hidden" name="team_id" value="{{ auth()->user()->id }}">
+                        {!! Form::submit('Solicitar', ['class' => 'btn btn-warning pull-right']) !!}
+                    {!! Form::close() !!}
+                </solid-box>
+            </div>
         </div>
 
 @endsection

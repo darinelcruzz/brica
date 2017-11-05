@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             {!! Field::select('type',
-                                ['maquila' => 'Maquila', 'produccion' => 'Producción'], null,
+                                ['maquila' => 'Maquila', 'produccion' => 'Producción', 'corte' => 'Un corte'], null,
                                 ['tpl' => 'templates/withicon', 'empty' => 'Escoge tipo'], ['icon' => 'industry'])
                             !!}
                         </div>

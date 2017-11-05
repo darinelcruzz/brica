@@ -58,7 +58,9 @@
                             <select class="form-control" name="team">
                                 <option selected disabled>Elige</option>
                                 @foreach ($teams as $team)
-                                    <option value="{{ $team->name }}">{{ $team->name }}</option>
+                                    @if ($team->name != 'RC')
+                                        <option value="{{ $team->name }}">{{ $team->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <span class="input-group-btn">

@@ -4,13 +4,19 @@ namespace App;
 
 use Jenssegers\Date\Date;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Runa\RCut;
 
 class Order extends Model
 {
-    protected $fillable = ['quotation', 'type', 'order', 'deliverDate', 
+    protected $fillable = ['quotation', 'type', 'order', 'deliverDate',
     'description', 'team', 'design','added', 'caliber', 'measureType',
     'pieces', 'height','length', 'width', 'client'
     ];
+
+    function cuts()
+    {
+        return $this->hasMany(RCut::class);
+    }
 
     public function getCreationDateAttribute()
     {

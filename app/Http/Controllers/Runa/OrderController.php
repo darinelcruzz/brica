@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
 use Carbon\Carbon;
 use App\Order;
+use App\Quotation;
 
 class OrderController extends Controller
 {
@@ -30,6 +31,11 @@ class OrderController extends Controller
     	]);
 
     	$order = Order::create($request->all());
+
+        if($order->type == 'corte') {
+            Quotation::find($request->quotation)
+                ->update(['status' => 'produccion', 'team' => 'RC']);
+        }
 
 		if ($order->design == 'nuevo') {
 			$file = $request->new_design;
