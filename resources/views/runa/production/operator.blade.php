@@ -90,7 +90,7 @@
                                     <td>{{ $cut->id }}</td>
                                     <td>{{ $cut->team->name }}</td>
                                     <td>{{ $cut->length . ' x ' . $cut->width }}</td>
-                                    <td>{{ $cut->quantity }}</td>
+                                    <td>{{ $cut->quantity }}, calibre {{ $cut->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'terminado']) }}"
                                             class="btn btn-danger btn-xs">
@@ -107,7 +107,7 @@
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $row->clientr->name }}</td>
                                     <td>{{ $order->length . ' x ' . $order->width }}</td>
-                                    <td>{{ $order->pieces }}</td>
+                                    <td>{{ $order->pieces }}, calibre {{ $order->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.operator.finish', ['id' => $row->id]) }}"
                                             class="btn btn-danger btn-xs">
@@ -140,7 +140,7 @@
                                     <td>{{ $cut->id }}</td>
                                     <td>{{ $cut->team->name }}</td>
                                     <td>{{ $cut->length . ' x ' . $cut->width }}</td>
-                                    <td>{{ $cut->quantity }}</td>
+                                    <td>{{ $cut->quantity }}, calibre {{ $cut->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'entregado']) }}"
                                             class="btn btn-success btn-xs">
