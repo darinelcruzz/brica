@@ -69,16 +69,15 @@
         </row-woc>
 
     @else
-        <div class="row">
-            <div class="col-md-6">
                 <data-table col="col-md-12"
                     title="Cortes pendientes" example="example1" color="box-danger">
                     <template slot="header">
                         <tr>
                             <th>#</th>
                             <th>Destino</th>
-                            <th>Medidas</th>
                             <th>Piezas</th>
+                            <th>Medidas</th>
+                            <th>Calibre</th>
                             <th>Terminar</th>
                         </tr>
                     </template>
@@ -88,12 +87,13 @@
                             @if ($cut->status == 'pendiente')
                                 <tr>
                                     <td>{{ $cut->id }}</td>
-                                    <td>{{ $cut->team->name }}</td>
-                                    <td>{{ $cut->length . ' x ' . $cut->width }}</td>
-                                    <td>{{ $cut->quantity }}, calibre {{ $cut->caliber }}</td>
+                                    <td style="font-size: 150%">{{ $cut->team->name }}</td>
+                                    <td style="font-size: 200%">{{ $cut->quantity }}</td>
+                                    <td style="font-size: 200%">{{ $cut->length . ' x ' . $cut->width }}</td>
+                                    <td style="font-size: 200%">{{ $cut->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'terminado']) }}"
-                                            class="btn btn-danger btn-xs">
+                                            class="btn btn-danger">
                                                 <i class="fa fa-check"></i>
                                         </a>
                                     </td>
@@ -105,12 +105,13 @@
                             @foreach ($row->orders as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
-                                    <td>{{ $row->clientr->name }}</td>
-                                    <td>{{ $order->length . ' x ' . $order->width }}</td>
-                                    <td>{{ $order->pieces }}, calibre {{ $order->caliber }}</td>
+                                    <td style="font-size: 120%">{{ $row->clientr->name }}</td>
+                                    <td style="font-size: 200%">{{ $order->pieces }}</td>
+                                    <td style="font-size: 200%">{{ $order->length . ' x ' . $order->width }}</td>
+                                    <td style="font-size: 200%">{{ $order->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.operator.finish', ['id' => $row->id]) }}"
-                                            class="btn btn-danger btn-xs">
+                                            class="btn btn-danger">
                                                 <i class="fa fa-check"></i>
                                         </a>
                                     </td>
@@ -119,16 +120,16 @@
                         @endforeach
                     </template>
                 </data-table>
-            </div>
-            <div class="col-md-6">
+
                 <data-table col="col-md-12"
                     title="Cortes terminados" example="example2" color="box-success">
                     <template slot="header">
                         <tr>
                             <th>#</th>
                             <th>Equipo</th>
-                            <th>Medidas</th>
                             <th>Piezas</th>
+                            <th>Medidas</th>
+                            <th>Calibre</th>
                             <th>Entregado</th>
                         </tr>
                     </template>
@@ -138,12 +139,13 @@
                             @if ($cut->status == 'terminado')
                                 <tr>
                                     <td>{{ $cut->id }}</td>
-                                    <td>{{ $cut->team->name }}</td>
-                                    <td>{{ $cut->length . ' x ' . $cut->width }}</td>
-                                    <td>{{ $cut->quantity }}, calibre {{ $cut->caliber }}</td>
+                                    <td style="font-size: 150%">{{ $cut->team->name }}</td>
+                                    <td style="font-size: 200%">{{ $cut->quantity }}</td>
+                                    <td style="font-size: 200%">{{ $cut->length . ' x ' . $cut->width }}</td>
+                                    <td style="font-size: 200%">{{ $cut->caliber }}</td>
                                     <td>
                                         <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'entregado']) }}"
-                                            class="btn btn-success btn-xs">
+                                            class="btn btn-success">
                                                 <i class="fa fa-check"></i>
                                         </a>
                                     </td>
@@ -152,8 +154,6 @@
                         @endforeach
                     </template>
                 </data-table>
-            </div>
-        </div>
 
     @endif
 
