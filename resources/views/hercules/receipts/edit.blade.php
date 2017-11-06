@@ -34,17 +34,17 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::number('amount', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
+                        {!! Field::number('amount', $hreceipt->amount, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'usd']) !!}
                     </div>
 
                     <div class="col-md-6">
-                        {!! Field::number('retainer', 0, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'money']) !!}
+                        {!! Field::number('retainer', $hreceipt->retainer, ['tpl' => 'templates/withicon', 'step' => '0.01'], ['icon' => 'money']) !!}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::text('observations', ['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
+                        {!! Field::text('observations', $hreceipt->observations,['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
                     </div>
                 </div>
 
