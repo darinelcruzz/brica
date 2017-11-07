@@ -16,6 +16,7 @@ class ReceiptController extends Controller
     function index()
     {
         $receipts = HReceipt::all();
+        session(['url' => '/hercules/recibos']);
         return view('hercules.receipts.index', compact('receipts'));
     }
 
@@ -114,13 +115,12 @@ class ReceiptController extends Controller
     {
         $this->validate($request, [
             'client' => 'required',
-            'color' => 'required',
             'retainer' => 'required',
             'deliver' => 'required'
         ]);
 
-        HReceipt::find($request->id)
-            ->update($request->all());
+        $receipt = HReceipt::find($request->id);
+        $receipt->update($request->all());
 
         return redirect(session('url'));
     }
