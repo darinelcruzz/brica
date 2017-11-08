@@ -9,16 +9,14 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                      <h2 class="page-header" align="center">
-                          Carrocerías Hercules
-                          <small>
-                              IRENE DE LOURDES LÓPEZ GARCÍA <br>
-                              Panamericana 1262, Chichima Guadalupe, <br>
-                              Centro, CP. 30000, <br>
-                              Comitán de Domínguez, Chiapas<br>
-                              Tel.: 01-(963)-63-2-0405
-                          </small>
-                      </h2>
+
+                      <pre style="background: #efefef;border: 1px #777;background: url(lines.png) repeat 0 0;">
+
+
+
+
+
+                      </pre>
                     </div>
                 </div>
 
