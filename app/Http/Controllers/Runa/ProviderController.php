@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Runa\RProvider;
 use App\Models\Runa\RShopping;
+use App\Models\Runa\RDeposit;
 
 class ProviderController extends Controller
 {
@@ -48,6 +49,31 @@ class ProviderController extends Controller
         RShopping::create($request->all());
 
         return back();
+    }
+
+    public function deposit(RShopping $rshopping)
+    {
+        return view('runa.providers.deposit', compact('rshopping'));
+    }
+
+    public function pay(Request $request)
+    {
+        $this->validate($request, [
+            'date' => 'required',
+            'bank' => 'required',
+            'account' => 'required',
+            'amount' => 'required',
+        ]);
+
+        RDeposit::create($request->all());
+
+        $shopping = RShopping::find($request->shopping);
+
+        $shopping->update([
+            'status' => $shopping->pending == 0 ? 'pagado': 'pendiente'
+        ]);
+
+        return redirect(route('runa.provider.deposit', ['rshopping' => $request->shopping]));
     }
 
     public function edit($id)

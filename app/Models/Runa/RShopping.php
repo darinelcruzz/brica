@@ -16,4 +16,19 @@ class RShopping extends Model
         $date = new Date(strtotime($this->date));
         return $date->format('D, d/m/y');
     }
+
+    function getAmountAttribute()
+    {
+        return $this->unit_price * $this->kg;
+    }
+
+    function getPendingAttribute()
+    {
+        return $this->amount - $this->deposits->sum('amount');
+    }
+
+    function deposits()
+    {
+        return $this->hasMany(RDeposit::class, 'shopping');
+    }
 }

@@ -18,8 +18,9 @@
                 <tr>
                     <td>
                         {{ $provider->name }} &nbsp;&nbsp;
-                        <a href="{{ route('runa.provider.show', ['rprovider' => $provider->id ]) }}">
-                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        <a href="{{ route('runa.provider.show', ['rprovider' => $provider->id ]) }}"
+                            class="btn btn-xs btn-success">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </a>
                     </td>
                     <td>{{ $provider->products }}</td>

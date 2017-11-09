@@ -9,7 +9,7 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Producto</th>
-                        <th>Precio Unit.</th>
+                        <th>Precio</th>
                         <th>KG</th>
                         <th>Total</th>
                         <th>Estado</th>
@@ -21,10 +21,18 @@
                         <tr>
                             <td>{{ $shopping->shop_date }}</td>
                             <td>{{ $shopping->product }}</td>
-                            <td>{{ $shopping->unit_price }}</td>
-                            <td>{{ $shopping->kg }}</td>
-                            <td>{{ $shopping->kg * $shopping->unit_price  }}</td>
-                            <td>{{ $shopping->status }}</td>
+                            <td align="right">$ {{ number_format($shopping->unit_price, 2) }}</td>
+                            <td align="right">{{ $shopping->kg }}</td>
+                            <td align="right">$ {{ number_format($shopping->kg * $shopping->unit_price, 2) }}</td>
+                            <td>
+                                <code style="{{ $shopping->pending == 0 ? "color:#04b07b;": ''}}">
+                                    {{ strtoupper($shopping->status) }}
+                                </code>&nbsp;
+                                <a href="{{ route('runa.provider.deposit', ['rshopping' => $shopping->id ]) }}"
+                                    class="btn btn-xs btn-success">
+                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </template>

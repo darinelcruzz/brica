@@ -193,6 +193,8 @@ return [
         'stock'                 => 'cantidad',
         'product'               => 'producto',
         'unit_price'            => 'precio unitario',
+        'account'               => 'cuenta',
+        'bank'                  => 'banco',
     ],
 
 ];

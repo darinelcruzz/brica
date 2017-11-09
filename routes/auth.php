@@ -151,6 +151,10 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('{rprovider}', usesas($ctrl, 'show'));
 
+        Route::get('pagar/{rshopping}', usesas($ctrl, 'deposit'));
+
+        Route::post('pagar', usesas($ctrl, 'pay'));
+
         Route::post('comprar', usesas($ctrl, 'shop'));
 
         Route::get('editar/{rprovider}', usesas($ctrl, 'edit'));
