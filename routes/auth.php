@@ -139,6 +139,27 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         Route::get('eliminar/{client}', usesas($ctrl, 'destroy'));
     });
 
+    // Proveedores
+    Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
+        $ctrl = 'Runa\ProviderController';
+
+        Route::get('/', usesas($ctrl, 'index'));
+
+        Route::get('crear', usesas($ctrl, 'create'));
+
+        Route::post('crear', usesas($ctrl, 'store'));
+
+        Route::get('{rprovider}', usesas($ctrl, 'show'));
+
+        Route::post('comprar', usesas($ctrl, 'shop'));
+
+        Route::get('editar/{rprovider}', usesas($ctrl, 'edit'));
+
+        Route::post('editar', usesas($ctrl, 'change'));
+
+        Route::get('eliminar/{rprovider}', usesas($ctrl, 'destroy'));
+    });
+
     // Administración
     Route::group(['prefix' => 'administracion'], function () {
         $ctrl = 'Runa\AdminScreenController';

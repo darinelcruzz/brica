@@ -124,6 +124,21 @@ return [
         ]
     ],
 
+    'providers' => [
+        'title' => 'Proveedores',
+        'icon' => 'fa fa-handshake-o',
+        'submenu' => [
+            'add' => [
+                'title' => 'Agregar',
+                'route' => 'runa.provider.create'
+            ],
+            'index' => [
+                'title' => 'Lista',
+                'route' => 'runa.provider.index'
+            ],
+        ]
+    ],
+
     'products' => [
         'title' => 'Productos',
         'icon' => 'fa fa-barcode',

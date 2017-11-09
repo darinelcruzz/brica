@@ -191,6 +191,8 @@ return [
         'contact_number'        => 'número del contacto',
         'code'                  => 'código',
         'stock'                 => 'cantidad',
+        'product'               => 'producto',
+        'unit_price'            => 'precio unitario',
     ],
 
 ];
