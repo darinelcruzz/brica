@@ -26,7 +26,7 @@ class ReportController extends Controller
 
         $works = $this->createChart(
             'Trabajos', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
-            $dataForCharts[1], 'Total trabajado'
+            $dataForCharts[1], 'Trabajos hechos'
         );
 
         return view('runa.reports.teams', compact('money', 'works', 'dates'));
