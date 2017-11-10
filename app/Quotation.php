@@ -32,6 +32,11 @@ class Quotation extends Model
         return '$ ' . number_format($this->amount, 2);
     }
 
+	function getBalanceAttribute()
+	{
+		return $this->sale ? $this->sale->amount: $this->amount;
+	}
+
 	public function scopeTotalPaid($query, $date)
 	{
 		return $query->where('date_payment', $date)
@@ -76,14 +81,12 @@ class Quotation extends Model
 			->get();
     }
 
-	function scopeMoneyByTeam($query, $team, $startDate, $endDate)
+	function scopeMadeByTeam($query, $team, $startDate, $endDate)
 	{
 		return $query->whereBetween('payment_date', [$startDate, $endDate])
-			->where('status', '!=', 'pendiente')
-			->where('status', '!=', 'cancelado')
-			->where('type', 'produccion')
-			->where('team', $team)
-			->get();
+					->where('team', $team)
+					->where('status', '!=', 'cancelado')
+					->get();
 	}
 
 	public function storeProducts($request)

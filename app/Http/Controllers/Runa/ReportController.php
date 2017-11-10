@@ -111,20 +111,19 @@ class ReportController extends Controller
 
     function dataForTeams($startDate, $endDate)
     {
-        $sums = [];
-        $quantities = [];
+        $sums = $quantities = [];
 
         for ($i=1; $i < 5; $i++) {
             $r = 0;
 
-            $quotations = Quotation::moneyByTeam("R$i", $startDate, $endDate);
+            $quotations = Quotation::madeByTeam("R$i", $startDate, $endDate);
 
             foreach ($quotations as $quotation) {
-                $r += $quotation->sale ? $quotation->sale->amount: $quotation->amount;
+                $r += $quotation->balance;
             }
 
-            array_push($quantities, count($quotations));
             array_push($sums, $r);
+            array_push($quantities, count($quotations));
         }
 
         return [$sums, $quantities];
@@ -135,25 +134,10 @@ class ReportController extends Controller
         $sums = [];
         $labels = [];
 
-        //$sales = Sale::whereBetween('created_at', [$startDate, $endDate])->get();
         $quotations = Quotation::reportSales($startDate, $endDate);
 
         $startDay = substr($startDate, 0, 10);
         $sum = 0;
-
-        /*foreach ($sales as $sale) {
-            if ($sale->quotationr->status != 'cancelado') {
-                if ($sale->created_at->format('Y-m-d') == $startDay) {
-                    $sum += $sale->amount;
-                } else {
-                    array_push($sums, $sum);
-                    $dateLabel = Date::createFromFormat('Y-m-d H:i:s', $sale->created_at);
-                    array_push($labels, $dateLabel->format('d-M'));
-                    $sum = $sale->amount;
-                    $startDay = $sale->created_at->format('Y-m-d');
-                }
-            }
-        }*/
 
         foreach ($quotations as $q) {
             if (substr($q->payment_date, 0, 10) == $startDay) {
