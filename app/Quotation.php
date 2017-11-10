@@ -83,7 +83,7 @@ class Quotation extends Model
 
 	function scopeMadeByTeam($query, $team, $startDate, $endDate)
 	{
-		return $query->whereBetween('payment_date', [$startDate, $endDate])
+		return $query->whereBetween('created_at', [$startDate, $endDate])
 					->where('team', $team)
 					->where('status', '!=', 'cancelado')
 					->get();
