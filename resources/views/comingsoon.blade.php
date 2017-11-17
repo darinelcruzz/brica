@@ -17,37 +17,5 @@
 
 </div>
 
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "MedicalWebPage",
-  "about": {
-    "@type": "MedicalCondition",
-    "name": [
-      "High Blood Pressure",
-      "hypertension"
-    ]
-  },
-  "aspect": [
-    "Diagnosis",
-    "Treatment"
-  ],
-  "audience": "http://schema.org/Patient",
-  "drug": [
-    {
-      "@type": "Drug",
-      "nonProprietaryName": "propanaolol",
-    },
-    {
-      "@type": "Drug",
-      "nonProprietaryName": "atenolol",
-    }
-  ],
-  "lastReviewed": "2011-09-14",
-  "name": "beta-blocker",
-  "specialty": "http://schema.org/Cardiovascular"
-}
-</script>
-
 </body>
 </html>
