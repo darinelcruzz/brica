@@ -78,7 +78,8 @@ class Quotation extends Model
 			->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
 			->where('status', '!=', 'credito')
-			->get();
+			->orderBy('payment_date')
+			->get(['id', 'amount', 'payment_date']);
     }
 
 	function scopeMadeByTeam($query, $team, $startDate, $endDate)

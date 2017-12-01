@@ -36,7 +36,6 @@ class ReportController extends Controller
     {
       $dates = $this->getFormattedDates($request);
       $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
-
       $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
 
       return view('runa.reports.sales', compact('salesChart', 'dates'));
@@ -131,24 +130,25 @@ class ReportController extends Controller
 
     function getSalesTotals($startDate, $endDate)
     {
-        $sums = [];
-        $labels = [];
+        $sums = $labels = [];
 
         $quotations = Quotation::reportSales($startDate, $endDate);
-
         $startDay = substr($startDate, 0, 10);
-        $sum = 0;
+        $sum = $i = 0;
 
         foreach ($quotations as $q) {
-            if (substr($q->payment_date, 0, 10) == $startDay) {
-                $sum += $q->sale ? $q->sale->amount: $q->amount;
-            } else {
+
+            if ($i > 0 && substr($q->payment_date, 0, 10) != $startDay)
+            {
                 array_push($sums, $sum);
-                $dateLabel = Date::createFromFormat('Y-m-d H:i:s', $q->payment_date);
+                $sum = 0;
+                $dateLabel = Date::createFromFormat('Y-m-d', $startDay);
                 array_push($labels, $dateLabel->format('d-M'));
-                $sum = $q->status == 'pagado' ? $q->sale->amount: $q->amount;
                 $startDay = substr($q->payment_date, 0, 10);
             }
+
+            $sum += $q->sale ? $q->sale->amount: $q->amount;
+            $i += 1;
         }
 
         return [$sums, $labels];
