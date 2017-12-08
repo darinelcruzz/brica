@@ -14,6 +14,7 @@
                 <th>Entrada</th>
                 <th>Salida</th>
                 <th>Existencia</th>
+                <th>Total (kg)</th>
             </tr>
         </thead>
 
@@ -43,9 +44,21 @@
                             @include('runa.items.update_stock', ['color' => 'danger', 'action' => 'minus'])
                         </td>
                         <td>{{ $item->stock }}</td>
+                        <td>{{ number_format($item->stock * $item->weight, 2) }}</td>
+                        @php
+                            $totalStock += $item->stock * $item->weight;
+                        @endphp
                     </tr>
                 @endif
             @endforeach
         </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="7"></td>
+                <td><b>Kg totales:</b></td>
+                <td>{{ number_format($totalStock, 2) }}</td>
+            </tr>
+        </tfoot>
     </table>
 </div>

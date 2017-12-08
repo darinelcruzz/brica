@@ -11,8 +11,9 @@ class ItemController extends Controller
     function index()
     {
         $items = RItem::all();
+        $totalStock = 0;
         $processes = ['nissan', '3 toneladas', 'pick up', 'varios'];
-        return view('runa.items.index', compact('items', 'processes'));
+        return view('runa.items.index', compact('items', 'processes', 'totalStock'));
     }
 
     function create()
