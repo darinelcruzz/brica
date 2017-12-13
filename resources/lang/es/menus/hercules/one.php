@@ -105,10 +105,10 @@ return [
                 'title' => 'En proceso',
                 'route' => 'hercules.production.index'
             ],
-            'finished' => [
+            /*'finished' => [
                 'title' => 'Finalizadas',
                 'route' => 'hercules.production.finished'
-            ],
+            ],*/
         ]
     ],
 
