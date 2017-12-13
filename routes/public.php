@@ -218,6 +218,31 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         Route::get('eliminar/{user}', usesas($ctrl, 'destroy'));
     });
 
+    // Proveedores
+    Route::group(['prefix' => 'proveedores', 'as' => 'provider.'], function () {
+        $ctrl = 'Hercules\ProviderController';
+
+        Route::get('/', usesas($ctrl, 'index'));
+
+        Route::get('crear', usesas($ctrl, 'create'));
+
+        Route::post('crear', usesas($ctrl, 'store'));
+
+        Route::get('{hprovider}', usesas($ctrl, 'show'));
+
+        Route::get('pagar/{hshopping}', usesas($ctrl, 'payment'));
+
+        Route::post('pagar', usesas($ctrl, 'pay'));
+
+        Route::post('comprar', usesas($ctrl, 'shop'));
+
+        Route::get('editar/{hprovider}', usesas($ctrl, 'edit'));
+
+        Route::post('editar', usesas($ctrl, 'change'));
+
+        Route::get('eliminar/{hprovider}', usesas($ctrl, 'destroy'));
+    });
+
     Route::group(['prefix' => 'balance', 'as' => 'balance.'], function () {
         $ctrl = 'Hercules\AdminScreenController';
 

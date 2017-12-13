@@ -121,6 +121,21 @@ return [
         ]
     ],
 
+    'providers' => [
+        'title' => 'Proveedores',
+        'icon' => 'fa fa-handshake-o',
+        'submenu' => [
+            'create' => [
+                'title' => 'Crear',
+                'route' => 'hercules.provider.create'
+            ],
+            'list' => [
+                'title' => 'Lista',
+                'route' => 'hercules.provider.index'
+            ],
+        ]
+    ],
+
     'personnel' => [
         'title' => 'Personal',
         'icon' => 'fa fa-male',
