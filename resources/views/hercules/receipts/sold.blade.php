@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($receipts as $receipt)
                 @if ($receipt->order)
-                    @if ($receipt->order->status == 'terminado')
+                    @if ($receipt->order->status == 'pagado')
                         <tr>
                             <td>{{ $receipt->id }}</td>
                             <td>
