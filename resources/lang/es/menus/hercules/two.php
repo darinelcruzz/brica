@@ -67,6 +67,12 @@ return [
         ]
     ],
 
+    'production' => [
+        'title' => 'Finalizadas',
+        'icon' => 'fa fa-check',
+        'route' => 'hercules.production.finished'
+    ],
+
     'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
