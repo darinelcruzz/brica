@@ -73,26 +73,6 @@ return [
         'route' => 'hercules.production.finished'
     ],
 
-    'warehouse' => [
-        'title' => 'Almacen',
-        'icon' => 'fa fa-cubes',
-        /*'submenu' => [
-            'complete' => [
-                'title' => 'Terminados',*/
-                'route' => 'hercules.warehouse.index'
-            /*],
-            'incomplete' => [
-                'title' => 'Semiterminados',
-                'route' => 'hercules.semis'
-            ],
-            'all' => [
-                'title' => 'Todos',
-                'route' => 'hercules.warehouse.all'
-            ],
-        ]*/
-
-    ],
-
     'bodyworks' => [
         'title' => 'Carrocerías',
         'icon' => 'fa fa-truck',

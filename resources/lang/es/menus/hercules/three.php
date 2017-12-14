@@ -33,12 +33,12 @@ return [
         'route' => 'hercules.item.inventory'
     ],
 
-    'warehouse' => [
+    /*'warehouse' => [
         'title' => 'Almacen',
         'icon' => 'fa fa-cubes',
-        /*'submenu' => [
+        'submenu' => [
             'complete' => [
-                'title' => 'Terminados',*/
+                'title' => 'Terminados',
                 'route' => 'hercules.warehouse.index'
             /*],
             'incomplete' => [
@@ -49,9 +49,9 @@ return [
                 'title' => 'Todos',
                 'route' => 'hercules.warehouse.all'
             ],
-        ]*/
+        ]
 
-    ],
+    */
 
     'production' => [
         'title' => 'Producción',

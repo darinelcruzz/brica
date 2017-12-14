@@ -20,6 +20,10 @@
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
                       {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}
+                      <a href="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                        title='SURTIR' class="btn btn-primary btn-xs">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </a>
                       @if ($order->serial_number)
                           &nbsp;&nbsp;
                           <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
@@ -77,6 +81,12 @@
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
                           {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }} &nbsp;&nbsp;&nbsp;
+                          @if ($order->bodywork)
+                              <a href="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                                title='SURTIR' class="btn btn-{{ $process['color'] }} btn-xs">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                              </a>
+                          @endif
                           @includeWhen($order->photo, 'hercules/components/photo')
                           @include('hercules/components/upload_photo')
                           @include('hercules/components/production_buttons')

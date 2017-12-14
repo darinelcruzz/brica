@@ -16,9 +16,9 @@ class OrderController extends Controller
 
         $order->updateStatus($status);
 
-        if ($status == 'surtido soldadura') {
+        /*if ($status == 'surtido soldadura') {
             return redirect(route('hercules.warehouse.index'));
-        }
+        }*/
 
         return back();
 

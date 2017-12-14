@@ -18,7 +18,7 @@
             <br><br>
             @if (array_search($horder->status, $status) > $number)
                 <li>
-                  <a href="{{ route('hercules.warehouse.index') }}"
+                  <a href="{{ route('hercules.production.index') }}"
                     class="btn btn-success btn-xs">
                     Regresar <i class="fa fa-backward" aria-hidden="true"></i>
                   </a>
