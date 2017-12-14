@@ -99,6 +99,18 @@ return [
                 'title' => 'Remolques',
                 'route' => 'hercules.bodywork.trailers'
             ],
+            'dry' => [
+                'title' => 'Cajas secas',
+                'route' => 'hercules.bodywork.dry'
+            ],
+            'soda' => [
+                'title' => 'Cajas refresqueras',
+                'route' => 'hercules.bodywork.soda'
+            ],
+            'platform' => [
+                'title' => 'Plataformas',
+                'route' => 'hercules.bodywork.platform'
+            ],
             'items' => [
                 'title' => 'Artículos',
                 'route' => 'hercules.item.bodyworks'
