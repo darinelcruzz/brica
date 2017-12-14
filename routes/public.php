@@ -61,15 +61,21 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::group(['prefix' => 'carrocerias', 'as' => 'bodywork.'], function () {
         $ctrl = 'Hercules\BodyworkController';
 
-        Route::get('redilas', ['uses' => "$ctrl@index", 'as' => 'trucks']);
+        Route::get('redilas', usesas($ctrl, 'index', 'trucks'));
 
         Route::get('remolques', usesas($ctrl, 'trailers'));
+
+        Route::get('secas', usesas($ctrl, 'dry'));
+
+        Route::get('refrescos', usesas($ctrl, 'soda'));
+
+        Route::get('plataformas', usesas($ctrl, 'platform'));
 
         Route::get('crear/{type}', usesas($ctrl, 'create'));
 
         Route::post('crear', usesas($ctrl, 'store'));
 
-        Route::post('crear/cantidades', ['uses' => "$ctrl@addQuantities", 'as' => 'quantities']);
+        Route::post('crear/cantidades', usesas($ctrl, 'addQuantities', 'quantities'));
 
         Route::get('editar/{hbodywork}', usesas($ctrl, 'edit'));
 

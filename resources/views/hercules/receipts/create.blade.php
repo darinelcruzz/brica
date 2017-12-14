@@ -21,7 +21,8 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::select('type', ['redila' => 'Redila', 'remolque' => 'Remolque', 'reparacion' => 'Reparación'],
+                        {!! Field::select('type',
+                            ['redila' => 'Redila', 'remolque' => 'Remolque', 'seca' => 'Cajas secas', 'refresco' => 'Cajas refresqueras', 'plataforma' => 'Plataforma', 'reparacion' => 'Reparación'],
                             null, ['tpl' => 'templates/withicon',
                             'empty' => 'Tipo de trabajo', 'v-model' => 'htype'], ['icon' => 'anchor']) !!}
                     </div>
@@ -41,8 +42,20 @@
                         {!! Field::select('bodywork', $trucks, null, ['tpl' => 'templates/withicon',
                             'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
                     </div>
-                    <div v-else class="col-md-6">
+                    <div v-if="htype == 'remolque'" class="col-md-6">
                         {!! Field::select('bodywork', $trailers, null, ['tpl' => 'templates/withicon',
+                            'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
+                    </div>
+                    <div v-if="htype == 'seca'" class="col-md-6">
+                        {!! Field::select('bodywork', $dry, null, ['tpl' => 'templates/withicon',
+                            'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
+                    </div>
+                    <div v-if="htype == 'refresco'" class="col-md-6">
+                        {!! Field::select('bodywork', $soda, null, ['tpl' => 'templates/withicon',
+                            'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
+                    </div>
+                    <div v-if="htype == 'plataforma'" class="col-md-6">
+                        {!! Field::select('bodywork', $platforms, null, ['tpl' => 'templates/withicon',
                             'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
                     </div>
                     <div class="col-md-6">

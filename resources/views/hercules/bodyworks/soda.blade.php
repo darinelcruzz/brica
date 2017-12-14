@@ -3,13 +3,13 @@
 @section('main-content')
 
     <row-woc col="col-md-3">
-        <a href="{{ route('hercules.bodywork.create', ['type' => 'remolque']) }}" class="btn btn-app">
+        <a href="{{ route('hercules.bodywork.create', ['type' => 'refresco']) }}" class="btn btn-app">
             <span class="badge bg-aqua">{{ count($bodyworks) }}</span>
             <i class="fa fa-truck"></i> AGREGAR
         </a>
     </row-woc>
 
-    <data-table col="col-md-12" title="Remolques"
+    <data-table col="col-md-12" title="Cajas refresqueras"
         example="example2" color="box-primary">
         <template slot="header">
             <tr>
