@@ -36,12 +36,11 @@
                                             class="btn btn-primary btn-xs"  title='FOTO'>
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                           </a>
-                                      @else
-                                          <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
-                                            class="btn btn-primary btn-xs"  title='FOTO'>
-                                            <i class="fa fa-upload" aria-hidden="true"></i>
-                                          </a>
                                       @endif
+                                      <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                        class="btn btn-primary btn-xs"  title='FOTO'>
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                      </a>
                                       <br>
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
@@ -89,12 +88,11 @@
                                             class="btn btn-primary btn-xs"  title='FOTO'>
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                           </a>
-                                      @else
-                                          <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
-                                            class="btn btn-primary btn-xs"  title='FOTO'>
-                                            <i class="fa fa-upload" aria-hidden="true"></i>
-                                          </a>
                                       @endif
+                                      <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                          class="btn btn-primary btn-xs"  title='FOTO'>
+                                          <i class="fa fa-upload" aria-hidden="true"></i>
+                                      </a>
                                       <br>
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
