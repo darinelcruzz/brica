@@ -29,6 +29,15 @@
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker.css') }}">
 
+    <style>
+        .table-responsive .dropdown-menu {
+            position: static !important;
+        }
+        .table-responsive {
+            overflow: visible;
+        }
+    </style>
+
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -37,7 +46,7 @@
 
     <script>
         //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs
-        window.trans = @php
+        window.trans = <?php
             // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
             $lang_files = File::files(resource_path() . '/lang/' . App::getLocale());
             $trans = [];
@@ -47,6 +56,6 @@
             }
             $trans['adminlte_lang_message'] = trans('adminlte_lang::message');
             echo json_encode($trans);
-        @endphp
+        ?>
     </script>
 </head>

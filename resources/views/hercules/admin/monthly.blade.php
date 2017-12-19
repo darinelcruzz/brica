@@ -28,17 +28,30 @@
 							$totalI += $stocksale->total;
 						@endphp
 					@endforeach
-					@foreach($receipts as $receipt)
-						@if ($receipt->balance)
+					@foreach($retainers as $receipt)
+						@if ($receipt->retainer > 0)
 							<tr>
 								<td>{{ $receipt->id }}</td>
 								<td>{{ $receipt->name }}</td>
 								<td>Carrocerías</td>
-								<td>{{ '$ ' . number_format($receipt->balance, 2) }}</td>
+								<td>{{ '$ ' . number_format($receipt->retainer, 2) }}</td>
 							</tr>
 						@endif
 						@php
-							$totalI += $receipt->balance;
+							$totalI += $receipt->retainer;
+						@endphp
+					@endforeach
+					@foreach($paid as $receipt)
+						@if ($receipt->retainer > 0)
+							<tr>
+								<td>{{ $receipt->id }}</td>
+								<td>{{ $receipt->name }}</td>
+								<td>Carrocerías</td>
+								<td>{{ '$ ' . number_format($receipt->amount - $receipt->retainer, 2) }}</td>
+							</tr>
+						@endif
+						@php
+							$totalI += $receipt->amount - $receipt->retainer;
 						@endphp
 					@endforeach
 					@foreach($deposits as $deposit)

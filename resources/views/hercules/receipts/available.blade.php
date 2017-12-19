@@ -11,6 +11,7 @@
                         <th>#</th>
                         <th>Descripción</th>
                         <th>Estado</th>
+                        <th>Acción</th>
                     </tr>
                 </template>
 
@@ -22,30 +23,41 @@
                                   <td>{{ $receipt->id }}</td>
                                   <td>
                                       {{ $receipt->bodywork ? $receipt->bodyworkr->description: 'REPARACIÓN' }}
-                                      &nbsp;&nbsp;
-                                      <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'palenque']) }}"
-                                          class="btn btn-warning btn-xs" title="ENVIAR A PALENQUE">
-                                          P <i class="fa fa-forward" aria-hidden="true"></i>
-                                      </a>
-                                      <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
-                                          class="btn btn-info btn-xs" title="AGREGAR CLIENTE">
-                                          <i class="fa fa-dollar" aria-hidden="true"></i> <i class="fa fa-user" aria-hidden="true"></i>
-                                      </a>
-                                      @if ($receipt->order->photo)
-                                          <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
-                                            class="btn btn-primary btn-xs"  title='FOTO'>
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                          </a>
-                                      @endif
-                                      <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
-                                        class="btn btn-primary btn-xs"  title='FOTO'>
-                                        <i class="fa fa-upload" aria-hidden="true"></i>
-                                      </a>
                                       <br>
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
                                       {{ ucfirst($receipt->order->status) }}
+                                  </td>
+                                  <td>
+                                      <div class="btn-group">
+                                          <button type="button" class="btn btn-xs btn-warning dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                          </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'palenque']) }}">
+                                                    <i class="fa fa-forward" aria-hidden="true"></i> Mover a Palenque
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
+                                                    <i class="fa fa-user" aria-hidden="true"></i> Agregar cliente
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}">
+                                                  <i class="fa fa-eye" aria-hidden="true"></i> Ver foto
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}">
+                                                  <i class="fa fa-upload" aria-hidden="true"></i> Subir foto
+                                                </a>
+                                            </li>
+                                          </ul>
+                                      </div>
                                   </td>
                               </tr>
                           @endif
@@ -63,6 +75,7 @@
                         <th>#</th>
                         <th>Descripción</th>
                         <th>Estado</th>
+                        <th>Acción</th>
                     </tr>
                 </template>
 
@@ -75,29 +88,42 @@
                                   <td>
                                       {{ $receipt->bodywork ? $receipt->bodyworkr->description: 'REPARACIÓN' }}
                                       &nbsp;&nbsp;
-                                      <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'comitán']) }}"
-                                          class="btn btn-success btn-xs" title="ENVIAR A COMITÁN">
-                                          <i class="fa fa-backward" aria-hidden="true"></i> C
-                                      </a>
-                                      <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
-                                          class="btn btn-info btn-xs" title="AGREGAR CLIENTE">
-                                          <i class="fa fa-dollar" aria-hidden="true"></i> <i class="fa fa-user" aria-hidden="true"></i>
-                                      </a>
-                                      @if ($receipt->order->photo)
-                                          <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
-                                            class="btn btn-primary btn-xs"  title='FOTO'>
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                          </a>
-                                      @endif
-                                      <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
-                                          class="btn btn-primary btn-xs"  title='FOTO'>
-                                          <i class="fa fa-upload" aria-hidden="true"></i>
-                                      </a>
+
                                       <br>
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
                                       {{ ucfirst($receipt->order->status) }}
+                                  </td>
+                                  <td>
+                                      <div class="btn-group">
+                                          <button type="button" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                          </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'comitán']) }}">
+                                                    <i class="fa fa-backward" aria-hidden="true"></i> Mover
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
+                                                    <i class="fa fa-user" aria-hidden="true"></i> Agregar cliente
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}">
+                                                  <i class="fa fa-eye" aria-hidden="true"></i> Ver foto
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}">
+                                                  <i class="fa fa-upload" aria-hidden="true"></i> Subir foto
+                                                </a>
+                                            </li>
+                                          </ul>
+                                      </div>
                                   </td>
                               </tr>
                           @endif
