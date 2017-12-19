@@ -30,10 +30,10 @@
     <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker.css') }}">
 
     <style>
-
-        .table-responsive {
-            overflow: visible;
+        .table-responsive .dropdown-menu {
+            position: static !important;
         }
+        
     </style>
 
     <script>
