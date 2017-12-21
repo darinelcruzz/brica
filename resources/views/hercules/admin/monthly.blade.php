@@ -9,9 +9,9 @@
 			<data-table-com title="Ingresos" example="example1" color="box-success">
 				<template slot="header">
 					<tr>
-						<th>ID</th>
-						<th>Cliente</th>
-						<th>Tipo</th>
+						<th>#</th>
+						<th>Trabajo</th>
+						<th>Estado</th>
 						<th>Monto</th>
 					</tr>
 				</template>
@@ -21,7 +21,10 @@
 						<tr>
 							<td>{{ $stocksale->id }}</td>
 							<td>{{ $stocksale->name }}</td>
-							<td>P. Terminado</td>
+							<td>
+								P. Terminado <br>
+								{{ fdate($stocksale->created_at, 'd, M') }}
+							</td>
 							<td>{{ $stocksale->amount }}</td>
 						</tr>
 						@php
@@ -33,7 +36,10 @@
 							<tr>
 								<td>{{ $receipt->id }}</td>
 								<td>{{ $receipt->name }}</td>
-								<td>Carrocerías</td>
+								<td>
+									Anticipo <br>
+									{{ fdate($receipt->date, 'd, M') }}
+								</td>
 								<td>{{ '$ ' . number_format($receipt->retainer, 2) }}</td>
 							</tr>
 						@endif
@@ -42,11 +48,14 @@
 						@endphp
 					@endforeach
 					@foreach($paid as $receipt)
-						@if ($receipt->retainer > 0)
+						@if ($receipt->retainer != $receipt->amount)
 							<tr>
 								<td>{{ $receipt->id }}</td>
 								<td>{{ $receipt->name }}</td>
-								<td>Carrocerías</td>
+								<td>
+									{{ ucfirst($receipt->status) }}<br>
+									{{ fdate($receipt->date, 'd, M') }}
+								</td>
 								<td>{{ '$ ' . number_format($receipt->amount - $receipt->retainer, 2) }}</td>
 							</tr>
 						@endif
@@ -55,17 +64,18 @@
 						@endphp
 					@endforeach
 					@foreach($deposits as $deposit)
-						@if (true)
-							<tr>
-								<td>{{ $deposit->id }}</td>
-								<td>{{ $deposit->client }}</td>
-								<td>Abono</td>
-								<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
-							</tr>
-							@php
-								$totalI += $deposit->amount;
-							@endphp
-						@endif
+						<tr>
+							<td>{{ $deposit->id }}</td>
+							<td>{{ $deposit->client }}</td>
+							<td>
+								Abono <br>
+								{{ fdate($deposit->created_at, 'd, M') }}
+							</td>
+							<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
+						</tr>
+						@php
+							$totalI += $deposit->amount;
+						@endphp
 					@endforeach
 				</template>
 

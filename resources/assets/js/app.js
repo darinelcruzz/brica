@@ -29,6 +29,9 @@ Vue.component('little-box', require('./components/lte/LittleColorBox.vue'));
 
 Vue.component('accordion-item', require('./components/lte/AccordionBoxItem.vue'));
 
+Vue.component('dropdown', require('./components/lte/DropdownButton.vue'));
+Vue.component('ddi', require('./components/lte/DropdownItem.vue'));
+
 
 const app = new Vue({
     el: '#app',

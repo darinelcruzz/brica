@@ -105,7 +105,7 @@ class HReceipt extends Model
     {
         return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
             ->whereBetween('h_receipts.created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
-            ->selectRaw("h_receipts.id, client, type, retainer, amount")
+            ->selectRaw("h_receipts.id, h_receipts.created_at as date, client, type, retainer, amount")
             ->get();
     }
 
@@ -114,7 +114,7 @@ class HReceipt extends Model
         return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
             ->whereBetween('h_orders.updated_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
             ->where('h_orders.status', 'pagado')
-            ->selectRaw("h_receipts.id, client, type, retainer, amount")
+            ->selectRaw("h_receipts.id, h_orders.updated_at as date, h_orders.status, client, type, retainer, amount")
             ->get();
     }
 

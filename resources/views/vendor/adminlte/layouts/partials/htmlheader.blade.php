@@ -29,13 +29,6 @@
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker.css') }}">
 
-    <style>
-        .table-responsive .dropdown-menu {
-            position: static !important;
-        }
-        
-    </style>
-
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

@@ -10,8 +10,8 @@
                     <tr>
                         <th>#</th>
                         <th>Descripción</th>
+                        <th><i class="fa fa-cogs"></i></th>
                         <th>Estado</th>
-                        <th>Acción</th>
                     </tr>
                 </template>
 
@@ -27,37 +27,23 @@
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
-                                      {{ ucfirst($receipt->order->status) }}
+                                      <dropdown color="warning" icon="cogs">
+                                          <ddi to="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'palenque']) }}"
+                                              icon="forward" text="A Palenque">
+                                          </ddi>
+                                          <ddi to="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
+                                              icon="user" text="Agregar cliente">
+                                          </ddi>
+                                          <ddi to="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
+                                              icon="eye" text="Ver foto">
+                                          </ddi>
+                                          <ddi to="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                              icon="upload" text="Subir foto">
+                                          </ddi>
+                                      </dropdown>
                                   </td>
                                   <td>
-                                      <div class="btn-group">
-                                          <button type="button" class="btn btn-xs btn-warning dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                          </button>
-                                          <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'palenque']) }}">
-                                                    <i class="fa fa-forward" aria-hidden="true"></i> Mover a Palenque
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
-                                                    <i class="fa fa-user" aria-hidden="true"></i> Agregar cliente
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}">
-                                                  <i class="fa fa-eye" aria-hidden="true"></i> Ver foto
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}">
-                                                  <i class="fa fa-upload" aria-hidden="true"></i> Subir foto
-                                                </a>
-                                            </li>
-                                          </ul>
-                                      </div>
+                                      {{ ucfirst($receipt->order->status) }}
                                   </td>
                               </tr>
                           @endif
@@ -74,8 +60,8 @@
                     <tr>
                         <th>#</th>
                         <th>Descripción</th>
+                        <th><i class="fa fa-cogs"></i></th>
                         <th>Estado</th>
-                        <th>Acción</th>
                     </tr>
                 </template>
 
@@ -93,37 +79,23 @@
                                       <code>{{ $receipt->serial_number }}</code>
                                   </td>
                                   <td>
-                                      {{ ucfirst($receipt->order->status) }}
+                                      <dropdown color="success" icon="cogs">
+                                          <ddi to="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'comitan']) }}"
+                                              icon="backward" text="A Comitán">
+                                          </ddi>
+                                          <ddi to="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
+                                              icon="user" text="Agregar cliente">
+                                          </ddi>
+                                          <ddi to="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
+                                              icon="eye" text="Ver foto">
+                                          </ddi>
+                                          <ddi to="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                              icon="upload" text="Subir foto">
+                                          </ddi>
+                                      </dropdown>
                                   </td>
                                   <td>
-                                      <div class="btn-group">
-                                          <button type="button" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                          </button>
-                                          <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'comitán']) }}">
-                                                    <i class="fa fa-backward" aria-hidden="true"></i> Mover
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
-                                                    <i class="fa fa-user" aria-hidden="true"></i> Agregar cliente
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ Storage::url(substr($receipt->order->photo, 9)) }}">
-                                                  <i class="fa fa-eye" aria-hidden="true"></i> Ver foto
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}">
-                                                  <i class="fa fa-upload" aria-hidden="true"></i> Subir foto
-                                                </a>
-                                            </li>
-                                          </ul>
-                                      </div>
+                                      {{ ucfirst($receipt->order->status) }}
                                   </td>
                               </tr>
                           @endif
