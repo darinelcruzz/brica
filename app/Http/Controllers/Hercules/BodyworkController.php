@@ -140,6 +140,7 @@ class BodyworkController extends Controller
             'clothing' => serialize($request->clothing),
             'painting' => serialize($request->painting),
             'mounting' => serialize($request->mounting),
+            'type' => $request->type,
         ]);
 
         return view('hercules.bodyworks.quantities', compact('bodywork', 'formerData'));
