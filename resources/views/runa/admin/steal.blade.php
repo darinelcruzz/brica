@@ -25,7 +25,13 @@
                                     </a>
                                 </td>
                                 <td>{{ $sale->quotationr->clientr->name }}</td>
-                                <td>{{ fdate($sale->created_at, 'h:i:s a') }}</td>
+                                <td>
+                                    {{ fdate($sale->created_at, 'h:i:s a') }}
+                                    &nbsp;
+                                    <a href="{{ route('runa.sale.ticket', ['id' => $sale->id])}}" class="btn btn-xs btn-success">
+                                        <i class="fa fa-print" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                                 <td>{{ fdate($sale->created_at, 'l, d \d\e M') }}</td>
                                 <td>$ {{ number_format($sale->amount, 2) }}</td>
     						</tr>
