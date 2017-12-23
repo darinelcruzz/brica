@@ -64,6 +64,10 @@ return [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
             ],
+            'steal' => [
+                'title' => 'OMG NOS ROBARON!',
+                'route' => 'runa.steal'
+            ],
         ]
     ],
 

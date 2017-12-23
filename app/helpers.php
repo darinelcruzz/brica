@@ -10,8 +10,8 @@ function usesas($ctrl, $fun, $as = null)
     return ['uses' => "$ctrl@$fun", 'as' => $fun];
 }
 
-function fdate($unformatted, $format)
+function fdate($original_date, $format = 'Y-m-d')
 {
-    $date = Date::createFromFormat('Y-m-d H:i:s', $unformatted);
+    $date = Date::createFromFormat('Y-m-d H:i:s', $original_date);
     return $date->format($format);
 }

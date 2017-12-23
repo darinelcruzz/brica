@@ -170,6 +170,8 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('/', usesas($ctrl, 'manage'))->middleware('owners');
 
+        Route::get('robo', usesas($ctrl, 'steal'))->middleware('owners');
+
         Route::get('cancelar/{quotation}', usesas($ctrl, 'cancel'))->middleware('owners');
 
         Route::match(['get', 'post'], 'diario', usesas($ctrl, 'index'))->middleware('money');

@@ -80,4 +80,12 @@ class AdminScreenController extends Controller
 		$date = Date::now()->format('Y-m-d');
 		return view('runa.expenses', compact('date', 'expenses'));
 	}
+
+    function steal()
+    {
+        $sales = Sale::all();//whereRaw("HOUR('created_at') = '10'")->get();
+        //dd($sales);
+
+        return view('runa.admin.steal', compact('sales'));
+    }
 }
