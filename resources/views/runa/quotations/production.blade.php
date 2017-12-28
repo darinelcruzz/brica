@@ -20,7 +20,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::number('quotation', empty($lastQ) ? 1: $lastQ->id + 1 ,
+                        {!! Field::number('quotation', empty($lastQ) ? 1: $folio + 1,
                             ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
                     </div>
                     <div class="col-md-6">
@@ -42,6 +42,7 @@
                     <input type="hidden" name="status" value="pendiente">
                     <input type="hidden" name="type" value="produccion">
                     <input type="hidden" name="pay" value="anticipo">
+                    <input type="hidden" name="folio" value="{{ $folio + 1 }}">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning btn-block']) !!}
                 </div>
                 {!! Form::close() !!}

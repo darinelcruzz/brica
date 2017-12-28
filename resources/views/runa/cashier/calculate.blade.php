@@ -10,7 +10,7 @@
                         {!! Field::text('client', $quotation->clientr->name, ['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'user']) !!}
                     </div>
                     <div class="col-md-6">
-                        {!! Field::number('quotation', $quotation->id ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                        {!! Field::number('quotation', $quotation->folio ,['disabled' => '', 'tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
                     </div>
                 </div>
                 <div class="row">

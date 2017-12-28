@@ -20,7 +20,7 @@
 					@foreach($quotations as $quotation)
                         @if ($quotation->sale)
                             <tr>
-    							<td>{{ $quotation->id }}</td>
+    							<td>{{ $quotation->folio }}</td>
     							<td>{{ $quotation->clientr->name }}</td>
     							<td>{{ $quotation->type }}</td>
     							<td>$ {{ number_format($quotation->sale->amount, 2) }}</td>
@@ -30,7 +30,7 @@
     						@endphp
                         @elseif ($quotation->amount)
                             <tr>
-    							<td>{{ $quotation->id }}</td>
+    							<td>{{ $quotation->folio }}</td>
     							<td>{{ $quotation->clientr->name }}</td>
     							<td>{{ $quotation->type }}</td>
     							<td>$ {{ number_format($quotation->amount, 2) }}</td>

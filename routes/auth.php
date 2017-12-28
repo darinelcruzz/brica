@@ -44,6 +44,10 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         Route::get('finalizadas', ['uses' => "$cashCtrl@finished", 'as' => 'cashier.finished']);
 
         Route::get('finalizadas/{quotation}', ['uses' => "$cashCtrl@calculate", 'as' => 'cashier.calculate']);
+
+        Route::get('foliost', usesas('Runa\ManagerScreenController', 'foliost'));
+
+        Route::get('foliosp', usesas('Runa\ManagerScreenController', 'foliosp'));
     });
 
     // Producción

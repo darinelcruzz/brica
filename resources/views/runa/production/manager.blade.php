@@ -16,7 +16,7 @@
         <template slot="body">
             @foreach($pending as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
@@ -41,7 +41,7 @@
         <template slot="body">
             @foreach($completed as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
@@ -92,7 +92,7 @@
         <template slot="body">
             @foreach($authorized as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>
@@ -130,7 +130,7 @@
         <template slot="body">
             @foreach($production as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>
@@ -169,7 +169,7 @@
         <template slot="body">
             @foreach($terminated as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>

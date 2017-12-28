@@ -30,4 +30,32 @@ class ManagerScreenController extends Controller
 
         return back();
     }
+
+    function foliost()
+    {
+        $quotations = Quotation::where('type', 'terminado')->get();
+
+        foreach ($quotations as $quotation) {
+            $folio = $quotation->id;
+            $quotation->update([
+                'folio' => $folio
+            ]);
+        }
+
+        return 'ok';
+    }
+
+    function foliosp()
+    {
+        $quotations = Quotation::where('type', 'produccion')->get();
+
+        foreach ($quotations as $quotation) {
+            $folio = $quotation->id;
+            $quotation->update([
+                'folio' => $folio
+            ]);
+        }
+
+        return 'ok';
+    }
 }

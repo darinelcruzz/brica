@@ -22,6 +22,7 @@ class TerQuotationController extends Controller
         $this->validate($request, ['client' => 'required','description' => 'required']);
 
         $quotation = Quotation::create([
+            'folio' => $request->folio,
             'type' => $request->type,
             'client' => $request->client,
             'status' => $request->status,

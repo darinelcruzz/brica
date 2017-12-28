@@ -14,7 +14,7 @@
         </div>
 
         <h5><b>Cliente:</b> {{ $quotation->clientr->uppercase_name }}</h5>
-        <h5><b>Folio:</b> {{ $quotation->id }} </h5>
+        <h5><b>Folio:</b> {{ $quotation->folio }} </h5>
         <h5><b>Fecha:</b> {{ Jenssegers\Date\Date::now()->format('d/M/Y h:i a') }} </h5>
 
 

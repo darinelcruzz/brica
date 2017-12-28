@@ -6,7 +6,7 @@
         example="example1" color="box-warning">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($terminated as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->retainer }}</td>
@@ -36,7 +36,7 @@
         example="example2" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -47,7 +47,7 @@
         <template slot="body">
             @foreach($production as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->pay }}</td>
                   <td>{{ $row->retainer }}</td>
@@ -66,7 +66,7 @@
         example="example3" color="box-primary" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -78,7 +78,7 @@
             @foreach($finished as $row)
                 @if ($row->client != 1)
                     <tr>
-                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->folio }}</td>
                         <td>
                             {{ $row->clientr->name }} &nbsp;&nbsp;&nbsp;
                             @if (Auth::user()->level == 2)
@@ -124,7 +124,7 @@
         example="example4" color="box-info">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -135,7 +135,7 @@
         <template slot="body">
             @foreach($credit as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->sale->amount or $row->retainer }}</td>
@@ -163,7 +163,7 @@
         example="example5" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Detalles</th>
@@ -176,7 +176,7 @@
         <template slot="body">
             @foreach($paid as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->pay }}</td>
                   <td>

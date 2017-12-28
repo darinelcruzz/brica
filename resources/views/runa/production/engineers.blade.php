@@ -6,7 +6,7 @@
         example="example1" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Órdenes</th>
@@ -18,7 +18,7 @@
         <template slot="body">
             @foreach($pending as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>
@@ -48,7 +48,7 @@
         example="example2" color="box-default">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Entrega</th>
@@ -59,7 +59,7 @@
         <template slot="body">
             @foreach($completed as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
@@ -78,7 +78,7 @@
         example="example3" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>
@@ -90,7 +90,7 @@
         <template slot="body">
             @foreach($authorized as $row)
               <tr>
-                  <td>{{ $row->id }}</td>
+                  <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->team }}</td>
@@ -110,7 +110,7 @@
         example="example4" color="box-warning">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>
@@ -122,7 +122,7 @@
         <template slot="body">
             @foreach($production as $row)
             <tr>
-                <td>{{ $row->id }}</td>
+                <td>{{ $row->folio }}</td>
                 <td>{{ $row->clientr->name }}</td>
                 <td>{{ $row->description }}</td>
                 <td>{{ $row->team }}</td>
@@ -142,7 +142,7 @@
         example="example5" color="box-success">
         <template slot="header">
             <tr>
-                <th>Cotización</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Equipo</th>
@@ -155,7 +155,7 @@
         <template slot="body">
             @foreach($terminated as $row)
             <tr>
-                <td>{{ $row->id }}</td>
+                <td>{{ $row->folio }}</td>
                 <td>{{ $row->clientr->name }}</td>
                 <td>{{ $row->description }}</td>
                 <td>{{ $row->team }}</td>

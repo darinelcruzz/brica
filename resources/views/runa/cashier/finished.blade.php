@@ -6,7 +6,7 @@
         example="example1" color="box-danger">
         <template slot="header">
             <tr>
-                <th>Cot #</th>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Anticipo</th>
@@ -18,7 +18,7 @@
             @foreach($finished as $row)
                 @if (!$row->sale && $row->client != 1)
                     <tr>
-                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->folio }}</td>
                         <td>{{ $row->clientr->name }}</td>
                         <td>{{ $row->description }}</td>
                         <td>$ {{ $row->amount }}</td>

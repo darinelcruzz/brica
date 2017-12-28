@@ -23,7 +23,7 @@
                 @if (!empty($rows))
                     @foreach($rows as $row)
                         <tr>
-                            <td>{{ $row->id }}</td>
+                            <td>{{ $row->folio }}</td>
                             <td>{{ $row->type }}</td>
                             <td>{{ $row->description }}</td>
                             @if ($title == 'Cotizaciones')

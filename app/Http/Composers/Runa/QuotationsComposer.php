@@ -13,8 +13,21 @@ class QuotationsComposer
     public function compose(View $view)
     {
         $view->clients = Client::pluck('name', 'id')->toArray();
+        $view->folio = $this->getFolio();
         $view->lastQ = Quotation::all()->last();
         $view->products = Product::pluck('name', 'id')->toArray();
         $view->date = Date::now()->format('Y-m-d');
+    }
+
+    public function getFolio()
+    {
+        $lastQ = Quotation::all()->last();
+        $lastY = fdate($lastQ->created_at, 'Y');
+
+        if(date('Y') != $lastY) {
+            return 0;
+        }
+
+        return $lastQ->folio;
     }
 }
