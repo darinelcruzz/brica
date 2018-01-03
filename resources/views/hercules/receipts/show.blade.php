@@ -46,9 +46,21 @@
                     <div class="col-sm-4 invoice-col">
                       La cantidad de:
                       <address>
-                        <strong>{{ '$ ' . number_format($hreceipt->deposit, 2) }}</strong><br>
-                        Restante:<br>
-                        <b>{{ $hreceipt->rest }}</b>
+                        @if ($hreceipt->order)
+                            @if ($hreceipt->order->status == 'pagado' && $hreceipt->retainer == 0)
+                                <strong>{{ '$ ' . number_format($hreceipt->amount, 2) }}</strong><br>
+                                Restante:<br>
+                                <b>$ 0.00</b>
+                            @else
+                                <strong>{{ '$ ' . number_format($hreceipt->deposit, 2) }}</strong><br>
+                                Restante:<br>
+                                <b>{{ $hreceipt->rest }}</b>
+                            @endif
+                        @else
+                            <strong>{{ '$ ' . number_format($hreceipt->deposit, 2) }}</strong><br>
+                            Restante:<br>
+                            <b>{{ $hreceipt->rest }}</b>
+                        @endif
                       </address>
                     </div>
                 </div>
