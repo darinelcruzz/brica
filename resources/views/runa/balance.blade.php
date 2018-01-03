@@ -23,7 +23,7 @@
 		        example="example1" color="box-success">
 		        <template slot="header">
 		            <tr>
-		                <th>ID</th>
+		                <th>Folio</th>
 		                <th>Cliente</th>
 		                <th>Tipo</th>
 		                <th>Monto</th>
@@ -34,7 +34,7 @@
 		            @foreach($quotations as $quotation)
 		              @if ($quotation->amount)
 						  <tr>
-    		                  <td>{{ $quotation->id }}</td>
+    		                  <td>{{ $quotation->folio }}</td>
     		                  <td>{{ $quotation->clientr->name }}</td>
     		                  <td>{{ $quotation->type }}</td>
     						  <td>$ {{ $quotation->amount }}</td>
