@@ -19,7 +19,7 @@
         <template slot="body">
             @foreach($quotations as $quotation)
               <tr>
-                  <td>{{ $quotation->id }}</td>
+                  <td>{{ $quotation->folio }}</td>
                   <td>{{ $quotation->clientr->name }}</td>
                   <td>{{ $quotation->type }}</td>
                   <td>{{ $quotation->status }}</td>

@@ -47,7 +47,7 @@
 								&& $sale->quotationr->type != 'terminado'
 								&& $sale->quotationr->status != 'credito')
 							<tr>
-								<td>{{ $sale->quotationr->id }}</td>
+								<td>{{ $sale->quotationr->folio }}</td>
 								<td>{{ $sale->quotationr->clientr->name }}</td>
 								<td>{{ $sale->quotationr->type }}</td>
 								<td>$ {{ $sale->amount - $sale->retainer }}</td>
