@@ -6,7 +6,8 @@
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Año</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Tipo</th>
                 <th>Estado</th>
@@ -19,6 +20,7 @@
         <template slot="body">
             @foreach($quotations as $quotation)
               <tr>
+                  <td>{{ fdate($quotation->created_at, 'Y') }}</td>
                   <td>{{ $quotation->folio }}</td>
                   <td>{{ $quotation->clientr->name }}</td>
                   <td>{{ $quotation->type }}</td>
