@@ -42,7 +42,6 @@
                     <input type="hidden" name="status" value="pendiente">
                     <input type="hidden" name="type" value="produccion">
                     <input type="hidden" name="pay" value="anticipo">
-                    <input type="hidden" name="folio" value="{{ $folio + 1 }}">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning btn-block']) !!}
                 </div>
                 {!! Form::close() !!}

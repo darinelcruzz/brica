@@ -24,7 +24,13 @@ class ProQuotationController extends Controller
             'deliver' => 'required'
         ]);
 
+        $lastQ = Quotation::all()->last();
+
         $quotation = Quotation::create($request->all());
+
+        $quotation->update([
+            'folio' => $lastQ->folio + 1
+        ]);
 
         if ($quotation->clientr->credit && $quotation->amount == 0) {
             $quotation->storeAsCredit('autorizado', 0);

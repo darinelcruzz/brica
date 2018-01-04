@@ -21,8 +21,10 @@ class TerQuotationController extends Controller
     {
         $this->validate($request, ['client' => 'required','description' => 'required']);
 
+        $lastQ = Quotation::all()->last();
+
         $quotation = Quotation::create([
-            'folio' => $request->folio,
+            'folio' => $lastQ->folio + 1,
             'type' => $request->type,
             'client' => $request->client,
             'status' => $request->status,
