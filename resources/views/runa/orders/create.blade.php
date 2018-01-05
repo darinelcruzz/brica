@@ -92,6 +92,8 @@
                         </div>
                     </div>
 
+                    {!! Field::textarea('observations', ['tpl' => 'templates/withicon', 'rows' => '3'], ['icon' => 'eye']) !!}
+
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <input type="hidden" name="quotation" value="{{ $quotation }}">

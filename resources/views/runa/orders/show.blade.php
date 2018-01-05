@@ -26,6 +26,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="fa fa-eye"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Observaciones</span>
+                        <span class="info-box-number">{{ $order->observations or 'No hay observaciones para esta orden' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="row">
