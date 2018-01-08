@@ -5,7 +5,7 @@
       <select class="form-control" name="team">
           <option selected disabled>Para {{ $process['next']['s']  }}</option>
           @foreach ($personnel as $member)
-              <option value="{{ $member->email }}">{{ $member->name }}</option>
+              <option value="{{ $member->name }}">{{ $member->name }}</option>
           @endforeach
       </select>
       <span class="input-group-btn">
