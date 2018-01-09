@@ -38,12 +38,8 @@
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                           </a>
                       @endif
-                      @if ($order->receiptr->type == 'reparacion')
-
-                      @elseif ($order->receiptr->type == 'redila')
-                          <p class="text-light-blue">REDILA</p>
-                      @else
-                          <p class="text-green">REMOLQUE</p>
+                      @if ($order->receiptr->type != 'reparacion')
+                          <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
                       @endif
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
