@@ -32,6 +32,8 @@ Vue.component('accordion-item', require('./components/lte/AccordionBoxItem.vue')
 Vue.component('dropdown', require('./components/lte/DropdownButton.vue'));
 Vue.component('ddi', require('./components/lte/DropdownItem.vue'));
 
+Vue.component('modal', require('./components/lte/Modal.vue'));
+
 
 const app = new Vue({
     el: '#app',

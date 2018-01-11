@@ -96,6 +96,14 @@ return [
                 'title' => 'Plataformas',
                 'route' => 'hercules.bodywork.platform'
             ],
+            'carboys' => [
+                'title' => 'Góndolas garrafoneras',
+                'route' => 'hercules.bodywork.carboys'
+            ],
+            'boxes' => [
+                'title' => 'Cajas',
+                'route' => 'hercules.bodywork.boxes'
+            ],
             'items' => [
                 'title' => 'Artículos',
                 'route' => 'hercules.item.bodyworks'

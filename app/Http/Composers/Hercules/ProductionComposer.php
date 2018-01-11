@@ -27,7 +27,7 @@ class ProductionComposer
 
         $view->personnel = HPersonnel::where('active', 1)->get();
 
-        $view->header = ['Orden', 'Descripción', 'Entrega', 'Asignado a', 'Inicio', 'Selecciona equipo', 'Mover a'];
+        $view->header = ['Orden', 'Descripción', '<i class="fa fa-cogs"></i>', 'Entrega', 'Asignado a', 'Inicio', 'Selecciona equipo', 'Mover a'];
 
         $view->processes = [
             ['english' => 'welding', 'spanish' => 'soldadura', 'color' => 'warning',

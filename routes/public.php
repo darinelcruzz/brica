@@ -71,6 +71,10 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::get('plataformas', usesas($ctrl, 'platform'));
 
+        Route::get('garrafoneras', usesas($ctrl, 'carboys'));
+
+        Route::get('cajas', usesas($ctrl, 'boxes'));
+
         Route::get('crear/{type}', usesas($ctrl, 'create'));
 
         Route::post('crear', usesas($ctrl, 'store'));

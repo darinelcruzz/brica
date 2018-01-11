@@ -8,6 +8,7 @@
             <tr>
                 <th>Orden</th>
                 <th>Descripción</th>
+                <th><i class="fa fa-cogs"></i></th>
                 <th>Entrega</th>
                 <th>Observaciones</th>
                 <th>Mover a</th>
@@ -19,28 +20,24 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}
-                      <a href="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
-                        title='SURTIR' class="btn btn-primary btn-xs">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                      </a>
-                      @if ($order->serial_number)
-                          &nbsp;&nbsp;
-                          <a href="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
-                              class="btn btn-primary btn-xs">
-                              <i class="fa fa-print" aria-hidden="true" title="IMPRIMIR TICKET"></i>
-                          </a><br>
-                          <code>{{ $order->serial_number }}</code>
-                      @else
-                          &nbsp;&nbsp;
-                          <a href="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
-                              class="btn btn-primary btn-xs" title="GENERAR TICKET">
-                              <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </a>
-                      @endif
+                      {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}<br>
+                      <code>{{ $order->serial_number or 'SIN # SERIE'}}</code>
                       @if ($order->receiptr->type != 'reparacion')
                           <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
                       @endif
+                  </td>
+                  <td>
+                    <dropdown color="primary" icon="cogs">
+                        <ddi to="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                            icon="check" text="Surtir">
+                        </ddi>
+                        <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
+                            icon="print" text="Imprimir ticket">
+                        </ddi>
+                        <ddi v-else to="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
+                            icon="pencil" text="Generar ticket">
+                        </ddi>
+                    </dropdown>
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
@@ -63,9 +60,9 @@
                 <tr>
                     @foreach ($header as $th)
                         @if (!$loop->parent->last)
-                            <th>{{ $th }}</th>
+                            <th>{!! $th !!}</th>
                         @elseif ($th != 'Selecciona equipo')
-                            <th>{{ $th }}</th>
+                            <th>{!! $th !!}</th>
                         @endif
                     @endforeach
                 </tr>
@@ -76,16 +73,42 @@
                   <tr>
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
-                          {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }} &nbsp;&nbsp;&nbsp;
-                          @if ($order->bodywork)
-                              <a href="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
-                                title='SURTIR' class="btn btn-{{ $process['color'] }} btn-xs">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                              </a>
+                          {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}<br>
+                          <code>{{ $order->serial_number or 'SIN # SERIE'}}</code>
+                          @if ($order->receiptr->type != 'reparacion')
+                              <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
                           @endif
-                          @includeWhen($order->photo, 'hercules/components/photo')
-                          @include('hercules/components/upload_photo')
-                          @include('hercules/components/production_buttons')
+                      </td>
+                      <td>
+                        <dropdown color="{{ $process['color'] }}" icon="cogs">
+                            <ddi v-if="{{ $order->receiptr->client == 1 ? 1:0 }}" to="{{ route('hercules.receipt.edit', ['id' => $order->receipt]) }}"
+                                icon="user" text="Agregar cliente">
+                            </ddi>
+                            <ddi v-if="{{ $order->bodywork ? 1:0 }}" to="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                                icon="check" text="Surtir">
+                            </ddi>
+                            <li>
+                                <a data-toggle="modal" data-target="#{{ $order->serial_number }}">
+                                    <i class="fa fa-picture-o"></i> Foto
+                                </a>
+                            </li>
+                            <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
+                                icon="print" text="Imprimir ticket">
+                            </ddi>
+                            <ddi v-else to="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
+                                icon="pencil" text="Generar ticket">
+                            </ddi>
+                        </dropdown>
+
+                        <modal title="{{ $order->bodyworkr->description }}" id="{{ $order->serial_number }}">
+                            <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description }}" width="80%">
+                            <template slot="footer">
+                              <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
+                                class="btn btn-default">
+                                  <i class="fa fa-upload"></i> Subir foto
+                              </a>
+                            </template>
+                        </modal>
                       </td>
                       <td>{{ $order->receiptr->deliver_date }}</td>
                       <td>{{ $order->{$process['english']} }}</td>

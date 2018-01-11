@@ -39,6 +39,18 @@ class BodyworkController extends Controller
         return view('hercules.bodyworks.platform', compact('bodyworks'));
     }
 
+    function carboys()
+    {
+        $bodyworks = HBodywork::where('price', 1)->where('type', 'garrafonera')->get();
+        return view('hercules.bodyworks.carboys', compact('bodyworks'));
+    }
+
+    function boxes()
+    {
+        $bodyworks = HBodywork::where('price', 1)->where('type', 'cajas')->get();
+        return view('hercules.bodyworks.boxes', compact('bodyworks'));
+    }
+
     function create($type)
     {
         return view('hercules.bodyworks.create', compact('type'));

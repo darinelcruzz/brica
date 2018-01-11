@@ -6,7 +6,7 @@
         example="example1" color="box-warning">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -36,7 +36,7 @@
         example="example2" color="box-danger">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -66,7 +66,7 @@
         example="example3" color="box-primary" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -124,7 +124,7 @@
         example="example4" color="box-info">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Monto</th>
@@ -163,7 +163,7 @@
         example="example5" color="box-success" collapsed="collapsed-box">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Detalles</th>
