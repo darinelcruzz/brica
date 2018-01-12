@@ -47,7 +47,7 @@ class BodyworkController extends Controller
 
     function boxes()
     {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'cajas')->get();
+        $bodyworks = HBodywork::where('price', 1)->where('type', 'caja')->get();
         return view('hercules.bodyworks.boxes', compact('bodyworks'));
     }
 
