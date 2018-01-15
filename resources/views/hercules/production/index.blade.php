@@ -100,17 +100,15 @@
                             </ddi>
                         </dropdown>
 
-                        @if ($order->bodyworkr)
-                            <modal title="{{ $order->bodyworkr->description }}" id="{{ $order->serial_number }}">
-                                <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description }}" width="80%">
-                                <template slot="footer">
-                                  <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
-                                    class="btn btn-default">
-                                      <i class="fa fa-upload"></i> Subir foto
-                                  </a>
-                                </template>
-                            </modal>
-                        @endif
+                        <modal title="{{ $order->bodyworkr->description or 'Reparación' }}" id="{{ $order->serial_number }}">
+                            <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description or 'Reparación' }}" width="80%">
+                            <template slot="footer">
+                              <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
+                                class="btn btn-default">
+                                  <i class="fa fa-upload"></i> Subir foto
+                              </a>
+                            </template>
+                        </modal>
                       </td>
                       <td>{{ $order->receiptr->deliver_date }}</td>
                       <td>{{ $order->{$process['english']} }}</td>
