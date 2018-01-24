@@ -46,7 +46,7 @@ return [
         'submenu' => [
             'cash' => [
                 'title' => 'Balance',
-                'route' => 'runa.index'
+                'route' => 'runa.balance'
             ],
             'expenses' => [
                 'title' => 'Gastos',

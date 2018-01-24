@@ -11,7 +11,7 @@ use Jenssegers\Date\Date;
 
 class AdminScreenController extends Controller
 {
-    function index(Request $request)
+    function balance(Request $request)
     {
         $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
         $quotations = Quotation::inBalance($date);
@@ -19,7 +19,7 @@ class AdminScreenController extends Controller
         $totals = $this->getTotals($quotations, $expenses);
         $sales = Sale::all();
 
-        return view('runa.balance', compact('quotations', 'expenses',
+        return view('runa.admin.balance', compact('quotations', 'expenses',
                         'date', 'totals', 'sales'));
     }
 
@@ -40,7 +40,7 @@ class AdminScreenController extends Controller
         $quotations = Quotation::where('status', '!=', 'pagado')
             ->where('status', '!=', 'cancelado')->get();
 
-        return view('runa.delete', compact('quotations'));
+        return view('runa.admin.delete', compact('quotations'));
     }
 
     function cancel(Quotation $quotation)
@@ -78,7 +78,7 @@ class AdminScreenController extends Controller
 
         $expenses = Expense::all();
 		$date = Date::now()->format('Y-m-d');
-		return view('runa.expenses', compact('date', 'expenses'));
+		return view('runa.admin.expenses', compact('date', 'expenses'));
 	}
 
     function steal()

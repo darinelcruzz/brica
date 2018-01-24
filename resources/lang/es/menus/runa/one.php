@@ -39,7 +39,7 @@ return [
             ],
             'designs' => [
                 'title' => 'Diseños',
-                'route' => 'runa.designs'
+                'route' => 'runa.design.index'
             ],
         ]
     ],
@@ -50,7 +50,7 @@ return [
         'submenu' => [
             'cash' => [
                 'title' => 'Balance diario',
-                'route' => 'runa.index'
+                'route' => 'runa.balance'
             ],
             'monthly' => [
                 'title' => 'Balance mensual',

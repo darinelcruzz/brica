@@ -13,11 +13,11 @@ class ClientController extends Controller
         $clients = HClient::all();
         return view('hercules.clients.index', compact('clients'));
     }
-    
+
     function create()
-	{
-		return view('hercules.clients.create');
-	}
+  	{
+        return view('hercules.clients.create');
+  	}
 
 	public function store(Request $request)
     {

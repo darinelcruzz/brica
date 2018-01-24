@@ -129,17 +129,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     // Clientes
     Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
         $ctrl = 'Runa\ClientController';
-
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('editar/{client}', usesas($ctrl, 'edit'));
-
         Route::post('editar', usesas($ctrl, 'change'));
-
         Route::get('eliminar/{client}', usesas($ctrl, 'destroy'));
     });
 
@@ -148,23 +142,14 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         $ctrl = 'Runa\ProviderController';
 
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('{rprovider}', usesas($ctrl, 'show'));
-
         Route::get('pagar/{rshopping}', usesas($ctrl, 'deposit'));
-
         Route::post('pagar', usesas($ctrl, 'pay'));
-
         Route::post('comprar', usesas($ctrl, 'shop'));
-
         Route::get('editar/{rprovider}', usesas($ctrl, 'edit'));
-
         Route::post('editar', usesas($ctrl, 'change'));
-
         Route::get('eliminar/{rprovider}', usesas($ctrl, 'destroy'));
     });
 
@@ -178,7 +163,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('cancelar/{quotation}', usesas($ctrl, 'cancel'))->middleware('owners');
 
-        Route::match(['get', 'post'], 'diario', usesas($ctrl, 'index'))->middleware('money');
+        Route::match(['get', 'post'], 'diario', usesas($ctrl, 'balance'))->middleware('money');
 
         Route::match(['get', 'post'], 'mensual', usesas($ctrl, 'monthly'))->middleware('money');
 
@@ -190,11 +175,8 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         $ctrl = 'Runa\ReportController';
 
         Route::match(['get', 'post'], 'equipos', usesas($ctrl, 'teams'));
-
         Route::match(['get', 'post'], 'ventas', usesas($ctrl, 'sales'));
-
         Route::match(['get', 'post'], 'clientes', usesas($ctrl, 'clients'));
-
         Route::match(['get', 'post'], 'productos', usesas($ctrl, 'products'));
     });
 
@@ -203,13 +185,9 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         $ctrl = 'Runa\ProductController';
 
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('editar/{product}', usesas($ctrl, 'edit'));
-
         Route::post('editar', usesas($ctrl, 'update'));
     });
 
@@ -218,17 +196,11 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         $ctrl = 'Runa\ItemController';
 
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('editar/{ritem}', usesas($ctrl, 'edit'));
-
         Route::post('editar', usesas($ctrl, 'update'));
-
         Route::post('stock', usesas($ctrl, 'stock'));
-
         Route::get('eliminar/{ritem}', usesas($ctrl, 'destroy'));
     });
 
@@ -237,48 +209,27 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         $ctrl = 'Runa\UserController';
 
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('editar/{user}', usesas($ctrl, 'edit'));
-
         Route::post('editar', usesas($ctrl, 'update'));
     });
 
     // Diseños
-    Route::get('disenos', [
-        'uses' => 'Runa\DesignsController@index',
-        'as' => 'designs'
-    ]);
-
-    Route::post('disenos', [
-        'uses' => 'Runa\DesignsController@upload',
-        'as' => 'design.upload'
-    ]);
-
-    Route::get('disenos/eliminar/{img}', [
-        'uses' => 'Runa\DesignsController@destroy',
-        'as' => 'design.destroy'
-    ]);
+    Route::get('disenos', usesas('Runa\DesignsController', 'index', 'design.index'));
+    Route::post('disenos', usesas('Runa\DesignsController', 'upload', 'design.upload'));
+    Route::get('disenos/eliminar/{img}', usesas('Runa\DesignsController', 'destroy', 'design.destroy'));
 
     // Preguntas
     Route::group(['prefix' => 'preguntas', 'as' => 'question.'], function () {
         $ctrl = 'Runa\QuestionController';
 
         Route::get('/', usesas($ctrl, 'index'))->middleware('owners');
-
         Route::get('crear', usesas($ctrl, 'create'))->middleware('owners');
-
         Route::post('crear', usesas($ctrl, 'store'))->middleware('owners');
-
         Route::get('editar/{rquestion}', usesas($ctrl, 'edit'))->middleware('owners');
-
         Route::post('editar', usesas($ctrl, 'update'))->middleware('owners');
-
         Route::get('responder', usesas($ctrl, 'answer'));
-
         Route::post('responder', usesas($ctrl, 'survey'));
     });
 });

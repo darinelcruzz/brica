@@ -40,7 +40,7 @@ return [
 
             'designs' => [
                 'title' => 'Diseños',
-                'route' => 'runa.designs'
+                'route' => 'runa.design.index'
             ],
         ]
     ],
