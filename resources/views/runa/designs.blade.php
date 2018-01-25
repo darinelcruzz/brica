@@ -81,7 +81,19 @@
                 </template>
 
                 <template slot="footer">
-                    {{ number_format($totalsize, 2) . ' MB' }}
+                    <tr>
+                        <td>{{ number_format($totalsize, 2) . ' MB' }}</td>
+                        <td>
+                            <a href="{{ route('runa.design.clean', ['timespan' => 'm']) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>
+                                + 4 meses
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('runa.design.clean', ['timespan' => 'y']) }}" class="btn btn-warning btn-xs"><i class="fa fa-trash"></i>
+                                Año pasado
+                            </a>
+                        </td>
+                    </tr>
                 </template>
             </data-table-com>
         </div>

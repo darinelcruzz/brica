@@ -36,4 +36,22 @@ class DesignsController extends Controller
 
         return back();
     }
+
+    function clean($timespan)
+    {
+        $temps = Storage::files('public/temp');
+        foreach ($temps as $temp) {
+            if ($timespan == 'm') {
+                if (date('Y-m', Storage::lastModified($temp)) == date('Y-m', strtotime("-4 months"))) {
+                    Storage::delete($temp);
+                }
+            } elseif ($timespan == 'y') {
+                if (date('Y', Storage::lastModified($temp)) == date('Y', strtotime("-1 year"))) {
+                    Storage::delete($temp);
+                }
+            }
+        }
+
+        return back();
+    }
 }

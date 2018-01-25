@@ -44,7 +44,7 @@ class ClientController extends Controller
         return view('runa.clients.edit', compact('client'));
 	}
 
-    public function change(Request $request)
+    function change(Request $request)
     {
         $this->validate($request, [
 			'name' => 'required',

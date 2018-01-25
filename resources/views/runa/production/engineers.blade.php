@@ -11,7 +11,7 @@
                 <th>Descripción</th>
                 <th>Órdenes</th>
                 <th>Entrega</th>
-                <th>*</th>
+                <th><i class="fa fa-cogs"></i></th>
             </tr>
         </template>
 

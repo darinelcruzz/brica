@@ -75,19 +75,4 @@ class ProviderController extends Controller
 
         return redirect(route('runa.provider.deposit', ['rshopping' => $request->shopping]));
     }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
 }

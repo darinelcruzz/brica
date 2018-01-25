@@ -2,18 +2,22 @@
 
 @section('main-content')
     <row-woc col="col-md-10">
-        <solid-box title="Anticipo para producción">
+        <solid-box title="Anticipo para producción" color="box-warning">
             <!-- form start -->
             {!! Form::open(['method' => 'POST', 'route' => 'runa.quotationp.store']) !!}
 
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('client', $clients, null,
-                        ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente'], ['icon' => 'user']) !!}
+                        ['tpl' => 'templates/withicon', 'empty' => 'Seleccione un cliente', 'class' => 'select2'],
+                        ['icon' => 'user']) !!}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" align="center">
+                        <br>
                         <a href="{{ route('runa.client.create', ['from' => 'produccion'])}}">
-                            <button type="button" class="btn btn-warning">Nuevo cliente</button>
+                            <button type="button" class="btn btn-warning">
+                                <i class="fa fa-plus"></i>&nbsp;<i class="fa fa-user"></i> &nbsp;Nuevo cliente
+                            </button>
                         </a>
                     </div>
                 </div>

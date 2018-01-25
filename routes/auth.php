@@ -219,6 +219,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     Route::get('disenos', usesas('Runa\DesignsController', 'index', 'design.index'));
     Route::post('disenos', usesas('Runa\DesignsController', 'upload', 'design.upload'));
     Route::get('disenos/eliminar/{img}', usesas('Runa\DesignsController', 'destroy', 'design.destroy'));
+    Route::get('disenos/limpiar/{timespan}', usesas('Runa\DesignsController', 'clean', 'design.clean'));
 
     // Preguntas
     Route::group(['prefix' => 'preguntas', 'as' => 'question.'], function () {

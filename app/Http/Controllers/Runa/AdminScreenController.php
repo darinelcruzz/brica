@@ -85,8 +85,7 @@ class AdminScreenController extends Controller
 
     function steal()
     {
-        $sales = Sale::all();//whereRaw("HOUR('created_at') = '10'")->get();
-        //dd($sales);
+        $sales = Sale::all();
 
         return view('runa.admin.steal', compact('sales'));
     }
