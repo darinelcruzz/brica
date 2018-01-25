@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
+use Illuminate\Notifications\Notifiable;
 
 class Quotation extends Model
 {
+	use Notifiable;
+	
 	protected $fillable = [
 		'type', 'folio', 'client', 'status', 'description', 'team', 'startTime', 'endTime',
 		'amount', 'date_payment', 'payment_date', 'notified', 'pay', 'deliver', 'products'

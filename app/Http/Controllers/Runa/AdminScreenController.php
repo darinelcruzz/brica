@@ -73,7 +73,9 @@ class AdminScreenController extends Controller
     	]);
 
         if ($request->input('description')) {
-            Expense::create($request->all());
+            $expense = Expense::create($request->all());
+
+            $expense->notify(new \App\Notifications\TestNotification());
         }
 
         $expenses = Expense::all();

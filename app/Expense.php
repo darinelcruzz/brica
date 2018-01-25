@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Expense extends Model
 {
+    use Notifiable;
+    
     protected $fillable = ['description', 'amount', 'date', 'user'];
 
     function scopeTotalExpenses($query, $date)

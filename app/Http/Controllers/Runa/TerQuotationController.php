@@ -40,6 +40,10 @@ class TerQuotationController extends Controller
             $quotation->storeAsCredit('credito', $quotation->amount);
         }
 
+        if ($quotation->amount > 1000) {
+            $quotation->notify(new \App\Notifications\QuotationAboveAThousand());
+        }
+
         return view('runa.quotations.ticket', compact('quotation', 'amount'));
     }
 
