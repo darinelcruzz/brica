@@ -79,6 +79,7 @@ class ReceiptController extends Controller
         } else {
             $this->validate($request, [
                 'client' => 'required',
+                'model' => 'required',
                 'bodywork' => 'sometimes|required',
                 'color' => 'sometimes|required',
                 'deliver' => 'required',

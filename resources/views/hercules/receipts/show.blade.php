@@ -61,6 +61,9 @@
                             Restante:<br>
                             <b>{{ $hreceipt->rest }}</b>
                         @endif
+                        <br>
+                        Modelo:<br>
+                        <strong>{{ $hreceipt->model or $hreceipt->order->model }}</strong>
                       </address>
                     </div>
                 </div>

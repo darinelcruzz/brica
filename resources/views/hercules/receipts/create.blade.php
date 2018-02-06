@@ -78,6 +78,12 @@
                         {!! Field::date('deliver', $today, ['tpl' => 'templates/withicon'], ['icon' => 'calendar']) !!}
                     </div>
                     <div class="col-md-6">
+                        {!! Field::text('model', ['tpl' => 'templates/withicon'], ['icon' => 'barcode']) !!}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
                         {!! Field::text('observations', ['tpl' => 'templates/withicon'], ['icon' => 'eye']) !!}
                     </div>
                 </div>

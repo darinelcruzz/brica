@@ -26,7 +26,7 @@
                             {!! Field::text('brand', $order->brand, ['tpl' => 'templates/withicon'], ['icon' => 'industry']) !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Field::text('model', $order->model, ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
+                            {!! Field::text('model', $order->receiptr->model, ['tpl' => 'templates/withicon'], ['icon' => 'car']) !!}
                         </div>
                     </div>
 
