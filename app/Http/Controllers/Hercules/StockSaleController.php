@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Hercules;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Hercules\HClient;
-use App\Models\Hercules\HStockSale;
+use App\Models\Hercules\{HClient, HStockSale};
 
 class StockSaleController extends Controller
 {

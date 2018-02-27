@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Hercules;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Hercules\HBodywork;
-use App\Models\Hercules\HItem;
+use App\Models\Hercules\{HBodywork, HItem};
 
 class BodyworkController extends Controller
 {

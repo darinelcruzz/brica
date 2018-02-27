@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Quotation;
-use App\Sale;
+use App\{Quotation, Sale};
 
 class SaleController extends Controller
 {

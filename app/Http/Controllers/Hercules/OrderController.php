@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Hercules;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Hercules\HOrder;
-use App\Models\Hercules\HPersonnel;
+use App\Models\Hercules\{HOrder, HPersonnel};
 use Jenssegers\Date\Date;
 
 class OrderController extends Controller

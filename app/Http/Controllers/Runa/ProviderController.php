@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Runa\RProvider;
-use App\Models\Runa\RShopping;
-use App\Models\Runa\RDeposit;
+use App\Models\Runa\{RProvider, RShopping, RDeposit};
 
 class ProviderController extends Controller
 {

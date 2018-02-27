@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Sale;
-use App\Quotation;
-use App\Expense;
 use Jenssegers\Date\Date;
+use App\{Sale, Quotation, Expense};
 
 class AdminScreenController extends Controller
 {

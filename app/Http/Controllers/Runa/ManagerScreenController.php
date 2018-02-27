@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Quotation;
-use App\User;
 use Carbon\Carbon;
+use App\{Quotation, User};
 
 class ManagerScreenController extends Controller
 {

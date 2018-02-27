@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Runa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
-use App\Client;
-use App\User;
-use App\Quotation;
+use App\{Client, User, Quotation};
 
 class ProQuotationController extends Controller
 {

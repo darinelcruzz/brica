@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Date\Date;
-use App\Client;
-use App\Sale;
-use App\Quotation;
+use App\{Client, Sale, Quotation};
 
 class TerQuotationController extends Controller
 {

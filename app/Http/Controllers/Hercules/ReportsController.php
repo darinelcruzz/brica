@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Hercules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
+use App\Models\Hercules\{HStockSale, HReceipt, HDeposit};
 use Charts;
-use App\Models\Hercules\HStockSale;
-use App\Models\Hercules\HReceipt;
-use App\Models\Hercules\HDeposit;
 
 class ReportsController extends Controller
 {

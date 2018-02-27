@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Runa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Charts;
-use App\Quotation;
-use App\Sale;
-use App\Client;
-use App\Product;
-use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Date\Date;
+use App\{Quotation, Sale, Client, Product};
+use Charts;
 
 class ReportController extends Controller
 {

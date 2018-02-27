@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Hercules;
 
 use App\Http\Controllers\Controller;
-use App\Models\Hercules\HProvider;
-use App\Models\Hercules\HShopping;
-use App\Models\Hercules\HPayment;
+use App\Models\Hercules\{HProvider, HShopping, HPayment};
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller

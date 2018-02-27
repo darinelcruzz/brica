@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Hercules;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Hercules\HBodywork;
-use App\Models\Hercules\HOrder;
-use App\Models\Hercules\HClient;
-use App\Models\Hercules\HReceipt;
-use App\Models\Hercules\HDeposit;
+use App\Models\Hercules\{HBodywork, HOrder, HClient, HReceipt, HDeposit};
 use Jenssegers\Date\Date;
 
 class ReceiptController extends Controller

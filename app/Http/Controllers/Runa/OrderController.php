@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
 use Carbon\Carbon;
-use App\Order;
-use App\Quotation;
+use App\{Order, Quotation};
 
 class OrderController extends Controller
 {
