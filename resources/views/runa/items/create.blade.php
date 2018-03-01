@@ -27,7 +27,9 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::select('brand', ['NISSAN' => 'Nissan', '3 TONELADAS' => '3 Toneladas', 'PICK UP' => 'Pick up', 'VARIOS' => 'Varios'], null,
+                        {!! Field::select('brand',
+                            ['NISSAN' => 'Nissan', '3 TONELADAS' => '3 Toneladas', 'PICK UP' => 'Pick up', 'VARIOS' => 'Varios', 'MATERIA PRIMA' => 'Materia prima'], 
+                            null,
                             ['tpl' => 'templates/withicon', 'empty' => 'Elija marca'], ['icon' => 'trademark']) !!}
                     </div>
                 </div>

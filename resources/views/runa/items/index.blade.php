@@ -17,7 +17,8 @@
                     <li class="active"><a href="#tab_1" data-toggle="tab">Nissan</a></li>
                     <li><a href="#tab_2" data-toggle="tab">3 Toneladas</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Pickup</a></li>
-                    <li><a href="#tab_4" data-toggle="tab">Varios</a></li>
+                    <li><a href="#tab_4" data-toggle="tab">Materia prima</a></li>
+                    <li><a href="#tab_5" data-toggle="tab">Varios</a></li>
                 </ul>
 
                 <div class="tab-content">

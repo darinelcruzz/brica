@@ -12,7 +12,7 @@ class ItemController extends Controller
     {
         $items = RItem::all();
         $totalStock = 0;
-        $processes = ['nissan', '3 toneladas', 'pick up', 'varios'];
+        $processes = ['nissan', '3 toneladas', 'pick up', 'materia prima', 'varios'];
         return view('runa.items.index', compact('items', 'processes', 'totalStock'));
     }
 
