@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Hercules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
-use App\Models\Hercules\{HStockSale, HReceipt, HExpense, HDeposit};
+use App\Models\Hercules\{HStockSale, HReceipt, HExpense, HDeposit, HGondolaDeposit};
 
 class AdminScreenController extends Controller
 {
@@ -18,11 +18,14 @@ class AdminScreenController extends Controller
         $paid = HReceipt::paidToday($date);
         $expenses = HExpense::todayBalance($date);
         $deposits = HDeposit::todayBalance($date);
+        $gdeposits = HGondolaDeposit::todayBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('hercules.admin.balance', compact('stocksales', 'retainers', 'paid', 'date', 'expenses', 'deposits', 'totalI', 'totalE'));
+        return view('hercules.admin.balance',
+            compact('stocksales', 'retainers', 'paid', 'date', 'expenses', 'deposits', 'gdeposits', 'totalI', 'totalE')
+        );
     }
 
     function monthly(Request $request)
@@ -33,11 +36,14 @@ class AdminScreenController extends Controller
         $paid = HReceipt::paidThisMonth($date);
         $expenses = HExpense::monthBalance($date);
         $deposits = HDeposit::monthBalance($date);
+        $gdeposits = HGondolaDeposit::monthBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('hercules.admin.monthly', compact('stocksales', 'retainers', 'paid', 'expenses', 'deposits', 'totalI', 'totalE', 'date'));
+        return view('hercules.admin.monthly',
+            compact('stocksales', 'retainers', 'paid', 'expenses', 'deposits', 'gdeposits', 'totalI', 'totalE', 'date')
+        );
     }
 
     function expenses()

@@ -77,6 +77,20 @@
 							$totalI += $deposit->amount;
 						@endphp
 					@endforeach
+					@foreach($gdeposits as $gdeposit)
+						<tr>
+							<td>{{ $gdeposit->id }}</td>
+							<td>{{ $gdeposit->gondola->client->name }}</td>
+							<td>
+								{{ ucfirst($gdeposit->description) }}<br>
+								{{ fdate($gdeposit->created_at, 'd, M') }}
+							</td>
+							<td>{{ '$ ' . number_format($gdeposit->amount, 2) }}</td>
+						</tr>
+						@php
+							$totalI += $gdeposit->amount;
+						@endphp
+					@endforeach
 				</template>
 
 				<template slot="footer">

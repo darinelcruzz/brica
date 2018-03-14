@@ -280,4 +280,17 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::post('guardar', usesas('Hercules\PhotoUploadController', 'upload'));
     });
+
+    Route::group(['prefix' => 'gondolas', 'as' => 'gondola.'], function () {
+        $ctrl = 'Hercules\GondolaController';
+        Route::get('/', usesas($ctrl, 'index'));
+        Route::get('agregar', usesas($ctrl, 'create'));
+        Route::post('agregar', usesas($ctrl, 'store'));
+        Route::get('editar/{gondola}', usesas($ctrl, 'edit'));
+        Route::post('editar', usesas($ctrl, 'update'));
+        Route::get('vender/{gondola}', usesas($ctrl, 'quote'));
+        Route::post('vender', usesas($ctrl, 'sell'));
+        Route::post('depositar', usesas('Hercules\GondolaDepositController', 'deposit'));
+        Route::get('recibo/{gondola}', usesas($ctrl, 'printTicket'));
+    });
 });
