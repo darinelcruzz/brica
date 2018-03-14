@@ -18,6 +18,10 @@ return [
                 'title' => 'Artículos',
                 'route' => 'hercules.stocksales.items'
             ],
+            'gondolas' => [
+                'title' => 'Gondolas',
+                'route' => 'hercules.gondola.index'
+            ],
         ]
     ],
 
