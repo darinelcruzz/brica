@@ -20,7 +20,7 @@
               <tr>
                   <td>{{ $order->receipt }}</td>
                   <td>
-                      {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}
+                      {{ $order->bodyworkr->description or 'REPARACIÓN' }}
                       &nbsp;
                       <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pagado']) }}"
                           class="btn btn-xs btn-primary" title="MARCAR COMO PAGADO">
@@ -31,7 +31,7 @@
                   </td>
                   <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->start_date_for_finished }} <br> {{ $order->end_date_for_finished}}</td>
+                  <td>{{ fdate($order->startDate, 'd, M h:i a') }} <br> {{ fdate($order->endDate, 'd, M h:i a') }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
               </tr>
             @endforeach
@@ -55,10 +55,10 @@
             @foreach($paid as $order)
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
-                  <td>{{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }} <br> <code>{{ $order->serial_number }}</code></td>
+                  <td>{{ $order->bodyworkr->description or 'REPARACIÓN' }} <br> <code>{{ $order->serial_number }}</code></td>
                   <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
-                  <td>{{ $order->start_date_for_finished }} <br> {{ $order->end_date_for_finished}}</td>
+                  <td>{{ fdate($order->startDate, 'd, M h:i a') }} <br> {{ fdate($order->endDate, 'd, M h:i a') }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
               </tr>
             @endforeach
