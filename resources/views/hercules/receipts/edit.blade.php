@@ -47,6 +47,7 @@
 
                 <div class="box-footer">
                     <input type="hidden" name="id" value="{{ $hreceipt->id }}">
+                    <input type="hidden" name="created_at" value="{{ $today }}">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-primary pull-right']) !!}
                 </div>
                 {!! Form::close() !!}
