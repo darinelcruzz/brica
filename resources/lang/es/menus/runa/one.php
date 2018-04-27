@@ -22,6 +22,10 @@ return [
                 'title' => 'Generar ticket',
                 'route' => 'runa.cashier.finished'
             ],
+            'paid' => [
+                'title' => 'Folios pagados',
+                'route' => 'runa.cashier.paid'
+            ],
         ]
     ],
 
@@ -64,10 +68,10 @@ return [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
             ],
-            'steal' => [
-                'title' => 'OMG NOS ROBARON!',
-                'route' => 'runa.steal'
-            ],
+            // 'steal' => [
+            //     'title' => 'OMG NOS ROBARON!',
+            //     'route' => 'runa.steal'
+            // ],
         ]
     ],
 

@@ -31,7 +31,7 @@
                             <td align="right">{{ number_format($shopping->amount, 2) }}</td>
                             <td align="right">{{ number_format($shopping->amount - $shopping->pending, 2) }}</td>
                             <td>
-                                <code style="{{ $shopping->pending == 0 ? "color:#04b07b;": ''}}">
+                                <code style="{{ round($shopping->pending) == 0 ? "color:#04b07b;": ''}}">
                                     {{ strtoupper($shopping->status) }}
                                 </code>&nbsp;
                                 <a href="{{ route('runa.provider.deposit', ['rshopping' => $shopping->id ]) }}"
@@ -70,6 +70,11 @@
                     {!! Form::submit('Agregar', ['class' => 'btn btn-warning pull-right']) !!}
                 {!! Form::close() !!}
             </solid-box>
+
+            <a href="{{ route('runa.provider.index') }}"
+                class="btn btn-danger">
+                <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;Regresar a proveedores
+            </a>
         </div>
     </div>
 

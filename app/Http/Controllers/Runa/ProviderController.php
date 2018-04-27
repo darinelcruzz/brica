@@ -68,7 +68,7 @@ class ProviderController extends Controller
         $shopping = RShopping::find($request->shopping);
 
         $shopping->update([
-            'status' => $shopping->pending == 0 ? 'pagado': 'pendiente'
+            'status' => $shopping->pending > 0 ? 'pagado': 'pendiente'
         ]);
 
         return redirect(route('runa.provider.deposit', ['rshopping' => $request->shopping]));

@@ -19,6 +19,11 @@ class CashierScreenController extends Controller
         return view('runa.cashier.finished');
     }
 
+    function paid()
+    {
+        return view('runa.cashier.paid');
+    }
+
     function calculate(Quotation $quotation)
     {
         return view('runa.cashier.calculate', compact('quotation'));

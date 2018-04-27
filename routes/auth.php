@@ -48,6 +48,8 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         Route::get('foliost', usesas('Runa\ManagerScreenController', 'foliost'));
 
         Route::get('foliosp', usesas('Runa\ManagerScreenController', 'foliosp'));
+        
+        Route::get('pagados', usesas($cashCtrl, 'paid', 'cashier.paid'));
     });
 
     // Producción
@@ -159,7 +161,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('/', usesas($ctrl, 'manage'))->middleware('owners');
 
-        Route::get('robo', usesas($ctrl, 'steal'))->middleware('owners');
+        // Route::get('robo', usesas($ctrl, 'steal'))->middleware('owners');
 
         Route::get('cancelar/{quotation}', usesas($ctrl, 'cancel'))->middleware('owners');
 

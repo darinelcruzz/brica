@@ -81,10 +81,10 @@ class AdminScreenController extends Controller
 		return view('runa.admin.expenses', compact('date', 'expenses'));
 	}
 
-    function steal()
-    {
-        $sales = Sale::all();
+    // function steal()
+    // {
+    //     $sales = Sale::all();
 
-        return view('runa.admin.steal', compact('sales'));
-    }
+    //     return view('runa.admin.steal', compact('sales'));
+    // }
 }

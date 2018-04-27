@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-6">
                             {!! Field::number('amount',
-                                ['tpl' => 'templates/withicon', 'max' => "$rshopping->pending", 'min' => '0', 'step' => '0.01'],
+                                ['tpl' => 'templates/withicon', 'max' => number_format($rshopping->pending, 2), 'min' => '0', 'step' => '0.01'],
                                 ['icon' => 'money']) !!}
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;Regresar
                     </a>
                     <input type="hidden" name="shopping" value="{{ $rshopping->id }}">
-                    {!! Form::submit('Guardar', ['class' => 'btn btn-warning pull-right', 'disabled' => $rshopping->pending == 0]) !!}
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-warning pull-right', 'disabled' => round($rshopping->pending) == 0]) !!}
                 {!! Form::close() !!}
             </solid-box>
         </div>

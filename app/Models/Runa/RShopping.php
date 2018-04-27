@@ -19,7 +19,7 @@ class RShopping extends Model
 
     function getAmountAttribute()
     {
-        return $this->unit_price * $this->kg;
+        return round($this->unit_price * $this->kg, 2);
     }
 
     function getPendingAttribute()

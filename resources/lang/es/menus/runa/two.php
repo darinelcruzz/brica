@@ -22,6 +22,10 @@ return [
                 'title' => 'Generar ticket',
                 'route' => 'runa.cashier.finished'
             ],
+            'paid' => [
+                'title' => 'Folios pagados',
+                'route' => 'runa.cashier.paid'
+            ],
         ]
     ],
 

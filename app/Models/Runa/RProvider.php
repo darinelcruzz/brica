@@ -14,4 +14,34 @@ class RProvider extends Model
     {
         return $this->hasMany(RShopping::class, 'provider');
     }
+
+    function getTotalDebtAttribute()
+    {
+    	$total = 0;
+    	foreach ($this->shoppings as $shopping) {
+    		$total += $shopping->pending;
+    	}
+
+    	return $total;
+    }
+
+    function getTotalAmountAttribute()
+    {
+    	$total = 0;
+    	foreach ($this->shoppings as $shopping) {
+    		$total += $shopping->amount;
+    	}
+
+    	return $total;
+    }
+
+    function getTotalPaidAttribute()
+    {
+    	$total = 0;
+    	foreach ($this->shoppings as $shopping) {
+    		$total += $shopping->amount - $shopping->pending;
+    	}
+
+    	return $total;
+    }
 }
