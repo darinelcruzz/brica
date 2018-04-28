@@ -89,6 +89,8 @@
                 </div>
 
                 <div class="box-footer">
+                    <input type="hidden" value="{{ auth()->user()->name }}" name="printer">
+                    <input type="hidden" value="{{ date('Y-m-d') }}" name="print_date">
                     {!! Form::submit('Agregar', ['class' => 'btn btn-primary pull-right']) !!}
                 </div>
                 {!! Form::close() !!}

@@ -12,7 +12,8 @@ class HReceipt extends Model
 {
     protected $fillable = [
         'client', 'other', 'type', 'bodywork', 'retainer', 'amount', 'color',
-        'deliver', 'observations', 'process', 'location', 'model', 'created_at'
+        'deliver', 'observations', 'process', 'location', 'model', 'created_at',
+        'printer', 'print_date'
     ];
 
     function clientr()

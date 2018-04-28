@@ -22,13 +22,15 @@
 
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-                      Recibí de:
+                      {{ $hreceipt->printer or 'RUNA' }} recibió de:
                       <address>
                         <strong>{{ $hreceipt->name }}</strong><br>
                         {{ $hreceipt->clientr->address }}<br>
                         {{ $hreceipt->clientr->city }}<br>
                         {{ $hreceipt->clientr->phone }}<br>
                         {{ $hreceipt->clientr->email }}
+                        Fecha: <br>
+                        {{ $hreceipt->print_date or 'n/d'}}
                       </address>
                     </div>
 
