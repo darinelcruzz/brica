@@ -21,8 +21,11 @@ Vue.component('item-row', require('./components/ItemRow.vue'));
 
 Vue.component('row-woc', require('./components/lte/SingleElementRow.vue'));
 Vue.component('solid-box', require('./components/lte/SolidBox.vue'));
+Vue.component('color-box', require('./components/lte/NewSolidBox.vue'));
+Vue.component('simple-box', require('./components/lte/SimpleBox.vue'));
 
 Vue.component('data-table', require('./components/lte/DataTable.vue'));
+Vue.component('dtable', require('./components/lte/NewDataTable.vue'));
 Vue.component('data-table-com', require('./components/lte/SmallDataTable.vue'));
 
 Vue.component('little-box', require('./components/lte/LittleColorBox.vue'));

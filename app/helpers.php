@@ -19,3 +19,12 @@ function fdate($original_date, $format = 'Y-m-d', $original_format = 'Y-m-d H:i:
 
 	return '-';
 }
+
+function drawHeader(...$titles)
+{
+    echo "<template slot=\"header\"><tr>";
+    foreach ($titles as $title) {
+        echo "<th>" . ucfirst($title) . "</th>";
+    }
+    echo "</tr></template>";
+}

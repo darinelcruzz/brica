@@ -15,7 +15,9 @@
 					['icon' => 'calendar']) !!}
 			</div>
 		</div>
-		{!! Form::submit('Buscar', ['class' => 'btn btn-primary btn-xs pull-right']) !!}
+		<button type="submit" class='btn btn-xs btn-warning pull-right'>
+			<i class="fa fa-search"></i>&nbsp;Buscar
+		</button>
 	</row-woc>
 	{!! Form::close() !!}
 

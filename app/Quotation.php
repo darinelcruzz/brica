@@ -85,6 +85,19 @@ class Quotation extends Model
 			->get(['id', 'amount', 'payment_date']);
     }
 
+    public function scopeSalesByMonth($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('payment_date', [$startDate, $endDate])
+			->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->orderBy('payment_date')
+			->get()
+			->groupBy(function($item) {
+    			return Date::parse($item->payment_date)->format('F');
+    		});
+    }
+
 	function scopeMadeByTeam($query, $team, $startDate, $endDate)
 	{
 		return $query->whereBetween('created_at', [$startDate, $endDate])

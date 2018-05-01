@@ -33,6 +33,9 @@ class ReportController extends Controller
     {
       $dates = $this->getFormattedDates($request);
       $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
+      if ($request->mode == 'm') {
+          $dataForCharts = $this->getMonthlySales($dates['start'], $dates['end']);
+      }
       $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
 
       return view('runa.reports.sales', compact('salesChart', 'dates'));
@@ -151,23 +154,35 @@ class ReportController extends Controller
         return [$sums, $labels];
     }
 
+    function getMonthlySales($start, $end)
+    {
+        $sales = Quotation::salesByMonth($start, $end);
+        $sums = [];
+
+        foreach ($sales as $month) {
+            array_push($sums, $month->sum('amount'));
+        }
+
+        return [$sums, $sales->keys()];
+    }
+
     function getFormattedDates(Request $request)
     {
-        if ($request->startDate == 0) {
-            $start = Date::now()->format('Y-m-d');
-            $end = Date::now()->format('Y-m-d');
-        } else {
-            $start = Date::createFromFormat('Y-m-d H:i:s', $request->startDate . " 00:00:00");
-            $end = Date::createFromFormat('Y-m-d H:i:s', $request->endDate . " 23:59:59");
+        if ($request->startDate) {
+            return [
+                'start' => $request->startDate . " 00:00:00", 
+                'end' => $request->endDate . " 23:59:59"
+            ];
         }
-        return ['start' => $start, 'end' => $end];
+
+        return ['start' => date('Y-m-d'), 'end' => date('Y-m-d')];
     }
 
     function createChart($title, $labels, $values, $element = 'Total generado ($)')
     {
         return Charts::create('bar', 'highcharts')
                 ->title($title)
-                ->colors(['#3c8dbc', '#00a65a', '#D81B60', '#f39c12'])
+                ->colors(['#F39C12', '#f9f393'])
                 ->labels($labels)
                 ->elementLabel($element)
                 ->values($values)
