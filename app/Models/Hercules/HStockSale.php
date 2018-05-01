@@ -49,12 +49,26 @@ class HStockSale extends Model
                     ->get();
     }
 
-    function scopeFromDateToDate($query, $startDate, $endDate)
+    function scopeFromDateToDate($query, $startDate, $endDate, $monthly = null)
     {
+        if ($monthly) {
+            return $query->whereBetween('date', [$startDate, $endDate])
+            ->orderBy('date')
+            ->get()
+            ->groupBy(function($item) {
+                return Date::parse($item->date)->format('F');
+            });
+        }
+
         return $query->whereBetween('date', [$startDate, $endDate])
-			->groupBy('date')
-            ->selectRaw('sum(total) as sum, DATE_FORMAT(date, "%d-%c") as day')
-			->pluck('sum', 'day');
+            // ->groupBy('date')
+            // ->selectRaw('sum(total) as sum, DATE_FORMAT(date, "%d-%c") as day')
+            // ->pluck('sum', 'day');
+            ->orderBy('date')
+            ->get()
+            ->groupBy(function($item) {
+                return Date::parse($item->date)->format('d-m');
+            });
     }
 
     public function storeProducts($request)
