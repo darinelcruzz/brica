@@ -66,7 +66,7 @@
 					@endphp
 				@endforeach
 				@foreach($deposits as $deposit)
-					@if (true)
+					@if($deposit->receiptr->order->status != 'pagado')
 						<tr>
 							<td>{{ $deposit->id }}</td>
 							<td>{{ $deposit->client }}</td>
