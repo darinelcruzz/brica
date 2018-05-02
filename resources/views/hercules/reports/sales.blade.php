@@ -8,7 +8,7 @@
 				{!! Form::open(['method' => 'POST', 'route' => 'hercules.report.sales']) !!}
 					<div class="row">
 						<div class="col-md-3">
-							{!! Field::select('mode', [false => 'Normal', true => 'Mensual'], ['n'],
+							{!! Field::select('mode', ['n' => 'Normal', 'm' => 'Mensual'], ['n'],
 								['label' => 'Modo', 'tpl' => 'templates/withicon', 'empty' => false],
 								['icon' => 'arrows']) !!}
 						</div>

@@ -3,6 +3,7 @@
 namespace App\Models\Hercules;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class HDeposit extends Model
 {
@@ -36,13 +37,17 @@ class HDeposit extends Model
                     ->get();
     }
 
-    function scopeFromDateToDate($query, $startDate, $endDate)
+    function scopeFromDateToDate($query, $startDate, $endDate, $monthly)
     {
+        $format = $monthly ? 'F': 'd-M';
+
         return $query->join('h_orders', 'h_deposits.receipt', '=', 'h_orders.receipt')
-            ->whereBetween('h_deposits.created_at', [$startDate, $endDate])
+            ->whereBetween('h_orders.updated_at', [$startDate, $endDate])
             ->where('h_orders.status', '!=', 'pagado')
-            ->selectRaw("SUM(amount) as sum, DATE_FORMAT(h_deposits.created_at, '%d-%m') as date")
-            ->groupBy('date')
-			->pluck('sum', 'date');
+            ->orderBy('h_orders.updated_at', 'asc')
+            ->get()
+            ->groupBy(function($item) use($format) {
+                return Date::parse($item->updated_at)->format($format);
+            });
     }
 }

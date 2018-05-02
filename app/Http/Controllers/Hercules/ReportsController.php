@@ -13,15 +13,13 @@ class ReportsController extends Controller
     function sales(Request $request)
     {
         $dates = $this->getFormattedDates($request);
-        $monthly = isset($request->mode) ? $request->mode: false;
-        // $dates = $this->getFormattedDates($request);
-        // $sales = HStockSale::fromDateToDate($dates['start'], $dates['end'], true);
-        $sales = $this->getStockSales($dates, $monthly);
-        $unpaidR = HReceipt::retainersFromDateToDate($dates['start'], $dates['end'])->toArray();
-        $paidR = HReceipt::amountsFromDateToDate($dates['start'], $dates['end'])->toArray();
-        $deposits = HDeposit::fromDateToDate($dates['start'], $dates['end'])->toArray();
-
+        $sales = $this->getStockSales($dates, $request->mode);
+        $unpaidR = $this->getReceipts($dates, $request->mode, '!=', 'retainer');
+        $paidR = $this->getReceipts($dates, $request->mode, '=', 'amount');
+        $deposits = $this->getDeposits($dates, $request->mode);
         $mergeR = array_merge_recursive($unpaidR, $paidR, $deposits);
+        // dd($unpaidR, $sales, $paidR, $deposits, $mergeR);
+
         $receipts = [];
         foreach ($mergeR as $key => $value) {
           if(is_array($value)) {
@@ -31,24 +29,46 @@ class ReportsController extends Controller
           }
         }
 
-      ksort($receipts);
+        // ksort($receipts);
+        // dd($receipts);
 
-      $stockSalesChart = $this->createChart('Producto terminado', $sales[1], $sales[0]);
-      $receiptsChart = $this->createChart('Carrocerías', array_keys($receipts), array_values($receipts));
+        $stockSalesChart = $this->createChart('Producto terminado', $sales[1], $sales[0]);
+        $receiptsChart = $this->createChart('Carrocerías', array_keys($receipts), array_values($receipts));
 
-      return view('hercules.reports.sales', compact('dates', 'stockSalesChart', 'receiptsChart'));
+        return view('hercules.reports.sales', compact('dates', 'stockSalesChart', 'receiptsChart'));
     }
 
     function getStockSales($dates, $monthly)
     {
-        $sales = HStockSale::fromDateToDate($dates['start'], $dates['end'], $monthly);
+        $sales = HStockSale::fromDateToDate($dates['start'], $dates['end'], $monthly == 'm');
         $sums = [];
 
         foreach ($sales as $daysOrMonths) {
-            array_push($sums, $daysOrMonths->sum('amount'));
+            array_push($sums, $daysOrMonths->sum('total'));
         }
 
         return [$sums, $sales->keys()];
+    }
+
+    function getDeposits($dates, $monthly)
+    {
+        $sales = HDeposit::fromDateToDate($dates['start'], $dates['end'], $monthly == 'm');
+        $mapped = $sales->map(function ($item, $key) {
+            return $item->sum('amount');
+        });
+
+        return $mapped->toArray();
+    }
+
+    function getReceipts($dates, $monthly, $op, $column)
+    {
+        $sales = HReceipt::receiptsFromDateToDate($dates['start'], $dates['end'], $monthly == 'm', $op);
+
+        $mapped = $sales->map(function ($item, $key) use ($column) {
+            return $item->sum($column);
+        });
+
+        return $mapped->toArray();
     }
 
     function getFormattedDates(Request $request)
