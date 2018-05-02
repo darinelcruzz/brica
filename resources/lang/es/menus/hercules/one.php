@@ -104,6 +104,10 @@ return [
                 'title' => 'Ventas',
                 'route' => 'hercules.report.sales'
             ],
+            'bodyworks' => [
+                'title' => 'Carrocerías',
+                'route' => 'hercules.report.bodyworks'
+            ],
         ]
     ],
 

@@ -18,7 +18,6 @@ class ReportsController extends Controller
         $paidR = $this->getReceipts($dates, $request->mode, '=', 'amount');
         $deposits = $this->getDeposits($dates, $request->mode);
         $mergeR = array_merge_recursive($unpaidR, $paidR, $deposits);
-        // dd($unpaidR, $sales, $paidR, $deposits, $mergeR);
 
         $receipts = [];
         foreach ($mergeR as $key => $value) {
@@ -29,13 +28,20 @@ class ReportsController extends Controller
           }
         }
 
-        // ksort($receipts);
-        // dd($receipts);
-
         $stockSalesChart = $this->createChart('Producto terminado', $sales[1], $sales[0]);
         $receiptsChart = $this->createChart('Carrocerías', array_keys($receipts), array_values($receipts));
 
         return view('hercules.reports.sales', compact('dates', 'stockSalesChart', 'receiptsChart'));
+    }
+
+    function bodyworks(Request $request)
+    {
+        $dates = $this->getFormattedDates($request);
+        $sold = $this->getSoldBodyworks($dates, $request->mode);
+        $made = $this->getBuiltBodyworks($dates, $request->mode);
+        // dd(HReceipt::builtFromDateToDate($dates['start'], $dates['end'], true, 'terminado'));
+        $chart = $this->createMultiChart('Comparativa', array_keys($made), array_values($made), array_values($sold));
+        return view('hercules.reports.bodyworks', compact('dates', 'chart'));
     }
 
     function getStockSales($dates, $monthly)
@@ -71,6 +77,28 @@ class ReportsController extends Controller
         return $mapped->toArray();
     }
 
+    function getBuiltBodyworks($dates, $monthly)
+    {
+        $sales = HReceipt::builtBodyworks($dates['start'], $dates['end'], $monthly == 'm');
+
+        $mapped = $sales->map(function ($item, $key) {
+            return $item->count();
+        });
+
+        return $mapped->toArray();
+    }
+
+    function getSoldBodyworks($dates, $monthly)
+    {
+        $sales = HReceipt::soldBodyworks($dates['start'], $dates['end'], $monthly == 'm');
+
+        $mapped = $sales->map(function ($item, $key) {
+            return $item->count();
+        });
+
+        return $mapped->toArray();
+    }
+
     function getFormattedDates(Request $request)
     {
         if ($request->startDate) {
@@ -91,6 +119,18 @@ class ReportsController extends Controller
                 ->labels($labels)
                 ->elementLabel($element)
                 ->values($values)
+                ->dimensions(0,500);
+    }
+
+    function createMultiChart($title, $labels, $made, $sold)
+    {
+        return Charts::multi('bar', 'highcharts')
+                ->title($title)
+                ->colors(['#3c8dbc', '#96c7dd'])
+                ->labels($labels)
+                ->elementLabel('Cantidad')
+                ->dataset('Hechas', $made)
+                ->dataset('Vendidas', $sold)
                 ->dimensions(0,500);
     }
 }

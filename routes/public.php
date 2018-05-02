@@ -270,9 +270,11 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     });
 
     Route::group(['prefix' => 'reporte', 'as' => 'report.'], function () {
-        Route::get('ventas', usesas('Hercules\ReportsController', 'sales'));
-
-        Route::post('ventas', usesas('Hercules\ReportsController', 'sales'));
+        $ctrl = 'Hercules\ReportsController';
+        Route::match(['get', 'post'], 'ventas', usesas($ctrl, 'sales'));
+        Route::match(['get', 'post'], 'carrocerias', usesas($ctrl, 'bodyworks'));
+        // Route::get('ventas', usesas($ctrl, 'sales'));
+        // Route::post('ventas', usesas($ctrl, 'sales'));
     });
 
     Route::group(['prefix' => 'foto', 'as' => 'photo.'], function () {

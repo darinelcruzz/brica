@@ -134,24 +134,47 @@ class HReceipt extends Model
             });
     }
 
-   //  function scopeRetainersFromDateToDate($query, $startDate, $endDate)
-   //  {
-   //      return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
-   //          ->whereBetween('h_receipts.created_at', [$startDate, $endDate])
-   //          ->where('h_orders.status', '!=', 'pagado')
-   //          ->selectRaw("SUM(retainer) as sum, DATE_FORMAT(h_receipts.created_at, '%d-%m') as date")
-   //          ->groupBy('date')
-			// ->pluck('sum', 'date');
-   //  }
+    function scopeBuiltBodyworks($query, $start, $end, $monthly)
+    {
+        $format = $monthly ? 'F': 'd-M';
 
-   //  function scopeAmountsFromDateToDate($query, $startDate, $endDate)
-   //  {
-   //      return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
-   //          ->orderBy('h_orders.updated_at', 'asc')
-   //          ->where('h_orders.status', 'pagado')
-   //          ->whereBetween('h_orders.updated_at', [$startDate, $endDate])
-   //          ->selectRaw("SUM(amount) as sum, DATE_FORMAT(h_orders.updated_at, '%d-%m') as date")
-   //          ->groupBy('date')
-			// ->pluck('sum', 'date');
-   //  }
+        return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
+            ->whereBetween("h_orders.endDate", [$start, $end])
+            ->where('h_orders.bodywork', '!=', 0)
+            ->orderBy("h_orders.endDate", 'asc')
+            ->get()
+            ->groupBy(function($item) use($format) {
+                return Date::parse($item->endDate)->format($format);
+            });
+    }
+
+    function scopeSoldBodyworks($query, $start, $end, $monthly)
+    {
+        $format = $monthly ? 'F': 'd-M';
+
+        return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
+            ->whereBetween("h_orders.updated_at", [$start, $end])
+            ->where('h_orders.status', 'pagado')
+            ->where('h_orders.bodywork', '!=', 0)
+            ->orderBy("h_orders.updated_at", 'asc')
+            ->get()
+            ->groupBy(function($item) use($format) {
+                return Date::parse($item->updated_at)->format($format);
+            });
+    }
+
+    function scopeBuiltFromDateToDate($query, $start, $end, $monthly, $status)
+    {
+        $format = $monthly ? 'F': 'd-M';
+
+        return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
+            ->where('h_orders.status', $status)
+            ->where('h_orders.bodywork', '!=', 0)
+            ->whereBetween('h_orders.endDate', [$start, $end])
+            ->orderBy('h_orders.endDate', 'asc')
+            ->get()
+            ->groupBy(function($item) {
+                return $item->bodyworkr->type;
+            });
+    }
 }
