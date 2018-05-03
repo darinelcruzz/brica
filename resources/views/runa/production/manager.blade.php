@@ -3,13 +3,15 @@
 @section('main-content')
 
     <data-table col="col-md-12" title="Cotizaciones pendientes"
-        example="example1" color="box-default" collapsed="collapsed-box">
+        example="example1" color="box-default">
         <template slot="header">
             <tr>
                 <th>#</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
+                <th>Órdenes</th>
                 <th>Entrega</th>
+                <th><i class="fa fa-cogs"></i></th>
             </tr>
         </template>
 
@@ -19,7 +21,24 @@
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
+                  <td>
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.quotation.details', ['id' => $row->id]) }}"
+                          class="btn btn-danger btn-xs">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                          ({{ count($row->orders) }})
+                      </a>
+                      <p v-else>{{ count($row->orders) }}</p>
+                  </td>
                   <td>{{ $row->deliver }}</td>
+                  <td>
+                      <a href="{{ route('runa.order.create', ['cot' => $row->id]) }}" class="btn btn-danger btn-xs">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                      </a>
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.engineer.complete', ['cot' => $row->id]) }}"
+                          class="btn btn-success btn-xs">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
             @endforeach
         </template>
@@ -147,40 +166,6 @@
                       </a>
                   </td>
                   <td>{{ $row->startTime }}</td>
-              </tr>
-            @endforeach
-        </template>
-    </data-table>
-
-    <data-table col="col-md-12" title="Cotizaciones finalizadas"
-        example="example5" color="box-success" collapsed="collapsed-box">
-        <template slot="header">
-            <tr>
-                <th>#</th>
-                <th>Cliente</th>
-                <th>Descripción</th>
-                <th>Detalles</th>
-                <th>Equipo</th>
-                <th>Inicio</th>
-                <th>Final</th>
-            </tr>
-        </template>
-
-        <template slot="body">
-            @foreach($terminated as $row)
-              <tr>
-                  <td>{{ $row->folio }}</td>
-                  <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->description }}</td>
-                  <td>
-                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-success btn-xs">
-                          <i class="fa fa-info" aria-hidden="true"></i>nfo
-                          <i class="fa fa-forward" aria-hidden="true"></i>
-                      </a>
-                  </td>
-                  <td>{{ $row->team }}</td>
-                  <td>{{ $row->startTime }}</td>
-                  <td>{{ $row->endTime }}</td>
               </tr>
             @endforeach
         </template>

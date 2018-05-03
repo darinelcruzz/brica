@@ -73,6 +73,21 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         'as' => 'manager.assign'
     ]);
 
+    Route::get('gerente/productividad', [
+        'uses' => 'Runa\ManagerScreenController@productivity',
+        'as' => 'manager.productivity'
+    ]);
+
+    Route::get('gerente/pesos', [
+        'uses' => 'Runa\ManagerScreenController@weight',
+        'as' => 'manager.weight'
+    ]);
+
+    Route::post('gerente/pesos', [
+        'uses' => 'Runa\ManagerScreenController@addWeight',
+        'as' => 'manager.addWeight'
+    ]);
+
     // Operadores
     Route::group(['prefix' => 'operadores', 'as' => 'operator.'], function () {
         $ctrl = 'Runa\OperatorScreenController';

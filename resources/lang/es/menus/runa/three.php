@@ -29,15 +29,18 @@ return [
         'title' => 'Producción',
         'icon' => 'fa fa-industry',
         'submenu' => [
-            'engineer' => [
-                'title' => 'Ingenieros',
-                'route' => 'runa.engineer'
-            ],
             'manager' => [
                 'title' => 'Gerente',
                 'route' => 'runa.manager'
             ],
-
+            'weight' => [
+                'title' => 'Añadir peso',
+                'route' => 'runa.manager.weight'
+            ],
+            'productivity' => [
+                'title' => 'Productividad',
+                'route' => 'runa.manager.productivity'
+            ],
             'designs' => [
                 'title' => 'Diseños',
                 'route' => 'runa.design.index'

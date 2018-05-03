@@ -30,6 +30,26 @@ class ManagerScreenController extends Controller
         return back();
     }
 
+    function weight()
+    {
+        return view('runa.production.weights');
+    }
+
+    function productivity()
+    {
+        return view('runa.production.productivity');
+    }
+
+    function addWeight(Request $request)
+    {
+        $quotation = Quotation::find($request->id);
+        $quotation->update([
+            'weight' => $request->weight
+        ]);
+
+        return redirect(route('runa.manager.weight'));
+    }
+
     function foliost()
     {
         $quotations = Quotation::where('type', 'terminado')->get();
