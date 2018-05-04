@@ -18,7 +18,7 @@
       </template>
 
       <template slot="body">
-          @foreach($terminated->where('team', 'R1')->where('weight', 0) as $row)
+          @foreach($terminated->where('team', 'R1')->where('weight', 0)->where('created_at', '>', '2018-04-30') as $row)
               <tr>
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
@@ -70,7 +70,7 @@
       </template>
 
       <template slot="body">
-          @foreach($terminated->where('team', 'R2')->where('weight', 0) as $row)
+          @foreach($terminated->where('team', 'R2')->where('weight', 0)->where('created_at', '>', '2018-04-30') as $row)
               <tr>
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
@@ -122,7 +122,7 @@
       </template>
 
       <template slot="body">
-          @foreach($terminated->where('team', 'R3')->where('weight', 0) as $row)
+          @foreach($terminated->where('team', 'R3')->where('weight', 0)->where('created_at', '>', '2018-04-30') as $row)
               <tr>
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
@@ -174,7 +174,7 @@
       </template>
 
       <template slot="body">
-          @foreach($terminated->where('team', 'R4')->where('weight', 0) as $row)
+          @foreach($terminated->where('team', 'R4')->where('weight', 0)->where('created_at', '>', '2018-04-30') as $row)
               <tr>
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
@@ -226,7 +226,7 @@
       </template>
 
       <template slot="body">
-          @foreach($terminated->where('team', 'RC')->where('weight', 0) as $row)
+          @foreach($terminated->where('team', 'RC')->where('weight', 0)->where('created_at', '>', '2018-04-30') as $row)
               <tr>
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
