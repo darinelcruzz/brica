@@ -15,6 +15,7 @@ class ReportController extends Controller
     {
         $dates = $this->getFormattedDates($request);
         $dataForCharts = $this->dataForTeams($dates['start'], $dates['end']);
+        $dataForWeightsChart = $this->weightsByTeams($dates['start'], $dates['end']);
 
         $money = $this->createChart(
             'Dinero', ['Runa1', 'Runa2', 'Runa3', 'Runa4'],
@@ -26,7 +27,12 @@ class ReportController extends Controller
             $dataForCharts[1], 'Trabajos hechos'
         );
 
-        return view('runa.reports.teams', compact('money', 'works', 'dates'));
+        $weights = $this->createChart(
+            'Peso', ['Runa1', 'Runa2', 'Runa3', 'Runa4', 'RunaC'],
+            $dataForWeightsChart, 'Kilogramos'
+        );
+
+        return view('runa.reports.teams', compact('money', 'works', 'dates', 'weights'));
     }
 
     function sales(Request $request)
@@ -126,6 +132,25 @@ class ReportController extends Controller
         }
 
         return [$sums, $quantities];
+    }
+
+    function weightsByTeams($startDate, $endDate)
+    {
+        $sums = [];
+
+        $teams = ['R1','R2','R3','R4','RC'];
+
+        foreach($teams as $team) {
+            $quotations = Quotation::where('team', $team)
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->where('status', '!=', 'cancelado');
+
+            array_push($sums, $quotations->sum('weight'));
+        }
+
+        dd($sums);
+
+        return $sums;
     }
 
     function getSalesTotals($startDate, $endDate)
