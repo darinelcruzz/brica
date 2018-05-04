@@ -13,7 +13,7 @@
     </template>
 
     <template slot="body">
-      @foreach($pterminated->where('team', 'R1')->where('weight', 0) as $row)
+      @foreach($pterminated->where('team', $team['title'])->where('weight', 0) as $row)
         @if($row->updated_at > '2018-04-30')
           <tr>
               <td>{{ $row->folio }}</td>
