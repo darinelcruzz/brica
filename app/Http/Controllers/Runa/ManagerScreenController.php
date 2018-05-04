@@ -30,9 +30,9 @@ class ManagerScreenController extends Controller
         return back();
     }
 
-    function weight()
+    function results()
     {
-        return view('runa.production.weights');
+        return view('runa.production.results');
     }
 
     function productivity()
@@ -47,7 +47,7 @@ class ManagerScreenController extends Controller
             'weight' => $request->weight
         ]);
 
-        return redirect(route('runa.manager.weight'));
+        return redirect(route('runa.manager.productivity'));
     }
 
     function foliost()

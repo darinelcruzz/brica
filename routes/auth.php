@@ -78,15 +78,16 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         'as' => 'manager.productivity'
     ]);
 
-    Route::get('gerente/pesos', [
-        'uses' => 'Runa\ManagerScreenController@weight',
-        'as' => 'manager.weight'
-    ]);
-
-    Route::post('gerente/pesos', [
+    Route::post('gerente/peso', [
         'uses' => 'Runa\ManagerScreenController@addWeight',
         'as' => 'manager.addWeight'
     ]);
+
+    Route::get('gerente/resultados', [
+        'uses' => 'Runa\ManagerScreenController@results',
+        'as' => 'manager.results'
+    ]);
+
 
     // Operadores
     Route::group(['prefix' => 'operadores', 'as' => 'operator.'], function () {

@@ -33,13 +33,13 @@ return [
                 'title' => 'Gerente',
                 'route' => 'runa.manager'
             ],
-            'weight' => [
-                'title' => 'Añadir peso',
-                'route' => 'runa.manager.weight'
-            ],
             'productivity' => [
                 'title' => 'Productividad',
                 'route' => 'runa.manager.productivity'
+            ],
+            'results' => [
+                'title' => 'Resultados',
+                'route' => 'runa.manager.results'
             ],
             'designs' => [
                 'title' => 'Diseños',
