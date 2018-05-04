@@ -14,5 +14,9 @@ class ProductionComposer
         $view->authorized = Quotation::production('asignado');
         $view->production = Quotation::production('produccion');
         $view->terminated = Quotation::production('finalizado');
+        $view->pterminated = Quotation::where('type', 'produccion')
+        						->where('status', 'finalizado')
+        						->orWhere('status', 'pagado')
+        						->get();
     }
 }

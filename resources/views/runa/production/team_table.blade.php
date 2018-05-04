@@ -4,17 +4,16 @@
     <template slot="header">
         <tr>
             <th width="5%">#</th>
-            <th width="20%">Cliente</th>
+            <th width="30%">Cliente</th>
             <th width="25%">Descripción</th>
-            <th width="10%">Detalles</th>
+            <th width="20%">Detalles</th>
             <th width="10%">Equipo</th>
-            <th width="20%"><i class="fa fa-clock-o"></i></th>
             <th width="10%">Peso</th>
         </tr>
     </template>
 
     <template slot="body">
-      @foreach($terminated->where('team', 'R1')->where('weight', 0) as $row)
+      @foreach($pterminated->where('team', 'R1')->where('weight', 0) as $row)
         @if($row->updated_at > '2018-04-30')
           <tr>
               <td>{{ $row->folio }}</td>
@@ -27,10 +26,6 @@
                   </a>
               </td>
               <td>{{ $row->team }}</td>
-              <td>
-                  {{ $row->startTime }} <br>
-                  {{ $row->endTime }}
-              </td>
               <td>
                 {!! Form::open(['method' => 'POST', 'route' => 'runa.manager.addWeight']) !!}
 
