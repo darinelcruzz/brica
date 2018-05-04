@@ -148,8 +148,6 @@ class ReportController extends Controller
             array_push($sums, $quotations->sum('weight'));
         }
 
-        dd($sums);
-
         return $sums;
     }
 
