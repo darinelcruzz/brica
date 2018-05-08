@@ -33,7 +33,10 @@ class ManagerScreenController extends Controller
 
     function results()
     {
-        return view('runa.production.results');
+        $cutsSum = RCut::where('status', '!=', 'pendiente')
+                    ->where('order_id', 0)
+                    ->sum('weight');
+        return view('runa.production.results', compact('cutsSum'));
     }
 
     function productivity()

@@ -27,7 +27,7 @@
 
     <little-box color="bg-purple" size="col-md-4" icon="fa fa-balance-scale">
       <p></p>
-      <h3>RC</h3><h4>{{ $terminated->where('team', 'RC')->sum('weight') }} kg</h4>
+      <h3>RC</h3><h4>{{ $terminated->where('team', 'RC')->sum('weight') + $cutsSum }} kg</h4>
     </little-box>
   </div>
 
