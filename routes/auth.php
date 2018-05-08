@@ -129,7 +129,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         
         Route::get('calcular/{rcut}', usesas($ctrl, 'calculate'));
 
-        Route::post('calcular', usesas($ctrl, 'update'));
+        Route::post('peso', usesas($ctrl, 'weight'));
 
         Route::get('{order}', usesas($ctrl, 'show'));
 

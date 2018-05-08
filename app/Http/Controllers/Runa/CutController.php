@@ -30,9 +30,19 @@ class CutController extends Controller
         return back();
     }
 
-    public function calculate(RCut $rcut)
+    public function weight(Request $request)
     {
-        return view('runa.orders.calculate', compact('rcut'));
+        $this->validate($request, [
+            'weight' => 'required'
+        ]);
+
+        $rcut = RCut::find($request->id);
+
+        $rcut->update([
+            'weight' => $request->weight
+        ]);
+
+        return back();
     }
 
     public function edit(RCut $rcut, $status)

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Date\Date;
 use App\{Quotation, Sale, Client, Product};
+use App\Models\Runa\RCut;
 use Charts;
 
 class ReportController extends Controller
@@ -147,6 +148,13 @@ class ReportController extends Controller
 
             array_push($sums, $quotations->sum('weight'));
         }
+
+        $cutsSum = RCut::whereBetween('updated_at', [$startDate, $endDate])
+                    ->where('weight', '>', 0)
+                    ->where('order_id', 0)
+                    ->sum('weight');
+
+        $sums[4] += $cutsSum;
 
         return $sums;
     }

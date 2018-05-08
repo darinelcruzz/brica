@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\{Quotation, User};
+use App\Models\Runa\RCut;
 
 class ManagerScreenController extends Controller
 {
@@ -37,7 +38,11 @@ class ManagerScreenController extends Controller
 
     function productivity()
     {
-        return view('runa.production.productivity');
+        $cuts = RCut::where('status', 'terminado')
+                    ->where('order_id', 0)
+                    ->where('weight', 0)
+                    ->get();
+        return view('runa.production.productivity', compact('cuts'));
     }
 
     function addWeight(Request $request)

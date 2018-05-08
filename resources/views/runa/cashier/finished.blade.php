@@ -3,7 +3,7 @@
 @section('main-content')
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <color-box title="Cotizaciones por pagar" color="danger">
                 <dtable example="1">
                     {{ drawHeader('#', 'Cliente', 'Descripción', 'Anticipo', 'Cobrar') }}
@@ -30,7 +30,7 @@
             </color-box>
         </div>
 
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <color-box title="Cortes simples" color="warning">
                 <dtable example="2">
                     {{ drawHeader('#', 'cantidad', 'calibre', 'ancho', 'largo', 'costo') }}
@@ -61,7 +61,7 @@
                     </template>
                 </dtable>
             </color-box>
-        </div>
+        </div> --}}
     </div>
 
 @endsection

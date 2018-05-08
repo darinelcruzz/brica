@@ -44,5 +44,35 @@
           </tr>
         @endif
       @endforeach
+
+      @if($team['title'] == 'RC')
+          @foreach($team['cuts'] as $cut)
+              <tr>
+              <td>{{ $cut->id }}</td>
+              <td>N/A</td>
+              <td>CORTE SIMPLE</td>
+              <td>
+                  {{ $cut->quantity }}, calibre {{ $cut->caliber }}
+                  de {{ $cut->length }} <i class="fa fa-times"></i> {{ $cut->width }}
+              </td>
+              <td>RUNA C</td>
+              <td>
+                {!! Form::open(['method' => 'POST', 'route' => 'runa.cut.weight']) !!}
+
+                  <div class="input-group input-group-sm">
+                    <input type="hidden" name="id" value="{{ $cut->id }}">
+                    <input type="number" class="form-control" name="weight" min="0" value="0" step="0.01" required>
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-{{ $team['color'] }} btn-flat btn-xs">
+                      <i class="fa fa-plus"></i>
+                      </button>
+                    </span>
+                  </div>
+
+                {!! Form::close() !!}
+              </td>
+          </tr>
+          @endforeach
+      @endif
     </template>
 </data-table>
