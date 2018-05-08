@@ -31,7 +31,7 @@ class QuotationsModuleTest extends TestCase
             ->get(route('runa.cashier.finished'))
             ->assertViewIs('runa.cashier.finished')
             ->assertStatus(200)
-            ->assertSee('Producción por pagar');
+            ->assertSee('Cotizaciones por pagar');
     }
 
     /** @test */
