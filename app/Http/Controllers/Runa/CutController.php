@@ -51,15 +51,9 @@ class CutController extends Controller
         $rcut = RCut::find($request->id);
 
         $rcut->update([
-            'amount' => $request->amount,
-            'status' => 'entregado',
+            'amount' => $request->amount
         ]);
 
-        return view('runa.orders.ticket', compact('rcut'));
-    }
-
-    public function destroy($id)
-    {
-        //
+        return redirect(route('runa.cashier.finished'));
     }
 }
