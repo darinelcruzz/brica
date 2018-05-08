@@ -37,6 +37,10 @@ return [
                 'title' => 'Productividad',
                 'route' => 'runa.manager.productivity'
             ],
+            'cuts' => [
+                'title' => 'Cortes',
+                'route' => 'runa.cut.index'
+            ],
             'results' => [
                 'title' => 'Resultados',
                 'route' => 'runa.manager.results'

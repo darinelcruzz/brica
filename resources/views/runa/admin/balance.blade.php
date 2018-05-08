@@ -42,6 +42,18 @@
 		              @endif
 		            @endforeach
 
+		            @foreach($cuts as $cut)
+					  <tr>
+		                  <td>{{ $cut->id }}</td>
+		                  <td>N/A</td>
+		                  <td>CORTE SIMPLE</td>
+						  <td>$ {{ $cut->amount }}</td>
+		              </tr>
+		              	@php
+							$totals['totalQ'] += $cut->amount;
+						@endphp
+		            @endforeach
+
 					@foreach ($sales as $sale)
 						@if (date_format($sale->created_at, 'Y-m-d') === $date
 								&& $sale->quotationr->type != 'terminado'

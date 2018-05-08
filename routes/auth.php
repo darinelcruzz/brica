@@ -119,11 +119,17 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     Route::group(['prefix' => 'corte', 'as' => 'cut.'], function ()  {
         $ctrl = 'Runa\CutController';
 
-        Route::get('crear', usesas($ctrl, 'create'));
+        Route::get('/', usesas($ctrl, 'index'));
+        
+        Route::post('simple', usesas($ctrl, 'create'));
 
         Route::post('crear', usesas($ctrl, 'store'));
 
         Route::get('editar/{rcut}/{status}', usesas($ctrl, 'edit'));
+        
+        Route::get('calcular/{rcut}', usesas($ctrl, 'calculate'));
+
+        Route::post('calcular', usesas($ctrl, 'update'));
 
         Route::get('{order}', usesas($ctrl, 'show'));
 

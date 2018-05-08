@@ -41,6 +41,10 @@ return [
                 'title' => 'Gerente',
                 'route' => 'runa.manager'
             ],
+            'cuts' => [
+                'title' => 'Cortes',
+                'route' => 'runa.cut.index'
+            ],
             'productivity' => [
                 'title' => 'Productividad',
                 'route' => 'runa.manager.productivity'

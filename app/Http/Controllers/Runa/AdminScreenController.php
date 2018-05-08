@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Date\Date;
 use App\{Sale, Quotation, Expense};
+use App\Models\Runa\RCut;
 
 class AdminScreenController extends Controller
 {
     function balance(Request $request)
     {
-        $date = $request->date == 0 ? Date::now()->format('Y-m-d') : $request->date;
+        $date = $request->date ? $request->date: Date::now()->format('Y-m-d');
         $quotations = Quotation::inBalance($date);
         $expenses = Expense::where('date', $date)->get();
+        $cuts = RCut::where('amount', '>', 0)->where('updated_at', '>', $date)->get();
         $totals = $this->getTotals($quotations, $expenses);
         $sales = Sale::all();
 
         return view('runa.admin.balance', compact('quotations', 'expenses',
-                        'date', 'totals', 'sales'));
+                        'date', 'totals', 'sales', 'cuts'));
     }
 
     function monthly(Request $request)
@@ -26,11 +28,12 @@ class AdminScreenController extends Controller
         $date = $request->input('date', Date::now()->format('Y-m'));
         $quotations = Quotation::monthBalance($date);
         $expenses = Expense::monthBalance($date);
+        $cuts = RCut::monthBalance($date);
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('runa.admin.monthly', compact('quotations', 'expenses', 'totalI', 'totalE', 'date'));
+        return view('runa.admin.monthly', compact('quotations', 'expenses', 'totalI', 'totalE', 'date', 'cuts'));
     }
 
     function manage()
@@ -80,11 +83,4 @@ class AdminScreenController extends Controller
 		$date = Date::now()->format('Y-m-d');
 		return view('runa.admin.expenses', compact('date', 'expenses'));
 	}
-
-    // function steal()
-    // {
-    //     $sales = Sale::all();
-
-    //     return view('runa.admin.steal', compact('sales'));
-    // }
 }

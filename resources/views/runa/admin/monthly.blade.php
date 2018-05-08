@@ -40,6 +40,18 @@
     						@endphp
                         @endif
 					@endforeach
+
+					@foreach($cuts as $cut)
+                        <tr>
+							<td>{{ $cut->id }}</td>
+							<td>N/A</td>
+							<td>CORTE SIMPLE</td>
+							<td>$ {{ number_format($cut->amount, 2) }}</td>
+						</tr>
+						@php
+							$totalI += $cut->amount;
+						@endphp                        
+					@endforeach
 				</template>
 
 				<template slot="footer">
