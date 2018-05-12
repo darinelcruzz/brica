@@ -22,7 +22,7 @@
 
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-                      {{ $hreceipt->printer or 'RUNA' }} recibió de:
+                      {{ $hreceipt->printer or 'Hércules' }} recibió de:
                       <address>
                         <strong>{{ $hreceipt->name }}</strong><br>
                         {{ $hreceipt->clientr->address }}<br>
