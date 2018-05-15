@@ -52,6 +52,12 @@ return [
         ]
     ],
 
+    'inventory' => [
+        'title' => 'Inventario',
+        'icon' => 'fa fa-archive',
+        'route' => 'runa.item.index'
+    ],
+
     'logout' => [
         'title' => 'Cerrar Sesión',
         'icon' => 'fa fa-sign-out',
