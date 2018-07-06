@@ -54,17 +54,19 @@
 						$totalI += $receipt->retainer;
 					@endphp
 				@endforeach
-				{{-- @foreach($paid as $receipt)
-					<tr>
-						<td>{{ $receipt->id }}</td>
-						<td>{{ $receipt->name }}</td>
-						<td>Producción</td>
-						<td>{{ '$ ' . number_format($receipt->amount - $receipt->retainer, 2) }}</td>
-					</tr>
-					@php
-						$totalI += $receipt->amount - $receipt->retainer;
-					@endphp
-				@endforeach --}}
+				@foreach($paid as $receipt)
+					@if($receipt->deposit != 0)
+						<tr>
+							<td>{{ $receipt->id }}</td>
+							<td>{{ $receipt->name }}</td>
+							<td>Producción</td>
+							<td>{{ '$ ' . number_format($receipt->amount - $receipt->retainer, 2) }}</td>
+						</tr>
+						@php
+							$totalI += $receipt->amount - $receipt->retainer;
+						@endphp
+					@endif
+				@endforeach
 				@foreach($deposits as $deposit)
 					{{-- @if($deposit->receiptr->order->status != 'pagado') --}}
 						<tr>
