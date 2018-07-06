@@ -59,7 +59,7 @@
 						<td>{{ $receipt->id }}</td>
 						<td>{{ $receipt->name }}</td>
 						<td>Producción</td>
-						<td>{{ '$ ' . number_format($receipt->amount - $receipt->retainer, 2) }}</td>
+						<td>{{ '$ ' . number_format($receipt->rest, 2) }}</td>
 					</tr>
 					@php
 						$totalI += $receipt->amount - $receipt->retainer;
