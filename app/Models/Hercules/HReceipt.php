@@ -99,7 +99,6 @@ class HReceipt extends Model
         return $query->join('h_orders', 'h_receipts.id', '=', 'h_orders.receipt')
             ->whereBetween('h_orders.updated_at', [$date . ' 00:00:00', $date . ' 23:59:59' ])
             ->where('h_orders.status', 'pagado')
-            ->selectRaw("h_receipts.id, client, type, retainer, amount")
             ->get();
     }
 

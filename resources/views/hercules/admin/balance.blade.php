@@ -55,7 +55,7 @@
 					@endphp
 				@endforeach
 				@foreach($paid as $receipt)
-					@if($receipt->deposit === 0)
+					@if(!$receipt->deposit)
 						<tr>
 							<td>{{ $receipt->id }}</td>
 							<td>{{ $receipt->name }}</td>
