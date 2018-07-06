@@ -81,10 +81,10 @@
 							<td>{{ $deposit->receiptr->id }}</td>
 							<td>{{ $deposit->client }}</td>
 							<td>Abono</td>
-							<td>{{ '$ ' . number_format($deposit->receiptr->deposit - $deposit->receipt->retainer, 2) }}</td>
+							<td>{{ '$ ' . number_format($deposit->receiptr->deposit - $deposit->receiptr->retainer, 2) }}</td>
 						</tr>
 						@php
-							$totalI += $deposit->receiptr->deposit - $deposit->receipt->retainer;
+							$totalI += $deposit->receiptr->deposit - $deposit->receiptr->retainer;
 						@endphp
 					@endif
 				@endforeach
