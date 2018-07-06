@@ -66,7 +66,7 @@
 					@endphp
 				@endforeach --}}
 				@foreach($deposits as $deposit)
-					@if($deposit->receiptr->order->status != 'pagado')
+					{{-- @if($deposit->receiptr->order->status != 'pagado') --}}
 						<tr>
 							<td>{{ $deposit->id }}</td>
 							<td>{{ $deposit->client }}</td>
@@ -76,17 +76,7 @@
 						@php
 							$totalI += $deposit->amount;
 						@endphp
-					@else
-						<tr>
-							<td>{{ $deposit->receiptr->id }}</td>
-							<td>{{ $deposit->client }}</td>
-							<td>Abono</td>
-							<td>{{ '$ ' . number_format($deposit->receiptr->deposit - $deposit->receiptr->retainer, 2) }}</td>
-						</tr>
-						@php
-							$totalI += $deposit->receiptr->deposit - $deposit->receiptr->retainer;
-						@endphp
-					@endif
+					{{-- @endif --}}
 				@endforeach
 				@foreach($gdeposits as $gdeposit)
 					@if (true)
