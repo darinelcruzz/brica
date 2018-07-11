@@ -70,7 +70,7 @@
 				@foreach($deposits as $deposit)
 					{{-- @if($deposit->receiptr->order->status != 'pagado') --}}
 						<tr>
-							<td>{{ $deposit->id }}</td>
+							<td>{{ $deposit->receipt }}</td>
 							<td>{{ $deposit->client }}</td>
 							<td>Abono</td>
 							<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
