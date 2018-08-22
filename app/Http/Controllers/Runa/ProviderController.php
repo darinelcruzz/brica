@@ -73,4 +73,10 @@ class ProviderController extends Controller
 
         return redirect(route('runa.provider.deposit', ['rshopping' => $request->shopping]));
     }
+
+    public function deposits()
+    {
+        $rdeposits = RDeposit::all();
+        return view('runa.providers.deposits', compact('rdeposits'));
+    }
 }

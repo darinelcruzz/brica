@@ -156,6 +156,10 @@ return [
                 'title' => 'Lista',
                 'route' => 'runa.provider.index'
             ],
+            'deposits' => [
+                'title' => 'Historial pagos',
+                'route' => 'runa.provider.deposits'
+            ],
         ]
     ],
 

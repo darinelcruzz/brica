@@ -168,13 +168,14 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         Route::get('/', usesas($ctrl, 'index'));
         Route::get('crear', usesas($ctrl, 'create'));
         Route::post('crear', usesas($ctrl, 'store'));
-        Route::get('{rprovider}', usesas($ctrl, 'show'));
         Route::get('pagar/{rshopping}', usesas($ctrl, 'deposit'));
+        Route::get('depositos', usesas($ctrl, 'deposits'));
         Route::post('pagar', usesas($ctrl, 'pay'));
         Route::post('comprar', usesas($ctrl, 'shop'));
         Route::get('editar/{rprovider}', usesas($ctrl, 'edit'));
         Route::post('editar', usesas($ctrl, 'change'));
         Route::get('eliminar/{rprovider}', usesas($ctrl, 'destroy'));
+        Route::get('{rprovider}', usesas($ctrl, 'show'));
     });
 
     // Administración

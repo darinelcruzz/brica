@@ -9,6 +9,11 @@ class RDeposit extends Model
 {
     protected $fillable = ['shopping', 'date', 'bank', 'account', 'amount'];
 
+    function shoppingr()
+    {
+    	return $this->belongsTo(RShopping::class, 'shopping');
+    }
+
     function getDepositDateAttribute()
     {
         $date = new Date(strtotime($this->date));

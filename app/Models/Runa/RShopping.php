@@ -31,4 +31,9 @@ class RShopping extends Model
     {
         return $this->hasMany(RDeposit::class, 'shopping');
     }
+
+    function providerr()
+    {
+        return $this->belongsTo(RProvider::class, 'provider');
+    }
 }
