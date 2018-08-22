@@ -32,7 +32,7 @@
                             <td align="right">{{ number_format($shopping->amount - $shopping->pending, 2) }}</td>
                             <td>
                                 <code style="{{ round($shopping->pending) == 0 ? "color:#04b07b;": ''}}">
-                                    {{ strtoupper($shopping->status) }}
+                                    {{ strtoupper(round($shopping->pending) == 0 ? 'PAGADO': 'PENDIENTE') }}
                                 </code>&nbsp;
                                 <a href="{{ route('runa.provider.deposit', ['rshopping' => $shopping->id ]) }}"
                                     class="btn btn-xs btn-success" title="ABONAR">
