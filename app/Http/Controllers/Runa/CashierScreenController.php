@@ -18,12 +18,16 @@ class CashierScreenController extends Controller
     function finished()
     {
         $cuts = RCut::where('order_id', 0)->where('status', 'terminado')->get();
-        return view('runa.cashier.finished', compact('cuts'));
+        $finished = Quotation::production('finalizado');
+        return view('runa.cashier.finished', compact('cuts', 'finished'));
     }
 
     function paid()
     {
-        return view('runa.cashier.paid');
+        $paid = Quotation::where('status', '!=', 'pendiente')
+            ->where('status', '!=', 'cancelado')
+            ->get();
+        return view('runa.cashier.paid', compact('paid'));
     }
 
     function calculate(Quotation $quotation)

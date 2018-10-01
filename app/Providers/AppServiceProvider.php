@@ -14,22 +14,12 @@ use App\Http\Composers\Hercules\ProductionComposer as HProductionComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         Schema::defaultStringLength(191);
         $this->registerViewComposers();
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
         if ($this->app->environment('local', 'testing')) {
@@ -40,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     protected function registerViewComposers()
    {
        View::composer('runa.quotations.*', QuotationsComposer::class);
-       View::composer('runa.cashier.*', CashierViewComposer::class);
+       View::composer('runa.cashier.index', CashierViewComposer::class);
        View::composer('runa.production.*', ProductionComposer::class);
        View::composer('hercules.bodyworks.*', BodyworkComposer::class);
        View::composer('hercules.production.*', HProductionComposer::class);
