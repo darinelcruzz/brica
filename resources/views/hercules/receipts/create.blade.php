@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('type',
-                            ['redila' => 'Redila', 'remolque' => 'Remolque', 'seca' => 'Cajas secas', 'refresco' => 'Cajas refresqueras', 'plataforma' => 'Plataforma', 'reparacion' => 'Reparación'],
+                            ['redila' => 'Redila', 'remolque' => 'Remolque', 'seca' => 'Cajas secas', 'refresco' => 'Cajas refresqueras', 'plataforma' => 'Plataforma', 'cajas' => 'Cajas', 'gondolas' => 'Góndolas garrafoneras', 'reparacion' => 'Reparación'],
                             null, ['tpl' => 'templates/withicon',
                             'empty' => 'Tipo de trabajo', 'v-model' => 'htype'], ['icon' => 'anchor']) !!}
                     </div>
