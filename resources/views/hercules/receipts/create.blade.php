@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Field::select('type',
-                            ['redila' => 'Redila', 'remolque' => 'Remolque', 'seca' => 'Cajas secas', 'refresco' => 'Cajas refresqueras', 'plataforma' => 'Plataforma', 'cajas' => 'Cajas', 'gondolas' => 'Góndolas garrafoneras', 'reparacion' => 'Reparación'],
+                            ['redila' => 'Redila', 'remolque' => 'Remolque', 'seca' => 'Cajas secas', 'refresco' => 'Cajas refresqueras', 'plataforma' => 'Plataforma', 'caja' => 'Cajas', 'garrafonera' => 'Góndolas garrafoneras', 'reparacion' => 'Reparación'],
                             null, ['tpl' => 'templates/withicon',
                             'empty' => 'Tipo de trabajo', 'v-model' => 'htype'], ['icon' => 'anchor']) !!}
                     </div>
@@ -56,6 +56,14 @@
                     </div>
                     <div v-if="htype == 'plataforma'" class="col-md-6">
                         {!! Field::select('bodywork', $platforms, null, ['tpl' => 'templates/withicon',
+                            'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
+                    </div>
+                    <div v-if="htype == 'caja'" class="col-md-6">
+                        {!! Field::select('bodywork', $boxes, null, ['tpl' => 'templates/withicon',
+                            'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
+                    </div>
+                    <div v-if="htype == 'garrafonera'" class="col-md-6">
+                        {!! Field::select('bodywork', $gondolas, null, ['tpl' => 'templates/withicon',
                             'empty' => 'Seleccione una carrocería'], ['icon' => 'truck']) !!}
                     </div>
                     <div class="col-md-6">

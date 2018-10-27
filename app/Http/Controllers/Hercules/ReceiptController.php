@@ -61,8 +61,10 @@ class ReceiptController extends Controller
         $dry = HBodywork::where('price', 1)->where('type', 'seca')->pluck('description', 'id')->toArray();
         $soda = HBodywork::where('price', 1)->where('type', 'refresco')->pluck('description', 'id')->toArray();
         $platforms = HBodywork::where('price', 1)->where('type', 'plataforma')->pluck('description', 'id')->toArray();
+        $boxes = HBodywork::where('price', 1)->where('type', 'caja')->pluck('description', 'id')->toArray();
+        $gondolas = HBodywork::where('price', 1)->where('type', 'garrafonera')->pluck('description', 'id')->toArray();
         $today = Date::now();
-        return view('hercules.receipts.create', compact('clients', 'trucks', 'trailers', 'dry', 'soda', 'platforms','today'));
+        return view('hercules.receipts.create', compact('clients', 'trucks', 'trailers', 'dry', 'soda', 'platforms', 'boxes', 'gondolas', 'today'));
     }
 
     function store(Request $request)
