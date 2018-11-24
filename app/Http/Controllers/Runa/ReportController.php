@@ -36,7 +36,7 @@ class ReportController extends Controller
         return view('runa.reports.teams', compact('money', 'works', 'dates', 'weights'));
     }
 
-    function sales(Request $request)
+    function salesOld(Request $request)
     {
       $dates = $this->getFormattedDates($request);
       $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
@@ -46,6 +46,17 @@ class ReportController extends Controller
       $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
 
       return view('runa.reports.sales', compact('salesChart', 'dates'));
+    }
+
+    function sales(Request $request)
+    {
+        $dates = $this->getFormattedDates($request);
+
+        $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
+
+        $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
+
+        return view('runa.reports.sales', compact('salesChart', 'dates'));
     }
 
     function clients(Request $request)
@@ -159,7 +170,7 @@ class ReportController extends Controller
         return $sums;
     }
 
-    function getSalesTotals($startDate, $endDate)
+    function getSalesTotalsOld($startDate, $endDate)
     {
         $sums = $labels = [];
 
@@ -180,6 +191,41 @@ class ReportController extends Controller
 
             $sum += $q->sale ? $q->sale->amount: $q->amount;
             $i += 1;
+        }
+
+        return [$sums, $labels];
+    }
+
+    function getSalesTotals($startDate, $endDate)
+    {
+        $sums = $labels = [];
+        $sum = $i = 0;
+
+        $dates = Quotation::inBalanceReport($startDate, $endDate);        
+
+        foreach ($dates as $date => $quotations) {
+            $sum = 0;
+            $dateLabel = date('d-M', strtotime($date));
+            array_push($labels, $dateLabel);
+
+            foreach ($quotations as $quotation) {
+                if ($quotation->amount) {
+                    $sum += $quotation->amount;
+                }
+            }
+
+            $sales = Sale::whereDate('created_at', $date)->get();
+
+            foreach ($sales as $sale) {
+                if ($sale->quotationr->type != 'terminado' && $sale->quotationr->status != 'credito') {
+                    $sum += $sale->amount - $sale->retainer;
+                }
+            }
+
+            $sum += RCut::whereDate('updated_at', $date)->sum('amount');
+            // $sum += Sale::whereDate('created_at', $date)->sum('amount') - Sale::whereDate('created_at', $date)->sum('retainer');
+
+            array_push($sums, $sum);
         }
 
         return [$sums, $labels];

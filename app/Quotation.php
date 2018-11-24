@@ -75,6 +75,18 @@ class Quotation extends Model
 			->get();
     }
 
+    public function scopeInBalanceReport($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('date_payment', [$startDate, $endDate])
+        	->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'credito')
+			->selectRaw('date_payment, amount, id, DATE_FORMAT(date_payment, "%Y-%m-%d") as date')
+			->orderBy('date', 'asc')
+			->get()
+			->groupBy('date');
+    }
+
 	public function scopeReportSales($query, $startDate, $endDate)
     {
         return $query->whereBetween('payment_date', [$startDate, $endDate])
