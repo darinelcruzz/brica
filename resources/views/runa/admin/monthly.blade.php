@@ -18,17 +18,7 @@
 
 				<template slot="body">
 					@foreach($quotations as $quotation)
-                        @if ($quotation->sale)
-                            <tr>
-    							<td>{{ $quotation->folio }}</td>
-    							<td>{{ $quotation->clientr->name }}</td>
-    							<td>{{ $quotation->type }}</td>
-    							<td>$ {{ number_format($quotation->sale->amount, 2) }}</td>
-    						</tr>
-    						@php
-    							$totalI += $quotation->sale->amount;
-    						@endphp
-                        @elseif ($quotation->amount)
+                        @if ($quotation->amount)
                             <tr>
     							<td>{{ $quotation->folio }}</td>
     							<td>{{ $quotation->clientr->name }}</td>
@@ -51,6 +41,22 @@
 						@php
 							$totalI += $cut->amount;
 						@endphp                        
+					@endforeach
+
+					@foreach ($sales as $sale)
+						@if (date_format($sale->created_at, 'Y-m') === $date
+								&& $sale->quotationr->type != 'terminado'
+								&& $sale->quotationr->status != 'credito')
+							<tr>
+								<td>{{ $sale->quotationr->folio }}</td>
+								<td>{{ $sale->quotationr->clientr->name }}</td>
+								<td>{{ $sale->quotationr->type }}</td>
+								<td>$ {{ $sale->amount - $sale->retainer }}</td>
+							</tr>
+							@php
+								$totalI += $sale->amount - $sale->retainer;
+							@endphp
+						@endif
 					@endforeach
 				</template>
 

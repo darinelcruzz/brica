@@ -68,54 +68,20 @@ class Quotation extends Model
 
 	public function scopeMonthBalance($query, $date)
     {
-        return $query->where('status', '!=', 'pendiente')
-			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'credito')
-			->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
-			->get();
-    }
-
-    public function scopeInBalanceReport($query, $startDate, $endDate)
-    {
-        return $query->whereBetween('date_payment', [$startDate, $endDate])
+        return $query->whereYear('date_payment', substr($date, 0, 4))
+        	// ->whereBetween('date_payment', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
+        	->whereMonth('date_payment', substr($date, 5))
         	->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
 			->where('status', '!=', 'credito')
-			->selectRaw('date_payment, amount, id, DATE_FORMAT(date_payment, "%Y-%m-%d") as date')
-			->orderBy('date', 'asc')
-			->get()
-			->groupBy('date');
-    }
-
-	public function scopeReportSales($query, $startDate, $endDate)
-    {
-        return $query->whereBetween('payment_date', [$startDate, $endDate])
-			->where('status', '!=', 'pendiente')
-			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'credito')
-			->orderBy('payment_date')
-			->get(['id', 'amount', 'payment_date']);
-    }
-
-    public function scopeSalesByMonth($query, $startDate, $endDate)
-    {
-        return $query->whereBetween('payment_date', [$startDate, $endDate])
-			->where('status', '!=', 'pendiente')
-			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'credito')
-			->orderBy('payment_date')
-			->get()
-			->groupBy(function($item) {
-    			return Date::parse($item->payment_date)->format('F');
-    		});
+			->get();
     }
 
 	function scopeMadeByTeam($query, $team, $startDate, $endDate)
 	{
 		return $query->whereBetween('created_at', [$startDate, $endDate])
 					->where('team', $team)
-					->where('status', '!=', 'cancelado')
-					->get();
+					->where('status', '!=', 'cancelado');
 	}
 
 	public function storeProducts($request)

@@ -29,11 +29,12 @@ class AdminScreenController extends Controller
         $quotations = Quotation::monthBalance($date);
         $expenses = Expense::monthBalance($date);
         $cuts = RCut::monthBalance($date);
+        $sales = Sale::whereMonth('created_at', substr($date, 5))->get();
 
         $totalI = 0;
         $totalE = 0;
 
-        return view('runa.admin.monthly', compact('quotations', 'expenses', 'totalI', 'totalE', 'date', 'cuts'));
+        return view('runa.admin.monthly', compact('quotations', 'sales', 'expenses', 'totalI', 'totalE', 'date', 'cuts'));
     }
 
     function manage()

@@ -42,6 +42,7 @@ const app = new Vue({
     el: '#app',
     data: {
         entries: 1,
+        report_mode: 'n',
         type: 'produccion',
         products: [],
         product_id: 1,

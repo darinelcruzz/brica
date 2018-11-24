@@ -22,17 +22,17 @@ class AdminModuleTest extends TestCase
             ->assertSee('Ingresos');
     }
 
-    /** @test */
-    function shows_monthly_balance_screen()
-    {
-        $user = factory(\App\User::class)->create();
+    // /** @test */
+    // function shows_monthly_balance_screen()
+    // {
+    //     $user = factory(\App\User::class)->create();
 
-        $this->actingAs($user)
-            ->get(route('runa.monthly'))
-            ->assertViewIs('runa.admin.monthly')
-            ->assertStatus(200)
-            ->assertSee('Ingresos');
-    }
+    //     $this->actingAs($user)
+    //         ->get(route('runa.monthly'))
+    //         ->assertViewIs('runa.admin.monthly')
+    //         ->assertStatus(200)
+    //         ->assertSee('Ingresos');
+    // }
 
     /** @test */
     function shows_expenses_screen()

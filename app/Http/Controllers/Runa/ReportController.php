@@ -15,6 +15,7 @@ class ReportController extends Controller
     function teams(Request $request)
     {
         $dates = $this->getFormattedDates($request);
+        // dd($dates);
         $dataForCharts = $this->dataForTeams($dates['start'], $dates['end']);
         $dataForWeightsChart = $this->weightsByTeams($dates['start'], $dates['end']);
 
@@ -36,23 +37,15 @@ class ReportController extends Controller
         return view('runa.reports.teams', compact('money', 'works', 'dates', 'weights'));
     }
 
-    function salesOld(Request $request)
-    {
-      $dates = $this->getFormattedDates($request);
-      $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
-      if ($request->mode == 'm') {
-          $dataForCharts = $this->getMonthlySales($dates['start'], $dates['end']);
-      }
-      $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
-
-      return view('runa.reports.sales', compact('salesChart', 'dates'));
-    }
-
     function sales(Request $request)
     {
         $dates = $this->getFormattedDates($request);
 
-        $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
+        if ($request->mode == 'm') {
+            $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end'], 'M-Y');
+        } else {
+            $dataForCharts = $this->getSalesTotals($dates['start'], $dates['end']);
+        }
 
         $salesChart = $this->createChart('Ventas', $dataForCharts[1], $dataForCharts[0]);
 
@@ -133,7 +126,9 @@ class ReportController extends Controller
         for ($i=1; $i < 5; $i++) {
             $r = 0;
 
-            $quotations = Quotation::madeByTeam("R$i", $startDate, $endDate);
+            $quotations = Quotation::madeByTeam("R$i", $startDate, $endDate)->get();
+
+            // dd($quotations);
 
             foreach ($quotations as $quotation) {
                 $r += $quotation->balance;
@@ -170,51 +165,15 @@ class ReportController extends Controller
         return $sums;
     }
 
-    function getSalesTotalsOld($startDate, $endDate)
+    function getSalesTotals($from, $to, $format = 'd-M')
     {
         $sums = $labels = [];
 
-        $quotations = Quotation::reportSales($startDate, $endDate);
-        $startDay = substr($startDate, 0, 10);
-        $sum = $i = 0;
+        $dates = $format == 'd-M' ? Sale::fromDateToDate($from, $to): Sale::fromMonthToMonth($from, $to);
 
-        foreach ($quotations as $q) {
-
-            if ($i > 0 && substr($q->payment_date, 0, 10) != $startDay)
-            {
-                array_push($sums, $sum);
-                $sum = 0;
-                $dateLabel = Date::createFromFormat('Y-m-d', $startDay);
-                array_push($labels, $dateLabel->format('d-M'));
-                $startDay = substr($q->payment_date, 0, 10);
-            }
-
-            $sum += $q->sale ? $q->sale->amount: $q->amount;
-            $i += 1;
-        }
-
-        return [$sums, $labels];
-    }
-
-    function getSalesTotals($startDate, $endDate)
-    {
-        $sums = $labels = [];
-        $sum = $i = 0;
-
-        $dates = Quotation::inBalanceReport($startDate, $endDate);        
-
-        foreach ($dates as $date => $quotations) {
+        foreach ($dates as $date => $sales) {
             $sum = 0;
-            $dateLabel = date('d-M', strtotime($date));
-            array_push($labels, $dateLabel);
-
-            foreach ($quotations as $quotation) {
-                if ($quotation->amount) {
-                    $sum += $quotation->amount;
-                }
-            }
-
-            $sales = Sale::whereDate('created_at', $date)->get();
+            array_push($labels, date($format, strtotime($date)));
 
             foreach ($sales as $sale) {
                 if ($sale->quotationr->type != 'terminado' && $sale->quotationr->status != 'credito') {
@@ -222,8 +181,13 @@ class ReportController extends Controller
                 }
             }
 
-            $sum += RCut::whereDate('updated_at', $date)->sum('amount');
-            // $sum += Sale::whereDate('created_at', $date)->sum('amount') - Sale::whereDate('created_at', $date)->sum('retainer');
+            $quotations = $format == 'd-M' ? Quotation::inBalance($date): Quotation::monthBalance($date);
+
+            foreach ($quotations as $quotation) {
+                if ($quotation->amount) {
+                    $sum += $quotation->amount;
+                }
+            }
 
             array_push($sums, $sum);
         }
@@ -231,21 +195,15 @@ class ReportController extends Controller
         return [$sums, $labels];
     }
 
-    function getMonthlySales($start, $end)
-    {
-        $sales = Quotation::salesByMonth($start, $end);
-        $sums = [];
-
-        foreach ($sales as $month) {
-            array_push($sums, $month->sum('amount'));
-        }
-
-        return [$sums, $sales->keys()];
-    }
-
     function getFormattedDates(Request $request)
     {
         if ($request->startDate) {
+            if ($request->mode && $request->mode != 'n') {
+                return [
+                    'start' => $request->startDate . "-01 00:00:00", 
+                    'end' => $request->endDate . "-31 23:59:59"
+                ];
+            }
             return [
                 'start' => $request->startDate . " 00:00:00", 
                 'end' => $request->endDate . " 23:59:59"

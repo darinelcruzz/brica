@@ -34,4 +34,24 @@ class Sale extends Model
             return '$ ' . number_format($this->amount - $this->retainer, 2, '.', ',');
         return '$ ' . number_format($this->amount, 2, '.', ',');
     }
+
+    function scopeFromDateToDate($query, $from, $to)
+    {
+        return $query->whereBetween('created_at', [$from, $to])
+            ->selectRaw('created_at, amount, id, retainer, quotation, DATE_FORMAT(created_at, "%Y-%m-%d") as date')
+            ->with('quotationr')
+            ->orderBy('date', 'asc')
+            ->get()
+            ->groupBy('date');
+    }
+
+    function scopeFromMonthToMonth($query, $from, $to)
+    {
+        return $query->whereBetween('created_at', [$from, $to])
+            ->selectRaw('created_at, amount, id, retainer, quotation, DATE_FORMAT(created_at, "%Y-%m") as date')
+            ->with('quotationr')
+            ->orderBy('date', 'asc')
+            ->get()
+            ->groupBy('date');
+    }
 }
