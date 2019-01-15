@@ -76,7 +76,8 @@ class ProviderController extends Controller
 
     public function deposits()
     {
-        $rdeposits = RDeposit::all();
+        $rdeposits = RDeposit::whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))->get();
+        
         return view('runa.providers.deposits', compact('rdeposits'));
     }
 }
