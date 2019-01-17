@@ -22,7 +22,7 @@
                 @endphp
 
                 <template slot="body">
-                    @foreach ($rprovider->shoppings as $shopping)
+                    @foreach ($shoppings as $shopping)
                         <tr>
                             <td>{{ $shopping->shop_date }}</td>
                             <td>{{ $shopping->product }}</td>

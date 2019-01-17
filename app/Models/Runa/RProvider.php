@@ -18,8 +18,12 @@ class RProvider extends Model
     function getTotalDebtAttribute()
     {
     	$total = 0;
-    	foreach ($this->shoppings as $shopping) {
-    		$total += $shopping->pending;
+        $shoppings = RShopping::where('provider', $this->id)
+            ->whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))
+            ->get();
+
+        foreach ($shoppings as $shopping) {
+            $total += $shopping->pending;
     	}
 
     	return $total;
@@ -28,8 +32,12 @@ class RProvider extends Model
     function getTotalAmountAttribute()
     {
     	$total = 0;
-    	foreach ($this->shoppings as $shopping) {
-    		$total += $shopping->amount;
+        $shoppings = RShopping::where('provider', $this->id)
+            ->whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))
+            ->get();
+
+    	foreach ($shoppings as $shopping) {
+            $total += $shopping->amount;
     	}
 
     	return $total;
@@ -38,8 +46,12 @@ class RProvider extends Model
     function getTotalPaidAttribute()
     {
     	$total = 0;
-    	foreach ($this->shoppings as $shopping) {
-    		$total += $shopping->amount - $shopping->pending;
+        $shoppings = RShopping::where('provider', $this->id)
+            ->whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))
+            ->get();
+
+    	foreach ($shoppings as $shopping) {
+            $total += $shopping->amount - $shopping->pending;
     	}
 
     	return $total;

@@ -33,7 +33,10 @@ class ProviderController extends Controller
 
     public function show(RProvider $rprovider)
     {
-        return view('runa.providers.show', compact('rprovider'));
+        $shoppings = RShopping::where('provider', $rprovider->id)
+            ->whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))
+            ->get();
+        return view('runa.providers.show', compact('rprovider', 'shoppings'));
     }
 
     public function shop(Request $request)
@@ -76,7 +79,8 @@ class ProviderController extends Controller
 
     public function deposits()
     {
-        $rdeposits = RDeposit::whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))->get();
+        // $rdeposits = RDeposit::whereRaw('DATE_FORMAT(date, "%Y") =' . date('Y'))->get();
+        $rdeposits = RDeposit::all();
         
         return view('runa.providers.deposits', compact('rdeposits'));
     }
