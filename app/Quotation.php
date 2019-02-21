@@ -50,7 +50,6 @@ class Quotation extends Model
 	public function scopeProduction($query, $status)
     {
         return $query->where('type', 'produccion')
-        	->whereYear('date_payment', date('Y'))
         	->where('status', $status)
         	->get();
     }

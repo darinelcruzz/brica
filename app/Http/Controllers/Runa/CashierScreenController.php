@@ -17,16 +17,17 @@ class CashierScreenController extends Controller
 
     function finished()
     {
-        $finished = Quotation::production('finalizado');
+        $finished = Quotation::where('type', 'produccion')
+            ->whereYear('date_payment', date('Y'))
+            ->where('status', 'finalizado')
+            ->get();
         return view('runa.cashier.finished', compact('finished'));
     }
 
     function paid()
     {
-        dd('Hola');
         $paid = Quotation::where('status', '!=', 'pendiente')
             ->where('status', '!=', 'cancelado')
-            // ->whereYear('date_payment', date('Y'))
             ->get();
         return view('runa.cashier.paid', compact('paid'));
     }
