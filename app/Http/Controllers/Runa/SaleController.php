@@ -10,7 +10,12 @@ class SaleController extends Controller
 {
     function index()
     {
-        $sales = Sale::all();
+        // dd('Hola');
+        $sales = Sale::whereYear('created_at', date('Y'))
+            ->orderByDesc('id')
+            ->take(50)
+            ->get();
+        // dd($sales);
         return view('runa.sales.index', compact('sales'));
     }
 
@@ -34,9 +39,8 @@ class SaleController extends Controller
         return redirect(route('runa.sale.index'));
     }
 
-    function ticket($id)
+    function ticket(Sale $sale)
     {
-        $sale = Sale::find($id);
         return view('runa.sales.ticket', compact('sale'));
     }
 }

@@ -23,8 +23,10 @@ class CashierScreenController extends Controller
 
     function paid()
     {
+        dd('Hola');
         $paid = Quotation::where('status', '!=', 'pendiente')
             ->where('status', '!=', 'cancelado')
+            // ->whereYear('date_payment', date('Y'))
             ->get();
         return view('runa.cashier.paid', compact('paid'));
     }
