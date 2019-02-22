@@ -6,7 +6,7 @@
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
-                <th>#</th>
+                <th>Folio</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
                 <th>Importe</th>
@@ -17,7 +17,7 @@
         <template slot="body">
             @foreach($sales as $sale)
             <tr>
-                <td>{{ $sale->id }}</td>
+                <td>{{ $sale->quotationr->folio or '' }}</td>
                 <td>{{ $sale->quotationr->clientr->name }}</td>
                 <td>{{ $sale->quotationr->description }}</td>
                 @if ($sale->quotationr->type == 'terminado')

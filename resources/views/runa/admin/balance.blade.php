@@ -36,7 +36,7 @@
 						  <tr>
     		                  <td>{{ $quotation->folio }}</td>
     		                  <td>{{ $quotation->clientr->name }}</td>
-    		                  <td>{{ $quotation->type }}</td>
+    		                  <td>{{ $quotation->type }} </td>
     						  <td>$ {{ $quotation->amount }}</td>
     		              </tr>
 		              @endif

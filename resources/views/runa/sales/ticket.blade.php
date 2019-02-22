@@ -15,7 +15,7 @@
 
         <div class="row">
             <h5><b>Cliente:</b> {{ $sale->quotationr->clientr->uppercase_name }}</h5>
-            <h5><b>Folio:</b> {{ $sale->id }} </h5>
+            <h5><b>Folio:</b> {{ $sale->quotationr->folio or '' }} </h5>
             <h5><b>Fecha:</b> {{ $sale->sale_date }} </h5>
         </div>
 
