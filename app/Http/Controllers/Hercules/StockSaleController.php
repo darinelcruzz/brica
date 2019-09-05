@@ -24,7 +24,7 @@ class StockSaleController extends Controller
     {
         $this->validate($request, ['client' => 'required','other' => 'sometimes|required']);
 
-        $sale = HStockSale::create($request->except(['quantity', 'item', 'subtotal']));
+        $sale = HStockSale::create($request->except(['quantity', 'item', 'subtotal', 'products']));
 
         $sale->storeProducts($request);
 

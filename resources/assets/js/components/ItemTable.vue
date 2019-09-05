@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -43,7 +43,7 @@
                     <td colspan="4"></td>
                     <td><b>Total:</b></td>
                     <td>
-                        $ {{ total - retainer - discount*total }}
+                        {{ (total - retainer - discount * total) | currency }}
                         <input type="hidden" name="total" :value="total - retainer - discount*total">
                     </td>
                 </tr>
@@ -59,14 +59,11 @@ export default {
         return {
             header: [
                 { name:'#', width: 'width: 5%' },
-                { name:'Cantidad', width: 'width: 15%' },
+                { name:'Cantidad', width: 'width: 10%' },
                 { name:'Unidad', width: 'width: 10%' },
-                { name:'Material', width: 'width: 30%' },
-                { name:'Precio unitario', width: 'width: 15%' },
-                { name:'Importe', width: 'width: 20%' },
-            ],
-            articles: [
-                1, 0, 0, 0, 0
+                { name:'Material', width: 'width: 55%' },
+                { name:'Precio', width: 'width: 10%' },
+                { name:'Importe', width: 'width: 10%' },
             ],
             subtotals: [0, 0, 0, 0, 0],
             total: 0,
@@ -74,7 +71,6 @@ export default {
         };
     },
     props: ['retainer', 'discount'],
-
     methods: {
         addToTotal(total, num) {
             this.subtotals[num - 1] = total;
@@ -85,7 +81,7 @@ export default {
         }
     },
     created() {
-        axios.get('/hercules/articulos').then(response => {
+        axios.get('/api/items').then(response => {
             this.products = response.data;
         });
     }

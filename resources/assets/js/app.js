@@ -13,6 +13,18 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import VueCurrencyFilter from 'vue-currency-filter';
+
+Vue.use(VueCurrencyFilter,
+{
+  symbol : '$',
+  thousandsSeparator: ',',
+  fractionCount: 2,
+  fractionSeparator: '.',
+  symbolPosition: 'front',
+  symbolSpacing: true
+})
+
 Vue.component('product-table', require('./components/ProductTable.vue'));
 Vue.component('product-row', require('./components/ProductRow.vue'));
 

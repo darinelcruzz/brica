@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 125);
+/******/ 	return __webpack_require__(__webpack_require__.s = 126);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -532,7 +532,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(121)
+var listToStyles = __webpack_require__(122)
 
 /*
 type StyleObject = {
@@ -25573,8 +25573,12 @@ module.exports = function bind(fn, thisArg) {
 /***/ }),
 /* 21 */,
 /* 22 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_currency_filter__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_currency_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_currency_filter__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -25590,29 +25594,40 @@ __webpack_require__(66);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('product-table', __webpack_require__(79));
-Vue.component('product-row', __webpack_require__(78));
 
-Vue.component('item-table', __webpack_require__(77));
-Vue.component('item-row', __webpack_require__(76));
 
-Vue.component('row-woc', __webpack_require__(93));
-Vue.component('solid-box', __webpack_require__(95));
-Vue.component('color-box', __webpack_require__(91));
-Vue.component('simple-box', __webpack_require__(92));
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_currency_filter___default.a, {
+    symbol: '$',
+    thousandsSeparator: ',',
+    fractionCount: 2,
+    fractionSeparator: '.',
+    symbolPosition: 'front',
+    symbolSpacing: true
+});
 
-Vue.component('data-table', __webpack_require__(85));
-Vue.component('dtable', __webpack_require__(90));
-Vue.component('data-table-com', __webpack_require__(94));
+Vue.component('product-table', __webpack_require__(80));
+Vue.component('product-row', __webpack_require__(79));
 
-Vue.component('little-box', __webpack_require__(88));
+Vue.component('item-table', __webpack_require__(78));
+Vue.component('item-row', __webpack_require__(77));
 
-Vue.component('accordion-item', __webpack_require__(84));
+Vue.component('row-woc', __webpack_require__(94));
+Vue.component('solid-box', __webpack_require__(96));
+Vue.component('color-box', __webpack_require__(92));
+Vue.component('simple-box', __webpack_require__(93));
 
-Vue.component('dropdown', __webpack_require__(86));
-Vue.component('ddi', __webpack_require__(87));
+Vue.component('data-table', __webpack_require__(86));
+Vue.component('dtable', __webpack_require__(91));
+Vue.component('data-table-com', __webpack_require__(95));
 
-Vue.component('modal', __webpack_require__(89));
+Vue.component('little-box', __webpack_require__(89));
+
+Vue.component('accordion-item', __webpack_require__(85));
+
+Vue.component('dropdown', __webpack_require__(87));
+Vue.component('ddi', __webpack_require__(88));
+
+Vue.component('modal', __webpack_require__(90));
 
 var app = new Vue({
     el: '#app',
@@ -26705,11 +26720,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            product_id: 679,
+            item: {
+                id: 0,
+                description: '',
+                unity: '',
+                price: 0
+            },
             quantity: 0
         };
     },
@@ -26722,12 +26745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         total: function total() {
-            return this.products[this.product_id].price * this.quantity;
-        }
-    },
-    filters: {
-        currency: function currency(value) {
-            return '$ ' + value;
+            return this.item.price * this.quantity;
         }
     }
 });
@@ -26797,8 +26815,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            header: [{ name: '#', width: 'width: 5%' }, { name: 'Cantidad', width: 'width: 15%' }, { name: 'Unidad', width: 'width: 10%' }, { name: 'Material', width: 'width: 30%' }, { name: 'Precio unitario', width: 'width: 15%' }, { name: 'Importe', width: 'width: 20%' }],
-            articles: [1, 0, 0, 0, 0],
+            header: [{ name: '#', width: 'width: 5%' }, { name: 'Cantidad', width: 'width: 10%' }, { name: 'Unidad', width: 'width: 10%' }, { name: 'Material', width: 'width: 55%' }, { name: 'Precio', width: 'width: 10%' }, { name: 'Importe', width: 'width: 10%' }],
             subtotals: [0, 0, 0, 0, 0],
             total: 0,
             products: {}
@@ -26806,7 +26823,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     props: ['retainer', 'discount'],
-
     methods: {
         addToTotal: function addToTotal(total, num) {
             this.subtotals[num - 1] = total;
@@ -26819,7 +26835,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/hercules/articulos').then(function (response) {
+        axios.get('/api/items').then(function (response) {
             _this.products = response.data;
         });
     }
@@ -27822,10 +27838,10 @@ window.axios.defaults.headers.common = {
 };
 
 // Laravel AdminLTE vue components
-Vue.component('register-form', __webpack_require__(82));
-Vue.component('login-form', __webpack_require__(81));
-Vue.component('email-reset-password-form', __webpack_require__(80));
-Vue.component('reset-password-form', __webpack_require__(83));
+Vue.component('register-form', __webpack_require__(83));
+Vue.component('login-form', __webpack_require__(82));
+Vue.component('email-reset-password-form', __webpack_require__(81));
+Vue.component('reset-password-form', __webpack_require__(84));
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -45504,7 +45520,7 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n    trans
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(123)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(124)(module)))
 
 /***/ }),
 /* 75 */
@@ -45980,18 +45996,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
         })();
     }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-}(__webpack_require__(122)));
+}(__webpack_require__(123)));
 
 
 /***/ }),
 /* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(global) {/*! VueCurrencyFilter v3.4.3 by Irfan Maulana <github.com/mazipan> */
+!function(r,t){ true?module.exports=t():"function"==typeof define&&define.amd?define("VueCurrencyFilter",[],t):"object"==typeof exports?exports.VueCurrencyFilter=t():r.VueCurrencyFilter=t()}(global,function(){return function(r){var t={};function e(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return r[n].call(o.exports,o,o.exports,e),o.l=!0,o.exports}return e.m=r,e.c=t,e.d=function(r,t,n){e.o(r,t)||Object.defineProperty(r,t,{enumerable:!0,get:n})},e.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},e.t=function(r,t){if(1&t&&(r=e(r)),8&t)return r;if(4&t&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(e.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&t&&"string"!=typeof r)for(var o in r)e.d(n,o,function(t){return r[t]}.bind(null,o));return n},e.n=function(r){var t=r&&r.__esModule?function(){return r.default}:function(){return r};return e.d(t,"a",t),t},e.o=function(r,t){return Object.prototype.hasOwnProperty.call(r,t)},e.p="/dist",e(e.s=0)}([function(r,t,e){"use strict";e.r(t);var n=Array.prototype.map,o=Array.isArray,a=Object.prototype.toString,u={__isNull:function(r){return null==r},__isString:function(r){return!!(""===r||r&&r.charCodeAt&&r.substr)},__isArray:function(r){return o?o(r):"[object Array]"===a.call(r)},__isObject:function(r){return r&&"[object Object]"===a.call(r)},__defaults:function(r,t){var e;for(e in r=r||{},t=t||{})t.hasOwnProperty(e)&&null==r[e]&&(r[e]=t[e]);return r},__map:function(r,t,e){var o,a,u=[];if(!r)return u;if(n&&r.map===n)return r.map(t,e);for(o=0,a=r.length;o<a;o++)u[o]=t.call(e,r[o],o,r);return u}},i={};function s(r,t){return r=Math.round(Math.abs(r)),isNaN(r)?t:r}i.settings={currency:{symbol:"$",format:"%s%v",decimal:".",thousand:",",precision:2,grouping:3},number:{precision:0,grouping:3,thousand:",",decimal:"."}};var c=i.unformat=i.parse=function(r,t){if(u.__isArray(r))return u.__map(r,function(r){return c(r,t)});if("number"==typeof(r=r||0))return r;t=t||i.settings.number.decimal;var e=new RegExp("[^0-9-"+t+"]",["g"]),n=parseFloat((""+r).replace(/\((?=\d+)(.*)\)/,"-$1").replace(e,"").replace(t,"."));return isNaN(n)?0:n},f=i.toFixed=function(r,t){t=s(t,i.settings.number.precision);var e=Number(i.unformat(r)+"e"+t),n=Math.round(e);return Number(n+"e-"+t).toFixed(t)},l=i.formatNumber=i.format=function(r,t,e,n){if(u.__isArray(r))return u.__map(r,function(r){return l(r,t,e,n)});r=c(r);var o=u.__defaults(u.__isObject(t)?t:{precision:t,thousand:e,decimal:n},i.settings.number),a=s(o.precision),p=r<0?"-":"",y=parseInt(f(Math.abs(r||0),a),10)+"",m=y.length>3?y.length%3:0;return p+(m?y.substr(0,m)+o.thousand:"")+y.substr(m).replace(/(\d{3})(?=\d)/g,"$1"+o.thousand)+(a?o.decimal+f(Math.abs(r),a).split(".")[1]:"")},p=i.formatMoney=function(r,t,e,n,o,a){if(u.__isArray(r))return u.__map(r,function(r){return p(r,t,e,n,o,a)});r=c(r);var f=u.__defaults(u.__isObject(t)?t:{symbol:t,precision:e,thousand:n,decimal:o,format:a},i.settings.currency),y=function(r){var t=i.settings.currency.format;return"function"==typeof r&&(r=r()),u.__isString(r)&&r.match("%v")?{pos:r,neg:r.replace("-","").replace("%v","-%v"),zero:r}:r&&r.pos&&r.pos.match("%v")?r:u.__isString(t)?i.settings.currency.format={pos:t,neg:t.replace("%v","-%v"),zero:t}:t}(f.format);return(r>0?y.pos:r<0?y.neg:y.zero).replace("%s",f.symbol).replace("%v",l(Math.abs(r),s(f.precision),f.thousand,f.decimal))},y=i;function m(r){return(m="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(r){return typeof r}:function(r){return r&&"function"==typeof Symbol&&r.constructor===Symbol&&r!==Symbol.prototype?"symbol":typeof r})(r)}function b(r,t){if(null==r)return{};var e,n,o=function(r,t){if(null==r)return{};var e,n,o={},a=Object.keys(r);for(n=0;n<a.length;n++)e=a[n],t.indexOf(e)>=0||(o[e]=r[e]);return o}(r,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(r);for(n=0;n<a.length;n++)e=a[n],t.indexOf(e)>=0||Object.prototype.propertyIsEnumerable.call(r,e)&&(o[e]=r[e])}return o}var d={install:function(r,t){var e={name:"currency",symbol:"",thousandsSeparator:".",fractionCount:0,fractionSeparator:",",symbolPosition:"front",symbolSpacing:!0};u.__isNull(t)&&(t={});var n=u.__defaults(t,e),o=n.name,a=b(n,["name"]);r.filter(o,function(r,t,e,n,o,i,s){var c=u.__defaults({symbol:t,thousandsSeparator:e,fractionCount:n,fractionSeparator:o,symbolPosition:i,symbolSpacing:s},a);"object"===m(t)&&(c=u.__defaults(t,a));var f=0,l="-"===String(r).charAt(0);l&&(r=String(r).slice(1));var p=parseFloat(r);isNaN(p)||(f=p);var b="%s%v";return b="front"===c.symbolPosition?c.symbolSpacing?"%s %v":"%s%v":c.symbolSpacing?"%v %s":"%v%s",c.fractionCount>0&&(r=y.toFixed(r,c.fractionCount)),f=y.formatMoney(r,{format:b,symbol:c.symbol,precision:c.fractionCount,thousand:c.thousandsSeparator,decimal:c.fractionSeparator}),l&&(f="-"+f),f}),r.prototype.$CurrencyFilter={setConfig:function(r){a=u.__defaults(r,e)},getConfig:function(){return a}}}};t.default=d}])});
+//# sourceMappingURL=VueCurrencyFilter.min.js.map
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(46),
   /* template */
-  __webpack_require__(99),
+  __webpack_require__(100),
   /* scopeId */
   null,
   /* cssModules */
@@ -46018,14 +46043,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(47),
   /* template */
-  __webpack_require__(98),
+  __webpack_require__(99),
   /* scopeId */
   null,
   /* cssModules */
@@ -46052,14 +46077,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(48),
   /* template */
-  __webpack_require__(110),
+  __webpack_require__(111),
   /* scopeId */
   null,
   /* cssModules */
@@ -46086,14 +46111,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(49),
   /* template */
-  __webpack_require__(115),
+  __webpack_require__(116),
   /* scopeId */
   null,
   /* cssModules */
@@ -46120,18 +46145,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(118)
+__webpack_require__(119)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(50),
   /* template */
-  __webpack_require__(103),
+  __webpack_require__(104),
   /* scopeId */
   null,
   /* cssModules */
@@ -46158,18 +46183,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(120)
+__webpack_require__(121)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(51),
   /* template */
-  __webpack_require__(111),
+  __webpack_require__(112),
   /* scopeId */
   null,
   /* cssModules */
@@ -46196,18 +46221,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(116)
+__webpack_require__(117)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(52),
   /* template */
-  __webpack_require__(97),
+  __webpack_require__(98),
   /* scopeId */
   null,
   /* cssModules */
@@ -46234,18 +46259,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(117)
+__webpack_require__(118)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(53),
   /* template */
-  __webpack_require__(102),
+  __webpack_require__(103),
   /* scopeId */
   null,
   /* cssModules */
@@ -46272,18 +46297,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(119)
+__webpack_require__(120)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(54),
   /* template */
-  __webpack_require__(105),
+  __webpack_require__(106),
   /* scopeId */
   null,
   /* cssModules */
@@ -46310,14 +46335,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(55),
   /* template */
-  __webpack_require__(96),
+  __webpack_require__(97),
   /* scopeId */
   null,
   /* cssModules */
@@ -46344,14 +46369,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(56),
   /* template */
-  __webpack_require__(109),
+  __webpack_require__(110),
   /* scopeId */
   null,
   /* cssModules */
@@ -46378,14 +46403,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(57),
   /* template */
-  __webpack_require__(114),
+  __webpack_require__(115),
   /* scopeId */
   null,
   /* cssModules */
@@ -46412,14 +46437,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(58),
   /* template */
-  __webpack_require__(101),
+  __webpack_require__(102),
   /* scopeId */
   null,
   /* cssModules */
@@ -46446,14 +46471,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(59),
   /* template */
-  __webpack_require__(107),
+  __webpack_require__(108),
   /* scopeId */
   null,
   /* cssModules */
@@ -46480,14 +46505,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(60),
   /* template */
-  __webpack_require__(112),
+  __webpack_require__(113),
   /* scopeId */
   null,
   /* cssModules */
@@ -46514,14 +46539,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(61),
   /* template */
-  __webpack_require__(100),
+  __webpack_require__(101),
   /* scopeId */
   null,
   /* cssModules */
@@ -46548,14 +46573,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(62),
   /* template */
-  __webpack_require__(108),
+  __webpack_require__(109),
   /* scopeId */
   null,
   /* cssModules */
@@ -46582,14 +46607,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(63),
   /* template */
-  __webpack_require__(113),
+  __webpack_require__(114),
   /* scopeId */
   null,
   /* cssModules */
@@ -46616,14 +46641,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(64),
   /* template */
-  __webpack_require__(104),
+  __webpack_require__(105),
   /* scopeId */
   null,
   /* cssModules */
@@ -46650,14 +46675,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(65),
   /* template */
-  __webpack_require__(106),
+  __webpack_require__(107),
   /* scopeId */
   null,
   /* cssModules */
@@ -46684,7 +46709,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -46716,7 +46741,7 @@ if (false) {
 }
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -46975,7 +47000,7 @@ if (false) {
 }
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47043,7 +47068,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "colspan": "4"
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('td', [_vm._v("\n                    $ " + _vm._s(_vm.total - _vm.retainer - _vm.discount * _vm.total) + "\n                    "), _c('input', {
+  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('td', [_vm._v("\n                    " + _vm._s(_vm._f("currency")((_vm.total - _vm.retainer - _vm.discount * _vm.total))) + "\n                    "), _c('input', {
     attrs: {
       "type": "hidden",
       "name": "total"
@@ -47064,17 +47089,23 @@ if (false) {
 }
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(_vm.num))]), _vm._v(" "), _c('td', [_c('input', {
+  return _c('tr', [_c('td', [_vm._v(_vm._s(_vm.num))]), _vm._v(" "), _c('td', [_c('div', {
+    staticClass: "input-group input-group-sm"
+  }, [_c('input', {
     directives: [{
       name: "model",
-      rawName: "v-model",
+      rawName: "v-model.number",
       value: (_vm.quantity),
-      expression: "quantity"
+      expression: "quantity",
+      modifiers: {
+        "number": true
+      }
     }],
+    staticClass: "form-control",
     attrs: {
       "type": "number",
       "name": "quantity[]",
@@ -47088,18 +47119,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "change": _vm.saveTotal,
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.quantity = $event.target.value
+        _vm.quantity = _vm._n($event.target.value)
+      },
+      "blur": function($event) {
+        _vm.$forceUpdate()
       }
     }
-  })]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.products[_vm.product_id].unity))]), _vm._v(" "), _c('td', [_c('select', {
+  })])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.item.unity))]), _vm._v(" "), _c('td', [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.product_id),
-      expression: "product_id"
+      value: (_vm.item),
+      expression: "item"
     }],
+    staticClass: "form-control",
     attrs: {
-      "name": "item[]"
+      "name": "products[]"
     },
     on: {
       "change": [function($event) {
@@ -47109,22 +47144,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           var val = "_value" in o ? o._value : o.value;
           return val
         });
-        _vm.product_id = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+        _vm.item = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }, _vm.saveTotal]
     }
   }, _vm._l((_vm.products), function(product) {
     return _c('option', {
       domProps: {
-        "value": product.id
+        "value": product
       }
     }, [_vm._v("\n                " + _vm._s(product.description) + "\n            ")])
-  }))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm._f("currency")(_vm.products[_vm.product_id].price)))]), _vm._v(" "), _c('td', [_c('input', {
+  }))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm._f("currency")(_vm.item.price)))]), _vm._v(" "), _c('td', [_c('input', {
     attrs: {
       "type": "hidden",
       "name": "subtotal[]"
     },
     domProps: {
       "value": _vm.total
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "item[]"
+    },
+    domProps: {
+      "value": _vm.item.id
     }
   }), _vm._v("\n        " + _vm._s(_vm._f("currency")(_vm.total)) + "\n    ")])])
 },staticRenderFns: []}
@@ -47137,7 +47180,7 @@ if (false) {
 }
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47174,7 +47217,7 @@ if (false) {
 }
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47199,7 +47242,7 @@ if (false) {
 }
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47377,7 +47420,7 @@ if (false) {
 }
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47471,7 +47514,7 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47498,7 +47541,7 @@ if (false) {
 }
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47532,7 +47575,7 @@ if (false) {
 }
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47569,7 +47612,7 @@ if (false) {
 }
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47623,7 +47666,7 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47660,7 +47703,7 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47695,7 +47738,7 @@ if (false) {
 }
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47768,7 +47811,7 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47992,7 +48035,7 @@ if (false) {
 }
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48014,7 +48057,7 @@ if (false) {
 }
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48033,7 +48076,7 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48057,7 +48100,7 @@ if (false) {
 }
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48140,7 +48183,7 @@ if (false) {
 }
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -48166,7 +48209,7 @@ if(false) {
 }
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -48192,7 +48235,7 @@ if(false) {
 }
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -48218,7 +48261,7 @@ if(false) {
 }
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -48244,7 +48287,7 @@ if(false) {
 }
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -48270,7 +48313,7 @@ if(false) {
 }
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports) {
 
 /**
@@ -48303,7 +48346,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -48312,7 +48355,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -48340,8 +48383,8 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 124 */,
-/* 125 */
+/* 125 */,
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(22);

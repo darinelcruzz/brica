@@ -2,19 +2,22 @@
     <tr>
         <td>{{ num }}</td>
         <td>
-            <input type="number" name="quantity[]" min="0" step="0.1" v-model="quantity" @change="saveTotal">
+            <div class="input-group input-group-sm">
+                <input class="form-control" type="number" name="quantity[]" min="0" step="0.1" v-model.number="quantity" @change="saveTotal">
+            </div>
         </td>
-        <td>{{ products[product_id].unity }}</td>
+        <td>{{ item.unity }}</td>
         <td>
-            <select name="item[]" v-model="product_id" @change="saveTotal">
-                <option v-for="product in products" :value="product.id">
+            <select name="products[]" v-model="item" @change="saveTotal" class="form-control">
+                <option v-for="product in products" :value="product">
                     {{ product.description }}
                 </option>
             </select>
         </td>
-        <td>{{ products[product_id].price | currency }}</td>
+        <td>{{ item.price | currency }}</td>
         <td>
             <input type="hidden" name="subtotal[]" :value="total">
+            <input type="hidden" name="item[]" :value="item.id">
             {{ total | currency }}
         </td>
     </tr>
@@ -24,7 +27,12 @@
 export default {
     data() {
         return {
-            product_id: 679,
+            item: {
+                id: 0,
+                description: '',
+                unity: '',
+                price: 0,
+            },
             quantity: 0,
         };
     },
@@ -32,17 +40,12 @@ export default {
     methods: {
         saveTotal() {
             this.$emit('subtotal', this.total, this.num);
-        }
+        },
     },
     computed: {
         total() {
-            return this.products[this.product_id].price * this.quantity;
+            return this.item.price * this.quantity;
         },
-    },
-    filters: {
-        currency: function (value) {
-          return '$ ' + value;
-        }
-    },
+    }
 }
 </script>

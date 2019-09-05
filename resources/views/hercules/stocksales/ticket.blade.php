@@ -30,12 +30,15 @@
 
             <tbody>
                 @foreach (unserialize($hstocksale->products) as $product)
+                    @php
+                        $item = App\Models\Hercules\HItem::find($product['i'])
+                    @endphp
                     <tr>
                         <td>
                             {{ $product['q'] }}
-                            {{ App\Models\Hercules\HItem::find($product['i'])->unity }}
+                            {{ $item->unity . ($item->unity == 'PIEZA' ? 'S': '') }}
                         </td>
-                        <td>{{ App\Models\Hercules\HItem::find($product['i'])->description }}</td>
+                        <td>{{ $item->description }}</td>
                         <td>$ {{ number_format($product['t'], 2) }}</td>
                     </tr>
                 @endforeach

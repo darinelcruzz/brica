@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
     <div :class="[color, {'box box-solid': true, 'collapsed-box': isCollapsed}]">
         <div class="box-header with-border">
             <h3 class="box-title">{{ title }}</h3>
