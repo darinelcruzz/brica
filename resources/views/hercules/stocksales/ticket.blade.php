@@ -36,7 +36,7 @@
                     <tr>
                         <td>
                             {{ $product['q'] }}
-                            {{ $item->unity . ($item->unity == 'PIEZA' ? 'S': '') }}
+                            {{ ($item->unity != '0' ? $item->unity: '') . ($item->unity == 'PIEZA' ? 'S': '') }}
                         </td>
                         <td>{{ $item->description }}</td>
                         <td>$ {{ number_format($product['t'], 2) }}</td>
