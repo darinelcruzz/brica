@@ -40,7 +40,9 @@ class AdminScreenController extends Controller
     function manage()
     {
         $quotations = Quotation::where('status', '!=', 'pagado')
-            ->where('status', '!=', 'cancelado')->get();
+            ->where('status', '!=', 'cancelado')
+            ->where('status', '!=', 'borrado')
+            ->get();
 
         return view('runa.admin.delete', compact('quotations'));
     }

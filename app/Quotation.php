@@ -44,6 +44,7 @@ class Quotation extends Model
 	{
 		return $query->where('date_payment', $date)
 			->where('status', '!=', 'pendiente')
+			->where('status', '!=', 'borrado')
 			->sum('amount');
 	}
 
@@ -63,6 +64,7 @@ class Quotation extends Model
     {
         return $query->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'borrado')
 			->where('status', '!=', 'credito')
 			->where('date_payment', $date)
 			->get();
@@ -75,6 +77,7 @@ class Quotation extends Model
         	->whereMonth('date_payment', substr($date, 5))
         	->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
+			->where('status', '!=', 'borrado')
 			->where('status', '!=', 'credito')
 			->get();
     }
@@ -83,7 +86,8 @@ class Quotation extends Model
 	{
 		return $query->whereBetween('created_at', [$startDate, $endDate])
 					->where('team', $team)
-					->where('status', '!=', 'cancelado');
+					->where('status', '!=', 'cancelado')
+					->where('status', '!=', 'borrado');
 	}
 
 	public function storeProducts($request)
