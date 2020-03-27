@@ -80,11 +80,13 @@ return [
                 'title' => 'Eliminar',
                 'route' => 'runa.manage'
             ],
-            // 'steal' => [
-            //     'title' => 'OMG NOS ROBARON!',
-            //     'route' => 'runa.steal'
-            // ],
         ]
+    ],
+
+    'sales' => [
+        'title' => 'Tickets',
+        'icon' => 'fa fa-print',
+        'route' => 'runa.sale.index'
     ],
 
     'reports' => [

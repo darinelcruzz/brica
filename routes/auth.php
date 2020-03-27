@@ -137,10 +137,10 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     });
 
     // Sales
-    Route::group(['prefix' => 'ventas', 'as' => 'sale.', 'middleware' => 'owners'], function ()  {
+    Route::group(['prefix' => 'ventas', 'as' => 'sale.'], function ()  {
         $ctrl = 'Runa\SaleController';
 
-        Route::get('/', usesas($ctrl, 'index'));
+        Route::get('/', usesas($ctrl, 'index'))->middleware('owners');;
         
         Route::post('guardar', usesas($ctrl, 'save'));
 
