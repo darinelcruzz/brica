@@ -10,12 +10,10 @@ class SaleController extends Controller
 {
     function index()
     {
-        // dd('Hola');
         $sales = Sale::whereYear('created_at', date('Y'))
+            ->with('quotationr.clientr')
             ->orderByDesc('id')
-            ->take(50)
             ->get();
-        // dd($sales);
         return view('runa.sales.index', compact('sales'));
     }
 

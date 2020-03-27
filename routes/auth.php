@@ -137,7 +137,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     });
 
     // Sales
-    Route::group(['prefix' => 'ventas', 'as' => 'sale.'], function ()  {
+    Route::group(['prefix' => 'ventas', 'as' => 'sale.', 'middleware' => 'owners'], function ()  {
         $ctrl = 'Runa\SaleController';
 
         Route::get('/', usesas($ctrl, 'index'));
@@ -146,19 +146,6 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
 
         Route::get('comprobante/{sale}', usesas($ctrl, 'ticket'));
     });
-
-    // Route::get('ventas', [
-    //     'uses' => 'Runa\SaleController@index',
-    //     'as' => 'sale.index'
-    // ]);
-    // Route::post('ventas/guardar', [
-    //     'uses' => 'Runa\SaleController@save',
-    //     'as' => 'sale.save'
-    // ]);
-    // Route::get('ventas/comprobante/{id}', [
-    //     'uses' => 'Runa\SaleController@ticket',
-    //     'as' => 'sale.ticket'
-    // ]);
 
     // Clientes
     Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {
