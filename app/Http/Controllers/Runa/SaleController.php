@@ -19,7 +19,7 @@ class SaleController extends Controller
 
     function save(Request $request)
     {
-        Sale::create([
+        $sale = Sale::create([
             'quotation' => $request->quotation,
             'retainer' => $request->retainer,
             'amount' => $request->amount + $request->retainer
@@ -34,7 +34,7 @@ class SaleController extends Controller
             $quotation->save();
         }
 
-        return redirect(route('runa.sale.index'));
+        return redirect(route('runa.sale.ticket', $sale));
     }
 
     function ticket(Sale $sale)
