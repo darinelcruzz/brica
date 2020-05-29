@@ -28,7 +28,7 @@
                       <a href="{{ route('hercules.client.edit', ['id' => $client->id]) }}">
                           <i class="fa fa-edit"></i>
                       </a>
-                      @if (count($client->quotations) < 1)
+                      @if (auth()->user()->level == 1 && count($client->receipts) < 1)
                           <a href="{{ route('hercules.client.destroy', ['id' => $client->id]) }}">
                               <i class="fa fa-trash"></i>
                           </a>
