@@ -60,25 +60,29 @@ class Quotation extends Model
 		return $query->where('type', 'terminado')->where('status', $status)->get();
 	}
 
-	public function scopeInBalance($query, $date)
+	public function scopeInBalance($query, $date, $deleted = true)
     {
         return $query->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'borrado')
 			->where('status', '!=', 'credito')
 			->where('date_payment', $date)
+			->when($deleted, function ($query) {
+				$query->where('status', '!=', 'borrado');
+			})
 			->get();
     }
 
-	public function scopeMonthBalance($query, $date)
+	public function scopeMonthBalance($query, $date, $deleted = true)
     {
         return $query->whereYear('date_payment', substr($date, 0, 4))
         	// ->whereBetween('date_payment', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
         	->whereMonth('date_payment', substr($date, 5))
         	->where('status', '!=', 'pendiente')
 			->where('status', '!=', 'cancelado')
-			->where('status', '!=', 'borrado')
 			->where('status', '!=', 'credito')
+			->when($deleted, function ($query) {
+				$query->where('status', '!=', 'borrado');
+			})
 			->get();
     }
 

@@ -181,7 +181,7 @@ class ReportController extends Controller
                 }
             }
 
-            $quotations = $format == 'd-M' ? Quotation::inBalance($date): Quotation::monthBalance($date);
+            $quotations = $format == 'd-M' ? Quotation::inBalance($date, false): Quotation::monthBalance($date, false);
 
             foreach ($quotations as $quotation) {
                 if ($quotation->amount) {
