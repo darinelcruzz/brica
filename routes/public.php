@@ -22,7 +22,10 @@ Route::get('/pruebas', function () {
 
 Route::get('/intranet', function () { return view('brica'); });
 
-Route::get('/', function () { return view('comingsoon'); });
+Route::get('/', function () { return view('espejo1'); });
+// Route::get('/{page}/{idseccion}', function () { return view('espejo2'); });
+Route::get('/runaaceros/{idseccion?}', function () { return view('espejoruna'); });
+Route::get('/carroceriahercules/{idseccion?}', function () { return view('espejohercules'); });
 
 #Route::get('excel/exportar', 'ExcelController@export');
 #Route::get('excel/importar', 'ExcelController@import');
