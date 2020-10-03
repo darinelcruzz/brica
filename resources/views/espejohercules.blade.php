@@ -3,10 +3,10 @@ $idseccion = request('idseccion');
 
 
 if ($idseccion!='') {
-	$urlmuestra='http://carroceriashercules.emdew.com/carroceriahercules/' . $idseccion;
+	$urlmuestra='https://carroceriashercules.emdew.com/carroceriahercules/' . $idseccion;
 }
 if ($idseccion=='') {
-	$urlmuestra='http://carroceriashercules.emdew.com/carroceriahercules/';
+	$urlmuestra='https://carroceriashercules.emdew.com/carroceriahercules/';
 }
 function curl($url) {
         $ch = curl_init();

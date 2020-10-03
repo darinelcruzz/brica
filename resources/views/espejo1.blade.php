@@ -30,7 +30,7 @@ function curl($url) {
         return $data;
     }
 
-$scraped_website = curl("http://carroceriashercules.emdew.com/");
+$scraped_website = curl("https://carroceriashercules.emdew.com/");
 
 echo $scraped_website;
 ?>
