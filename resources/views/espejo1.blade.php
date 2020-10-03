@@ -5,7 +5,7 @@
 @show
 
 <body class="hold-transition lockscreen">
-<!-- Automatic element centering -->
+<!- - Automatic element centering - ->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
     Proximamente web Grupo Brica <br>
@@ -19,18 +19,5 @@
 
 </body>
 </html> --}}
-<?
 
-function curl($url) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        return $data;
-    }
-
-$scraped_website = curl("https://carroceriashercules.emdew.com/");
-
-echo $scraped_website;
-?>
+{!! printPublic("https://carroceriashercules.emdew.com/") !!}

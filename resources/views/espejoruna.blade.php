@@ -1,4 +1,5 @@
-<?
+{!! printPublic("https://carroceriashercules.emdew.com/runaaceros/" . request('idseccion')) !!}
+{{-- <?
 $idseccion = request('idseccion');
 
 
@@ -20,4 +21,4 @@ function curl($url) {
 $scraped_website = curl($urlmuestra);
 
 echo $scraped_website;
-?>
+?> --}}
