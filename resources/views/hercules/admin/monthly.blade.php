@@ -64,18 +64,20 @@
 						@endphp
 					@endforeach
 					@foreach($deposits as $deposit)
-						<tr>
-							<td>{{ $deposit->id }}</td>
-							<td>{{ $deposit->client }}</td>
-							<td>
-								Abono <br>
-								{{ fdate($deposit->created_at, 'd, M') }}
-							</td>
-							<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
-						</tr>
-						@php
-							$totalI += $deposit->amount;
-						@endphp
+						@if($deposit->receiptr)
+							<tr>
+								<td>{{ $deposit->id }}</td>
+								<td>{{ $deposit->client }}</td>
+								<td>
+									Abono <br>
+									{{ fdate($deposit->created_at, 'd, M') }}
+								</td>
+								<td>{{ '$ ' . number_format($deposit->amount, 2) }}</td>
+							</tr>
+							@php
+								$totalI += $deposit->amount;
+							@endphp
+						@endif
 					@endforeach
 					@foreach($gdeposits as $gdeposit)
 						<tr>

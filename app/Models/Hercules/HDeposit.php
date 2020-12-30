@@ -28,7 +28,7 @@ class HDeposit extends Model
     function scopeMonthBalance($query, $date)
     {
         return $query->whereBetween('created_at', [$date . '-01 00:00:00', $date . '-31 23:59:59' ])
-                    ->get();
+            ->get();
     }
 
     function scopeTodayBalance($query, $date)
