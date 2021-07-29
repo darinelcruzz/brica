@@ -73,13 +73,6 @@
                   <tr>
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
-                          {{ $order->bodyworkr->description ?? 'REPARACIÓN' }}<br>
-                          <code>{{ $order->serial_number ?? 'SIN # SERIE'}}</code>
-                          @if ($order->receiptr->type != 'reparacion')
-                              <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
-                          @endif
-                      </td>
-                      <td>
                         <dropdown color="{{ $process['color'] }}" icon="cogs">
                             <ddi v-if="{{ $order->receiptr->client == 1 ? 1:0 }}" to="{{ route('hercules.receipt.edit', $order->receipt) }}"
                                 icon="user" text="Agregar cliente">
@@ -100,8 +93,8 @@
                             </ddi>
                         </dropdown>
 
-                        <modal title="{{ $order->bodyworkr->description or 'Reparación' }}" id="{{ $order->serial_number }}">
-                            <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description or 'Reparación' }}" width="80%">
+                        <modal title="{{ $order->bodyworkr->description ?? 'Reparación' }}" id="{{ $order->serial_number }}">
+                            <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description ?? 'Reparación' }}" width="80%">
                             <template slot="footer">
                               <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
                                 class="btn btn-default">
@@ -109,6 +102,13 @@
                               </a>
                             </template>
                         </modal>
+                      </td>
+                      <td>
+                          {{ $order->bodyworkr->description ?? 'REPARACIÓN' }}<br>
+                          <code>{{ $order->serial_number ?? 'SIN # SERIE'}}</code>
+                          @if ($order->receiptr->type != 'reparacion')
+                              <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
+                          @endif
                       </td>
                       <td>{{ $order->receiptr->deliver_date }}</td>
                       <td>{{ $order->{$process['english']} }}</td>
