@@ -21,7 +21,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Field::text('color', ['tpl' => 'templates/withicon'], ['icon' => 'paint-brush']) !!}
+                        {!! Field::text('color', $hreceipt->color, ['tpl' => 'templates/withicon'], ['icon' => 'paint-brush']) !!}
                     </div>
 
                     <div class="col-md-6">

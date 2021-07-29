@@ -9,35 +9,59 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function index()
+    function index()
     {
         $users = User::where('user', '!=', 2)->get();
 
         return view('runa.users.index', compact('users'));
     }
 
-    public function create()
+    function create()
 	{
 		return view('runa.users.create');
 	}
 
-	public function store(Request $request)
+	function store(Request $request)
     {
+    	dd($request->all());
     	$this->validate($request, [
     		'name' => 'required',
             'email' => 'required|unique:users',
-    		'password' => 'required',
-    		'password2' => 'required|same:password',
-
+    		'password' => 'sometimes|required|confirmed',
     	]);
 
-    	$user = User::create([
+    	User::create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
 			'pass' => $request->password,
 			'level' => $request->level,
 			'user' => $request->user
+		]);
+
+    	return redirect(route('runa.user.index'));
+    }
+
+    function edit(User $user)
+	{
+		return view('runa.users.edit', compact('user'));
+	}
+
+	function update(Request $request, User $user)
+    {
+    	// dd($request->all());
+    	$request->validate([
+    		'name' => 'required',
+            'email' => 'required',
+    		'password' => 'sometimes|required|confirmed',
+    	]);
+
+    	$user->update([
+			'name' => $request->name,
+			'email' => $request->email,
+			'password' => Hash::make($request->password),
+			'pass' => $request->password,
+			'level' => $request->level,
 		]);
 
     	return redirect(route('runa.user.index'));

@@ -35,7 +35,7 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::get('/', function ()
     {
         return view('hercules.home');
-    });
+    })->name('home');
 
     Route::group(['prefix' => 'articulos', 'as' => 'item.'], function () {
         $ctrl = 'Hercules\ItemController';
@@ -219,15 +219,10 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
         $ctrl = 'Hercules\UsersController';
 
         Route::get('/', usesas($ctrl, 'index'));
-
         Route::get('crear', usesas($ctrl, 'create'));
-
         Route::post('crear', usesas($ctrl, 'store'));
-
         Route::get('editar/{user}', usesas($ctrl, 'edit'));
-
-        Route::post('editar', usesas($ctrl, 'update'));
-
+        Route::post('editar/{user}', usesas($ctrl, 'update'));
         Route::get('eliminar/{user}', usesas($ctrl, 'destroy'));
     });
 

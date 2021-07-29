@@ -14,6 +14,7 @@
         <template slot="header">
             <tr>
                 <th>ID</th>
+                <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
                 <th>Descripción</th>
                 <th>Medidas (alto x largo x ancho)</th>
                 <th>Costo</th>
@@ -25,25 +26,14 @@
               <tr>
                   <td>{{ $bodywork->id }}</td>
                   <td>
-                      <a href="{{ route('hercules.bodywork.show', ['bodywork' => $bodywork->id]) }}"
-                        title='DETALLES'>
-                          {{ $bodywork->description }}
-                      </a>&nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.edit', ['bodywork' => $bodywork->id]) }}"
-                        title='EDITAR'>
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                      </a>
-                      &nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.clone', ['bodywork' => $bodywork->id]) }}"
-                        title='DUPLICAR'>
-                          <i class="fa fa-clone" aria-hidden="true"></i>
-                      </a>
-                      &nbsp;&nbsp;
-                      <a href="{{ route('hercules.bodywork.disable', ['bodywork' => $bodywork->id]) }}"
-                        title='DESHABILITAR'>
-                          <i class="fa fa-trash" aria-hidden="true"></i>
-                      </a>
+                    <dropdown color="primary" icon="cogs">
+                        <ddi to="{{ route('hercules.bodywork.show', $bodywork) }}" icon="eye" text="Detalles"></ddi>
+                        <ddi to="{{ route('hercules.bodywork.edit', $bodywork) }}" icon="edit" text="Editar"></ddi>
+                        <ddi to="{{ route('hercules.bodywork.clone', $bodywork) }}" icon="clone" text="Duplicar"></ddi>
+                        <ddi to="{{ route('hercules.bodywork.clone', $bodywork) }}" icon="trash" text="Deshabilitar"></ddi>
+                    </dropdown>
                   </td>
+                  <td>{{ $bodywork->description }}</td>
                   <td>
                       {{ $bodywork->height }} m <i class="fa fa-times" aria-hidden="true"></i>
                       {{ $bodywork->length }} m <i class="fa fa-times" aria-hidden="true"></i>

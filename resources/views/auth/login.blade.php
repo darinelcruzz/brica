@@ -12,10 +12,10 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8" align="center" valign="middle">
-                        @if (request()->site == 'r')
+                        @if (strpos(session('url.intended'), 'hercules') === false)
                             <img width="100%" height="100%" src="{{ asset('/img/logoruna.png') }}">
                         @else
-                            <img width="100%" height="100%" src="{{ asset('/img/intro03.png') }}">
+                            <img width="100%" height="100%" src="{{ asset('/img/carrocerias.png') }}">
                         @endif
                     </div>
                 </div>

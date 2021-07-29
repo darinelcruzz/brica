@@ -2,81 +2,55 @@
 
 @section('main-content')
 
-    <data-table col="col-md-12" title="Recibos"
-        example="example1" color="box-primary">
-        <template slot="header">
-            <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Concepto</th>
-                <th>Anticipo</th>
-                <th>Color</th>
-                <th>Observaciones</th>
-                <th><i class="fa fa-ellipsis-v" aria-hidden="true"></i></th>
-            </tr>
-        </template>
+<div class="row">
+  <div class="col-md-12">
+    <color-box title="RECIBOS" color="primary">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
+              <th>Cliente</th>
+              <th>Concepto</th>
+              <th>Anticipo</th>
+              <th>Color</th>
+              <th style="width: 20%">Observaciones</th>
+          </tr>
+        </thead>
 
-        <template slot="body">
-            @foreach($receipts as $receipt)
-              @if (!$receipt->order)
-                  <tr>
-                      <td>{{ $receipt->id }}</td>
-                      <td>{{ $receipt->name }}</td>
-                      <td>
-                          {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }}
-                          @if (Auth::user()->level == 1)
-                              &nbsp;&nbsp;
-                              <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
-                                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                              </a>
-                          @endif
-                          <br>
-                          <code>{{ $receipt->serial_number }}</code>
-                      </td>
-                      <td>{{ $receipt->formatted_retainer }}</td>
-                      <td>{{ $receipt->color }}</td>
-                      <td>{{ $receipt->observations }}</td>
-                      <td>
-                          <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                              class="btn btn-default btn-xs">
-                              <i class="fa fa-print" aria-hidden="true"></i>
-                          </a>&nbsp;&nbsp;
-                          <a href="{{ route('hercules.receipt.order', ['id' => $receipt->id]) }}"
-                              class="btn btn-success btn-xs">
-                              <i class="fa fa-forward" aria-hidden="true" title="A PRODUCCIÓN"></i>
-                          </a>
-                      </td>
-                  </tr>
-              @else
-                  @if ($receipt->order->status != 'cancelada')
-                      <tr>
-                          <td>{{ $receipt->id }}</td>
-                          <td>{{ $receipt->name }}</td>
-                          <td>
-                              {{ $receipt->bodywork ? $receipt->bodyworkr->description : 'REPARACIÓN' }}
-                              @if (Auth::user()->level == 1)
-                                  &nbsp;&nbsp;
-                                  <a href="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}">
-                                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                                  </a>
-                              @endif
-                              <br>
-                              <code>{{ $receipt->serial_number }}</code>
-                          </td>
-                          <td>{{ $receipt->formatted_retainer }}</td>
-                          <td>{{ $receipt->color }}</td>
-                          <td>{{ $receipt->observations }}</td>
-                          <td>
-                              <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
-                                  class="btn btn-default btn-xs">
-                                  <i class="fa fa-print" aria-hidden="true"></i>
-                              </a>
-                          </td>
-                      </tr>
+        <tbody>
+          @foreach($receipts as $receipt)
+              <tr>
+                <td>{{ $receipt->id }}</td>
+                <td>
+                    <dropdown color="primary" icon="cogs">
+                        <ddi to="{{ route('hercules.receipt.show', $receipt) }}" icon="print" text="Imprimir"></ddi>
+                        @if(!$receipt->order)
+                          <ddi to="{{ route('hercules.receipt.order', $receipt) }}" icon="forward" text="Mandar a producción"></ddi>
+                        @endif
+                        @if(auth()->user()->level == 1)
+                          <ddi to="{{ route('hercules.receipt.edit', $receipt) }}" icon="edit" text="Editar"></ddi>
+                        @endif
+                    </dropdown>
+                </td>
+                <td>
+                  {{ $receipt->name }}
+                  @if(!$receipt->order)
+                    &nbsp;<i style="color: orange;" class="fa fa-warning"></i>
                   @endif
-              @endif
-            @endforeach
-        </template>
-    </data-table>
+                </td>
+                <td>
+                    {{ $receipt->bodyworkr->description ?? 'REPARACIÓN' }}<br><code>{{ $receipt->serial_number }}</code>
+                </td>
+                <td>{{ $receipt->formatted_retainer }}</td>
+                <td>{{ $receipt->color }}</td>
+                <td>{{ $receipt->observations }}</td>
+              </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </color-box>
+  </div>
+</div>
 
 @endsection

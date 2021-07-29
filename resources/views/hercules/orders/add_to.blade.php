@@ -4,7 +4,7 @@
 
     <row-woc col="col-md-6">
 
-        <solid-box title="Detalles: Orden {{ $order->id }}" color="box-primary">
+        <solid-box title="Orden {{ $order->receiptr->id }}" color="box-primary">
             @if ($order->bodywork)
                 <b>Carrocería tipo:</b> {{ $order->bodyworkr->description }} <br>
                 <b>Largo:</b> {{ $order->bodyworkr->length }}  m.

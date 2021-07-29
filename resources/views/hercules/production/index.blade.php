@@ -6,9 +6,9 @@
         example="example1" color="box-primary">
         <template slot="header">
             <tr>
-                <th>Orden</th>
-                <th>Descripción</th>
+                <th>ID</th>
                 <th><i class="fa fa-cogs"></i></th>
+                <th>Descripción</th>
                 <th>Entrega</th>
                 <th>Observaciones</th>
                 <th>Mover a</th>
@@ -20,24 +20,24 @@
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
                   <td>
-                      {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}<br>
-                      <code>{{ $order->serial_number or 'SIN # SERIE'}}</code>
-                      @if ($order->receiptr->type != 'reparacion')
-                          <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
-                      @endif
-                  </td>
-                  <td>
                     <dropdown color="primary" icon="cogs">
-                        <ddi to="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                        <ddi to="{{ route('hercules.warehouse.show', $order) }}"
                             icon="check" text="Surtir">
                         </ddi>
-                        <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
+                        <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', $order) }}"
                             icon="print" text="Imprimir ticket">
                         </ddi>
-                        <ddi v-else to="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
+                        <ddi v-else to="{{ route('hercules.order.ticket', [$order, 'welding']) }}"
                             icon="pencil" text="Generar ticket">
                         </ddi>
                     </dropdown>
+                  </td>
+                  <td>
+                      {{ $order->bodyworkr->description ?? 'REPARACIÓN' }}<br>
+                      <code>{{ $order->serial_number ?? 'SIN # SERIE'}}</code>
+                      @if ($order->receiptr->type != 'reparacion')
+                          <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
+                      @endif
                   </td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ $order->receiptr->observations }}</td>
@@ -73,18 +73,18 @@
                   <tr>
                       <td>{{ $order->receiptr->id }}</td>
                       <td>
-                          {{ $order->bodywork ? $order->bodyworkr->description: 'REPARACIÓN' }}<br>
-                          <code>{{ $order->serial_number or 'SIN # SERIE'}}</code>
+                          {{ $order->bodyworkr->description ?? 'REPARACIÓN' }}<br>
+                          <code>{{ $order->serial_number ?? 'SIN # SERIE'}}</code>
                           @if ($order->receiptr->type != 'reparacion')
                               <p class="text-green">{{ strtoupper($order->receiptr->type) }}</p>
                           @endif
                       </td>
                       <td>
                         <dropdown color="{{ $process['color'] }}" icon="cogs">
-                            <ddi v-if="{{ $order->receiptr->client == 1 ? 1:0 }}" to="{{ route('hercules.receipt.edit', ['id' => $order->receipt]) }}"
+                            <ddi v-if="{{ $order->receiptr->client == 1 ? 1:0 }}" to="{{ route('hercules.receipt.edit', $order->receipt) }}"
                                 icon="user" text="Agregar cliente">
                             </ddi>
-                            <ddi v-if="{{ $order->bodywork ? 1:0 }}" to="{{ route('hercules.warehouse.show', ['order' => $order->id]) }}"
+                            <ddi v-if="{{ $order->bodywork ? 1:0 }}" to="{{ route('hercules.warehouse.show', $order) }}"
                                 icon="check" text="Surtir">
                             </ddi>
                             <li>
@@ -92,10 +92,10 @@
                                     <i class="fa fa-picture-o"></i> Foto
                                 </a>
                             </li>
-                            <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', ['id' => $order->id]) }}"
+                            <ddi v-if="{{ $order->serial_number ? 1:0 }}" to="{{ route('hercules.order.print_ticket', $order) }}"
                                 icon="print" text="Imprimir ticket">
                             </ddi>
-                            <ddi v-else to="{{ route('hercules.order.ticket', ['id' => $order->id, 'assigned' => 'welding']) }}"
+                            <ddi v-else to="{{ route('hercules.order.ticket', [$order, 'welding']) }}"
                                 icon="pencil" text="Generar ticket">
                             </ddi>
                         </dropdown>
@@ -120,7 +120,7 @@
                           </td>
                       @endif
                       <td>
-                          @if (($order->receiptr->client == 1 || $order->receiptr->type == 'reparacion') && $order->status != 'montaje')
+                          @if (($order->receiptr->client == 1 || $order->receiptr->type == 'reparacion') && ($order->status != 'montaje'))
                               @include('hercules/production/moveto')
                           @elseif ($loop->parent->last)
                               <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"

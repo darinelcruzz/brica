@@ -5,7 +5,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
     Route::get('/', function ()
     {
         return view('runa.home');
-    });
+    })->name('home');
 
     Route::get('error', function()
     {
@@ -234,7 +234,7 @@ Route::group(['prefix' => 'runa', 'as' => 'runa.', 'middleware' => 'runa'], func
         Route::get('crear', usesas($ctrl, 'create'));
         Route::post('crear', usesas($ctrl, 'store'));
         Route::get('editar/{user}', usesas($ctrl, 'edit'));
-        Route::post('editar', usesas($ctrl, 'update'));
+        Route::post('editar/{user}', usesas($ctrl, 'update'));
     });
 
     // Diseños
