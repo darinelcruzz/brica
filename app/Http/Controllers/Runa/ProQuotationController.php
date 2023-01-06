@@ -35,7 +35,7 @@ class ProQuotationController extends Controller
             return redirect('runa/ingenieros');
         }
 
-        if ($quotation->amount > 1000) {
+        if ($quotation->amount > 1000 && env('APP_ENV') != 'local') {
             $quotation->notify(new \App\Notifications\QuotationAboveAThousand());
         }
 

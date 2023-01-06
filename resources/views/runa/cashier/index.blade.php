@@ -22,7 +22,7 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->retainer }}</td>
                   <td>
-                      <a href="{{ route('runa.pay.terminated', ['id' => $row->id]) }}"
+                      <a href="{{ route('runa.pay.terminated', $row->id) }}"
                           class="btn btn-success">
                           <i class="fa fa-dollar"></i>
                       </a>
@@ -138,7 +138,7 @@
                   <td>{{ $row->folio }}</td>
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
-                  <td>{{ $row->sale->amount or $row->retainer }}</td>
+                  <td>{{ $row->sale->amount ?? $row->retainer }}</td>
                   @if ($row->type == 'produccion')
                       <td>
                           <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
