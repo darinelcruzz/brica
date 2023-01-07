@@ -13,7 +13,6 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "barryvdh/laravel-dompdf": "^0.8.4",
-        "laracasts/utilities": "^3.0",
         "laravel/dusk": "^5.0.0",
         "acacha/admin-lte-template-laravel": "6.2.2",
         "laravel-notification-channels/telegram": "^0.0.6",
