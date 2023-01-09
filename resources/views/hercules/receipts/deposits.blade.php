@@ -25,7 +25,7 @@
                               <td>
                                   {{ $receipt->bodywork ? $receipt->bodyworkr->description: 'REPARACIÓN' }}
                                   &nbsp;&nbsp;&nbsp;
-                                  <a href="{{ route('hercules.receipt.show', ['id' => $receipt->id]) }}"
+                                  <a href="{{ route('hercules.receipt.show', $receipt) }}"
                                       class="btn btn-primary btn-xs" title="IMPRIMIR RECIBO">
                                       <i class="fa fa-file-text" aria-hidden="true"></i>
                                   </a>

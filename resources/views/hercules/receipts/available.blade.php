@@ -28,16 +28,16 @@
                                   </td>
                                   <td>
                                       <dropdown color="warning" icon="cogs">
-                                          <ddi to="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'palenque']) }}"
+                                          <ddi to="{{ route('hercules.receipt.export', [$receipt, 'palenque']) }}"
                                               icon="forward" text="A Palenque">
                                           </ddi>
-                                          <ddi to="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
+                                          <ddi to="{{ route('hercules.receipt.edit', $receipt) }}"
                                               icon="user" text="Agregar cliente">
                                           </ddi>
                                           <ddi to="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
                                               icon="eye" text="Ver foto">
                                           </ddi>
-                                          <ddi to="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                          <ddi to="{{ route('hercules.photo.load', $receipt->order) }}"
                                               icon="upload" text="Subir foto">
                                           </ddi>
                                       </dropdown>
@@ -80,16 +80,16 @@
                                   </td>
                                   <td>
                                       <dropdown color="success" icon="cogs">
-                                          <ddi to="{{ route('hercules.receipt.export', ['id' => $receipt->id, 'location' => 'comitan']) }}"
+                                          <ddi to="{{ route('hercules.receipt.export', [$receipt, 'comitan']) }}"
                                               icon="backward" text="A Comitán">
                                           </ddi>
-                                          <ddi to="{{ route('hercules.receipt.edit', ['id' => $receipt->id]) }}"
+                                          <ddi to="{{ route('hercules.receipt.edit', $receipt) }}"
                                               icon="user" text="Agregar cliente">
                                           </ddi>
                                           <ddi to="{{ Storage::url(substr($receipt->order->photo, 9)) }}"
                                               icon="eye" text="Ver foto">
                                           </ddi>
-                                          <ddi to="{{ route('hercules.photo.load', ['order' => $receipt->order->id]) }}"
+                                          <ddi to="{{ route('hercules.photo.load', $receipt->order) }}"
                                               icon="upload" text="Subir foto">
                                           </ddi>
                                       </dropdown>

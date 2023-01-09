@@ -25,11 +25,11 @@
                       @if ($client->credit)
                           <code><i class="fa fa-credit-card" aria-hidden="true"></i></code>
                       @endif
-                      <a href="{{ route('hercules.client.edit', ['id' => $client->id]) }}">
+                      <a href="{{ route('hercules.client.edit', $client) }}">
                           <i class="fa fa-edit"></i>
                       </a>
                       @if (auth()->user()->level == 1 && count($client->receipts) < 1)
-                          <a href="{{ route('hercules.client.destroy', ['id' => $client->id]) }}">
+                          <a href="{{ route('hercules.client.destroy', $client) }}">
                               <i class="fa fa-trash"></i>
                           </a>
                       @endif

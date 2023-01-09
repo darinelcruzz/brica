@@ -8,47 +8,47 @@ use App\Models\Hercules\{HBodywork, HItem};
 
 class BodyworkController extends Controller
 {
-    function index()
+    function index($type)
     {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'redila')->get();
-        return view('hercules.bodyworks.index', compact('bodyworks'));
+        $bodyworks = HBodywork::where('price', 1)->where('type', $type)->get();
+        return view('hercules.bodyworks.index', compact('bodyworks', 'type'));
     }
 
-    function trailers()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'remolque')->get();
-        return view('hercules.bodyworks.trailers', compact('bodyworks'));
-    }
+    // function trailers()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'remolque')->get();
+    //     return view('hercules.bodyworks.trailers', compact('bodyworks'));
+    // }
 
-    function dry()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'seca')->get();
-        return view('hercules.bodyworks.dry', compact('bodyworks'));
-    }
+    // function dry()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'seca')->get();
+    //     return view('hercules.bodyworks.dry', compact('bodyworks'));
+    // }
 
-    function soda()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'refresco')->get();
-        return view('hercules.bodyworks.soda', compact('bodyworks'));
-    }
+    // function soda()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'refresco')->get();
+    //     return view('hercules.bodyworks.soda', compact('bodyworks'));
+    // }
 
-    function platform()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'plataforma')->get();
-        return view('hercules.bodyworks.platform', compact('bodyworks'));
-    }
+    // function platform()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'plataforma')->get();
+    //     return view('hercules.bodyworks.platform', compact('bodyworks'));
+    // }
 
-    function carboys()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'garrafonera')->get();
-        return view('hercules.bodyworks.carboys', compact('bodyworks'));
-    }
+    // function carboys()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'garrafonera')->get();
+    //     return view('hercules.bodyworks.carboys', compact('bodyworks'));
+    // }
 
-    function boxes()
-    {
-        $bodyworks = HBodywork::where('price', 1)->where('type', 'caja')->get();
-        return view('hercules.bodyworks.boxes', compact('bodyworks'));
-    }
+    // function boxes()
+    // {
+    //     $bodyworks = HBodywork::where('price', 1)->where('type', 'caja')->get();
+    //     return view('hercules.bodyworks.boxes', compact('bodyworks'));
+    // }
 
     function create($type)
     {
@@ -161,7 +161,7 @@ class BodyworkController extends Controller
     {
         $process = [];
 
-        for ($i = 0; $i < count($ids); $i++) {
+        for ($i = 0; $i < count($ids ?? []); $i++) {
             $process[$ids[$i]] = $quantities[$i];
         }
 

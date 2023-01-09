@@ -31,11 +31,11 @@
                             {{ $item->description }}
                             <br>
                             Calibre {{ $item->caliber }} &nbsp;
-                            <a href="{{ route('runa.item.destroy', ['id' => $item->id ])}}"
+                            <a href="{{ route('runa.item.destroy', $item)}}"
                               title="ELIMINAR">
                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>&nbsp;
-                            <a href="{{ route('runa.item.edit', ['id' => $item->id ])}}"
+                            <a href="{{ route('runa.item.edit', $item)}}"
                               title="EDITAR">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>

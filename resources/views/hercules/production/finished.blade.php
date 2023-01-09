@@ -20,9 +20,9 @@
               <tr>
                   <td>{{ $order->receipt }}</td>
                   <td>
-                      {{ $order->bodyworkr->description or 'REPARACIÓN' }}
+                      {{ $order->bodyworkr->description ?? 'REPARACIÓN' }}
                       &nbsp;
-                      <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'pagado']) }}"
+                      <a href="{{ route('hercules.order.status', [$order, 'pagado']) }}"
                           class="btn btn-xs btn-primary" title="MARCAR COMO PAGADO">
                           <i class="fa fa-check" aria-hidden="true"></i>
                       </a>
@@ -55,7 +55,7 @@
             @foreach($paid as $order)
               <tr>
                   <td>{{ $order->receiptr->id }}</td>
-                  <td>{{ $order->bodyworkr->description or 'REPARACIÓN' }} <br> <code>{{ $order->serial_number }}</code></td>
+                  <td>{{ $order->bodyworkr->description ?? 'REPARACIÓN' }} <br> <code>{{ $order->serial_number }}</code></td>
                   <td>{{ $order->receiptr->name }}</td>
                   <td>{{ $order->receiptr->deliver_date }}</td>
                   <td>{{ fdate($order->startDate, 'd, M h:i a') }} <br> {{ fdate($order->endDate, 'd, M h:i a') }}</td>

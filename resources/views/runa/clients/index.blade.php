@@ -33,11 +33,11 @@
                   <td>{{ $client->email }}</td>
                   <td>{{ $client->contact }}</td>
                   <td>
-                      <a href="{{ route('runa.client.edit', ['id' => $client->id]) }}">
+                      <a href="{{ route('runa.client.edit', $client) }}">
                           <i class="fa fa-edit"></i>
                       </a>
                       @if (count($client->quotations) < 1)
-                          <a href="{{ route('runa.client.destroy', ['id' => $client->id]) }}">
+                          <a href="{{ route('runa.client.destroy', $client) }}">
                               <i class="fa fa-trash"></i>
                           </a>
                       @endif

@@ -19,10 +19,10 @@
                             <tr>
                                 <td>
                                     {{ $member->name }} &nbsp;&nbsp;&nbsp;
-                                    <a href="{{ route('hercules.personnel.edit', ['id' => $member->id]) }}">
+                                    <a href="{{ route('hercules.personnel.edit', $member) }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>&nbsp;&nbsp;
-                                    <a href="{{ route('hercules.personnel.destroy', ['id' => $member->id]) }}">
+                                    <a href="{{ route('hercules.personnel.destroy', $member) }}">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                 </td>

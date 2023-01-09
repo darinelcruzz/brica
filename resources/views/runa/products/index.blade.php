@@ -20,7 +20,7 @@
               <td>{{ $product->id }}</td>
               <td>
                   {{ ucfirst($product->name) }} &nbsp;
-                  <a href="{{ route('runa.product.edit', ['id' => $product->id]) }}">
+                  <a href="{{ route('runa.product.edit', $product) }}">
                       <i class="fa fa-edit" aria-hidden="true"></i>
                   </a>
               </td>

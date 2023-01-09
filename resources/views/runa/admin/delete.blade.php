@@ -27,7 +27,7 @@
                   <td>{{ $quotation->status }}</td>
                   <td>{{ $quotation->description }}</td>
                   <td>
-                      <a href="{{ route('runa.quotation.details', ['id' => $quotation->id]) }}"
+                      <a href="{{ route('runa.quotation.details', $quotation) }}"
                           >
                           {{ count($quotation->orders) }} &nbsp;
                           <i class="fa fa-forward" aria-hidden="true"></i>
@@ -35,7 +35,7 @@
                   </td>
                   <td>
                       @if ($quotation->status != 'pagado')
-                          <a href="{{ route('runa.cancel', ['id' => $quotation->id]) }}">
+                          <a href="{{ route('runa.cancel', $quotation) }}">
                               <i class="fa fa-trash"></i>
                           </a>
                       @endif

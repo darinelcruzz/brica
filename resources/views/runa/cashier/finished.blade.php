@@ -9,15 +9,15 @@
                     {{ drawHeader('#', 'Cliente', 'Descripción', 'Anticipo', 'Cobrar') }}
 
                     <template slot="body">
-                        @foreach($finished as $row)
-                            @if (!$row->sale && $row->client != 1)
+                        @foreach($finished as $quotation)
+                            @if (!$quotation->sale && $quotation->client != 1)
                                 <tr>
-                                    <td>{{ $row->folio }}</td>
-                                    <td>{{ $row->clientr->name }}</td>
-                                    <td>{{ $row->description }}</td>
-                                    <td>$ {{ number_format($row->amount, 2) }}</td>
+                                    <td>{{ $quotation->folio }}</td>
+                                    <td>{{ $quotation->clientr->name }}</td>
+                                    <td>{{ $quotation->description }}</td>
+                                    <td>$ {{ number_format($quotation->amount, 2) }}</td>
                                     <td>
-                                      <a href="{{ route('runa.cashier.calculate', ['id' => $row->id]) }}"
+                                      <a href="{{ route('runa.cashier.calculate', $quotation) }}"
                                           class="btn btn-success btn-xs">
                                           <i class="fa fa-dollar" aria-hidden="true"></i> <i class="fa fa-arrow-right"></i>
                                       </a>

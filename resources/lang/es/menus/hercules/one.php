@@ -117,31 +117,31 @@ return [
         'submenu' => [
             'truck' => [
                 'title' => 'Redilas',
-                'route' => 'hercules.bodywork.trucks'
+                'route' => ['hercules.bodywork.index', 'redila']
             ],
             'trailer' => [
                 'title' => 'Remolques',
-                'route' => 'hercules.bodywork.trailers'
+                'route' => ['hercules.bodywork.index', 'remolque']
             ],
             'dry' => [
                 'title' => 'Cajas secas',
-                'route' => 'hercules.bodywork.dry'
+                'route' => ['hercules.bodywork.index', 'seca']
             ],
             'soda' => [
                 'title' => 'Cajas refresqueras',
-                'route' => 'hercules.bodywork.soda'
+                'route' => ['hercules.bodywork.index', 'refresco']
             ],
             'platform' => [
                 'title' => 'Plataformas',
-                'route' => 'hercules.bodywork.platform'
+                'route' => ['hercules.bodywork.index', 'plataforma']
             ],
             'carboys' => [
                 'title' => 'Góndolas garrafoneras',
-                'route' => 'hercules.bodywork.carboys'
+                'route' => ['hercules.bodywork.index', 'garrafonera']
             ],
             'boxes' => [
                 'title' => 'Cajas',
-                'route' => 'hercules.bodywork.boxes'
+                'route' => ['hercules.bodywork.index', 'caja']
             ],
             'items' => [
                 'title' => 'Artículos',

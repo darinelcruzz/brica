@@ -64,20 +64,6 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
     Route::group(['prefix' => 'carrocerias', 'as' => 'bodywork.'], function () {
         $ctrl = 'Hercules\BodyworkController';
 
-        Route::get('redilas', usesas($ctrl, 'index', 'trucks'));
-
-        Route::get('remolques', usesas($ctrl, 'trailers'));
-
-        Route::get('secas', usesas($ctrl, 'dry'));
-
-        Route::get('refrescos', usesas($ctrl, 'soda'));
-
-        Route::get('plataformas', usesas($ctrl, 'platform'));
-
-        Route::get('garrafoneras', usesas($ctrl, 'carboys'));
-
-        Route::get('cajas', usesas($ctrl, 'boxes'));
-
         Route::get('crear/{type}', usesas($ctrl, 'create'));
 
         Route::post('crear', usesas($ctrl, 'store'));
@@ -94,7 +80,9 @@ Route::group(['prefix' => 'hercules', 'as' => 'hercules.', 'middleware' => ['aut
 
         Route::get('deshabilitar/{hbodywork}', usesas($ctrl, 'disable'));
 
-        Route::get('{hbodywork}', usesas($ctrl, 'show'));
+        Route::get('ver/{hbodywork}', usesas($ctrl, 'show'));
+        
+        Route::get('/{type}', usesas($ctrl, 'index'));
     });
 
     Route::group(['prefix' => 'clientes', 'as' => 'client.'], function () {

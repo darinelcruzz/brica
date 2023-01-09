@@ -6,23 +6,11 @@
 		<div class="col-md-4">
 			<solid-box title="Agregar gasto" color="box-primary">
 				{!! Form::open(['method' => 'POST', 'route' => 'runa.expenses']) !!}
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1">
-							{!! Field::text('description',['tpl' => 'templates/withicon'], ['icon' => 'edit']) !!}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">
-							{!! Field::number('amount',['tpl' => 'templates/withicon', 'step' => '0.01', 'min' => '1'], ['icon' => 'dollar']) !!}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							{!! Form::submit('Agregar', ['class' => 'btn btn-primary btn-block']) !!}
-						</div>
-
-						{!! Field::hidden('date', $date) !!}
-					</div>
+					{!! Field::text('description', ['tpl' => 'templates/withicon', 'ph' => 'Gasolina...'], ['icon' => 'comments']) !!}
+					{!! Field::number('amount', 0, ['tpl' => 'templates/withicon', 'step' => '0.01', 'min' => '0.01'], ['icon' => 'dollar']) !!}
+					{!! Field::hidden('date', $date) !!}
+					<br>
+					{!! Form::submit('AGREGAR', ['class' => 'btn btn-primary pull-right']) !!}
 				{!! Form::close() !!}
 			</solid-box>
 		</div>
@@ -34,8 +22,8 @@
 					<tr>
 						<th>ID</th>
 						<th>Descripción</th>
-						<th>Monto</th>
 						<th>Fecha</th>
+						<th>Monto</th>
 					</tr>
 				</template>
 
@@ -44,8 +32,8 @@
 					  <tr>
 						  <td>{{ $expense->id }}</td>
 						  <td>{{ $expense->description }}</td>
-						  <td>$ {{ $expense->amount }}</td>
 						  <td>{{ $expense->created_at->format('d/m/Y') }}</td>
+						  <td style="text-align: right;">{{ number_format($expense->amount, 2) }}</td>
 					  </tr>
 					@endforeach
 				</template>

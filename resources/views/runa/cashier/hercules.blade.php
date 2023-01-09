@@ -23,7 +23,7 @@
                         <td>{{ $row->description }}</td>
                         <td>$ {{ $row->amount }}</td>
                         <td>
-                          <a href="{{ route('runa.cashier.calculate', ['id' => $row->id]) }}"
+                          <a href="{{ route('runa.cashier.calculate', $row) }}"
                               class="btn btn-success">
                               <i class="fa fa-money" aria-hidden="true"></i>
                           </a>
@@ -63,7 +63,7 @@
                             <td> ticket pendiente</td>
                         @endif
                         <td>
-                            <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
+                            <a href="{{ route('runa.pay.production', $row) }}"
                                 class="btn btn-xs btn-success" title="COBRAR">
                                 <i class="fa fa-dollar"></i> &nbsp;COBRAR
                             </a>

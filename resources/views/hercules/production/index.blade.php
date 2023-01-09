@@ -43,7 +43,7 @@
                   <td>{{ $order->receiptr->observations }}</td>
                   <td>
                       <a style="{{ !$order->welding || $order->status != 'surtido soldadura' ? "pointer-events: none; display: inline-block;" : '' }}"
-                        href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'soldadura']) }}"
+                        href="{{ route('hercules.order.status', [$order, 'soldadura']) }}"
                           class="btn btn-primary btn-xs" {{ !$order->welding || $order->status != 'surtido soldadura' ? " disabled" : '' }}>
                           Soldadura <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
@@ -96,7 +96,7 @@
                         <modal title="{{ $order->bodyworkr->description ?? 'Reparación' }}" id="{{ $order->serial_number }}">
                             <img src="{{ Storage::url(substr($order->photo, 9)) }}" alt="{{ $order->bodyworkr->description ?? 'Reparación' }}" width="80%">
                             <template slot="footer">
-                              <a href="{{ route('hercules.photo.load', ['order' => $order->id]) }}"
+                              <a href="{{ route('hercules.photo.load', $order) }}"
                                 class="btn btn-default">
                                   <i class="fa fa-upload"></i> Subir foto
                               </a>
@@ -123,7 +123,7 @@
                           @if (($order->receiptr->client == 1 || $order->receiptr->type == 'reparacion') && ($order->status != 'montaje'))
                               @include('hercules/production/moveto')
                           @elseif ($loop->parent->last)
-                              <a href="{{ route('hercules.order.status', ['id' => $order->id, 'status' => 'terminado']) }}"
+                              <a href="{{ route('hercules.order.status', [$order, 'terminado']) }}"
                                   class="btn btn-{{ $process['color'] }} btn-xs">
                                   {{ ucfirst($process['next']['s']) }}
                                   <i class="fa fa-forward" aria-hidden="true"></i>

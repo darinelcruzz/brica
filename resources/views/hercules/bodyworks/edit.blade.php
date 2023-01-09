@@ -40,7 +40,7 @@
                                   <li style="flex-basis: 25%">
                                       <label class="checkbox-inline">
                                           <input name="{{ $process }}[]" type="checkbox" value="{{ $item->id }}"
-                                            {{ in_array($item->id, array_keys(unserialize($hbodywork->$process))) ? ' checked': '' }}>
+                                            {{ in_array($item->id, array_keys(unserialize($hbodywork->$process) ?? [])) ? ' checked': '' }}>
                                           {{ $item->description }} {{ $item->caliber }}
                                       </label>
                                   </li>

@@ -6,7 +6,7 @@
         <solid-box title="Preguntas" color="box-warning">
             @foreach ($questions as $question)
                 <h4>{{ $question->body }}
-                <a href="{{ route('runa.question.edit', ['id' => $question->id])}}">
+                <a href="{{ route('runa.question.edit', $question)}}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                 </a>
                 </h4>

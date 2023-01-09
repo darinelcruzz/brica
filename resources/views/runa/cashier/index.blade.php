@@ -15,14 +15,14 @@
         </template>
 
         <template slot="body">
-            @foreach($terminated as $row)
+            @foreach($terminated as $quotation)
               <tr>
-                  <td>{{ $row->folio }}</td>
-                  <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->description }}</td>
-                  <td>{{ $row->retainer }}</td>
+                  <td>{{ $quotation->folio }}</td>
+                  <td>{{ $quotation->clientr->name }}</td>
+                  <td>{{ $quotation->description }}</td>
+                  <td>{{ $quotation->retainer }}</td>
                   <td>
-                      <a href="{{ route('runa.pay.terminated', $row->id) }}"
+                      <a href="{{ route('runa.pay.terminated', $quotation->id) }}"
                           class="btn btn-success">
                           <i class="fa fa-dollar"></i>
                       </a>
@@ -45,14 +45,14 @@
         </template>
 
         <template slot="body">
-            @foreach($production as $row)
+            @foreach($production as $quotation)
               <tr>
-                  <td>{{ $row->folio }}</td>
-                  <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->pay }}</td>
-                  <td>{{ $row->retainer }}</td>
+                  <td>{{ $quotation->folio }}</td>
+                  <td>{{ $quotation->clientr->name }}</td>
+                  <td>{{ $quotation->pay }}</td>
+                  <td>{{ $quotation->retainer }}</td>
                   <td>
-                      <a href="{{ route('runa.pay.retainer', ['id' => $row->id]) }}"
+                      <a href="{{ route('runa.pay.retainer', $quotation) }}"
                           class="btn btn-success">
                           <i class="fa fa-dollar"></i>
                       </a>
@@ -75,15 +75,15 @@
         </template>
 
         <template slot="body">
-            @foreach($finished as $row)
-                @if ($row->client != 1)
+            @foreach($finished as $quotation)
+                @if ($quotation->client != 1)
                     <tr>
-                        <td>{{ $row->folio }}</td>
+                        <td>{{ $quotation->folio }}</td>
                         <td>
-                            {{ $row->clientr->name }} &nbsp;&nbsp;&nbsp;
+                            {{ $quotation->clientr->name }} &nbsp;&nbsp;&nbsp;
                             @if (Auth::user()->level == 2)
-                                @if (!$row->notified)
-                                    <a href="{{ route('runa.notify', ['id' => $row->id]) }}"
+                                @if (!$quotation->notified)
+                                    <a href="{{ route('runa.notify', $quotation) }}"
                                         class="btn btn-xs btn-info" title="CLIENTE AVISADO">
                                         <i class="fa fa-check"></i>
                                     </a>
@@ -93,13 +93,13 @@
                             @endif
                             <br>
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            {{ $row->clientr->phone }}
+                            {{ $quotation->clientr->phone }}
                         </td>
-                        <td>{{ $row->description }}</td>
-                        @if ($row->sale)
-                            <td>$ {{ $row->sale->amount - $row->sale->retainer }}</td>
+                        <td>{{ $quotation->description }}</td>
+                        @if ($quotation->sale)
+                            <td>$ {{ $quotation->sale->amount - $quotation->sale->retainer }}</td>
                             <td>
-                                <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
+                                <a href="{{ route('runa.pay.production', $quotation) }}"
                                     class="btn btn-xs btn-success" title="COBRAR">
                                     <i class="fa fa-dollar"></i> &nbsp;COBRAR
                                 </a>
@@ -133,22 +133,22 @@
         </template>
 
         <template slot="body">
-            @foreach($credit as $row)
+            @foreach($credit as $quotation)
               <tr>
-                  <td>{{ $row->folio }}</td>
-                  <td>{{ $row->clientr->name }}</td>
-                  <td>{{ $row->description }}</td>
-                  <td>{{ $row->sale->amount ?? $row->retainer }}</td>
-                  @if ($row->type == 'produccion')
+                  <td>{{ $quotation->folio }}</td>
+                  <td>{{ $quotation->clientr->name }}</td>
+                  <td>{{ $quotation->description }}</td>
+                  <td>{{ $quotation->sale->amount ?? $quotation->retainer }}</td>
+                  @if ($quotation->type == 'produccion')
                       <td>
-                          <a href="{{ route('runa.pay.production', ['id' => $row->id]) }}"
+                          <a href="{{ route('runa.pay.production', $quotation) }}"
                               class="btn btn-success">
                               <i class="fa fa-dollar"></i>
                           </a>
                       </td>
                   @else
                       <td>
-                          <a href="{{ route('runa.pay.terminated', ['id' => $row->id]) }}"
+                          <a href="{{ route('runa.pay.terminated', $quotation) }}"
                               class="btn btn-success">
                               <i class="fa fa-dollar"></i>
                           </a>

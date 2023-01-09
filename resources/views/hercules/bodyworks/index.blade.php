@@ -3,13 +3,13 @@
 @section('main-content')
 
     <row-woc col="col-md-3">
-        <a href="{{ route('hercules.bodywork.create', ['type' => 'redila']) }}" class="btn btn-app">
+        <a href="{{ route('hercules.bodywork.create', $type) }}" class="btn btn-app">
             <span class="badge bg-aqua">{{ count($bodyworks) }}</span>
             <i class="fa fa-truck"></i> AGREGAR
         </a>
     </row-woc>
 
-    <data-table col="col-md-12" title="Redilas"
+    <data-table col="col-md-12" title="Carrocería tipo {{ $type }}"
         example="example2" color="box-primary">
         <template slot="header">
             <tr>
@@ -30,7 +30,7 @@
                         <ddi to="{{ route('hercules.bodywork.show', $bodywork) }}" icon="eye" text="Detalles"></ddi>
                         <ddi to="{{ route('hercules.bodywork.edit', $bodywork) }}" icon="edit" text="Editar"></ddi>
                         <ddi to="{{ route('hercules.bodywork.clone', $bodywork) }}" icon="clone" text="Duplicar"></ddi>
-                        <ddi to="{{ route('hercules.bodywork.clone', $bodywork) }}" icon="trash" text="Deshabilitar"></ddi>
+                        <ddi to="{{ route('hercules.bodywork.disable', $bodywork) }}" icon="trash" text="Deshabilitar"></ddi>
                     </dropdown>
                   </td>
                   <td>{{ $bodywork->description }}</td>

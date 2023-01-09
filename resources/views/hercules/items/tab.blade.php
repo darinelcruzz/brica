@@ -23,11 +23,11 @@
                         <td>{{ $item->code }}</td>
                         <td>
                             {{ $item->description }} &nbsp;
-                            <a href="{{ route('hercules.item.destroy', ['id' => $item->id ])}}"
+                            <a href="{{ route('hercules.item.destroy', $item)}}"
                               title="ELIMINAR">
                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="{{ route('hercules.item.edit', ['id' => $item->id ])}}"
+                            <a href="{{ route('hercules.item.edit', $item)}}"
                               title="EDITAR">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>

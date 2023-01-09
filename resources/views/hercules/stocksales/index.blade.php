@@ -23,7 +23,7 @@
                   <td>{{ $stocksale->amount }}</td>
                   <td>{{ $stocksale->observations }}</td>
                   <th>
-                      <a href="{{ route('hercules.stocksale.ticket', ['id' => $stocksale->id ]) }}"
+                      <a href="{{ route('hercules.stocksale.ticket', $stocksale) }}"
                           class="btn btn-primary btn-xs">
                          <i class="fa fa-print" aria-hidden="true"></i>
                       </a>
