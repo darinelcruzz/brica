@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class HClientsTableSeeder extends Seeder
+class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class HClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Hercules\HClient::class, 20)->create();
+        factory(App\Product::class, 0)->create();
     }
 }
