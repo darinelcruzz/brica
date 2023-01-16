@@ -13,16 +13,13 @@
                       <pre style="background: #efefef;border: 1px #777;background: url(lines.png) repeat 0 0;">
 
 
-
-
-
                       </pre>
                     </div>
                 </div>
 
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-                      {{ $hreceipt->printer or 'Hércules' }} recibió de:
+                      {{ $hreceipt->printer ?? 'Hércules' }} recibió de:
                       <address>
                         <strong>{{ $hreceipt->name }}</strong><br>
                         {{ $hreceipt->clientr->address }}<br>
@@ -30,7 +27,7 @@
                         {{ $hreceipt->clientr->phone }}<br>
                         {{ $hreceipt->clientr->email }}
                         Fecha: <br>
-                        {{ $hreceipt->print_date or 'n/d'}}
+                        {{ $hreceipt->print_date ?? 'n/d'}}
                       </address>
                     </div>
 
@@ -65,7 +62,7 @@
                         @endif
                         <br>
                         Modelo:<br>
-                        <strong>{{ $hreceipt->model or $hreceipt->order->model }}</strong>
+                        <strong>{{ $hreceipt->order->model ?? $hreceipt->model }}</strong>
                       </address>
                     </div>
                 </div>

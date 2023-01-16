@@ -22,7 +22,7 @@
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>
-                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.quotation.details', ['id' => $row->id]) }}"
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.quotation.details', $row->id) }}"
                           class="btn btn-danger btn-xs">
                           <i class="fa fa-eye" aria-hidden="true"></i>
                           ({{ count($row->orders) }})
@@ -31,10 +31,10 @@
                   </td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('runa.order.create', ['cot' => $row->id]) }}" class="btn btn-danger btn-xs">
+                      <a href="{{ route('runa.order.create', $row) }}" class="btn btn-danger btn-xs">
                           <i class="fa fa-plus" aria-hidden="true"></i>
                       </a>
-                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.engineer.complete', ['cot' => $row->id]) }}"
+                      <a v-if="{{ count($row->orders) }}" href="{{ route('runa.engineer.complete', $row) }}"
                           class="btn btn-success btn-xs">
                           <i class="fa fa-check" aria-hidden="true"></i>
                       </a>
@@ -65,7 +65,7 @@
                   <td>{{ $row->description }}</td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-danger btn-xs">
+                      <a href="{{ route('runa.quotation.details', $row->id) }}" class="btn btn-danger btn-xs">
                           <i class="fa fa-info" aria-hidden="true"></i>nfo
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
@@ -116,14 +116,14 @@
                   <td>{{ $row->description }}</td>
                   <td>
                       {{ $row->team }} &nbsp;&nbsp;
-                      <a href="{{ route('runa.quotation.edit', ['id' => $row->id]) }}"
+                      <a href="{{ route('runa.quotation.edit',$row) }}"
                           class="btn btn-primary btn-xs" title="CAMBIAR">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>{{ $row->deliver }}</td>
                   <td>
-                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-primary btn-xs">
+                      <a href="{{ route('runa.quotation.details', $row) }}" class="btn btn-primary btn-xs">
                           <i class="fa fa-info" aria-hidden="true"></i>nfo
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
@@ -153,14 +153,14 @@
                   <td>{{ $row->clientr->name }}</td>
                   <td>{{ $row->description }}</td>
                   <td>
-                      <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-warning btn-xs">
+                      <a href="{{ route('runa.quotation.details', $row->id) }}" class="btn btn-warning btn-xs">
                           <i class="fa fa-info" aria-hidden="true"></i>nfo
                           <i class="fa fa-forward" aria-hidden="true"></i>
                       </a>
                   </td>
                   <td>
                       {{ $row->team }} &nbsp;&nbsp;
-                      <a href="{{ route('runa.quotation.edit', ['id' => $row->id]) }}"
+                      <a href="{{ route('runa.quotation.edit', $row) }}"
                           class="btn btn-warning btn-xs" title="CAMBIAR">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>

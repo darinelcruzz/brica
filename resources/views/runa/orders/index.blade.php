@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    {!! Field::number('quantity', 0, ['label' => 'Piezas', 'min' => '0', 'step' => '0.01'])!!}
+                    {!! Field::number('quantity', 0, ['label' => 'Piezas', 'min' => '1', 'step' => '0.01'])!!}
                 </div>
                 <div class="col-md-6">
                     {!! Field::text('caliber')!!}
@@ -17,10 +17,10 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    {!! Field::number('length', 0, ['min' => '0', 'step' => '0.01'])!!}
+                    {!! Field::number('length', 0, ['min' => '0.01', 'step' => '0.01'])!!}
                 </div>
                 <div class="col-md-6">
-                    {!! Field::number('width', 0, ['min' => '0', 'step' => '0.01'])!!}
+                    {!! Field::number('width', 0, ['min' => '0.01', 'step' => '0.01'])!!}
                 </div>
             </div>
             

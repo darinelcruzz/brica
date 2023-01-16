@@ -20,7 +20,7 @@
               <td>{{ $row->clientr->name }}</td>
               <td>{{ $row->description }}</td>
               <td>
-                  <a href="{{ route('runa.quotation.details', ['id' => $row->id]) }}" class="btn btn-{{ $team['color'] }} btn-xs">
+                  <a href="{{ route('runa.quotation.details', $row->id) }}" class="btn btn-{{ $team['color'] }} btn-xs">
                       <i class="fa fa-info" aria-hidden="true"></i>nfo
                       <i class="fa fa-forward" aria-hidden="true"></i>
                   </a>

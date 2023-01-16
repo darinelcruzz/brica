@@ -40,7 +40,7 @@
                           <td>{{ $order->type }}</td>
                           <td>{{ $order->description }}</td>
                           <td>
-                              <a href="{{ route('runa.order.show', ['id' => $order->id]) }}"
+                              <a href="{{ route('runa.order.show', $order) }}"
                                   class="btn btn-info btn-xs">
                                   <i class="fa fa-info" aria-hidden="true"></i>nfo
                                   <i class="fa fa-forward" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
                           </td>
                           @if(Auth::user()->level == 1)
                               <td>
-                                  <a href="{{ route('runa.order.destroy', ['id' => $order->id]) }}">
+                                  <a href="{{ route('runa.order.destroy', $order) }}">
                                       <i class="fa fa-trash"></i>
                                   </a>
                               </td>
