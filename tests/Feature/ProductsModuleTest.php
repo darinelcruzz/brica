@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class ProductsModuleTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ProductsModuleTest extends TestCase
     /** @test */
     function shows_products_list()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.product.index'))
@@ -25,7 +26,7 @@ class ProductsModuleTest extends TestCase
     /** @test */
     function creates_a_product()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.product.create'))

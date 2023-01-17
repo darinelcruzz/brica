@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class ProvidersModuleTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ProvidersModuleTest extends TestCase
     /** @test */
     function shows_providers_list()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.provider.index'))
@@ -25,7 +26,7 @@ class ProvidersModuleTest extends TestCase
     /** @test */
     function creates_a_provider()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.provider.create'))

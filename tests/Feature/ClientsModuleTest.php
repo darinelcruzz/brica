@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class ClientsModuleTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ClientsModuleTest extends TestCase
     /** @test */
     function shows_clients_list()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.client.index'))
@@ -25,7 +26,7 @@ class ClientsModuleTest extends TestCase
     /** @test */
     function creates_a_client()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.client.create'))

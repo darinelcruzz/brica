@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class ProductionModuleTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ProductionModuleTest extends TestCase
     /** @test */
     function shows_engineers_screen()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.engineer'))
@@ -25,7 +26,7 @@ class ProductionModuleTest extends TestCase
     /** @test */
     function shows_manager_screen()
     {
-        $user = factory(\App\User::class)->create();
+         $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.manager'))
@@ -37,7 +38,7 @@ class ProductionModuleTest extends TestCase
     /** @test */
     function shows_designs_screen()
     {
-        $user = factory(\App\User::class)->create();
+         $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.design.index'))
@@ -49,7 +50,7 @@ class ProductionModuleTest extends TestCase
     /** @test */
     function shows_operator_screen()
     {
-        $user = factory(\App\User::class)->create();
+         $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.operator.index'))

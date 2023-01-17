@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class AdminModuleTest extends TestCase
 {
@@ -13,7 +14,7 @@ class AdminModuleTest extends TestCase
     /** @test */
     function shows_daily_balance_screen()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.balance'))
@@ -37,7 +38,7 @@ class AdminModuleTest extends TestCase
     /** @test */
     function shows_expenses_screen()
     {
-        $user = factory(\App\User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.expenses'))
@@ -49,7 +50,7 @@ class AdminModuleTest extends TestCase
     /** @test */
     function manages_quotations()
     {
-        $user = factory(\App\User::class)->create();
+       $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get(route('runa.manage'))
