@@ -14,14 +14,14 @@ class QuotationsComposer
     {
         $view->clients = Client::pluck('name', 'id')->toArray();
         $view->folio = $this->getFolio();
-        $view->lastQ = Quotation::all()->last();
+        $view->lastQ = Quotation::latest()->first();
         $view->products = Product::pluck('name', 'id')->toArray();
         $view->date = Date::now()->format('Y-m-d');
     }
 
     public function getFolio()
     {
-        $lastQ = Quotation::all()->last();
+        $lastQ = Quotation::latest()->first();
         $lastY = fdate($lastQ->created_at, 'Y');
 
         if(date('Y') != $lastY) {

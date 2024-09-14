@@ -22,7 +22,7 @@ class ProQuotationController extends Controller
             'deliver' => 'required'
         ]);
 
-        $lastQ = Quotation::all()->last();
+        $lastQ = Quotation::latest()->first();
 
         $quotation = Quotation::create($request->all());
 
