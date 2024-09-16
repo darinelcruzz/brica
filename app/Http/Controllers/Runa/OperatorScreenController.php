@@ -22,7 +22,6 @@ class OperatorScreenController extends Controller
                 ['status', '=', 'produccion'],
                 ['team', '=', $authUser->email],
             ])
-            ->with('team')
             ->get();
         $title = 'Cotizaciones';
         $cuts = RCut::with('team')->get();
