@@ -13,19 +13,21 @@ class OperatorScreenController extends Controller
 {
     function index()
     {
+        $authUser = Auth::user();
         $rows = Quotation::where([
                 ['status', '=', 'asignado'],
-                ['team', '=', Auth::user()->email],
+                ['team', '=', $authUser->email],
             ])
             ->orWhere([
                 ['status', '=', 'produccion'],
-                ['team', '=', Auth::user()->email],
+                ['team', '=', $authUser->email],
             ])
+            ->with('team')
             ->get();
         $title = 'Cotizaciones';
-        $cuts = RCut::all();
+        $cuts = RCut::with('team')->get();
 
-        return view('runa.production.operator', compact('rows', 'title', 'cuts'));
+        return view('runa.production.operator', compact('rows', 'title', 'cuts', 'authUser'));
     }
 
     function start(Quotation $quotation)

@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-    @if (auth()->user()->name != 'RC')
+    @if ($authUser->name != 'RC')
         <data-table col="col-md-12"
             title="{{ $title }}" example="example1" color="box-danger">
             <template slot="header">
@@ -29,7 +29,7 @@
                             @if ($title == 'Cotizaciones')
                                 <td>{{ $row->deliver }}</td>
                                 <td>
-                                    <a href="{{ route('runa.operator.start', ['id' => $row->id]) }}"
+                                    <a href="{{ route('runa.operator.start', $row) }}"
                                         class="btn btn-{{ $row->status === 'produccion' ? 'success': 'danger' }} btn-xs">
                                             @if ($row->status === 'produccion')
                                                 <i class="fa fa-eye"></i>
@@ -40,7 +40,7 @@
                                 </td>
                             @else
                                 <td>
-                                    <a href="{{ route('runa.order.show', ['id' => $row->id]) }}"
+                                    <a href="{{ route('runa.order.show', $row) }}"
                                         class="btn btn-primary btn-xs">
                                             <i class="fa fa-eye"></i>
                                     </a>
@@ -60,7 +60,7 @@
                         &nbsp;Regresar
                 </a>
 
-                <a href="{{ route('runa.operator.finish', ['id' => $id]) }}"
+                <a href="{{ route('runa.operator.finish', $id) }}"
                     class="btn btn-danger pull-right">
                         <i class="fa fa-check" aria-hidden="true"></i>
                         &nbsp;Terminar
@@ -92,7 +92,7 @@
                                     <td style="font-size: 200%">{{ $cut->length . ' x ' . $cut->width }}</td>
                                     <td style="font-size: 200%">{{ $cut->caliber }}</td>
                                     <td>
-                                        <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'terminado']) }}"
+                                        <a href="{{ route('runa.cut.edit', [$cut, 'terminado']) }}"
                                             class="btn btn-danger">
                                                 <i class="fa fa-check"></i>
                                         </a>
@@ -110,7 +110,7 @@
                                     <td style="font-size: 200%">{{ $order->length . ' x ' . $order->width }}</td>
                                     <td style="font-size: 200%">{{ $order->caliber }}</td>
                                     <td>
-                                        <a href="{{ route('runa.operator.finish', ['id' => $row->id]) }}"
+                                        <a href="{{ route('runa.operator.finish', $row) }}"
                                             class="btn btn-danger">
                                                 <i class="fa fa-check"></i>
                                         </a>
@@ -144,7 +144,7 @@
                                     <td style="font-size: 200%">{{ $cut->length . ' x ' . $cut->width }}</td>
                                     <td style="font-size: 200%">{{ $cut->caliber }}</td>
                                     <td>
-                                        <a href="{{ route('runa.cut.edit', ['id' => $cut->id, 'status' => 'entregado']) }}"
+                                        <a href="{{ route('runa.cut.edit', [$cut, 'entregado']) }}"
                                             class="btn btn-success">
                                                 <i class="fa fa-check"></i>
                                         </a>
