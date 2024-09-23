@@ -19,7 +19,7 @@
         <template slot="body">
             @foreach($sales as $sale)
             <tr>
-                <td>{{ $sale->quotationr->folio or '' }}</td>
+                <td>{{ $sale->quotationr->folio ?? '?' }}</td>
                 <td>
                   <a href="{{ route('runa.sale.ticket', $sale)}}" class="btn btn-warning btn-xs">
                       <i class="fa fa-print" aria-hidden="true"></i>
