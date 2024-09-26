@@ -10,7 +10,7 @@
 
                     <template slot="body">
                         @foreach($finished as $quotation)
-                            @if (!$quotation->sale && $quotation->client != 1)
+                            {{-- @if (!$quotation->sale && $quotation->client != 1) --}}
                                 <tr>
                                     <td>{{ $quotation->folio }}</td>
                                     <td>{{ $quotation->clientr->name }}</td>
@@ -23,7 +23,7 @@
                                       </a>
                                     </td>
                                 </tr>
-                            @endif
+                            {{-- @endif --}}
                         @endforeach
                     </template>
                 </dtable>
